@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#08142C"/>
+  <rect width="1200" height="630" fill="url(#g)" opacity="0.6"/>
+  <defs>
+    <radialGradient id="g" cx="15%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#0E1D3D"/>
+      <stop offset="100%" stop-color="#08142C"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Two-circle brand mark -->
+  <circle cx="95" cy="95" r="34" fill="none" stroke="#F5F7F9" stroke-width="6"/>
+  <circle cx="140" cy="95" r="34" fill="none" stroke="#4AA89E" stroke-width="6"/>
+
+  <text x="80" y="250" font-family="Arial, sans-serif" font-size="56" font-weight="700" fill="#FFFFFF">Digital GrowthScale</text>
+  <text x="80" y="300" font-family="Arial, sans-serif" font-size="26" fill="#B7C0CC">Business Growth Operating System</text>
+
+  <g font-family="Arial, sans-serif" font-size="19" fill="#DCE3EA">
+    <rect x="80" y="350" width="200" height="46" rx="6" fill="#4AA89E" opacity="0.16" stroke="#4AA89E"/>
+    <text x="100" y="379">People</text>
+    <rect x="300" y="350" width="200" height="46" rx="6" fill="#4AA89E" opacity="0.16" stroke="#4AA89E"/>
+    <text x="320" y="379">Process</text>
+    <rect x="520" y="350" width="200" height="46" rx="6" fill="#73C8B7" opacity="0.2" stroke="#73C8B7"/>
+    <text x="540" y="379">Platforms</text>
+    <rect x="740" y="350" width="130" height="46" rx="6" fill="#73C8B7" opacity="0.2" stroke="#73C8B7"/>
+    <text x="760" y="379">AI</text>
+    <rect x="80" y="410" width="230" height="46" rx="6" fill="#73C8B7" opacity="0.2" stroke="#73C8B7"/>
+    <text x="100" y="439">Automation</text>
+    <rect x="330" y="410" width="200" height="46" rx="6" fill="#F5C845" opacity="0.22" stroke="#F5C845"/>
+    <text x="350" y="439">Growth</text>
+  </g>
+</svg>

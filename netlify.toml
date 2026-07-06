@@ -1,0 +1,8 @@
+# Netlify configuration for Digital GrowthScale
+# Beginner note: you do not need to edit this file for the site
+# to work. It just tells Netlify where the dashboard's serverless
+# function lives.
+
+[build]
+  functions = "netlify/functions"
+  publish = "."

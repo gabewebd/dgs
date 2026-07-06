@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Dashboard | Digital GrowthScale</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  /* Dashboard-only styles, kept separate from the marketing page styles */
+  body { background: var(--cream); }
+  .dash-wrap { max-width: 1100px; margin: 0 auto; padding: var(--space-lg) var(--space-sm); }
+  .dash-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: var(--space-lg); }
+  .dash-header h1 { font-size: 1.6rem; }
+  .lock-screen { max-width: 380px; margin: 10vh auto; background: var(--white); border-radius: var(--radius-md); padding: var(--space-lg); text-align: center; }
+  .lock-screen input { width: 100%; padding: 0.8rem; border: 1.5px solid #DCE1E4; border-radius: var(--radius-sm); margin: var(--space-sm) 0; font-size: 1rem; }
+  .lock-error { color: #C0392B; font-size: 0.88rem; min-height: 1.2em; }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: var(--space-lg); }
+  .stat-card { background: var(--white); border-radius: var(--radius-sm); padding: 1rem 1.2rem; border: 1px solid #E4E8EA; }
+  .stat-card .num { font-family: var(--font-display); font-size: 1.8rem; }
+  .stat-card .label { font-family: var(--font-body); font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.06em; }
+  table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius-sm); overflow: hidden; }
+  th, td { text-align: left; padding: 0.85rem 1rem; font-size: 0.92rem; border-bottom: 1px solid #EEF1F2; vertical-align: top; }
+  th { font-family: var(--font-body); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray); background: #FAFBFB; }
+  .status-badge { display: inline-block; padding: 0.25rem 0.65rem; border-radius: 999px; background: rgba(74,168,158,0.16); color: var(--teal); font-size: 0.78rem; font-weight: 600; }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid #E4E8EA; }
+  .empty-state, .loading-state { text-align: center; padding: var(--space-lg); color: var(--gray); }
+  .refresh-btn { font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     LOCK SCREEN
+     Beginner note: this password check is a light gate for the
+     two team members using the dashboard day to day. The real
+     protection happens on the server: the get-submissions
+     function checks the password against DASHBOARD_PASSWORD
+     before it will hand over any lead data. See README.md.
+     ============================================================ -->
+<div id="lockScreen" class="lock-screen">
+  <h1 style="font-size:1.3rem;margin-bottom:0.5rem;">Digital GrowthScale</h1>
+  <p style="color:var(--gray);font-size:0.92rem;margin-bottom:0.5rem;">Enter the dashboard password to view leads.</p>
+  <form id="lockForm">
+    <input type="password" id="passwordInput" placeholder="Dashboard password" required autocomplete="current-password">
+    <button type="submit" class="btn btn-primary btn-block">Unlock Dashboard</button>
+  </form>
+  <p class="lock-error" id="lockError"></p>
+</div>
+
+<!-- ============================================================
+     DASHBOARD (hidden until the password is accepted)
+     ============================================================ -->
+<div id="dashboard" class="dash-wrap" style="display:none;">
+  <div class="dash-header">
+    <div>
+      <h1>Lead Dashboard</h1>
+      <p style="color:var(--gray);font-size:0.9rem;">Digital GrowthScale, inquiry submissions</p>
+    </div>
+    <button id="refreshBtn" class="btn btn-dark-outline refresh-btn">Refresh</button>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-card"><div class="num" id="statTotal">0</div><div class="label">Total Leads</div></div>
+    <div class="stat-card"><div class="num" id="statToday">0</div><div class="label">Today</div></div>
+    <div class="stat-card"><div class="num" id="statWeek">0</div><div class="label">Last 7 Days</div></div>
+  </div>
+
+  <div id="tableArea" class="table-wrap">
+    <div class="loading-state">Loading leads&hellip;</div>
+  </div>
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>
