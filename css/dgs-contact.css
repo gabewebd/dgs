@@ -1,0 +1,331 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — CONTACT PAGE-SPECIFIC STYLES
+   Split from dgs-styles.css for per-page editing in GHL.
+   Load order: dgs-common.css FIRST, then this file.
+   ============================================================ */
+
+.dgs-pill {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--surface-border-light);
+  color: var(--text-light);
+  background: transparent;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.dgs-pill--teal {
+  color: var(--action-teal);
+  border-color: rgba(8, 157, 135, 0.3);
+  background: rgba(8, 157, 135, 0.08);
+}
+
+.dgs-section--light .dgs-pill {
+  border-color: #D7DEE0;
+  color: var(--bg-deep-navy);
+}
+
+.dgs-split {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+@media (min-width: 860px) {
+  .dgs-split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+.dgs-form {
+  background: var(--text-white);
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  padding: var(--space-lg);
+  color: var(--bg-deep-navy);
+}
+
+.dgs-form-row {
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-form-row--split {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-form-row--split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+.dgs-form-row label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--bg-deep-navy);
+}
+
+.dgs-form-row input,
+.dgs-form-row textarea,
+.dgs-form-row select {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1.5px solid #DCE1E4;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--bg-deep-navy);
+  background: var(--text-white);
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+
+.dgs-form-row input::placeholder,
+.dgs-form-row textarea::placeholder {
+  color: #A0A8B2;
+}
+
+.dgs-form-row input:focus,
+.dgs-form-row textarea:focus,
+.dgs-form-row select:focus {
+  border-color: var(--action-teal);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(8, 157, 135, 0.1);
+}
+
+.dgs-form-row textarea {
+  min-height: 8.125rem;
+  resize: vertical;
+}
+
+.dgs-form-consent {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+}
+
+.dgs-form-consent a {
+  color: var(--action-teal);
+  text-decoration: underline;
+}
+
+.dgs-next-steps {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  padding: var(--space-md);
+}
+
+.dgs-next-steps-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--action-teal);
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-next-step {
+  display: flex;
+  gap: var(--space-sm);
+  padding: 0.75rem 0;
+}
+
+.dgs-next-step:not(:last-child) {
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.dgs-next-step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--action-teal);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+.dgs-next-step h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+  color: var(--text-white);
+}
+
+.dgs-next-step p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.dgs-contact-direct {
+  margin-top: var(--space-md);
+}
+
+.dgs-contact-direct h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-sm);
+  color: var(--text-white);
+}
+
+.dgs-contact-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.65rem 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+}
+
+.dgs-contact-link:hover {
+  color: var(--text-white);
+}
+
+.dgs-contact-link-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--action-teal);
+  flex-shrink: 0;
+}
+
+.dgs-contact-link-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dgs-contact-link small {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.dgs-value-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--space-md);
+}
+
+.dgs-value-pills .dgs-pill {
+  background: rgba(8, 157, 135, 0.08);
+  border-color: rgba(8, 157, 135, 0.2);
+  color: var(--action-teal);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.dgs-hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+.dgs-section--light .dgs-next-steps {
+  background: var(--bg-white);
+  border-color: #E4E8EA;
+}
+
+.dgs-section--light .dgs-next-step {
+  border-color: #E4E8EA;
+}
+
+.dgs-section--light .dgs-next-step h4 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-next-step p {
+  color: var(--text-dark-muted);
+}
+
+.dgs-section--light .dgs-contact-direct h3 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-contact-link {
+  color: var(--text-dark-muted);
+}
+
+.dgs-section--light .dgs-contact-link:hover {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-contact-link-icon {
+  background: var(--bg-white);
+  border-color: #E4E8EA;
+}
+
+.form-container {
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+.dgs-contact-map {
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid #E4E8EA;
+}
+
+/* Hero content in split layout — uses full column width */
+@media (max-width: 860px) {
+  .dgs-contact-direct {
+    margin-top: var(--space-lg);
+  }
+}
+
+/* --- CONTACT PAGE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  #dgs-contact-hero {
+    /* extra space above the hero for small screens */
+    padding: 7.3rem 0 4rem !important;
+  }
+  .dgs-form-tabs {
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .dgs-form-tab {
+    min-width: 100%;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+/* --- IFRAME AND CONTACT LINK MOBILE OPTIMIZATIONS --- */
+.dgs-form-iframe iframe {
+  width: 100%;
+  min-height: 800px;
+  border: none;
+  border-radius: var(--radius-md);
+  scroll-margin-top: 120px;
+}
+
+.dgs-contact-link span {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  .dgs-form-iframe iframe {
+    min-height: 950px;
+  }
+}

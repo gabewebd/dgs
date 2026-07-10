@@ -1,75 +1,246 @@
 /* ============================================================
-   DIGITAL GROWTHSCALE — MAIN SCRIPT
-   Beginner note: this file only handles small interactions.
-   The form itself is submitted by the browser directly to
-   Netlify, no JavaScript is needed for that part to work.
+   DIGITAL GROWTHSCALE — MAIN JAVASCRIPT
+   ------------------------------------------------------------
+   Multi-page interactions: nav toggle, FAQ accordion,
+   scroll-reveal, resource filters, footer year.
+   GHL-compatible — no global event listeners that could
+   conflict with GoHighLevel's native scripts.
    ============================================================ */
 
-document.addEventListener('DOMContentLoaded', function () {
+(function () {
+  'use strict';
 
-  // ---- Footer year ----
-  var yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  /* ─── MOBILE NAV — PREMIUM OFF-CANVAS DRAWER ─── */
+  const navToggle = document.getElementById('dgsNavToggle');
+  const mobileMenu = document.getElementById('dgsMobileMenu');
+  const mobileBackdrop = document.getElementById('dgsMobileBackdrop');
+  const mobileClose = document.getElementById('dgsMobileClose');
+  // Some pages don't include a dedicated backdrop element (dgs-mobile-backdrop).
+  // Keep this logic resilient to avoid breaking tap interactions.
+  const mobileBackdropAlt = document.querySelector('.dgs-mobile-backdrop');
 
-  // ---- Mobile menu toggle ----
-  var navToggle = document.getElementById('navToggle');
-  var mobileMenu = document.getElementById('mobileMenu');
+
+
+  function openMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add('is-open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    if (mobileBackdrop) mobileBackdrop.classList.add('is-open');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
+    document.documentElement.classList.add('dgs-menu-open');
+    document.body.classList.add('dgs-menu-open');
+  }
+
+  function closeMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('is-open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    if (mobileBackdrop) mobileBackdrop.classList.remove('is-open');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+    document.documentElement.classList.remove('dgs-menu-open');
+    document.body.classList.remove('dgs-menu-open');
+  }
+
   if (navToggle && mobileMenu) {
     navToggle.addEventListener('click', function () {
-      var isOpen = mobileMenu.classList.toggle('is-open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-    // Close the menu after tapping a link
-    mobileMenu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        mobileMenu.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  // ---- FAQ accordion ----
-  document.querySelectorAll('.faq-item').forEach(function (item) {
-    var question = item.querySelector('.faq-question');
-    var answer = item.querySelector('.faq-answer');
-    question.addEventListener('click', function () {
-      var isOpen = item.classList.contains('is-open');
-
-      // Close any other open FAQ item first
-      document.querySelectorAll('.faq-item.is-open').forEach(function (openItem) {
-        if (openItem !== item) {
-          openItem.classList.remove('is-open');
-          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-          openItem.querySelector('.faq-answer').style.maxHeight = null;
-        }
-      });
-
-      if (isOpen) {
-        item.classList.remove('is-open');
-        question.setAttribute('aria-expanded', 'false');
-        answer.style.maxHeight = null;
+      if (mobileMenu.classList.contains('is-open')) {
+        closeMobileMenu();
       } else {
-        item.classList.add('is-open');
-        question.setAttribute('aria-expanded', 'true');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
+        openMobileMenu();
       }
     });
-  });
-
-  // ---- Scroll reveal for cards and sections ----
-  var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && revealEls.length) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    revealEls.forEach(function (el) { observer.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-});
+  if (mobileClose) {
+    mobileClose.addEventListener('click', closeMobileMenu);
+  }
+
+  // Use whichever backdrop exists (some pages only render it as a CSS layer / element in header)
+  const backdropToUse = mobileBackdrop || mobileBackdropAlt;
+  if (backdropToUse) {
+    backdropToUse.addEventListener('click', closeMobileMenu);
+  }
+
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('is-open')) {
+      closeMobileMenu();
+    }
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth >= 1024 && mobileMenu && mobileMenu.classList.contains('is-open')) {
+      closeMobileMenu();
+    }
+  });
+
+  // Highlight the current page in the mobile drawer
+  document.querySelectorAll('.dgs-mobile-links a[href]').forEach(function (link) {
+    try {
+      var linkPath = (new URL(link.getAttribute('href'), window.location.origin).pathname).replace(/\/$/, '') || '/';
+      var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+      if (linkPath === currentPath) {
+        link.classList.add('is-active');
+      }
+    } catch (err) { /* relative/hash links, ignore */ }
+  });
+
+
+  /* ─── FAQ ACCORDION (Event Delegation) ─── */
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.dgs-faq-question');
+    if (!btn) return;
+
+    const item = btn.closest('.dgs-faq-item');
+    if (!item) return;
+
+    const answer = item.querySelector('.dgs-faq-answer');
+    if (!answer) return;
+
+    const isOpen = item.classList.contains('is-open');
+
+    // Close all siblings
+    const list = item.closest('.dgs-faq-list');
+    if (list) {
+      list.querySelectorAll('.dgs-faq-item.is-open').forEach(function (openItem) {
+        if (openItem !== item) {
+          openItem.classList.remove('is-open');
+          openItem.querySelector('.dgs-faq-question').setAttribute('aria-expanded', 'false');
+          openItem.querySelector('.dgs-faq-answer').style.maxHeight = null;
+        }
+      });
+    }
+
+    // Toggle current
+    if (isOpen) {
+      item.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+      answer.style.maxHeight = null;
+    } else {
+      item.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+
+
+
+
+
+  /* ─── RESOURCE CATEGORY FILTER ─── */
+  var categoryLinks = document.querySelectorAll('.dgs-resources-categories a[data-filter]');
+  var articleCards = document.querySelectorAll('.dgs-article-card[data-category]');
+
+  if (categoryLinks.length && articleCards.length) {
+    categoryLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var filter = link.getAttribute('data-filter');
+
+        // Update active state
+        categoryLinks.forEach(function (l) { l.classList.remove('is-active'); });
+        link.classList.add('is-active');
+
+        // Filter cards
+        articleCards.forEach(function (card) {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+
+  /* ─── RESOURCE SEARCH ─── */
+  var searchInput = document.getElementById('dgsResourceSearch');
+  if (searchInput && articleCards.length) {
+    searchInput.addEventListener('input', function () {
+      var query = searchInput.value.toLowerCase().trim();
+
+      // Reset category filter to "all"
+      categoryLinks.forEach(function (l) { l.classList.remove('is-active'); });
+      var allLink = document.querySelector('.dgs-resources-categories a[data-filter="all"]');
+      if (allLink) allLink.classList.add('is-active');
+
+      articleCards.forEach(function (card) {
+        var text = card.textContent.toLowerCase();
+        card.style.display = text.indexOf(query) !== -1 ? '' : 'none';
+      });
+    });
+  }
+
+
+  /* ─── SCROLL / VIEW-PORT ANIMATIONS (site-wide) ───
+     Make sure every element marked with .dgs-reveal animates on scroll.
+     Also supports elements that are NOT explicitly marked as dgs-reveal by using
+     a progressive enhancement pass: all direct children of sections get revealed.
+  */
+  const revealObserverEnabled = ('IntersectionObserver' in window);
+
+  // Primary: elements explicitly marked
+  const revealElements = Array.from(document.querySelectorAll('.dgs-reveal'));
+
+  // Secondary: ensure each page has animated content even if elements don't have .dgs-reveal
+  // Only run this for elements inside .dgs-page so we don't animate unintended UI.
+  // Explicit opt-in for implicit reveal (keeps behavior controlled)
+  // Add `data-animate="true"` or class `dgs-animate` to any element you want animated.
+  const implicitRevealElements = Array.from(
+    document.querySelectorAll('.dgs-page section [data-animate], .dgs-page section .dgs-animate')
+  );
+
+
+  // Combine unique
+  const allAnimateTargets = Array.from(new Set(revealElements.concat(implicitRevealElements)));
+
+  const applyReveal = function (el) {
+    if (!el) return;
+    el.classList.add('is-visible');
+  };
+
+  if (revealObserverEnabled && allAnimateTargets.length) {
+    const revealObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          applyReveal(entry.target);
+          observer.unobserve(entry.target); // Trigger once
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    allAnimateTargets.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    allAnimateTargets.forEach(function (el) {
+      applyReveal(el);
+    });
+  }
+
+
+  /* ─── HEADER SCROLL EFFECT ─── */
+  var header = document.querySelector('.dgs-header');
+  if (header) {
+    function updateHeaderScroll() {
+      if (window.scrollY > 10) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+    }
+    window.addEventListener('scroll', updateHeaderScroll, { passive: true });
+    updateHeaderScroll();
+  }
+
+  /* ─── FOOTER YEAR ─── */
+  var yearEl = document.getElementById('dgsYear');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+
+})();

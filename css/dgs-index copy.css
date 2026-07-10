@@ -1,0 +1,913 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — INDEX PAGE-SPECIFIC STYLES
+   Split from dgs-styles.css for per-page editing in GHL.
+   Load order: dgs-common.css FIRST, then this file.
+   ============================================================ */
+
+.dgs-section--dark {
+  background: var(--bg-dark-navy);
+  color: var(--text-light-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.dgs-strike-text {
+  text-decoration: line-through;
+  opacity: 0.65;
+}
+
+.dgs-section--dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-mesh-dark);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dgs-section--dark>.dgs-container {
+  position: relative;
+  z-index: 1;
+}
+
+.dgs-section--card {
+  background: var(--surface-navy-card);
+  color: var(--text-light-primary);
+}
+
+.dgs-btn--outline {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-light-primary);
+}
+
+.dgs-btn--outline:hover {
+  background: var(--surface-hover);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.dgs-btn--outline-dark {
+  background: transparent;
+  border-color: var(--bg-deep-navy);
+  color: var(--bg-deep-navy);
+}
+
+.dgs-btn--outline-dark:hover {
+  background: var(--bg-deep-navy);
+  color: var(--bg-white);
+}
+
+.dgs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+
+  margin-bottom: var(--space-md);
+}
+
+.dgs-hero-grid {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .dgs-hero-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+
+}
+
+/* ─── HERO: decorative glass panel (purely visual, no content) ─── */
+.dgs-hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(8, 157, 135, 0.20) 0%, rgba(66, 194, 176, 0.08) 40%, rgba(11, 19, 43, 0.65) 100%);
+  border: 1px solid var(--surface-border-light);
+  box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  backdrop-filter: var(--glass-blur);
+}
+
+.dgs-hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 90%);
+}
+
+.dgs-hero-visual::after {
+  content: '';
+  position: absolute;
+  width: 55%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  top: -10%;
+  right: -10%;
+  background: radial-gradient(circle at 30% 30%, rgba(66, 194, 176, 0.35), transparent 70%);
+  filter: blur(2px);
+}
+
+.dgs-hero-visual-orb {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(6px);
+}
+
+.dgs-hero-visual-orb--1 {
+  width: 96px;
+  height: 96px;
+  bottom: 14%;
+  left: 12%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.dgs-hero-visual-orb--2 {
+  width: 56px;
+  height: 56px;
+  bottom: 32%;
+  left: 34%;
+  background: rgba(8, 157, 135, 0.18);
+  border-color: rgba(8, 157, 135, 0.35);
+}
+
+.dgs-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.dgs-pill {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--surface-border-light);
+  color: var(--text-light);
+  background: transparent;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.dgs-pill--active,
+.dgs-pill--accent {
+  background: var(--action-teal);
+  border-color: var(--action-teal);
+  color: var(--text-white);
+}
+
+.dgs-pill--connector {
+  border: none;
+  padding: 0 0.2rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.dgs-section--light .dgs-pill {
+  border-color: var(--surface-border-neutral);
+  color: var(--bg-deep-navy);
+}
+
+/* ─── INDUSTRIES: DUAL-ROW MARQUEE TICKER (replaces card grid) ─── */
+.dgs-industry-marquee {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-sm) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+}
+
+.dgs-industry-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  will-change: transform;
+}
+
+.dgs-industry-track--row1 {
+  animation: dgs-marquee-left 34s linear infinite;
+}
+
+.dgs-industry-track--row2 {
+  animation: dgs-marquee-right 30s linear infinite;
+}
+
+.dgs-industry-marquee:hover .dgs-industry-track {
+  animation-play-state: paused;
+}
+
+@keyframes dgs-marquee-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes dgs-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.dgs-industry-tag {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 0.95rem 1.85rem;
+  border: 1.5px solid var(--surface-border-neutral);
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--bg-deep-navy);
+  background: var(--text-white);
+  box-shadow: none;
+  transition:
+    color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.dgs-industry-tag:hover {
+  color: var(--action-teal);
+  border-color: var(--action-teal);
+  background: rgba(8, 157, 135, 0.07);
+  transform: translateY(-3px);
+  box-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .dgs-industry-tag {
+    padding: 0.8rem 1.4rem;
+    font-size: 0.9rem;
+  }
+}
+
+.dgs-timeline {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .dgs-timeline {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
+
+.dgs-timeline-step {
+  position: relative;
+  text-align: center;
+  padding: var(--space-lg) var(--space-sm) var(--space-md);
+}
+
+.dgs-timeline-number {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gradient-teal);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 0 auto var(--space-md);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 18px rgba(8, 157, 135, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-timeline-step:hover .dgs-timeline-number {
+  transform: scale(1.08);
+}
+
+.dgs-timeline-step h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-white);
+}
+
+.dgs-section--light .dgs-timeline-step h3 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-timeline-step p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .dgs-timeline-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--space-lg) + 22px);
+    left: calc(50% + 22px);
+    right: calc(-50% + 22px);
+    height: 0;
+    border-top: 2px solid rgba(8, 157, 135, 0.4);
+    z-index: 1;
+  }
+}
+
+.dgs-split {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+@media (min-width: 860px) {
+  .dgs-split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+.dgs-split--center {
+  align-items: center;
+}
+
+.dgs-founder {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .dgs-founder {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 5.5rem;
+  }
+
+}
+
+.dgs-founder-portrait {
+  /* Precision Cut: sharp top-right corner, rounded everywhere else */
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  overflow: hidden;
+  background: transparent;
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  border: none;
+  position: relative;
+}
+
+.dgs-founder-portrait::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 38px;
+  height: 38px;
+  border-top: 2px solid var(--action-teal);
+  border-right: 2px solid var(--action-teal);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.dgs-founder-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 860px) {
+  .dgs-founder-portrait {
+    margin: 0;
+  }
+}
+
+.dgs-founder-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: var(--space-xs);
+}
+
+/* ─── FOUNDER MESSAGE: quoted headline, plain roomy body copy ─── */
+.dgs-founder-headline {
+  margin-bottom: var(--space-lg);
+}
+
+.dgs-founder-quote {
+  margin: 0;
+  padding: 0;
+}
+
+.dgs-founder-quote p {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: var(--text-dark-muted);
+  margin: 0 0 1.25rem 0;
+}
+
+.dgs-founder-quote p:last-of-type {
+  margin-bottom: var(--space-lg);
+}
+
+.dgs-founder-attribution {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-top: var(--space-md);
+}
+
+.dgs-founder-attribution-bar {
+  width: 30px;
+  height: 2px;
+  background: var(--action-teal);
+  flex-shrink: 0;
+  margin-top: 0.65rem;
+}
+
+#dgs-audit-cta {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(8, 157, 135, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(8, 157, 135, 0.12) 0%, transparent 40%),
+    var(--bg-deep-navy) !important;
+}
+
+#dgs-differentiator {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(8, 157, 135, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(255, 210, 0, 0.08) 0%, transparent 40%),
+    var(--bg-deep-navy) !important;
+}
+
+.dgs-problem-cards-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+  gap: 1.5rem;
+  margin-top: var(--space-lg);
+}
+
+.dgs-problem-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+  box-shadow: 0 4px 20px rgba(11, 19, 43, 0.05);
+}
+
+.dgs-problem-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-teal-soft);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+  pointer-events: none;
+}
+
+.dgs-problem-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--action-teal);
+  box-shadow: var(--shadow-teal-glow);
+}
+
+.dgs-problem-card:hover::before {
+  opacity: 1;
+}
+
+.dgs-problem-card-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 157, 135, 0.08);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(8, 157, 135, 0.15);
+  color: var(--action-mint-hover);
+  position: relative;
+  z-index: 1;
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out);
+}
+
+.dgs-problem-card:hover .dgs-problem-card-icon {
+  transform: scale(1.06);
+  border-color: rgba(8, 157, 135, 0.4);
+}
+
+.dgs-problem-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.dgs-problem-card-icon svg {
+  width: 38px;
+  height: 38px;
+}
+
+.dgs-problem-card-content {
+  flex: 1;
+}
+
+.dgs-problem-card-content h3 {
+  margin: 0 0 0.35rem 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--text-white);
+  line-height: 1.3;
+}
+
+.dgs-problem-card-content p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ─── SERVICES: PREMIUM ANIMATED CLICKABLE ROW LIST (replaces plain text grid) ─── */
+.dgs-services-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  border-top: none;
+}
+
+@media (min-width: 768px) {
+  .dgs-services-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-services-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-service-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 2.25rem 2rem;
+  border: 1px solid var(--surface-border-neutral);
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg-white);
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-row:hover {
+  transform: translateY(-5px);
+  border-color: var(--bg-deep-navy);
+  box-shadow: 0 16px 36px rgba(11, 19, 62, 0.08);
+}
+
+/* Sweep background on hover */
+.dgs-service-row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-deep-navy);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s var(--ease-out);
+  z-index: 0;
+}
+
+.dgs-service-row:hover::before,
+.dgs-service-row:focus-visible::before {
+  transform: scaleY(1);
+}
+
+.dgs-service-row-icon {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 2.75rem;
+  display: flex;
+  align-items: center;
+  color: var(--action-teal);
+  transition: color var(--duration-base) var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.dgs-service-row:hover .dgs-service-row-icon,
+.dgs-service-row:focus-visible .dgs-service-row-icon {
+  color: var(--action-mint-hover);
+  /* Keep icons a vibrant teal on dark hover */
+  transform: scale(1.08);
+}
+
+.dgs-service-row-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dgs-service-row-title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.3;
+  color: var(--bg-deep-navy);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-row:hover .dgs-service-row-title,
+.dgs-service-row:focus-visible .dgs-service-row-title {
+  color: var(--text-white);
+  /* White titles on hover */
+}
+
+.dgs-service-row-benefit {
+  font-size: 0.9rem;
+  color: var(--text-dark-muted);
+  line-height: 1.45;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-row:hover .dgs-service-row-benefit,
+.dgs-service-row:focus-visible .dgs-service-row-benefit {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.dgs-service-row-arrow {
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--surface-border-neutral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--action-teal);
+  margin-top: 0.5rem;
+  transition: all 0.4s var(--ease-out);
+}
+
+.dgs-service-row-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-service-row:hover .dgs-service-row-arrow,
+.dgs-service-row:focus-visible .dgs-service-row-arrow {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text-white);
+  transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+  .dgs-service-row {
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+/* ─── SYSTEMS AUDIT SECTION LAYOUT IMPROVEMENTS ─── */
+.dgs-audit-grid {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .dgs-audit-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--space-xl);
+  }
+}
+
+.dgs-audit-info h2 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  margin-bottom: var(--space-md);
+  line-height: 1.15;
+  color: var(--text-white);
+}
+
+.dgs-audit-lead {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.7;
+}
+
+.dgs-audit-card {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border-light);
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  padding: 2.5rem;
+  box-shadow: none;
+  position: relative;
+}
+
+.dgs-audit-card-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--action-mint-hover);
+  background: rgba(8, 157, 135, 0.1);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-md);
+  border: 1px solid rgba(8, 157, 135, 0.25);
+}
+
+.dgs-audit-card h3 {
+  font-size: 1.4rem;
+  color: var(--text-white);
+  margin: 0 0 1.75rem 0;
+  font-weight: 700;
+}
+
+.dgs-audit-deliverables {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.dgs-audit-deliverables li {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.dgs-deliverable-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: rgba(8, 157, 135, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--action-mint-hover);
+  margin-top: 0.15rem;
+  box-shadow: 0 0 10px rgba(8, 157, 135, 0.1);
+}
+
+.dgs-deliverable-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.dgs-audit-deliverables strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-white);
+  margin-bottom: 0.3rem;
+}
+
+.dgs-audit-deliverables p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Homepage service grid shows names only — full definitions live on /services */
+.dgs-service-card--name-only {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dgs-service-card--name-only h3 {
+  margin: 0;
+}
+
+.dgs-service-card--name-only .dgs-service-card-icon {
+  flex-shrink: 0;
+}
+
+#dgs-hero {
+  padding-top: 4rem;
+}
+
+@media (min-width: 768px) {
+  #dgs-hero {
+    padding-top: 6rem;
+  }
+}
+
+/* ============================================================
+   MOBILE & TABLET RESPONSIVE OVERRIDES
+   Reins in section padding, gaps, and image heights that were
+   sized for desktop (many set inline in the HTML), so tablets
+   and phones don't get excessive whitespace or squeeze.
+   ============================================================ */
+@media (max-width: 1024px) {
+  #dgs-hero .dgs-split {
+    gap: 2.75rem !important;
+  }
+
+  #dgs-differentiator {
+    padding: 4.5rem 0 !important;
+  }
+
+  #dgs-differentiator .dgs-split {
+    gap: 3rem !important;
+  }
+
+  #dgs-industries .dgs-split {
+    gap: 2.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #dgs-pain-and-vision {
+    padding-bottom: var(--space-xl) !important;
+  }
+
+  #dgs-founder {
+    padding: var(--space-lg) 0 !important;
+  }
+
+  #dgs-industries {
+    padding: var(--space-lg) 0 !important;
+  }
+
+  #dgs-audit-cta .dgs-reveal {
+    padding: 3rem 2.25rem !important;
+  }
+
+  #dgs-audit-cta .dgs-split {
+    gap: 2rem !important;
+  }
+
+  #dgs-audit-cta .dgs-split > div:last-child {
+    align-items: center !important;
+  }
+
+  #dgs-hero .dgs-split img {
+    height: 340px !important;
+  }
+
+  .dgs-hero-actions {
+    gap: 0.75rem !important;
+  }
+
+  .dgs-hero-actions .dgs-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #dgs-audit-cta .dgs-reveal {
+    padding: 2.5rem 1.75rem !important;
+  }
+
+  #dgs-hero .dgs-split img {
+    height: 240px !important;
+  }
+
+  .dgs-founder-headline {
+    font-size: 1.05rem !important;
+    margin: 1.25rem 0 !important;
+  }
+}

@@ -1,0 +1,313 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — RESOURCES PAGE-SPECIFIC STYLES
+   Split from dgs-styles.css for per-page editing in GHL.
+   Load order: dgs-common.css FIRST, then this file.
+   ============================================================ */
+
+.dgs-resources-layout {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 860px) {
+  .dgs-resources-layout {
+    grid-template-columns: 15rem 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+}
+
+.dgs-resources-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  position: sticky;
+  top: 8.75rem;
+}
+
+.dgs-resources-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 4px;
+  background: var(--surface-navy-card);
+}
+
+.dgs-resources-search svg {
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.dgs-resources-search input {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  outline: none;
+  width: 100%;
+}
+
+.dgs-resources-search input::placeholder {
+  color: var(--text-muted);
+}
+
+.dgs-resources-categories {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  padding: var(--space-md);
+}
+
+.dgs-resources-categories h4 {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--action-teal);
+  margin-bottom: var(--space-xs);
+}
+
+.dgs-resources-categories a {
+  display: block;
+  padding: 0.5rem 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.dgs-resources-categories a:last-child {
+  border-bottom: none;
+}
+
+.dgs-resources-categories a:hover,
+.dgs-resources-categories a.is-active {
+  color: var(--action-teal);
+  padding-left: 0.25rem;
+}
+
+.dgs-newsletter-widget {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  padding: var(--space-md);
+}
+
+.dgs-newsletter-widget .dgs-eyebrow {
+  font-size: 0.68rem;
+}
+
+.dgs-newsletter-widget h4 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: var(--text-white);
+}
+
+.dgs-newsletter-widget p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-newsletter-widget input {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-deep-navy);
+  color: var(--text-light);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+}
+
+.dgs-newsletter-widget input::placeholder {
+  color: var(--text-muted);
+}
+
+.dgs-article-grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 600px) {
+  .dgs-article-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-article-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-article-card {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  overflow: hidden;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+}
+
+.dgs-article-card:hover {
+  border-color: rgba(8, 157, 135, 0.4);
+  transform: translateY(-4px);
+}
+
+.dgs-article-card-image {
+  width: 100%;
+  height: 10rem;
+  background: linear-gradient(135deg, rgba(8, 157, 135, 0.15) 0%, rgba(11, 19, 43, 0.5) 100%);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: var(--space-sm);
+}
+
+.dgs-article-card-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-xs);
+  background: var(--action-teal);
+  color: var(--text-white);
+}
+
+.dgs-article-card-body {
+  padding: var(--space-sm) var(--space-md);
+  flex-grow: 1;
+}
+
+.dgs-article-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-white);
+  line-height: 1.3;
+}
+
+.dgs-article-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-article-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--space-md) var(--space-sm);
+}
+
+.dgs-article-card-time {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.dgs-article-card-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--action-teal);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+}
+
+.dgs-article-card-link:hover {
+  color: var(--action-mint-hover);
+}
+
+.dgs-article-card-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.dgs-section--light .dgs-article-card {
+  background: var(--text-white) !important;
+  border-color: #E4E8EA !important;
+}
+
+.dgs-section--light .dgs-article-card:hover {
+  border-color: var(--action-teal) !important;
+  box-shadow: 0 10px 30px rgba(8, 157, 135, 0.08) !important;
+}
+
+.dgs-section--light .dgs-article-card h3 {
+  color: var(--bg-deep-navy) !important;
+}
+
+.dgs-section--light .dgs-article-card p {
+  color: var(--text-dark-muted) !important;
+}
+
+.dgs-section--light .dgs-article-card-time {
+  color: var(--text-dark-muted) !important;
+}
+
+.dgs-section--light .dgs-article-card-tag {
+  background: var(--action-teal) !important;
+  color: var(--text-white) !important;
+}
+
+/* Sidebar overrides for light theme sections */
+.dgs-section--light .dgs-resources-search {
+  background: var(--text-white) !important;
+  border-color: #E4E8EA !important;
+}
+
+.dgs-section--light .dgs-resources-search input {
+  color: var(--bg-deep-navy) !important;
+}
+
+.dgs-section--light .dgs-resources-categories {
+  background: var(--text-white) !important;
+  border-color: #E4E8EA !important;
+}
+
+.dgs-section--light .dgs-resources-categories a {
+  color: var(--text-dark-muted) !important;
+}
+
+.dgs-section--light .dgs-resources-categories a:hover,
+.dgs-section--light .dgs-resources-categories a.is-active {
+  color: var(--action-teal) !important;
+}
+
+.dgs-section--light .dgs-newsletter-widget {
+  background: var(--text-white) !important;
+  border-color: #E4E8EA !important;
+}
+
+.dgs-section--light .dgs-newsletter-widget h4 {
+  color: var(--bg-deep-navy) !important;
+}
+
+.dgs-section--light .dgs-newsletter-widget p {
+  color: var(--text-dark-muted) !important;
+}
+
+.dgs-section--light .dgs-newsletter-widget input {
+  background: #f4f6f8 !important;
+  border-color: #E4E8EA !important;
+  color: var(--bg-deep-navy) !important;
+}
+
+/* Fluid layout — relative units for zoom resilience */
+#dgs-resources-hero .dgs-hero-content {
+  max-width: 45rem;
+}

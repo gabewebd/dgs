@@ -1,0 +1,122 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — THANK-YOU PAGE-SPECIFIC STYLES
+   Split from dgs-styles.css for per-page editing in GHL.
+   Load order: dgs-common.css FIRST, then this file.
+   ============================================================ */
+
+.dgs-section--dark {
+  background: var(--bg-dark-navy);
+  color: var(--text-light-primary);
+}
+
+.dgs-btn--outline {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-light-primary);
+}
+
+.dgs-btn--outline:hover {
+  background: var(--surface-hover);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.dgs-next-steps {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  padding: var(--space-md);
+}
+
+.dgs-next-step {
+  display: flex;
+  gap: var(--space-sm);
+  padding: 0.75rem 0;
+}
+
+.dgs-next-step:not(:last-child) {
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.dgs-next-step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--action-teal);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+.dgs-next-step h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+  color: var(--text-white);
+}
+
+.dgs-next-step p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.dgs-thankyou {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 9rem var(--space-sm) 5rem var(--space-sm);
+  background: var(--bg-white);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--surface-border-neutral);
+}
+
+@media (max-width: 768px) {
+  .dgs-thankyou {
+    padding: 8rem var(--space-sm) 4rem var(--space-sm);
+  }
+}
+
+.dgs-thankyou-content {
+  max-width: 40rem;
+}
+
+.dgs-thankyou-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(8, 157, 135, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-md);
+}
+
+.dgs-thankyou-icon svg {
+  width: 36px;
+  height: 36px;
+  color: var(--action-teal);
+}
+
+.dgs-thankyou h1 {
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  margin-bottom: var(--space-sm);
+  color: var(--bg-deep-navy);
+}
+
+.dgs-thankyou p {
+  font-size: 1.05rem;
+  color: var(--text-dark-muted);
+  margin-bottom: var(--space-md);
+}
+
+/* Fluid layout — relative units for zoom resilience */
+#dgs-thankyou-steps .dgs-container {
+  max-width: 45rem;
+}

@@ -1,0 +1,203 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — SERVICES PAGE-SPECIFIC STYLES
+   Split from inline style tag for modular css architecture.
+   Load order: dgs-common.css FIRST, then this file.
+   ============================================================ */
+
+/* Match Hero spacing from index but with reduced bottom padding */
+#dgs-services-hero {
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+  text-align: center;
+  background: var(--bg-deep-navy);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  #dgs-services-hero {
+    padding-top: 10rem;
+    padding-bottom: 7rem;
+  }
+}
+
+/* Single Column Horizontal Cards - Premium Layout */
+.dgs-services-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.dgs-service-horizontal-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding: 3rem;
+  background: var(--bg-white);
+  border: 1px solid var(--surface-border-neutral);
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .dgs-service-horizontal-card {
+    padding: 1.75rem;
+    gap: 1.5rem;
+  }
+}
+
+/* Desktop Side-by-Side Layout Split */
+@media (min-width: 992px) {
+  .dgs-service-horizontal-card {
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem;
+  }
+}
+
+.dgs-service-horizontal-card:hover {
+  border-color: var(--action-teal);
+  box-shadow: 0 16px 40px rgba(11, 19, 43, 0.08);
+  transform: translateY(-4px);
+}
+
+/* Teal Sweep Hover Effect */
+.dgs-service-horizontal-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-deep-navy);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s var(--ease-out);
+  z-index: -1;
+}
+
+.dgs-service-horizontal-card:hover::before {
+  transform: scaleY(1);
+}
+
+/* Left Side Elements Column */
+.dgs-service-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--surface-border-neutral);
+  padding-bottom: 2rem;
+  transition: border-color 0.4s var(--ease-out);
+}
+
+@media (min-width: 992px) {
+  .dgs-service-card-left {
+    border-bottom: none;
+    border-right: 1px solid var(--surface-border-neutral);
+    padding-bottom: 0;
+    padding-right: 4rem;
+  }
+}
+
+.dgs-service-horizontal-card:hover .dgs-service-card-left {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Right Side Elements Column */
+.dgs-service-card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Typography Color Transitions on Hover */
+.dgs-service-horizontal-card h3,
+.dgs-service-horizontal-card h4,
+.dgs-service-horizontal-card .dgs-service-desc,
+.dgs-service-horizontal-card .dgs-service-best-for-text,
+.dgs-service-horizontal-card .dgs-service-divider {
+  transition: color 0.4s var(--ease-out), background-color 0.4s var(--ease-out);
+}
+
+.dgs-service-horizontal-card:hover h3,
+.dgs-service-horizontal-card:hover h4 {
+  color: var(--text-white) !important;
+}
+
+.dgs-service-horizontal-card:hover .dgs-service-desc {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.dgs-service-horizontal-card:hover .dgs-service-best-for-text {
+  color: var(--text-white) !important;
+}
+
+.dgs-service-horizontal-card:hover .dgs-service-divider {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Best For Container Box */
+.dgs-service-best-box {
+  background: rgba(8, 157, 135, 0.05);
+  border: 1px solid rgba(8, 157, 135, 0.15);
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: background 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+
+.dgs-service-horizontal-card:hover .dgs-service-best-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Button Styling (Positioned at the bottom of the left column) */
+.dgs-service-card-btn {
+  width: fit-content;
+  gap: 1.5rem;
+  margin-top: auto;
+  border-radius: var(--radius-md);
+  justify-content: space-between;
+  padding: 0.85rem 1.5rem;
+  background: transparent;
+  border: 1px solid var(--bg-deep-navy);
+  color: var(--bg-deep-navy);
+  transition: all 0.4s var(--ease-out);
+}
+
+@media (max-width: 991px) {
+  .dgs-service-card-btn {
+    margin-top: 2rem;
+  }
+}
+
+.dgs-service-horizontal-card:hover .dgs-service-card-btn {
+  background: var(--accent-yellow);
+  border-color: var(--accent-yellow);
+  color: var(--bg-deep-navy);
+}
+
+.dgs-service-tag {
+  background: var(--surface-border-neutral);
+  color: var(--text-dark-muted);
+  font-size: 0.75rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  transition: background var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-horizontal-card:hover .dgs-service-tag {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-white);
+}
+
+/* Fluid layout — relative units for zoom resilience */
+#dgs-services-hero .dgs-hero-content {
+  max-width: 50rem;
+}
+
+#dgs-services-hero .dgs-hero-sub {
+  max-width: 42.5rem;
+}

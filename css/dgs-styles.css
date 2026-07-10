@@ -1,0 +1,3139 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — GHL-COMPATIBLE DESIGN SYSTEM
+   ------------------------------------------------------------
+   All classes use the .dgs- prefix to prevent conflicts
+   with GoHighLevel's native wrapper classes.
+
+   Design tokens, typography, layout, components, and
+   responsive breakpoints are defined in this single file.
+   ============================================================ */
+
+/* #region 0 - DESIGN TOKENS */
+/* ─── DESIGN TOKENS ─── */
+:root {
+  /* Surface Mechanics */
+  --bg-white: #FFFFFF;
+  /* True crisp background for mapped white wireframe sections */
+  --bg-deep-navy: #0B132B;
+  /* Base fallbacks */
+
+  /* Static Deep Navy for standard dark sections */
+  --gradient-dark-section: var(--bg-deep-navy);
+  --bg-dark-navy: #0B132B;
+  /* Solid premium dark navy background */
+  --bg-teal: #089D87;
+  /* Solid branding teal background */
+  --surface-navy-card: #111C3A;
+  /* Elevated layout blocks and card panels */
+  --bg-navy-darkest: #0B132B;
+
+  /* Primary Branding Actions (image_c16547.png Rules) */
+  --action-teal: #089D87;
+  /* Base standard primary button fill */
+  --action-mint-hover: #42C2B0;
+  /* Hover states, active focus rings */
+  --accent-yellow: #FFD200;
+  /* Rare high-priority contextual highlights */
+
+  /* Neutral Typography Layering */
+  --text-dark-primary: #111625;
+  /* High contrast typography over white backgrounds */
+  --text-dark-muted: #5B6670;
+  /* Secondary supporting text over white backgrounds */
+  --text-light-primary: #FFFFFF;
+  /* Pure contrast over dark gradient backgrounds */
+  --text-light-muted: #F5F7F9;
+  /* Supporting microcopy over dark gradient backgrounds */
+  --text-white: #FFFFFF;
+  /* Fallback white color token */
+  --text-light: #FFFFFF;
+  /* Standard light text fallback variable */
+
+  /* Supplementary surface tones */
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --surface-border-light: rgba(255, 255, 255, 0.12);
+  --surface-glass: rgba(11, 19, 43, 0.92);
+  --surface-hover: rgba(255, 255, 255, 0.04);
+  --text-secondary: #B7C0CC;
+  --text-tertiary: #8792A0;
+
+  /* Typography families */
+  --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing scale */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.75rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+  --space-2xl: 7.5rem;
+
+  /* Shape */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 999px;
+
+  /* Layout */
+  --max-width: 1560px;
+  --max-width-narrow: 1024px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 0.15s;
+  --duration-base: 0.25s;
+  --duration-slow: 0.4s;
+}
+
+
+/* #endregion */
+
+/* #region 1 - SCOPED RESET */
+/* ─── SCOPED RESET ─── */
+.dgs-page,
+.dgs-page *,
+.dgs-page *::before,
+.dgs-page *::after {
+  box-sizing: border-box;
+}
+
+.dgs-page {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--text-light);
+  background: var(--bg-deep-navy);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.dgs-page img {
+  max-width: 100%;
+  display: block;
+}
+
+.dgs-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dgs-page ul,
+.dgs-page ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dgs-page button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.dgs-page h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.dgs-page h2 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.dgs-page h3,
+.dgs-page h4 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.dgs-page p {
+  margin: 0;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .dgs-page * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Focus ring */
+.dgs-page a:focus-visible,
+.dgs-page button:focus-visible,
+.dgs-page input:focus-visible,
+.dgs-page textarea:focus-visible,
+.dgs-page select:focus-visible {
+  outline: 3px solid var(--accent-yellow);
+  outline-offset: 2px;
+}
+
+
+/* #endregion */
+
+/* #region 2 - GLOBAL & LAYOUT UTILITIES */
+/* ─── LAYOUT UTILITIES ─── */
+.dgs-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.dgs-container--narrow {
+  max-width: var(--max-width-narrow);
+}
+
+.dgs-section {
+  padding: var(--space-xl) 0;
+}
+
+.dgs-section--lg {
+  padding: var(--space-2xl) 0;
+}
+
+.dgs-section--dark {
+  background: var(--bg-dark-navy);
+  color: var(--text-light-primary);
+}
+
+.dgs-section--darker {
+  background: var(--bg-navy-darkest);
+  color: var(--text-light-primary);
+}
+
+.dgs-section--teal {
+  background: var(--bg-teal);
+  color: var(--text-light-primary);
+}
+
+.dgs-section--card {
+  background: var(--surface-navy-card);
+  color: var(--text-light-primary);
+}
+
+.dgs-section--light {
+  background: var(--bg-white);
+  color: var(--text-dark-primary);
+}
+
+.dgs-section--light p,
+.dgs-section--light h2,
+.dgs-section--light h3,
+.dgs-section--light h4,
+.dgs-section--light span,
+.dgs-section--light li {
+  color: var(--text-dark-primary);
+}
+
+.dgs-text-center {
+  text-align: center;
+}
+
+
+/* ─── EYEBROW LABELS ─── */
+.dgs-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--action-teal);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--space-xs);
+}
+
+
+/* ─── SECTION HEADERS ─── */
+.dgs-section-head {
+  max-width: 900px;
+  margin-bottom: var(--space-lg);
+}
+
+.dgs-section-head--center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dgs-section-head h2 {
+  font-size: clamp(1.85rem, 4vw, 2.8rem);
+  margin-bottom: var(--space-sm);
+  color: var(--text-light-primary);
+}
+
+.dgs-section--light .dgs-section-head h2 {
+  color: var(--text-dark-primary);
+}
+
+.dgs-section--teal .dgs-section-head h2 {
+  color: var(--text-light-primary);
+}
+
+.dgs-section-head h2 .dgs-text-accent {
+  color: var(--action-teal);
+}
+
+.dgs-section-head p {
+  color: var(--text-light-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.dgs-section--light .dgs-section-head p {
+  color: var(--text-dark-muted);
+}
+
+.dgs-section--teal .dgs-section-head p {
+  color: var(--text-light-muted);
+}
+
+
+/* #endregion */
+
+/* #region 3 - BUTTONS */
+/* ─── BUTTONS ─── */
+.dgs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.55rem 1.45rem;
+  border-radius: var(--radius-full);
+  /* Premium pill-shaped geometry matching Image 2 */
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  margin: 0.5rem 0;
+  /* Ensures a space above and below every button */
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    background var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dgs-btn:hover {
+  transform: translateY(-2px);
+}
+
+.dgs-btn--primary {
+  background: var(--action-teal);
+  color: var(--text-light-primary) !important;
+  border: none !important;
+  overflow: hidden;
+}
+
+.dgs-btn--primary:hover {
+  background: linear-gradient(135deg, #089D87 0%, #FFD200 100%) !important;
+  color: var(--bg-deep-navy) !important;
+  box-shadow: none;
+}
+
+.dgs-btn--primary-accent {
+  background: var(--action-teal);
+  /* primary variant mapping */
+  color: var(--text-light-primary) !important;
+  border-radius: var(--radius-full);
+  /* Pill geometry wrapper */
+  font-weight: 700;
+  padding: 0.4rem 0.4rem 0.4rem 1.45rem;
+  /* Balanced padding around the icon container */
+  border: none !important;
+  overflow: hidden;
+}
+
+.dgs-btn--primary-accent:hover {
+  background: linear-gradient(135deg, #089D87 0%, #FFD200 100%) !important;
+  color: var(--bg-deep-navy) !important;
+  box-shadow: none;
+}
+
+.dgs-btn--outline {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-light-primary);
+}
+
+.dgs-btn--outline:hover {
+  background: var(--surface-hover);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.dgs-btn--outline-dark {
+  background: transparent;
+  border-color: var(--bg-deep-navy);
+  color: var(--bg-deep-navy);
+}
+
+.dgs-btn--outline-dark:hover {
+  background: var(--bg-deep-navy);
+  color: var(--bg-white);
+}
+
+.dgs-btn--block {
+  width: 100%;
+}
+
+.dgs-btn--lg {
+  padding: 0.65rem 1.75rem;
+  font-size: 1rem;
+  border-radius: var(--radius-full);
+}
+
+.dgs-btn--lg.dgs-btn--primary-accent {
+  padding: 0.5rem 0.5rem 0.5rem 1.75rem;
+  /* Balanced padding for large button with icon */
+}
+
+.dgs-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  /* Circular container matching Image 2 */
+  background: var(--bg-white) !important;
+  color: var(--action-teal) !important;
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.dgs-nav-cta {
+  margin: 0 !important;
+  /* Ensure nav CTA doesn't break header height */
+}
+
+.dgs-btn--primary-accent .dgs-btn-icon {
+  background: var(--bg-white) !important;
+  color: var(--action-teal) !important;
+}
+
+.dgs-btn-icon svg {
+  width: 16px;
+  height: 16px;
+  transform: rotate(-45deg);
+  /* Point diagonally up-right */
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.dgs-btn:hover .dgs-btn-icon svg {
+  transform: rotate(-45deg) translate(1.5px, -1.5px);
+  /* Micro-animation on hover */
+}
+
+
+/* #endregion */
+
+/* #region 4 - HEADER & NAVIGATION */
+/* ─── HEADER / NAVIGATION ─── */
+.dgs-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.dgs-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 0;
+  gap: var(--space-sm);
+}
+
+.dgs-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-white) !important;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.dgs-logo-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--action-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--text-white);
+  flex-shrink: 0;
+}
+
+.dgs-nav-links {
+  display: none;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.dgs-nav-links a {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+}
+
+.dgs-nav-links a:hover,
+.dgs-nav-links a.is-active {
+  color: var(--text-white);
+}
+
+.dgs-nav-cta {
+  display: none;
+}
+
+.dgs-nav-toggle {
+  background: none;
+  border: none;
+  color: var(--text-white);
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dgs-nav-toggle svg {
+  width: 26px;
+  height: 26px;
+}
+
+.dgs-mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0 var(--space-sm) var(--space-md);
+  border-top: 1px solid var(--surface-border);
+}
+
+.dgs-mobile-menu.is-open {
+  display: flex;
+}
+
+.dgs-mobile-menu a {
+  color: var(--text-light);
+  font-size: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--surface-border);
+  text-decoration: none;
+}
+
+.dgs-mobile-menu .dgs-btn {
+  margin-top: var(--space-xs);
+}
+
+@media (min-width: 768px) {
+  .dgs-nav-links {
+    display: flex;
+  }
+
+  .dgs-nav-cta {
+    display: inline-flex;
+  }
+
+  .dgs-nav-toggle {
+    display: none;
+  }
+
+  .dgs-mobile-menu {
+    display: none !important;
+  }
+}
+
+
+/* #endregion */
+
+/* #region 5 - HERO SECTIONS */
+/* ─── HERO SECTIONS ─── */
+.dgs-hero {
+  background: var(--bg-white);
+  color: var(--bg-deep-navy);
+  padding: 6rem 0 7rem;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid var(--surface-border-neutral);
+}
+
+@media (min-width: 768px) {
+  .dgs-hero {
+    padding: 10rem 0 13rem;
+  }
+}
+
+.dgs-hero::after {
+  display: none;
+}
+
+.dgs-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.dgs-hero h1 {
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  margin-bottom: var(--space-sm);
+  max-width: 1000px;
+  color: var(--bg-deep-navy);
+}
+
+.dgs-hero-gradient-text {
+  background: linear-gradient(135deg, #0B132B 0%, #089D87 35%, #FFD200 48%, #FFD200 52%, #089D87 65%, #0B132B 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: dgs-gradient-rotation 8s linear infinite;
+  display: inline-block;
+  padding-bottom: 0.15em;
+  margin-bottom: -0.15em;
+}
+
+@keyframes dgs-gradient-rotation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.dgs-hero-sub {
+  font-size: 1.08rem;
+  color: var(--text-dark-muted);
+  max-width: 720px;
+  margin-bottom: var(--space-md);
+  line-height: 1.7;
+}
+
+.dgs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  /* Add margin-top to push buttons down and create space below the text */
+  margin-bottom: var(--space-md);
+}
+
+.dgs-hero-note {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.dgs-hero-grid {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .dgs-hero-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+
+/* ─── HERO FEATURE CARD (audit page right column) ─── */
+.dgs-hero-features {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+}
+
+.dgs-hero-features h3 {
+  font-size: 1.15rem;
+  margin-bottom: var(--space-sm);
+  color: var(--text-white);
+}
+
+.dgs-hero-features p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  margin-bottom: var(--space-xs);
+}
+
+.dgs-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.dgs-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  color: var(--text-light);
+}
+
+.dgs-checklist-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--action-teal);
+  flex-shrink: 0;
+}
+
+.dgs-hero-stats {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--surface-border);
+}
+
+.dgs-hero-stat {
+  text-align: center;
+}
+
+.dgs-hero-stat-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--text-white);
+  display: block;
+}
+
+.dgs-hero-stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+
+/* #endregion */
+
+/* #region 6 - CARDS & GRIDS */
+/* ─── PILLS / TAGS ─── */
+.dgs-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.dgs-pill {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--surface-border-light);
+  color: var(--text-light);
+  background: transparent;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.dgs-pill--active,
+.dgs-pill--accent {
+  background: var(--action-teal);
+  border-color: var(--action-teal);
+  color: var(--text-white);
+}
+
+.dgs-pill--connector {
+  border: none;
+  padding: 0 0.2rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.dgs-pill--sm {
+  font-size: 0.72rem;
+  padding: 0.3rem 0.65rem;
+  font-weight: 500;
+}
+
+.dgs-pill--teal {
+  color: var(--action-teal);
+  border-color: rgba(8, 157, 135, 0.3);
+  background: rgba(8, 157, 135, 0.08);
+}
+
+.dgs-section--light .dgs-pill {
+  border-color: #D7DEE0;
+  color: var(--bg-deep-navy);
+}
+
+
+/* ─── PAIN POINT / ICON CARDS (small) ─── */
+.dgs-icon-cards {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-icon-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .dgs-icon-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-icon-card {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-icon-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.dgs-section--light .dgs-icon-card {
+  background: var(--text-white);
+  border-color: #E4E8EA;
+}
+
+.dgs-section--light .dgs-icon-card:hover {
+  border-color: #C0C8CE;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.dgs-icon-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(8, 157, 135, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+  color: var(--action-teal);
+}
+
+.dgs-icon-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.dgs-icon-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-white);
+}
+
+.dgs-section--light .dgs-icon-card h3 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-icon-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+
+/* ─── LARGE CARDS (4-col) ─── */
+.dgs-cards-4 {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-cards-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-cards-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/* ─── SERVICE MODULE CARDS ─── */
+.dgs-service-cards {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-service-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-service-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-service-card {
+  background: var(--text-white);
+  border: 1px solid #E4E8EA;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+  color: var(--bg-deep-navy);
+}
+
+.dgs-service-card:hover {
+  border-color: #C0C8CE;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.dgs-service-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-service-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: rgba(8, 157, 135, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--action-teal);
+  flex-shrink: 0;
+}
+
+.dgs-service-card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dgs-service-card-number {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #C0C8CE;
+  letter-spacing: 0.02em;
+  padding-top: 0.2rem;
+}
+
+.dgs-service-card-tagline {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--action-teal);
+  margin-bottom: 0.4rem;
+}
+
+.dgs-service-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  color: var(--bg-deep-navy);
+  line-height: 1.3;
+}
+
+.dgs-service-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dgs-service-card-headline {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--bg-deep-navy);
+  line-height: 1.45;
+  margin-bottom: 0.5rem;
+}
+
+.dgs-service-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-service-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: var(--space-sm);
+  border-top: 1px solid #E8ECF0;
+}
+
+.dgs-service-card-best {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--action-teal);
+}
+
+.dgs-service-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.dgs-service-card-tags span {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-xs);
+  background: #F0F2F4;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dgs-service-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: var(--space-sm);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--action-teal);
+  text-decoration: none;
+}
+
+.dgs-service-card-cta svg {
+  width: 15px;
+  height: 15px;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-card-cta:hover {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-service-card-cta:hover svg {
+  transform: translateX(3px);
+}
+
+
+/* ─── FEATURED BANNER CARD ─── */
+.dgs-featured-banner {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.dgs-featured-banner h3 {
+  font-size: 1.15rem;
+  color: var(--text-white);
+}
+
+.dgs-featured-banner p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+
+/* ─── INDUSTRY CARDS (4-col) ─── */
+.dgs-industry-cards {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .dgs-industry-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .dgs-industry-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-industry-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-industry-card {
+  background: var(--text-white);
+  border: 1px solid #E4E8EA;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  color: var(--bg-deep-navy);
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.dgs-industry-card:hover {
+  border-color: #C0C8CE;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.dgs-industry-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(8, 157, 135, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+  color: var(--action-teal);
+}
+
+.dgs-industry-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.dgs-industry-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+  color: var(--bg-deep-navy);
+}
+
+.dgs-industry-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+
+/* #endregion */
+
+/* #region 7 - TIMELINES & PROCESSES */
+/* ─── TIMELINE / PROCESS STEPS ─── */
+.dgs-timeline {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .dgs-timeline {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-timeline-step {
+  position: relative;
+  text-align: center;
+  padding: var(--space-md) var(--space-sm);
+}
+
+.dgs-timeline-number {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--action-teal);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 0 auto var(--space-sm);
+  position: relative;
+  z-index: 2;
+}
+
+.dgs-timeline-step h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-white);
+}
+
+.dgs-section--light .dgs-timeline-step h3 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-timeline-step p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Connector lines on desktop */
+@media (min-width: 768px) {
+  .dgs-timeline-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--space-md) + 22px);
+    left: calc(50% + 22px);
+    right: calc(-50% + 22px);
+    height: 0;
+    border-top: 2px solid rgba(8, 157, 135, 0.4);
+    z-index: 1;
+  }
+}
+
+
+/* ─── HORIZONTAL YEAR TIMELINE ─── */
+.dgs-year-timeline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  padding-bottom: var(--space-sm);
+  position: relative;
+}
+
+.dgs-year-timeline::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(8, 157, 135, 0.2);
+}
+
+.dgs-year-step {
+  text-align: center;
+  flex: 0 0 auto;
+  min-width: 130px;
+  position: relative;
+}
+
+.dgs-year-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--action-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-xs);
+  position: relative;
+  z-index: 2;
+}
+
+.dgs-year-dot svg {
+  width: 14px;
+  height: 14px;
+  color: var(--text-white);
+}
+
+.dgs-year-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--action-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.dgs-year-step h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  color: var(--text-white);
+}
+
+.dgs-year-step p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+
+/* #endregion */
+
+/* ─── VALUE CARDS (2x3 grid) ─── */
+.dgs-value-cards {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-value-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-value-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-value-card {
+  padding: var(--space-md);
+}
+
+.dgs-value-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: rgba(8, 157, 135, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+  color: var(--action-teal);
+}
+
+.dgs-value-card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dgs-value-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-white);
+}
+
+.dgs-value-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+
+/* #region 8 - COMPARISONS & METRICS */
+/* ─── STATS ROW ─── */
+.dgs-stats {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  .dgs-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-stat {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.dgs-stat-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--action-mint-hover);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.dgs-stat-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+
+/* ─── BEFORE / AFTER TABLE ─── */
+.dgs-comparison {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--surface-border);
+}
+
+.dgs-comparison-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dgs-comparison-header span {
+  padding: 0.85rem var(--space-sm);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.dgs-comparison-header span:first-child {
+  background: rgba(220, 38, 38, 0.08);
+  color: #ef4444;
+}
+
+.dgs-comparison-header span:last-child {
+  background: rgba(8, 157, 135, 0.12);
+  color: var(--action-teal);
+}
+
+.dgs-comparison-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--surface-border);
+}
+
+.dgs-comparison-cell {
+  padding: 0.75rem var(--space-sm);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dgs-comparison-cell:first-child {
+  border-right: 1px solid var(--surface-border);
+}
+
+.dgs-comparison-x {
+  color: #ef4444;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.dgs-comparison-check {
+  color: var(--action-teal);
+  flex-shrink: 0;
+}
+
+.dgs-comparison-check svg,
+.dgs-comparison-x svg {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* #endregion */
+
+/* ─── PULL QUOTE ─── */
+.dgs-pullquote {
+  border-left: 3px solid var(--action-teal);
+  padding-left: var(--space-sm);
+  font-size: 1.02rem;
+  font-style: italic;
+  color: var(--text-light);
+  margin: var(--space-md) 0;
+}
+
+
+/* ─── TWO COLUMN LAYOUT ─── */
+.dgs-split {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+@media (min-width: 860px) {
+  .dgs-split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dgs-split--wide-left {
+    grid-template-columns: 1.3fr 0.7fr;
+  }
+
+  .dgs-split--wide-right {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+}
+
+.dgs-split--center {
+  align-items: center;
+}
+
+
+/* #region 9 - FOUNDER & BRAND CORE */
+/* ─── FOUNDER SECTION ─── */
+.dgs-founder {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .dgs-founder {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 5.5rem;
+  }
+}
+
+.dgs-founder-portrait {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface-navy-card);
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+}
+
+.dgs-founder-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dgs-founder-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: var(--space-xs);
+}
+
+
+/* ─── MISSION/VISION/CORE BELIEF CARDS ─── */
+.dgs-belief-cards {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .dgs-belief-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-belief-card {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.dgs-belief-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--action-teal);
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+
+.dgs-belief-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-white);
+}
+
+.dgs-belief-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+
+/* #endregion */
+
+/* ─── AUDIT SECTION CARDS ─── */
+.dgs-audit-cards {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-audit-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-audit-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-audit-card {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-audit-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.dgs-audit-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(8, 157, 135, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+  color: var(--action-teal);
+}
+
+.dgs-audit-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.dgs-audit-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-white);
+}
+
+.dgs-audit-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.dgs-section--light .dgs-audit-card {
+  background: var(--bg-white);
+  border-color: #E4E8EA;
+}
+
+.dgs-section--light .dgs-audit-card:hover {
+  border-color: #C0C8CE;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.dgs-section--light .dgs-audit-card h3 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-audit-card p {
+  color: var(--text-dark-muted);
+}
+
+
+/* ─── SCENARIO CARDS ─── */
+.dgs-scenario-cards {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-scenario-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.dgs-scenario-card {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.dgs-scenario-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(8, 157, 135, 0.15);
+  border: 1px solid rgba(8, 157, 135, 0.25);
+  color: var(--action-teal);
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.dgs-scenario-card h4 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+  color: var(--text-white);
+}
+
+.dgs-scenario-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+
+/* ─── TESTIMONIAL CARDS ─── */
+.dgs-testimonial-cards {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-testimonial-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-testimonial-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-testimonial-card {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.dgs-testimonial-card-quote {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-testimonial-card-author {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+
+/* #region 10 - FAQ ACCORDION */
+/* ─── FAQ ACCORDION ─── */
+.dgs-faq-list {
+  max-width: 720px;
+}
+
+.dgs-faq-item {
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.dgs-section--light .dgs-faq-item {
+  border-bottom-color: #E4E8EA;
+}
+
+.dgs-faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: var(--space-sm) 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-white);
+  gap: var(--space-sm);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.dgs-faq-question:hover {
+  color: var(--action-mint-hover);
+}
+
+.dgs-section--light .dgs-faq-question {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-faq-toggle {
+  font-family: var(--font-body);
+  color: var(--action-teal);
+  font-size: 1.3rem;
+  transition: transform var(--duration-base) var(--ease-out);
+  flex-shrink: 0;
+}
+
+.dgs-faq-item.is-open .dgs-faq-toggle {
+  transform: rotate(45deg);
+}
+
+.dgs-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--duration-base) var(--ease-out);
+}
+
+.dgs-faq-answer p {
+  padding-bottom: var(--space-sm);
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+
+/* #endregion */
+
+/* ─── CTA BANNER ─── */
+.dgs-cta-banner {
+  text-align: center;
+  padding: var(--space-xl) 0;
+  background:
+    radial-gradient(circle at 8% 30%, rgba(8, 157, 135, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 92% 70%, rgba(255, 210, 0, 0.12) 0%, transparent 45%),
+    var(--bg-deep-navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.dgs-cta-banner::before {
+  display: none;
+}
+
+.dgs-cta-banner .dgs-container {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border-light);
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  padding: 4rem 2.5rem;
+  box-shadow: none;
+}
+
+.dgs-cta-banner h2 {
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  margin-bottom: var(--space-md);
+  color: var(--text-white);
+}
+
+.dgs-cta-banner h2 .dgs-text-accent {
+  color: var(--action-teal);
+}
+
+.dgs-cta-banner p {
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: 0 auto var(--space-md);
+  font-size: 1rem;
+}
+
+.dgs-cta-note {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: var(--space-xs);
+}
+
+
+/* #region 11 - FORMS & LEAD CAPTURE */
+/* ─── CONTACT FORM ─── */
+.dgs-form {
+  background: var(--text-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  color: var(--bg-deep-navy);
+}
+
+.dgs-form-row {
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-form-row--split {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-form-row--split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.dgs-form-row label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--bg-deep-navy);
+}
+
+.dgs-form-row input,
+.dgs-form-row textarea,
+.dgs-form-row select {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1.5px solid #DCE1E4;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--bg-deep-navy);
+  background: var(--text-white);
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+
+.dgs-form-row input::placeholder,
+.dgs-form-row textarea::placeholder {
+  color: #A0A8B2;
+}
+
+.dgs-form-row input:focus,
+.dgs-form-row textarea:focus,
+.dgs-form-row select:focus {
+  border-color: var(--action-teal);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(8, 157, 135, 0.1);
+}
+
+.dgs-form-row textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.dgs-form-consent {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+}
+
+.dgs-form-consent a {
+  color: var(--action-teal);
+  text-decoration: underline;
+}
+
+
+/* ─── WHAT HAPPENS NEXT SIDEBAR ─── */
+.dgs-next-steps {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+}
+
+.dgs-next-steps-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--action-teal);
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-next-step {
+  display: flex;
+  gap: var(--space-sm);
+  padding: 0.75rem 0;
+}
+
+.dgs-next-step:not(:last-child) {
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.dgs-next-step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--action-teal);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+.dgs-next-step h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+  color: var(--text-white);
+}
+
+.dgs-next-step p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+
+/* ─── DIRECT CONTACT INFO ─── */
+.dgs-contact-direct {
+  margin-top: var(--space-md);
+}
+
+.dgs-contact-direct h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-sm);
+  color: var(--text-white);
+}
+
+.dgs-contact-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.65rem 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+}
+
+.dgs-contact-link:hover {
+  color: var(--text-white);
+}
+
+.dgs-contact-link-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--action-teal);
+  flex-shrink: 0;
+}
+
+.dgs-contact-link-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.dgs-contact-link small {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+
+/* #endregion */
+
+/* #region 12 - RESOURCES & CONTENT */
+/* ─── RESOURCE / ARTICLE CARDS ─── */
+.dgs-resources-layout {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 860px) {
+  .dgs-resources-layout {
+    grid-template-columns: 200px 1fr;
+  }
+}
+
+.dgs-resources-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.dgs-resources-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-navy-card);
+}
+
+.dgs-resources-search svg {
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.dgs-resources-search input {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  outline: none;
+  width: 100%;
+}
+
+.dgs-resources-search input::placeholder {
+  color: var(--text-muted);
+}
+
+.dgs-resources-categories h4 {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--action-teal);
+  margin-bottom: var(--space-xs);
+}
+
+.dgs-resources-categories a {
+  display: block;
+  padding: 0.4rem 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+}
+
+.dgs-resources-categories a:hover,
+.dgs-resources-categories a.is-active {
+  color: var(--text-white);
+}
+
+.dgs-newsletter-widget {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.dgs-newsletter-widget .dgs-eyebrow {
+  font-size: 0.68rem;
+}
+
+.dgs-newsletter-widget h4 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: var(--text-white);
+}
+
+.dgs-newsletter-widget p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-newsletter-widget input {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-deep-navy);
+  color: var(--text-light);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+}
+
+.dgs-newsletter-widget input::placeholder {
+  color: var(--text-muted);
+}
+
+.dgs-article-grid {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-article-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-article-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-article-card {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-article-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.dgs-article-card-image {
+  width: 100%;
+  height: 160px;
+  background: linear-gradient(135deg, rgba(8, 157, 135, 0.15) 0%, rgba(11, 19, 43, 0.5) 100%);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: var(--space-sm);
+}
+
+.dgs-article-card-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-xs);
+  background: var(--action-teal);
+  color: var(--text-white);
+}
+
+.dgs-article-card-body {
+  padding: var(--space-sm) var(--space-md);
+}
+
+.dgs-article-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-white);
+  line-height: 1.3;
+}
+
+.dgs-article-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-article-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--space-md) var(--space-sm);
+}
+
+.dgs-article-card-time {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.dgs-article-card-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--action-teal);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+}
+
+.dgs-article-card-link:hover {
+  color: var(--action-mint-hover);
+}
+
+.dgs-article-card-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+
+/* #endregion */
+
+/* ─── THANK YOU PAGE ─── */
+.dgs-thankyou {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-xl) var(--space-sm);
+}
+
+.dgs-thankyou-content {
+  max-width: 640px;
+}
+
+.dgs-thankyou-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(8, 157, 135, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-md);
+}
+
+.dgs-thankyou-icon svg {
+  width: 36px;
+  height: 36px;
+  color: var(--action-teal);
+}
+
+.dgs-thankyou h1 {
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-thankyou p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+
+/* #region 13 - FOOTER */
+/* ─── FOOTER ─── */
+.dgs-footer {
+  background: var(--bg-navy-darkest);
+  color: var(--text-tertiary);
+  padding: var(--space-lg) 0 7.5rem;
+  font-size: 0.88rem;
+  position: relative;
+  width: 100%;
+}
+
+/* Page masking wrappers for reveal unmask effect - disabled for standard flow */
+.dgs-page main {
+  position: relative;
+  background: var(--bg-deep-navy);
+}
+
+.dgs-footer-grid {
+  display: grid;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .dgs-footer-grid {
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  }
+}
+
+.dgs-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+}
+
+.dgs-footer-brand .dgs-logo-mark {
+  width: 28px;
+  height: 28px;
+  font-size: 0.75rem;
+}
+
+.dgs-footer-brand span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-white);
+  font-size: 1rem;
+}
+
+.dgs-footer-desc {
+  max-width: 300px;
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.dgs-footer-col h4 {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.dgs-footer-col a {
+  display: block;
+  padding: 0.25rem 0;
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+}
+
+.dgs-footer-col a:hover {
+  color: var(--text-white);
+}
+
+.dgs-footer-social {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: var(--space-sm);
+}
+
+.dgs-footer-social a {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--surface-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  transition: all var(--duration-base) var(--ease-out);
+  padding: 0;
+}
+
+.dgs-footer-social a:hover {
+  border-color: var(--action-teal);
+  color: var(--action-teal);
+}
+
+.dgs-footer-social svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-footer-bottom {
+  border-top: 1px solid var(--surface-border);
+  padding-top: var(--space-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.dgs-footer-bottom a {
+  color: var(--text-tertiary);
+  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+}
+
+.dgs-footer-bottom a:hover {
+  color: var(--text-white);
+}
+
+.dgs-footer-legal {
+  display: flex;
+  gap: var(--space-md);
+}
+
+/* Watermark text behind footer */
+.dgs-footer-watermark {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(4rem, 15vw, 15rem);
+  color: rgba(255, 255, 255, 0.03);
+  text-align: center;
+  letter-spacing: -0.03em;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-transform: none;
+  z-index: -1;
+  /* Sitting behind the footer cards/elements */
+}
+
+
+/* #endregion */
+
+/* ─── SCROLL REVEAL (GSAP Component-Isolated Entry) ─── */
+.dgs-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-reveal.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+}
+
+
+/* ─── VALUE PILLS ROW ─── */
+.dgs-value-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--space-md);
+}
+
+.dgs-value-pills .dgs-pill {
+  background: rgba(8, 157, 135, 0.08);
+  border-color: rgba(8, 157, 135, 0.2);
+  color: var(--action-teal);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+
+/* #region 11 - FORMS & LEAD CAPTURE */
+/* ─── HONEYPOT ─── */
+.dgs-hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+/* #endregion */
+
+/* ─── CUSTOM PREMIUM CTA CARD ─── */
+.dgs-cta-card {
+  background: radial-gradient(circle at 90% 10%, rgba(8, 157, 135, 0.16) 0%, var(--surface-navy-card) 60%);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+}
+
+.dgs-cta-card:hover {
+  border-color: rgba(8, 157, 135, 0.3);
+  box-shadow: 0 12px 40px rgba(8, 157, 135, 0.08);
+}
+
+/* Light section overrides for resources page */
+.dgs-section--light .dgs-article-card {
+  background: var(--bg-white);
+  border-color: #E4E8EA;
+}
+
+.dgs-section--light .dgs-article-card:hover {
+  border-color: #C0C8CE;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.dgs-section--light .dgs-article-card h3 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-article-card p {
+  color: var(--text-dark-muted);
+}
+
+.dgs-section--light .dgs-article-card-time {
+  color: var(--text-dark-muted);
+}
+
+.dgs-section--light .dgs-resources-search {
+  background: var(--bg-white);
+  border-color: #E4E8EA;
+}
+
+.dgs-section--light .dgs-resources-search input {
+  color: var(--text-dark-primary);
+}
+
+.dgs-section--light .dgs-resources-categories a:hover,
+.dgs-section--light .dgs-resources-categories a.is-active {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-newsletter-widget {
+  background: var(--bg-white);
+  border-color: #E4E8EA;
+}
+
+.dgs-section--light .dgs-newsletter-widget h4 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-newsletter-widget p {
+  color: var(--text-dark-muted);
+}
+
+.dgs-section--light .dgs-newsletter-widget input {
+  background: var(--bg-white);
+  border-color: #E4E8EA;
+  color: var(--text-dark-primary);
+}
+
+/* Light section overrides for contact & next steps */
+.dgs-section--light .dgs-next-steps {
+  background: var(--bg-white);
+  border-color: #E4E8EA;
+}
+
+.dgs-section--light .dgs-next-step {
+  border-color: #E4E8EA;
+}
+
+.dgs-section--light .dgs-next-step h4 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-next-step p {
+  color: var(--text-dark-muted);
+}
+
+.dgs-section--light .dgs-contact-direct h3 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-contact-link {
+  color: var(--text-dark-muted);
+}
+
+.dgs-section--light .dgs-contact-link:hover {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-contact-link-icon {
+  background: var(--bg-white);
+  border-color: #E4E8EA;
+}
+
+/* ============================================================
+   LENIS SMOOTH SCROLLING RESET
+   ============================================================ */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ============================================================
+   MASSIVE TYPOGRAPHY (Alethia Vibe)
+   ============================================================ */
+.dgs-page h1 {
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-size: clamp(2.8rem, 6vw, 4.8rem) !important;
+  /* Massive and stark */
+}
+
+.dgs-page h2 {
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem) !important;
+}
+
+/* ============================================================
+   TECHNICAL PLACEHOLDERS (For future graphics)
+   ============================================================ */
+.dgs-card-visual-zone {
+  width: 100%;
+  height: 220px;
+  /* Slightly taller for real graphics later */
+  background: radial-gradient(circle at center, rgba(11, 19, 43, 0.4) 0%, var(--bg-navy-darkest) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--surface-border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Architected HUD-style placeholder lines */
+.dgs-visual-placeholder {
+  width: 80%;
+  height: 70%;
+  border: 1px dashed rgba(8, 157, 135, 0.2);
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dgs-visual-placeholder::after {
+  content: 'GRAPHIC ASSET';
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dark-muted);
+}
+
+.dgs-visual-placeholder::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+}
+
+/* Hide default opacity/transform on CSS reveal class because GSAP handles it now */
+.dgs-reveal {
+  visibility: hidden;
+  /* Prevent FOUC before GSAP takes over */
+}
+
+/* ============================================================
+   SERVICES SLIDER CAROUSEL
+   ============================================================ */
+.dgs-carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.dgs-carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* Firefox */
+  padding: 1rem 0.25rem;
+}
+
+.dgs-carousel-track::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
+}
+
+.dgs-carousel-card {
+  flex: 0 0 calc(33.333% - 1rem);
+  /* 3 cards visible on desktop */
+  scroll-snap-align: start;
+  background: #FFFFFF;
+  border: 1px solid #E4E8EA;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 24px rgba(11, 19, 43, 0.03);
+  transition: transform var(--duration-fast) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+}
+
+.dgs-carousel-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(8, 157, 135, 0.25);
+  box-shadow: 0 12px 32px rgba(11, 19, 43, 0.08);
+}
+
+@media (max-width: 1024px) {
+  .dgs-carousel-card {
+    flex: 0 0 calc(50% - 0.75rem);
+    /* 2 cards visible on tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .dgs-carousel-card {
+    flex: 0 0 85%;
+    /* 1 card visible on mobile */
+  }
+}
+
+.dgs-carousel-visual {
+  width: 100%;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid #E4E8EA;
+  position: relative;
+}
+
+.dgs-carousel-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--action-teal);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: var(--font-display);
+}
+
+.dgs-carousel-content {
+  padding: 1.75rem 1.5rem;
+}
+
+.dgs-carousel-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--bg-deep-navy);
+  line-height: 1.3;
+}
+
+.dgs-carousel-content p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dark-muted);
+  line-height: 1.5;
+}
+
+/* Carousel Control Arrows */
+.dgs-carousel-controls {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.dgs-carousel-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid #E4E8EA;
+  color: var(--bg-deep-navy);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.dgs-carousel-arrow:hover {
+  background: var(--action-teal);
+  border-color: var(--action-teal);
+  color: var(--text-light-primary);
+}
+
+/* ============================================================
+   PROBLEM SECTION CLUMP & SPREAD CARDS
+   ============================================================ */
+.dgs-problem-cards-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.5rem;
+  margin-top: var(--space-lg);
+}
+
+.dgs-problem-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  position: relative;
+  transition: transform var(--duration-fast) var(--ease-out), border-color var(--duration-base) var(--ease-out);
+  box-shadow: 0 4px 20px rgba(11, 19, 43, 0.05);
+}
+
+.dgs-problem-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--action-teal);
+}
+
+.dgs-problem-card-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 157, 135, 0.08);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(8, 157, 135, 0.15);
+  color: var(--action-mint-hover);
+}
+
+.dgs-problem-card-icon svg {
+  width: 38px;
+  height: 38px;
+}
+
+.dgs-problem-card-content {
+  flex: 1;
+}
+
+.dgs-problem-card-content h3 {
+  margin: 0 0 0.35rem 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--text-white);
+  line-height: 1.3;
+}
+
+.dgs-problem-card-content p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   TYPOGRAPHIC GRID FOR SERVICES (NON-CARD)
+   ============================================================ */
+.dgs-services-text-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3.5rem 3rem;
+  /* Spacious gaps */
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-lg);
+  width: 100%;
+}
+
+.dgs-service-text-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border-top: 1.5px solid #E4E8EA;
+  /* Subtle thin separator line above each title */
+  padding-top: 1.75rem;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-text-link h3 {
+  font-size: 1.4rem;
+  /* Prominent, stylish bold headings */
+  font-weight: 700;
+  color: var(--bg-deep-navy);
+  line-height: 1.28;
+  margin: 0;
+  transition: color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+
+.dgs-service-text-link:hover {
+  border-top-color: var(--action-teal);
+}
+
+.dgs-service-text-link:hover h3 {
+  color: var(--action-teal);
+  transform: translateX(6px);
+  /* Clean typographic micro-animation */
+}
+
+@media (max-width: 1024px) {
+  .dgs-services-text-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dgs-services-text-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .dgs-service-text-link h3 {
+    font-size: 1.25rem;
+  }
+}
+
+.dgs-service-number {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-right: 0.6rem;
+  font-family: var(--font-display);
+  vertical-align: 5%;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.dgs-service-text-link:hover .dgs-service-number {
+  color: var(--action-teal);
+}
+
+.dgs-strike-text {
+  text-decoration: line-through;
+  opacity: 0.65;
+}
+
+/* ─── SYSTEMS AUDIT SECTION LAYOUT IMPROVEMENTS ─── */
+.dgs-audit-grid {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .dgs-audit-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--space-xl);
+  }
+}
+
+.dgs-audit-info h2 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  margin-bottom: var(--space-md);
+  line-height: 1.15;
+  color: var(--text-white);
+}
+
+.dgs-audit-lead {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.7;
+}
+
+.dgs-audit-card {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border-light);
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  padding: 2.5rem;
+  box-shadow: none;
+  position: relative;
+}
+
+.dgs-audit-card-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--action-mint-hover);
+  background: rgba(8, 157, 135, 0.1);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-md);
+  border: 1px solid rgba(8, 157, 135, 0.25);
+}
+
+.dgs-audit-card h3 {
+  font-size: 1.4rem;
+  color: var(--text-white);
+  margin: 0 0 1.75rem 0;
+  font-weight: 700;
+}
+
+.dgs-audit-deliverables {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.dgs-audit-deliverables li {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.dgs-deliverable-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: rgba(8, 157, 135, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--action-mint-hover);
+  margin-top: 0.15rem;
+  box-shadow: 0 0 10px rgba(8, 157, 135, 0.1);
+}
+
+.dgs-deliverable-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.dgs-audit-deliverables strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-white);
+  margin-bottom: 0.3rem;
+}
+
+.dgs-audit-deliverables p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* ─── MODULAR GRID PATTERN OVERLAYS ─── */
+.dgs-hero-pattern,
+.dgs-cta-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dgs-hero-pattern span,
+.dgs-cta-pattern span {
+  flex: 1;
+  height: 100%;
+  border-right: 1px solid rgba(255, 255, 255, 0.035);
+}
+
+.dgs-hero-pattern span:last-child,
+.dgs-cta-pattern span:last-child {
+  border-right: none;
+}

@@ -1,0 +1,111 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — 404 PAGE SPECIFIC STYLES
+   ============================================================ */
+
+.dgs-error-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(circle at 8% 24%, rgba(8, 157, 135, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 92% 76%, rgba(255, 210, 0, 0.04) 0%, transparent 45%),
+    var(--bg-white);
+  padding: 9rem 0 5rem;
+  border-bottom: 1px solid var(--surface-border-neutral);
+}
+
+@media (max-width: 768px) {
+  .dgs-error-section {
+    padding: 8rem 0 4rem;
+  }
+}
+
+.dgs-error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Console Window styling */
+.dgs-console-window {
+  width: 100%;
+  max-width: 30rem;
+  background: var(--bg-deep-navy);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 40px -15px rgba(11, 19, 43, 0.35);
+  overflow: hidden;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.dgs-console-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dgs-console-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dgs-console-dot--red { background: #FF5F56; }
+.dgs-console-dot--yellow { background: #FFBD2E; }
+.dgs-console-dot--green { background: #27C93F; }
+
+.dgs-console-title {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.dgs-console-body {
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.dgs-console-line {
+  color: var(--text-white);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Syntax Highlighting */
+.dgs-code-keyword {
+  color: #FFBD2E; /* Warm yellow */
+  font-weight: bold;
+}
+
+.dgs-code-number {
+  color: #27C93F; /* Green status */
+}
+
+.dgs-code-string {
+  color: var(--action-mint-hover); /* Teal string */
+}
+
+.dgs-code-comment {
+  color: #5B6670; /* Muted gray comment */
+  font-style: italic;
+}
+
+/* Fluid layout — relative units for zoom resilience */
+.dgs-error-section .dgs-container {
+  max-width: 45rem;
+}
+
+.dgs-error-section .dgs-error-desc {
+  max-width: 36.25rem;
+}
