@@ -1041,11 +1041,20 @@
 }
 
 @media (max-width: 859px) {
+  #dgs-differentiator {
+    padding-bottom: 0 !important;
+  }
+  #dgs-differentiator .dgs-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
   #dgs-differentiator .dgs-split > div:first-child {
     padding: 3rem 1.5rem !important;
   }
   #dgs-differentiator .dgs-split > div:last-child {
     height: 300px !important;
+    width: 100% !important;
+    margin: 0 !important;
   }
   #dgs-differentiator .dgs-split > div:last-child::before {
     background: linear-gradient(to bottom, var(--bg-deep-navy) 0%, transparent 60%) !important;
