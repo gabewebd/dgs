@@ -10,6 +10,26 @@
 (function () {
   'use strict';
 
+  /* ─── LENIS SMOOTH SCROLL + GSAP SCROLLTRIGGER INTEGRATION ─── */
+  if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({
+      autoRaf: true,
+      anchors: true,
+      // autoToggle removed: it depends on recent-browser support and
+      // Lenis's own recommended CSS to detect overflow changes, and was
+      // unreliably leaving scroll stopped after the mobile menu closed.
+      // Scroll stop/start is now called explicitly in openMobileMenu()/
+      // closeMobileMenu() below instead.
+    });
+
+    // Sync Lenis scroll with GSAP ScrollTrigger
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      lenis.on('scroll', ScrollTrigger.update);
+    }
+
+    window.dgsLenis = lenis;
+  }
+
   /* ─── MOBILE NAV — PREMIUM OFF-CANVAS DRAWER ─── */
   const navToggle = document.getElementById('dgsNavToggle');
   const mobileMenu = document.getElementById('dgsMobileMenu');
@@ -29,6 +49,14 @@
     if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
     document.documentElement.classList.add('dgs-menu-open');
     document.body.classList.add('dgs-menu-open');
+    // Explicitly stop Lenis rather than relying on its `autoToggle` option —
+    // autoToggle only works on very recent Safari/Chrome/Firefox and needs
+    // Lenis's own recommended CSS, which this site doesn't have. Without
+    // this, Lenis can fail to restart after the menu closes and scroll
+    // appears dead until a refresh.
+    if (window.dgsLenis && typeof window.dgsLenis.stop === 'function') {
+      window.dgsLenis.stop();
+    }
   }
 
   function closeMobileMenu() {
@@ -39,6 +67,9 @@
     if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
     document.documentElement.classList.remove('dgs-menu-open');
     document.body.classList.remove('dgs-menu-open');
+    if (window.dgsLenis && typeof window.dgsLenis.start === 'function') {
+      window.dgsLenis.start();
+    }
   }
 
   if (navToggle && mobileMenu) {

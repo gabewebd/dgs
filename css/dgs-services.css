@@ -154,7 +154,7 @@
 .dgs-service-card-btn {
   width: fit-content;
   gap: 1.5rem;
-  margin-top: auto;
+  margin-top: 1.5rem;
   border-radius: var(--radius-md);
   justify-content: space-between;
   padding: 0.85rem 1.5rem;
@@ -162,6 +162,11 @@
   border: 1px solid var(--bg-deep-navy);
   color: var(--bg-deep-navy);
   transition: all 0.4s var(--ease-out);
+}
+
+.dgs-service-card-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 @media (max-width: 991px) {
@@ -200,4 +205,9 @@
 
 #dgs-services-hero .dgs-hero-sub {
   max-width: 42.5rem;
+}
+
+/* CTA section — extra space between headline/paragraph and button */
+#dgs-services-final-cta .dgs-btn {
+  margin-top: var(--space-md);
 }

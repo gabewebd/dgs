@@ -595,8 +595,8 @@
 }
 
 .dgs-problem-card-icon svg {
-  width: 38px;
-  height: 38px;
+  width: 46px;
+  height: 46px;
 }
 
 .dgs-problem-card-content {
@@ -689,11 +689,20 @@
   transition: color var(--duration-base) var(--ease-out), transform 0.4s var(--ease-out);
 }
 
+.dgs-service-row-icon svg {
+  stroke: var(--action-teal);
+  transition: stroke var(--duration-base) var(--ease-out);
+}
+
 .dgs-service-row:hover .dgs-service-row-icon,
 .dgs-service-row:focus-visible .dgs-service-row-icon {
   color: var(--action-mint-hover);
-  /* Keep icons a vibrant teal on dark hover */
   transform: scale(1.08);
+}
+
+.dgs-service-row:hover .dgs-service-row-icon svg,
+.dgs-service-row:focus-visible .dgs-service-row-icon svg {
+  stroke: var(--action-mint-hover);
 }
 
 .dgs-service-row-content {

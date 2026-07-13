@@ -10,10 +10,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-  href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap"
   rel="stylesheet">
 <link rel="stylesheet" href="css/dgs-common.css">
 <link rel="stylesheet" href="css/dgs-industries.css">
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.25/dist/lenis.css">
 </head>
 
 <body class="dgs-page">
@@ -128,11 +129,11 @@
       <div class="dgs-container" style="position: relative; z-index: 1;">
         <div class="dgs-hero-content"
           style="max-width:720px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
-          <span class="dgs-eyebrow"
+          <span class="dgs-eyebrow dgs-reveal"
             style="color: var(--action-teal); margin-bottom: 0.5rem; display: inline-block;">Industries</span>
-          <h1 style="color: var(--text-white); margin-bottom: var(--space-md);">Built for businesses<br><span
+          <h1 class="dgs-reveal" style="color: var(--text-white); margin-bottom: var(--space-md);">Built for businesses<br><span
               class="dgs-hero-gradient-text">ready to evolve.</span></h1>
-          <p class="dgs-hero-sub" style="color: var(--text-secondary); text-align: center; margin: 0;">We serve 11+
+          <p class="dgs-hero-sub dgs-reveal" style="color: var(--text-secondary); text-align: center; margin: 0;">We serve 11+
             industries with the same core belief: every business deserves an operating system that works as hard as its
             founder.</p>
         </div>
@@ -142,7 +143,7 @@
     <!-- INDUSTRIES GRID -->
     <section class="dgs-section dgs-section--light" id="dgs-industries-grid">
       <div class="dgs-container">
-        <div class="dgs-section-head">
+        <div class="dgs-section-head dgs-reveal">
           <h2 style="color:var(--bg-deep-navy);">Do you see yourself here?</h2>
           <p style="color:var(--text-muted);">If your business depends on people, processes, and pipelines we've
             probably already built the system you need.</p>
@@ -313,11 +314,11 @@
 
     <!-- CATCH-ALL CTA -->
     <section class="dgs-cta-banner" id="dgs-industries-catchall">
-      <h2>Don't see your industry?<br><span class="dgs-text-accent">We probably still serve it.</span></h2>
-      <p class="dgs-cta-note" style="margin-bottom:var(--space-md);color:var(--text-secondary);">If your business
+      <h2 class="dgs-reveal">Don't see your industry?<br><span class="dgs-text-accent">We probably still serve it.</span></h2>
+      <p class="dgs-cta-note dgs-reveal" style="margin-bottom:var(--space-md);color:var(--text-secondary);">If your business
         depends on people, processes, and pipelines the Growth OS framework applies. Book an audit and we'll tell you
         exactly how.</p>
-      <a href="/contact" class="dgs-btn dgs-btn--primary-accent dgs-btn--lg" id="dgs-industries-cta-btn">
+      <a href="/contact" class="dgs-btn dgs-btn--primary-accent dgs-btn--lg dgs-reveal" id="dgs-industries-cta-btn">
         <span class="dgs-desktop-only">Book a Business Growth Systems Audit</span>
         <span class="dgs-mobile-only">Book Your Audit Now</span>
         <span class="dgs-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -399,41 +400,35 @@
     </div>
     <div class="dgs-footer-watermark" aria-hidden="true">Digital GrowthScale</div>
   </footer>
+  <script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
   <script src="js/main.js"></script>
   <!-- GSAP ScrollTrigger Integration for Section-Isolated Animation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
     (function () {
-      // Standard script setup
       const initAnimations = () => {
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
           gsap.registerPlugin(ScrollTrigger);
 
-          document.querySelectorAll('section').forEach(section => {
-            const reveals = section.querySelectorAll('.dgs-reveal');
-            if (reveals.length > 0) {
-              gsap.fromTo(reveals,
-                { opacity: 0, y: 30 },
-                {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.8,
-                  ease: 'power2.out',
-                  stagger: 0.15,
-                  scrollTrigger: {
-                    trigger: section,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                    onEnter: () => reveals.forEach(el => el.classList.add('is-visible')),
-                    onRefresh: self => self.update()
-                  }
+          document.querySelectorAll('.dgs-reveal').forEach((el, i) => {
+            gsap.fromTo(el,
+              { opacity: 0, y: 30 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 88%',
+                  toggleActions: 'play none none none',
+                  onEnter: () => el.classList.add('is-visible')
                 }
-              );
-            }
+              }
+            );
           });
         } else {
-          // Fallback if GSAP is blocked or slow
           document.querySelectorAll('.dgs-reveal').forEach(el => el.classList.add('is-visible'));
         }
       };

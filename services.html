@@ -9,10 +9,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-  href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap"
   rel="stylesheet">
 <link rel="stylesheet" href="css/dgs-common.css">
 <link rel="stylesheet" href="css/dgs-services.css">
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.25/dist/lenis.css">
 
 <body class="dgs-page">
 
@@ -125,9 +126,9 @@
       <div class="dgs-container" style="position: relative; z-index: 1;">
         <div class="dgs-hero-content"
           style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
-          <h1 style="margin-bottom: var(--space-md); color: var(--text-white); text-align: center;">One
+          <h1 class="dgs-reveal" style="margin-bottom: var(--space-md); color: var(--text-white); text-align: center;">One
             partner.<br><span class="dgs-hero-gradient-text">Eight ways to help your business grow.</span></h1>
-          <p class="dgs-hero-sub"
+          <p class="dgs-hero-sub dgs-reveal"
             style="max-width: 680px; margin: 0 auto; color: var(--text-secondary); text-align: center;">From
             diagnosing what is holding your business back to building the systems that move it forward, Digital
             GrowthScale covers the full growth and operations stack. Every service is designed to work independently or
@@ -475,10 +476,10 @@
 
     <!-- FINAL CTA -->
     <section class="dgs-cta-banner dgs-section--darker" id="dgs-services-final-cta">
-      <h2>Not sure where to start?<br><span class="dgs-text-accent">Start with the audit.</span></h2>
-      <p>The Business Growth Systems Audit gives you a clear picture of where your business is, what is holding it
+      <h2 class="dgs-reveal">Not sure where to start?<br><span class="dgs-text-accent">Start with the audit.</span></h2>
+      <p class="dgs-reveal">The Business Growth Systems Audit gives you a clear picture of where your business is, what is holding it
         back, and which services will make the biggest difference for your growth.</p>
-      <a href="/contact" class="dgs-btn dgs-btn--primary-accent dgs-btn--lg" id="dgs-services-cta-btn">
+      <a href="/contact" class="dgs-btn dgs-btn--primary-accent dgs-btn--lg dgs-reveal" id="dgs-services-cta-btn">
         <span class="dgs-desktop-only">Book a Business Growth Systems Audit</span>
         <span class="dgs-mobile-only">Book Your Audit Now</span>
         <span class="dgs-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -560,41 +561,35 @@
     </div>
     <div class="dgs-footer-watermark" aria-hidden="true">Digital GrowthScale</div>
   </footer>
+  <script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
   <script src="js/main.js"></script>
   <!-- GSAP ScrollTrigger Integration for Section-Isolated Animation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
     (function () {
-      // Standard script setup
       const initAnimations = () => {
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
           gsap.registerPlugin(ScrollTrigger);
 
-          document.querySelectorAll('section').forEach(section => {
-            const reveals = section.querySelectorAll('.dgs-reveal');
-            if (reveals.length > 0) {
-              gsap.fromTo(reveals,
-                { opacity: 0, y: 30 },
-                {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.8,
-                  ease: 'power2.out',
-                  stagger: 0.15,
-                  scrollTrigger: {
-                    trigger: section,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                    onEnter: () => reveals.forEach(el => el.classList.add('is-visible')),
-                    onRefresh: self => self.update()
-                  }
+          document.querySelectorAll('.dgs-reveal').forEach((el, i) => {
+            gsap.fromTo(el,
+              { opacity: 0, y: 30 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 88%',
+                  toggleActions: 'play none none none',
+                  onEnter: () => el.classList.add('is-visible')
                 }
-              );
-            }
+              }
+            );
           });
         } else {
-          // Fallback if GSAP is blocked or slow
           document.querySelectorAll('.dgs-reveal').forEach(el => el.classList.add('is-visible'));
         }
       };

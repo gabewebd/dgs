@@ -109,3 +109,14 @@
 .dgs-error-section .dgs-error-desc {
   max-width: 36.25rem;
 }
+
+.dgs-error-actions .dgs-btn {
+  color: var(--bg-deep-navy);
+  border-color: var(--bg-deep-navy);
+  background: transparent;
+}
+
+.dgs-error-actions .dgs-btn:hover {
+  background: var(--bg-deep-navy);
+  color: var(--bg-white);
+}

@@ -24,10 +24,10 @@
   --cream: #F5F7F9;       /* light section background, brand light gray */
   --white: #FFFFFF;
 
-  /* ---- Type (official brand book: Display/Heading = Manrope, Body = Inter) ---- */
+  /* ---- Type (official brand book: Display/Heading = Manrope, Body = Work Sans) ---- */
   --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif; /* Bold */
   --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif; /* Semibold */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Regular */
+  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif; /* Regular */
 
   /* ---- Spacing scale ---- */
   --space-xs: 0.5rem;

@@ -13,10 +13,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-  href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap"
   rel="stylesheet">
 <link rel="stylesheet" href="css/dgs-common.css">
 <link rel="stylesheet" href="css/dgs-audit.css">
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.25/dist/lenis.css">
 
 <body class="dgs-page">
 
@@ -129,17 +130,17 @@
       <div class="dgs-container" style="position: relative; z-index: 1;">
         <div class="dgs-hero-content"
           style="max-width: 800px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center;">
-          <span class="dgs-eyebrow"
+          <span class="dgs-eyebrow dgs-reveal"
             style="color: var(--action-teal); margin-bottom: 1rem; display: inline-block;">Business Growth Systems
             Audit</span>
-          <h1
+          <h1 class="dgs-reveal"
             style="color: var(--text-white); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.15; margin-bottom: 1.5rem; text-align: center; max-width: 100%;">
             Stop guessing.<br><span class="dgs-hero-gradient-text">Start with a map.</span></h1>
-          <p class="dgs-hero-sub"
+          <p class="dgs-hero-sub dgs-reveal"
             style="color: var(--text-secondary); font-size: clamp(1.1rem, 2vw, 1.25rem); line-height: 1.6; max-width: 640px; margin: 0 auto var(--space-xl); text-align: center;">
             A 45-minute deep-dive diagnostic of your current operations, tools, and bottlenecks delivered as a custom
             roadmap for intelligent growth. Free of charge.</p>
-          <div class="dgs-hero-actions" style="justify-content: center; width: 100%; gap: 1rem; margin: 0;">
+          <div class="dgs-hero-actions dgs-reveal" style="justify-content: center; width: 100%; gap: 1rem; margin: 0;">
             <a href="/contact" class="dgs-btn dgs-btn--primary-accent dgs-btn--lg" id="dgs-audit-hero-cta">
               Book Your Audit Now
               <span class="dgs-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -155,7 +156,7 @@
     <!-- WHAT'S INCLUDED -->
     <section class="dgs-section dgs-section--light" id="dgs-audit-included">
       <div class="dgs-container">
-        <div class="dgs-section-head dgs-section-head--center">
+        <div class="dgs-section-head dgs-section-head--center dgs-reveal">
           <span class="dgs-eyebrow" style="color: var(--action-teal);">What's Included</span>
           <h2>A complete diagnostic of your<br><span class="dgs-text-accent">business operations.</span></h2>
           <p>Every audit covers six critical areas giving you a full picture of where your operations stand today and
@@ -263,7 +264,7 @@
     <!-- WHY IT WORKS -->
     <section class="dgs-section dgs-section--darker" id="dgs-audit-why">
       <div class="dgs-container">
-        <div class="dgs-section-head dgs-section-head--center">
+        <div class="dgs-section-head dgs-section-head--center dgs-reveal">
           <span class="dgs-eyebrow" style="color: var(--action-teal);">Why It Works</span>
           <h2>The audit that replaces months of<br><span class="dgs-text-accent">trial and error.</span></h2>
         </div>
@@ -324,7 +325,7 @@
     <!-- PROCESS STEPS -->
     <section class="dgs-section dgs-section--light" id="dgs-audit-process">
       <div class="dgs-container">
-        <div class="dgs-section-head dgs-section-head--center">
+        <div class="dgs-section-head dgs-section-head--center dgs-reveal">
           <span class="dgs-eyebrow" style="color: var(--action-teal);">The Process</span>
           <h2>Four steps from booking<br><span class="dgs-text-accent">to breakthrough.</span></h2>
         </div>
@@ -584,10 +585,10 @@
 
     <!-- FINAL CTA -->
     <section class="dgs-cta-banner" id="dgs-audit-final-cta">
-        <h2>45 minutes could change<br><span class="dgs-text-accent">how your business operates.</span></h2>
-        <p class="dgs-cta-note" style="margin-bottom:var(--space-md);color:var(--text-secondary);">Book your free
+        <h2 class="dgs-reveal">45 minutes could change<br><span class="dgs-text-accent">how your business operates.</span></h2>
+        <p class="dgs-cta-note dgs-reveal" style="margin-bottom:var(--space-md);color:var(--text-secondary);">Book your free
           Business Growth Systems Audit and get the roadmap your business has been missing.</p>
-        <a href="/contact" class="dgs-btn dgs-btn--primary-accent dgs-btn--lg" id="dgs-audit-cta-btn">
+        <a href="/contact" class="dgs-btn dgs-btn--primary-accent dgs-btn--lg dgs-reveal" id="dgs-audit-cta-btn">
           <span class="dgs-desktop-only">Book a Business Growth Systems Audit</span>
           <span class="dgs-mobile-only">Book Your Audit Now</span>
           <span class="dgs-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -662,41 +663,35 @@
     </div>
     <div class="dgs-footer-watermark" aria-hidden="true">Digital GrowthScale</div>
   </footer>
+  <script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
   <script src="js/main.js"></script>
   <!-- GSAP ScrollTrigger Integration for Section-Isolated Animation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
     (function () {
-      // Standard script setup
       const initAnimations = () => {
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
           gsap.registerPlugin(ScrollTrigger);
 
-          document.querySelectorAll('section').forEach(section => {
-            const reveals = section.querySelectorAll('.dgs-reveal');
-            if (reveals.length > 0) {
-              gsap.fromTo(reveals,
-                { opacity: 0, y: 30 },
-                {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.8,
-                  ease: 'power2.out',
-                  stagger: 0.15,
-                  scrollTrigger: {
-                    trigger: section,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                    onEnter: () => reveals.forEach(el => el.classList.add('is-visible')),
-                    onRefresh: self => self.update()
-                  }
+          document.querySelectorAll('.dgs-reveal').forEach((el, i) => {
+            gsap.fromTo(el,
+              { opacity: 0, y: 30 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 88%',
+                  toggleActions: 'play none none none',
+                  onEnter: () => el.classList.add('is-visible')
                 }
-              );
-            }
+              }
+            );
           });
         } else {
-          // Fallback if GSAP is blocked or slow
           document.querySelectorAll('.dgs-reveal').forEach(el => el.classList.add('is-visible'));
         }
       };

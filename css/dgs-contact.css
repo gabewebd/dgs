@@ -313,7 +313,7 @@
 /* --- IFRAME AND CONTACT LINK MOBILE OPTIMIZATIONS --- */
 .dgs-form-iframe iframe {
   width: 100%;
-  min-height: 800px;
+  min-height: 900px;
   border: none;
   border-radius: var(--radius-md);
   scroll-margin-top: 120px;
@@ -326,6 +326,24 @@
 
 @media (max-width: 768px) {
   .dgs-form-iframe iframe {
-    min-height: 950px;
+    min-height: 1250px;
+  }
+
+  /* Fields were rendering cramped/tiny on mobile because the GHL widget
+     (a fluid, percentage-width form) was being squeezed inside the
+     .dgs-container's 1.5rem side padding. Since it's a cross-origin
+     iframe, we can't reach in and resize its inputs/fonts directly —
+     but we CAN give it more width to expand into. Breaking the wrap out
+     to full-bleed lets GHL's own fluid layout render fields at a larger,
+     more comfortable size. */
+  .dgs-form-iframe-wrap {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+  }
+
+  .dgs-form-iframe-wrap .dgs-form-iframe {
+    padding: 0 0.75rem;
   }
 }

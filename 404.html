@@ -6,15 +6,16 @@
 <meta property="og:image" content="images/og-cover.svg">
 <link class="icon" href="images/favicon.svg" type="image/svg+xml">
 
-<!-- Fonts: Manrope (headings), Inter (body) -->
+<!-- Fonts: Manrope (headings), Work Sans (body) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-  href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap"
   rel="stylesheet">
 
 <link rel="stylesheet" href="css/dgs-common.css">
 <link rel="stylesheet" href="css/dgs-404.css">
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.25/dist/lenis.css">
 </head>
 
 <body class="dgs-page">
@@ -134,12 +135,7 @@
           style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; width: 100%; margin-top: var(--space-md);">
           <a href="/" class="dgs-btn dgs-btn--outline-dark dgs-btn--lg">
             Return Home
-            <span class="dgs-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg></span>
           </a>
-          <a href="/contact" class="dgs-btn dgs-btn--outline-dark dgs-btn--lg">Book Systems Audit</a>
         </div>
       </div>
     </section>
@@ -213,6 +209,7 @@
     <div class="dgs-footer-watermark" aria-hidden="true">Digital GrowthScale</div>
   </footer>
 
+  <script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
   <script src="js/main.js"></script>
   <!-- GSAP ScrollTrigger Integration -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -223,27 +220,22 @@
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
           gsap.registerPlugin(ScrollTrigger);
 
-          document.querySelectorAll('section').forEach(section => {
-            const reveals = Array.from(section.querySelectorAll('.dgs-reveal'));
-            if (reveals.length > 0) {
-              gsap.fromTo(reveals,
-                { opacity: 0, y: 30 },
-                {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.8,
-                  ease: 'power2.out',
-                  stagger: 0.15,
-                  scrollTrigger: {
-                    trigger: section,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                    onEnter: () => reveals.forEach(el => el.classList.add('is-visible')),
-                    onRefresh: self => self.update()
-                  }
+          document.querySelectorAll('.dgs-reveal').forEach((el, i) => {
+            gsap.fromTo(el,
+              { opacity: 0, y: 30 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 88%',
+                  toggleActions: 'play none none none',
+                  onEnter: () => el.classList.add('is-visible')
                 }
-              );
-            }
+              }
+            );
           });
         } else {
           document.querySelectorAll('.dgs-reveal').forEach(el => el.classList.add('is-visible'));

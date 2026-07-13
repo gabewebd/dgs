@@ -35,8 +35,8 @@
 }
 
 .dgs-icon-card-icon {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   border-radius: var(--radius-sm);
   background: rgba(8, 157, 135, 0.12);
   display: flex;
@@ -47,8 +47,8 @@
 }
 
 .dgs-icon-card-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
 }
 
 .dgs-icon-card h3 {
@@ -481,4 +481,72 @@
 /* Fluid layout — relative units for zoom resilience */
 #dgs-about-hero .dgs-hero-content {
   max-width: 60rem;
+}
+
+/* Partners Section */
+.dgs-partners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .dgs-partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.dgs-partner-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.dgs-partner-photo {
+  width: 160px;
+  height: 200px;
+  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  background: rgba(8, 157, 135, 0.1);
+  border: 2px solid rgba(8, 157, 135, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: border-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-partner-photo:hover {
+  border-color: var(--action-teal);
+  transform: translateY(-2px);
+}
+
+.dgs-partner-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dgs-partner-photo span {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--action-teal);
+  letter-spacing: 0.02em;
+}
+
+.dgs-partner-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bg-deep-navy);
+  margin: 0;
+}
+
+.dgs-partner-role {
+  font-size: 0.85rem;
+  color: var(--text-dark-muted);
+  margin: 0;
 }

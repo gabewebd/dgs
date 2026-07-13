@@ -50,8 +50,8 @@
 }
 
 .dgs-industry-card-icon {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   border-radius: var(--radius-sm);
   background: rgba(8, 157, 135, 0.1);
   display: flex;
@@ -62,8 +62,8 @@
 }
 
 .dgs-industry-card-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
 }
 
 .dgs-industry-card h3 {

@@ -10,10 +10,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-  href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap"
   rel="stylesheet">
 <link rel="stylesheet" href="css/dgs-common.css">
 <link rel="stylesheet" href="css/dgs-resources.css">
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.25/dist/lenis.css">
 </head>
 
 <body class="dgs-page">
@@ -430,41 +431,35 @@
     </div>
     <div class="dgs-footer-watermark" aria-hidden="true">Digital GrowthScale</div>
   </footer>
+  <script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
   <script src="js/main.js"></script>
   <!-- GSAP ScrollTrigger Integration for Section-Isolated Animation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
     (function () {
-      // Standard script setup
       const initAnimations = () => {
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
           gsap.registerPlugin(ScrollTrigger);
 
-          document.querySelectorAll('section').forEach(section => {
-            const reveals = section.querySelectorAll('.dgs-reveal');
-            if (reveals.length > 0) {
-              gsap.fromTo(reveals,
-                { opacity: 0, y: 30 },
-                {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.8,
-                  ease: 'power2.out',
-                  stagger: 0.15,
-                  scrollTrigger: {
-                    trigger: section,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none',
-                    onEnter: () => reveals.forEach(el => el.classList.add('is-visible')),
-                    onRefresh: self => self.update()
-                  }
+          document.querySelectorAll('.dgs-reveal').forEach((el, i) => {
+            gsap.fromTo(el,
+              { opacity: 0, y: 30 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 88%',
+                  toggleActions: 'play none none none',
+                  onEnter: () => el.classList.add('is-visible')
                 }
-              );
-            }
+              }
+            );
           });
         } else {
-          // Fallback if GSAP is blocked or slow
           document.querySelectorAll('.dgs-reveal').forEach(el => el.classList.add('is-visible'));
         }
       };
