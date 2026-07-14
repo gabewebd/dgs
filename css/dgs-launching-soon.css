@@ -1396,7 +1396,18 @@ body.dgs-menu-open {
   .dgs-countdown-timer {
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1.5rem; /* Allow wrap gap on mobile */
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dgs-countdown-timer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
   }
 }
 
@@ -1429,10 +1440,18 @@ body.dgs-menu-open {
 
 @media (max-width: 900px) {
   .dgs-countdown-unit {
-    padding: 0 1rem;
+    padding: 0 0.75rem;
+    min-width: 4.5rem;
   }
   .dgs-countdown-unit:not(:last-child)::after {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .dgs-countdown-unit {
+    min-width: unset;
+    padding: 0;
   }
 }
 
@@ -1445,6 +1464,12 @@ body.dgs-menu-open {
   font-variant-numeric: tabular-nums;
 }
 
+@media (max-width: 480px) {
+  .dgs-countdown-value {
+    font-size: 2.1rem;
+  }
+}
+
 .dgs-countdown-unit-label {
   margin-top: 0.6rem;
   font-size: 0.75rem;
@@ -1452,6 +1477,14 @@ body.dgs-menu-open {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--text-tertiary);
+}
+
+@media (max-width: 480px) {
+  .dgs-countdown-unit-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    margin-top: 0.4rem;
+  }
 }
 
 .dgs-countdown-note {
