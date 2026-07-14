@@ -111,7 +111,8 @@ html {
   height: auto;
 }
 
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -149,6 +150,7 @@ main {
 .dgs-mobile-only {
   display: none !important;
 }
+
 .dgs-desktop-only {
   display: inline !important;
 }
@@ -157,6 +159,7 @@ main {
   .dgs-mobile-only {
     display: inline !important;
   }
+
   .dgs-desktop-only {
     display: none !important;
   }
@@ -259,7 +262,7 @@ main {
   padding: var(--space-2xl) 0;
 }
 
-.dgs-hero {
+.dgs-hero:not(.dgs-service-hero) {
   padding-top: clamp(9.5rem, 13vw, 12rem) !important;
 }
 
@@ -496,20 +499,46 @@ main {
 }
 
 @keyframes dgs-btn-bounce {
-  0%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-3px); }
-  50% { transform: translateY(-3px); }
-  70% { transform: translateY(0); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(-3px);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+
+  70% {
+    transform: translateY(0);
+  }
 }
 
 @keyframes dgs-btn-icon-bounce {
-  0%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-3px); }
-  50% { transform: translateY(-3px); }
-  70% { transform: translateY(0); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(-3px);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+
+  70% {
+    transform: translateY(0);
+  }
 }
 
-.dgs-btn:hover > * {
+.dgs-btn:hover>* {
   animation: dgs-btn-bounce 0.45s ease-in-out;
 }
 
@@ -882,7 +911,7 @@ main {
   padding: 0.5rem 1.5rem 1.25rem;
 }
 
-.dgs-mobile-links > a {
+.dgs-mobile-links>a {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -897,7 +926,7 @@ main {
   transition: color var(--duration-base) var(--ease-out), padding-left var(--duration-base) var(--ease-out);
 }
 
-.dgs-mobile-links > a:last-of-type {
+.dgs-mobile-links>a:last-of-type {
   border-bottom: none;
 }
 
@@ -911,16 +940,16 @@ main {
   transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
 }
 
-.dgs-mobile-links > a:hover,
-.dgs-mobile-links > a:focus-visible,
-.dgs-mobile-links > a.is-active {
+.dgs-mobile-links>a:hover,
+.dgs-mobile-links>a:focus-visible,
+.dgs-mobile-links>a.is-active {
   color: var(--action-teal);
   padding-left: 0.5rem;
 }
 
-.dgs-mobile-links > a:hover .dgs-mobile-link-arrow,
-.dgs-mobile-links > a:focus-visible .dgs-mobile-link-arrow,
-.dgs-mobile-links > a.is-active .dgs-mobile-link-arrow {
+.dgs-mobile-links>a:hover .dgs-mobile-link-arrow,
+.dgs-mobile-links>a:focus-visible .dgs-mobile-link-arrow,
+.dgs-mobile-links>a.is-active .dgs-mobile-link-arrow {
   opacity: 1;
   transform: translateX(0);
 }
@@ -2153,7 +2182,7 @@ html.lenis body {
     gap: 0.5rem !important;
     width: 100% !important;
   }
-  
+
   .dgs-hero-actions .dgs-btn {
     width: auto !important;
     text-align: center !important;
@@ -2164,6 +2193,17 @@ html.lenis body {
 }
 
 
+/* Timeline step content card — teal outline at every breakpoint;
+   the connector line (mobile: vertical, desktop: horizontal) is drawn
+   on .dgs-timeline-step itself and sits behind this box (z-index 1 vs 2). */
+.dgs-timeline-content {
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(8, 157, 135, 0.45);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+}
+
 @media (max-width: 767px) {
   .dgs-timeline {
     position: relative;
@@ -2171,23 +2211,43 @@ html.lenis body {
     flex-direction: column;
     gap: 3.5rem !important;
   }
-  
+
   .dgs-timeline-step {
     position: relative;
     text-align: center;
   }
-  
+
   .dgs-timeline-step:not(:last-child)::after {
     content: '' !important;
     position: absolute !important;
-    top: 2.75rem !important;
+    /* top = this step's own circle center (padding-top + half the 44px circle) */
+    top: calc(var(--space-lg) + 22px) !important;
+    /* bottom is anchored to THIS step's own bottom edge (which already
+       accounts for its heading + paragraph, however long they are),
+       then extends past it through the flex gap (3.5rem) plus the next
+       step's top padding and half-circle — landing exactly on the next
+       circle's center every time, regardless of text length. The old
+       fixed `height: 3.5rem` only matched the gap itself and ran out
+       partway through the paragraph text, never reaching the next
+       circle at all. */
+    bottom: calc(-3.5rem - var(--space-lg) - 22px) !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    height: 3.5rem !important;
     background: rgba(8, 157, 135, 0.4) !important;
     z-index: 1 !important;
     border: none !important;
+  }
+
+  /* Opaque fill (mobile only) so the vertical connector line above
+     runs behind the text instead of visibly crossing it. Outline
+     comes from the base .dgs-timeline-content rule above. */
+  .dgs-timeline-content {
+    background: var(--surface-navy-card) !important;
+  }
+
+  .dgs-section--light .dgs-timeline-content {
+    background: var(--bg-white) !important;
   }
 }
 
@@ -2348,4 +2408,3 @@ html.lenis body {
 .dgs-launch-link:hover span.dgs-underline {
   background: var(--action-teal);
 }
-

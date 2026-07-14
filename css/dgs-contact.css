@@ -278,10 +278,70 @@
     background: transparent !important;
 }
 
-.dgs-contact-map {
-  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
-  overflow: hidden;
-  border: 1px solid #E4E8EA;
+/* --- INTERACTIVE LOCATION LIST --- */
+.dgs-location-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: var(--space-md);
+}
+
+.dgs-location-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.dgs-location-pin {
+  color: var(--action-teal) !important;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dgs-location-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.dgs-location-link {
+  display: inline;
+  color: #000000 !important;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Hover effects for location items and links */
+.dgs-location-item:hover .dgs-location-link,
+.dgs-location-link:hover {
+  color: var(--action-teal) !important;
+}
+
+/* Make contact details and social links teal on hover */
+.dgs-contact-link {
+  transition: color var(--duration-fast) var(--ease-out) !important;
+}
+
+.dgs-contact-link:hover {
+  color: var(--action-teal) !important;
+}
+
+.dgs-contact-link:hover .dgs-contact-link-icon {
+  border-color: var(--action-teal) !important;
+  color: var(--action-teal) !important;
+  background: rgba(8, 157, 135, 0.08) !important;
+}
+
+.dgs-section--light .dgs-contact-link:hover {
+  color: var(--action-teal) !important;
 }
 
 /* Hero content in split layout — uses full column width */

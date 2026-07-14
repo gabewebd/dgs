@@ -262,19 +262,20 @@
   .dgs-timeline {
     grid-template-columns: repeat(4, 1fr);
   }
+
 }
 
 .dgs-timeline-step {
   position: relative;
   text-align: center;
-  padding: var(--space-md) var(--space-sm);
+  padding: var(--space-lg) var(--space-sm) var(--space-md);
 }
 
 .dgs-timeline-number {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--action-teal);
+  background: var(--gradient-teal);
   color: var(--text-white);
   display: flex;
   align-items: center;
@@ -282,9 +283,15 @@
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.9rem;
-  margin: 0 auto var(--space-sm);
+  margin: 0 auto var(--space-md);
   position: relative;
   z-index: 2;
+  box-shadow: 0 4px 18px rgba(8, 157, 135, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-timeline-step:hover .dgs-timeline-number {
+  transform: scale(1.08);
 }
 
 .dgs-timeline-step h3 {
@@ -307,9 +314,14 @@
   .dgs-timeline-step:not(:last-child)::after {
     content: '';
     position: absolute;
-    top: calc(var(--space-md) + 22px);
+    top: calc(var(--space-lg) + 22px);
     left: calc(50% + 22px);
-    right: calc(-50% + 22px);
+    /* Was using `right: calc(-50% + 22px)`, which stops at the next
+       column's own edge and ignores the grid `gap` between columns —
+       so the line was always short by exactly one gap width and never
+       reached the next circle. Using left + width (instead of left +
+       right) lets us add the gap back in explicitly. */
+    width: calc(100% + var(--space-md) - 44px);
     height: 0;
     border-top: 2px solid rgba(8, 157, 135, 0.4);
     z-index: 1;
@@ -373,47 +385,51 @@
   }
 }
 
-.dgs-results-stat-list {
+.dgs-advantage-list {
   display: flex;
   flex-direction: column;
+  gap: 1.75rem;
   margin-top: 2.5rem;
 }
 
-.dgs-results-stat {
+.dgs-advantage-item {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1.35rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: flex-start;
+  gap: 1rem;
 }
 
-@media (max-width: 768px) {
-  .dgs-results-stat {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 0.35rem !important;
-    padding: 1rem 0 !important;
-  }
+.dgs-advantage-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(8, 157, 135, 0.12);
+  border: 1px solid rgba(8, 157, 135, 0.3);
+  color: var(--action-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.dgs-results-stat:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+.dgs-advantage-icon svg {
+  width: 18px;
+  height: 18px;
 }
 
-.dgs-results-stat-value {
+.dgs-advantage-title {
   font-family: var(--font-display);
+  font-size: 1rem;
   font-weight: 700;
-  font-size: clamp(1.6rem, 2.6vw, 2rem);
-  color: var(--action-mint-hover);
-  white-space: nowrap;
+  color: var(--text-white);
+  display: block;
+  margin-bottom: 0.3rem;
 }
 
-.dgs-results-stat-label {
-  font-size: 0.85rem;
+.dgs-advantage-desc {
+  font-size: 0.88rem;
   color: var(--text-muted);
-  text-align: right;
-  line-height: 1.5;
+  line-height: 1.6;
+  margin: 0;
 }
 
 .dgs-testimonial-eyebrow {
@@ -607,9 +623,7 @@
 }
 
 .dgs-testimonial-footer {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
+  display: block;
   position: relative;
   z-index: 1;
   padding-top: 2rem !important;
@@ -617,35 +631,19 @@
   margin-top: 0 !important;
 }
 
-.dgs-testimonial-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--gradient-teal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: var(--text-white);
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  flex-shrink: 0;
-  box-shadow: 0 3px 10px rgba(8, 157, 135, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-}
-
 .dgs-testimonial-name {
   font-style: normal;
   font-weight: 700;
   font-size: 0.9rem;
   color: var(--text-white);
-  display: block;
+  display: inline;
 }
 
 .dgs-testimonial-role {
-  font-size: 0.76rem;
+  font-size: 0.9rem;
+  font-weight: 400;
   color: var(--text-secondary);
-  display: block;
-  margin-top: 0.1rem;
+  display: inline;
 }
 
 /* --- Dot pagination --- */

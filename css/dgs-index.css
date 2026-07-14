@@ -330,7 +330,12 @@
     position: absolute;
     top: calc(var(--space-lg) + 22px);
     left: calc(50% + 22px);
-    right: calc(-50% + 22px);
+    /* Was using `right: calc(-50% + 22px)`, which stops at the next
+       column's own edge and ignores the grid `gap` between columns —
+       so the line was always short by exactly one gap width and never
+       reached the next circle. Using left + width (instead of left +
+       right) lets us add the gap back in explicitly. */
+    width: calc(100% + var(--space-md) - 44px);
     height: 0;
     border-top: 2px solid rgba(8, 157, 135, 0.4);
     z-index: 1;

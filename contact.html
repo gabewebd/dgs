@@ -171,22 +171,59 @@
         <div class="dgs-split" style="gap:var(--space-xl);">
           <div>
             <h3 style="font-size:1.25rem;margin-bottom:var(--space-sm);color:var(--bg-deep-navy);">Find Us Here</h3>
-            <div
-              style="display:flex;gap:0.6rem;margin-bottom:var(--space-md);color:var(--bg-deep-navy);line-height:1.7;font-size:0.9rem;">
-              <span style="flex-shrink:0;margin-top:0.15rem;"><svg viewBox="0 0 24 24" width="18" height="18"
-                  fill="none" stroke="var(--action-teal)" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg></span>
-              <span>Zen Building, San Antonio Village, Makati City, Metro Manila, PH<br>
-                CSC Building, Brgy. Sto Cristo, Angeles City, Pampanga, PH<br>
-                KMC | One West Aeropark, Clark, Pampanga, PH</span>
+            
+            <div class="dgs-location-list">
+              <!-- Zen Building -->
+              <div class="dgs-location-item active" data-map="zen">
+                <span class="dgs-location-pin">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </span>
+                <div class="dgs-location-details">
+                  <a href="https://maps.app.goo.gl/vdjhwW8hVZXoiTW16" target="_blank" rel="noopener" class="dgs-location-link">
+                    Zen Building, San Antonio Village, Makati City, Metro Manila, PH
+                  </a>
+                </div>
+              </div>
+
+              <!-- CSC Building -->
+              <div class="dgs-location-item" data-map="csc">
+                <span class="dgs-location-pin">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </span>
+                <div class="dgs-location-details">
+                  <a href="https://maps.app.goo.gl/wXUJwgMT1eQfvWKC8" target="_blank" rel="noopener" class="dgs-location-link">
+                    CSC Building, Brgy. Sto Cristo, Angeles City, Pampanga, PH
+                  </a>
+                </div>
+              </div>
+
+              <!-- KMC | One West Aeropark -->
+              <div class="dgs-location-item" data-map="kmc">
+                <span class="dgs-location-pin">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </span>
+                <div class="dgs-location-details">
+                  <a href="https://maps.app.goo.gl/jVoLswdWUtKdSvGs7" target="_blank" rel="noopener" class="dgs-location-link">
+                    KMC | One West Aeropark, Clark, Pampanga, PH
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="dgs-contact-map">
+
+            <div class="dgs-contact-map" style="border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl); overflow: hidden; border: 1px solid #E4E8EA;">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61770.8!2d120.573!3d14.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33964db0e13c478b%3A0x536b7d5f253fa0f0!2sAngeles%2C%20Pampanga!5e0!3m2!1sen!2sph!4v1!5m1!1e1"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1930.8340515737318!2d121.0055276!3d14.5609626!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c974726bc375%3A0x2786d9e0537a9928!2sZen%20Building!5e0!3m2!1sen!2sph!4v1783937685104!5m2!1sen!2sph"
                 width="100%" height="320" style="border:0; display: block; border-radius:0.75rem;" allowfullscreen=""
-                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
           <div>
@@ -354,7 +391,29 @@
           el.classList.add('is-visible');
         });
       }, 1200);
+
+      // Interactive Map Switcher
+      const locationItems = document.querySelectorAll('.dgs-location-item');
+      const mapIframe = document.querySelector('.dgs-contact-map iframe');
+      
+      const mapEmbeds = {
+        zen: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1930.8340515737318!2d121.0055276!3d14.5609626!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c974726bc375%3A0x2786d9e0537a9928!2sZen%20Building!5e0!3m2!1sen!2sph!4v1783937685104!5m2!1sen!2sph',
+        csc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7702.619245523204!2d120.59469057574813!3d15.141331363608257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396f23f5e404c5f%3A0x33bed78e90b8e094!2sCSC%20Building!5e0!3m2!1sen!2sph!4v1783936814510!5m2!1sen!2sph',
+        kmc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3850.6244291025623!2d120.57311750000001!3d15.1789568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396ed708f66c3b5%3A0x6fc79a1cf336f74f!2sKMC%20%7C%20One%20West%20Aeropark%2C%20Clark%20Pampanga!5e0!3m2!1sen!2sph!4v1783937695569!5m2!1sen!2sph'
+      };
+
+      locationItems.forEach(item => {
+        item.addEventListener('click', function (e) {
+          // If the click is inside a link, allow standard link behavior as well,
+          // but still update the map view if they click the card container or elements inside
+          const key = this.getAttribute('data-map');
+          if (mapIframe && mapEmbeds[key]) {
+            mapIframe.src = mapEmbeds[key];
+          }
+          locationItems.forEach(el => el.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
     })();
-  </script>
   </script>
 </body>
