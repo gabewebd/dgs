@@ -1,0 +1,514 @@
+{
+  "organization": {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Digital GrowthScale",
+    "url": "https://www.digitalgrowthscale.com/",
+    "logo": "https://www.digitalgrowthscale.com/images/favicon.svg",
+    "email": "faith@digitalgrowthscale.com",
+    "telephone": "+639772863120",
+    "sameAs": [
+      "https://www.facebook.com/DigitalWorkforcePH",
+      "https://www.instagram.com/_digitalconsultingph",
+      "https://www.linkedin.com/company/digital-consulting-ph/"
+    ],
+    "description": "Digital GrowthScale designs intelligent operating systems that let businesses scale without depending on founders."
+  },
+  "local_business": {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Digital GrowthScale",
+    "url": "https://www.digitalgrowthscale.com/",
+    "logo": "https://www.digitalgrowthscale.com/images/favicon.svg",
+    "email": "faith@digitalgrowthscale.com",
+    "telephone": "+639772863120",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "PH"
+    },
+    "description": "Digital GrowthScale helps founders, CEOs, and growing teams integrate intelligent automation, CRM, remote staffing, recruitment, and lead generation into one connected growth system."
+  },
+  "services": {
+    "corporate-training.html": {
+      "service": {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Corporate Learning, AI Literacy & Productivity Training",
+        "description": "The future of work is already here. Is your team ready for it?",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Digital GrowthScale",
+          "url": "https://www.digitalgrowthscale.com/"
+        },
+        "url": "https://www.digitalgrowthscale.com/services/corporate-training"
+      },
+      "faq": {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do participants need any technical background?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Workshops are designed to be non-technical and business-friendly for employees, managers, and leaders alike."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can training be delivered onsite or virtually?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, we run onsite, hybrid, and fully virtual workshops depending on what works for your team."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How large can the cohort be?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Workshop cohorts typically range from 20 to 300 participants, and can be scaled further for larger organizations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can content be customized to our industry?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, use cases and examples are tailored to your team's actual workflows and industry context."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this a one-time workshop or ongoing training?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Both formats are available, from a single session to a structured, multi-part training program."
+            }
+          }
+        ]
+      }
+    },
+    "crm-funnel-automation.html": {
+      "service": {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "CRM, Funnel & Lead Generation Systems",
+        "description": "Your pipeline should work even when you are not watching it.",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Digital GrowthScale",
+          "url": "https://www.digitalgrowthscale.com/"
+        },
+        "url": "https://www.digitalgrowthscale.com/services/crm-funnel-automation"
+      },
+      "faq": {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What if we already use a CRM?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We can work within your existing CRM or rebuild the pipeline structure if it's not capturing or tracking leads properly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you write the follow-up messaging too?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, we design the nurture sequences and follow-up messaging alongside the automation itself."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How fast can this go live?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most core pipeline and follow-up systems can be live within a few weeks, depending on complexity."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will this work with our current ad and social channels?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, we connect lead capture from Meta ads, LinkedIn, referrals, and events into the same pipeline."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this only for high-ticket offers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It works especially well for high-ticket and appointment-based businesses, but fits any business with real lead volume to manage."
+            }
+          }
+        ]
+      }
+    },
+    "eor-hr-support.html": {
+      "service": {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Finance, Legal, Compliance & HR Operations Support",
+        "description": "Stay organized, compliant, and operationally ready.",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Digital GrowthScale",
+          "url": "https://www.digitalgrowthscale.com/"
+        },
+        "url": "https://www.digitalgrowthscale.com/services/eor-hr-support"
+      },
+      "faq": {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do you replace our finance, legal, or HR staff?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. We provide organized back-office support and coordination that complements your existing team, not a replacement for it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What kind of documents can you help organize?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Employee files, contracts, policies, compliance calendars, HR templates, disciplinary documentation, and onboarding and offboarding records, among others."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this only for companies with compliance problems already?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It's just as valuable for companies preparing for growth, audits, expansion, or restructuring, before problems appear."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you support payroll coordination directly?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, we help keep payroll processes organized, accurate, and on schedule as part of this service."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you work with businesses outside the Philippines?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, we support Philippines-based SMEs as well as global businesses with Philippine operations or remote teams."
+            }
+          }
+        ]
+      }
+    },
+    "growth-os-setup.html": {
+      "service": {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Business Growth Operating System Setup",
+        "description": "Your business needs more than hustle. It needs a system.",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Digital GrowthScale",
+          "url": "https://www.digitalgrowthscale.com/"
+        },
+        "url": "https://www.digitalgrowthscale.com/services/growth-os-setup"
+      },
+      "faq": {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is this different from the Business Growth Systems Audit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The audit diagnoses where the gaps are. This service builds the actual operating system \u2014 SOPs, dashboards, and accountability structure \u2014 to close them."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will this slow the team down with more process?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The goal is the opposite. Clear systems remove the back-and-forth and guesswork that actually slow teams down today."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you build the tools, or just the documents?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Both. We design the SOPs, dashboards, and reporting cadence, and set them up in the tools your team already uses."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does a full setup take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Timelines vary by team size and number of departments involved, typically a few weeks to a couple of months."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this only relevant once we're already big?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It's most valuable while you're still small enough to build the system right, before disorganization becomes harder to unwind."
+            }
+          }
+        ]
+      }
+    },
+    "growth-systems-audit.html": {
+      "service": {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Business Growth Systems Audit",
+        "description": "Find exactly where your business is losing time, leads, and revenue.",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Digital GrowthScale",
+          "url": "https://www.digitalgrowthscale.com/"
+        },
+        "url": "https://www.digitalgrowthscale.com/services/growth-systems-audit"
+      },
+      "faq": {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What exactly happens during the audit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We review your sales, operations, staffing, marketing, finance, HR, and reporting systems, interview key people where needed, and map how work actually flows through the business today."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does the audit take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most engagements run one to three weeks, depending on the size of the business and how many functions we're reviewing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What do we walk away with?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A clear, prioritized action plan and roadmap that shows exactly where time, leads, and revenue are being lost, and what to fix first."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do we have to commit to further services afterward?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The audit stands on its own. Many clients use it to decide which of our other services, if any, make sense next."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this only for larger companies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It's built for founder-led and operator-led businesses of most sizes, from lean teams to organizations with a couple hundred people."
+            }
+          }
+        ]
+      }
+    },
+    "intelligent-automation.html": {
+      "service": {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "AI Automation & Digital Transformation Consulting",
+        "description": "Stop doing manually what a system can do consistently.",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Digital GrowthScale",
+          "url": "https://www.digitalgrowthscale.com/"
+        },
+        "url": "https://www.digitalgrowthscale.com/services/intelligent-automation"
+      },
+      "faq": {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do we need technical staff to make this work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. We handle the technical setup and design workflows your non-technical team can run day to day."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which processes should we automate first?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We start by identifying the workflows costing the most time and causing the most errors, then prioritize from there."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will this replace our team?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The goal is to remove repetitive manual work so your team can focus on higher-value tasks, not to replace people."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What tools do you work with?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We work with what you already have \u2014 GoHighLevel, Google Workspace, Microsoft 365, HRIS platforms, CRMs, and more \u2014 and recommend additions only where genuinely needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is this different from just buying software?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Software alone doesn't fix broken workflows. We design the process first, then implement the automation around it."
+            }
+          }
+        ]
+      }
+    },
+    "recruitment-executive-search.html": {
+      "service": {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Recruitment, Executive Search & Talent Mapping",
+        "description": "The roles that matter most deserve more than a job post.",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Digital GrowthScale",
+          "url": "https://www.digitalgrowthscale.com/"
+        },
+        "url": "https://www.digitalgrowthscale.com/services/recruitment-executive-search"
+      },
+      "faq": {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is this different from a regular recruiter?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We focus on strategic search and talent mapping for business-critical roles, not just forwarding resumes from job boards."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What kinds of roles do you specialize in?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Leadership, specialized, confidential, and hard-to-fill roles across executive, sales, operations, finance, HR, compliance, and technical functions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you help us figure out the role before we post it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, talent mapping and market intelligence are often done before a role is even opened, to inform salary, title, and scope."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you handle confidential searches?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, confidential and sensitive searches are part of what this service is built for."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does an executive search typically take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It varies by role seniority and market, but we prioritize speed without compromising the quality of the shortlist."
+            }
+          }
+        ]
+      }
+    },
+    "remote-staffing-solutions.html": {
+      "service": {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Outsourcing & Remote Staffing Solutions",
+        "description": "Skilled. Reliable. Remote. Ready to grow with you.",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Digital GrowthScale",
+          "url": "https://www.digitalgrowthscale.com/"
+        },
+        "url": "https://www.digitalgrowthscale.com/services/remote-staffing-solutions"
+      },
+      "faq": {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What roles can you help us staff?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "VAs, executive assistants, appointment setters, SDRs, customer support, finance assistants, HR assistants, recruiters, content support, graphic design, and operations coordinators, among others."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is this different from a staffing agency?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We stay involved beyond placement, supporting onboarding, expectation-setting, and performance so the hire actually works out."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How quickly can we bring someone on?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Timelines depend on the role, but most positions can be sourced, screened, and onboarded within a few weeks."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you handle payroll and compliance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Staffing and onboarding are handled through this service; for deeper HR, payroll, and compliance coordination, that's covered under our Finance, Legal, Compliance & HR Operations Support service."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can we replace a hire if it's not working out?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, we support continuity if a role needs to be re-filled, including for unexpected resignations."
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -86,6 +86,11 @@
     mobileClose.addEventListener('click', closeMobileMenu);
   }
 
+  // Close mobile menu when clicking any mobile link
+  document.querySelectorAll('.dgs-mobile-links a, .dgs-mobile-menu a').forEach(function (link) {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
   // Use whichever backdrop exists (some pages only render it as a CSS layer / element in header)
   const backdropToUse = mobileBackdrop || mobileBackdropAlt;
   if (backdropToUse) {
