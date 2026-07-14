@@ -169,13 +169,15 @@
 }
 
 .dgs-contact-direct {
-  margin-top: var(--space-md);
+  margin-top: 0;
 }
 
-.dgs-contact-direct h3 {
-  font-size: 1.1rem;
+.dgs-contact-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
   margin-bottom: var(--space-sm);
   color: var(--text-white);
+  margin-top: 0;
 }
 
 .dgs-contact-link {
@@ -187,6 +189,7 @@
   font-size: 0.9rem;
   transition: color var(--duration-fast) var(--ease-out);
   text-decoration: none;
+  width: fit-content; /* Hug itself */
 }
 
 .dgs-contact-link:hover {
@@ -255,7 +258,7 @@
   color: var(--text-dark-muted);
 }
 
-.dgs-section--light .dgs-contact-direct h3 {
+.dgs-section--light .dgs-contact-section-title {
   color: var(--bg-deep-navy);
 }
 

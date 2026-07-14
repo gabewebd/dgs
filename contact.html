@@ -168,28 +168,13 @@
     <!-- MAP + INFO SECTION -->
     <section class="dgs-section dgs-section--light" style="padding-top: 0;">
       <div class="dgs-container">
-        <div class="dgs-split" style="gap:var(--space-xl);">
-          <div>
-            <h3 style="font-size:1.25rem;margin-bottom:var(--space-sm);color:var(--bg-deep-navy);">Find Us Here</h3>
+        <div class="dgs-split" style="gap:var(--space-xl); align-items: start;">
+          <div class="dgs-contact-direct dgs-reveal">
+            <h3 class="dgs-contact-section-title">Find Us Here</h3>
             
             <div class="dgs-location-list">
-              <!-- Zen Building -->
-              <div class="dgs-location-item active" data-map="zen">
-                <span class="dgs-location-pin">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                </span>
-                <div class="dgs-location-details">
-                  <a href="https://maps.app.goo.gl/vdjhwW8hVZXoiTW16" target="_blank" rel="noopener" class="dgs-location-link">
-                    Zen Building, San Antonio Village, Makati City, Metro Manila, PH
-                  </a>
-                </div>
-              </div>
-
               <!-- CSC Building -->
-              <div class="dgs-location-item" data-map="csc">
+              <div class="dgs-location-item active" data-map="csc">
                 <span class="dgs-location-pin">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
@@ -197,7 +182,7 @@
                   </svg>
                 </span>
                 <div class="dgs-location-details">
-                  <a href="https://maps.app.goo.gl/wXUJwgMT1eQfvWKC8" target="_blank" rel="noopener" class="dgs-location-link">
+                  <a href="https://maps.app.goo.gl/T6xFxYDhVDzc6atAA" target="_blank" rel="noopener" class="dgs-location-link">
                     CSC Building, Brgy. Sto Cristo, Angeles City, Pampanga, PH
                   </a>
                 </div>
@@ -221,14 +206,13 @@
 
             <div class="dgs-contact-map" style="border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl); overflow: hidden; border: 1px solid #E4E8EA;">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1930.8340515737318!2d121.0055276!3d14.5609626!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c974726bc375%3A0x2786d9e0537a9928!2sZen%20Building!5e0!3m2!1sen!2sph!4v1783937685104!5m2!1sen!2sph"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7702.619245523204!2d120.59469057574813!3d15.141331363608257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396f23f5e404c5f%3A0x33bed78e90b8e094!2sCSC%20Building!5e0!3m2!1sen!2sph!4v1783936814510!5m2!1sen!2sph"
                 width="100%" height="320" style="border:0; display: block; border-radius:0.75rem;" allowfullscreen=""
                 loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-          <div>
-            <div class="dgs-contact-direct dgs-reveal">
-              <h3>Get in Touch</h3>
+          <div class="dgs-contact-direct dgs-reveal">
+            <h3 class="dgs-contact-section-title">Get in Touch</h3>
               <a href="mailto:faith@digitalgrowthscale.com" class="dgs-contact-link">
                 <span class="dgs-contact-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="1.8">
@@ -397,7 +381,6 @@
       const mapIframe = document.querySelector('.dgs-contact-map iframe');
       
       const mapEmbeds = {
-        zen: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1930.8340515737318!2d121.0055276!3d14.5609626!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c974726bc375%3A0x2786d9e0537a9928!2sZen%20Building!5e0!3m2!1sen!2sph!4v1783937685104!5m2!1sen!2sph',
         csc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7702.619245523204!2d120.59469057574813!3d15.141331363608257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396f23f5e404c5f%3A0x33bed78e90b8e094!2sCSC%20Building!5e0!3m2!1sen!2sph!4v1783936814510!5m2!1sen!2sph',
         kmc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3850.6244291025623!2d120.57311750000001!3d15.1789568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396ed708f66c3b5%3A0x6fc79a1cf336f74f!2sKMC%20%7C%20One%20West%20Aeropark%2C%20Clark%20Pampanga!5e0!3m2!1sen!2sph!4v1783937695569!5m2!1sen!2sph'
       };

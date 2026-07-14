@@ -637,7 +637,7 @@ main {
 /* Replace text logo with DGS LOGO.png in header only */
 .dgs-header .dgs-logo {
   gap: 0;
-  width: 9.25rem;
+  width: 8.25rem;
   height: 2.75rem;
   background: url('../images/dg-logo.png') no-repeat left center / contain;
   color: transparent !important;
