@@ -30,7 +30,67 @@
 </head>
 
 <body class="dgs-page">
-  <canvas id="threads-canvas"></canvas>
+
+  <!--============================================================HEADER / NAVIGATION============================================================-->
+  <header class="dgs-header">
+    <div class="dgs-container dgs-nav">
+      <a href="/" class="dgs-logo" id="dgs-logo">
+        <span class="dgs-logo-mark">G</span>
+        Digital GrowthScale
+      </a>
+
+      <nav class="dgs-nav-links" aria-label="Primary">
+        <a href="#dgs-launch-hero">Launch</a>
+        <a href="#dgs-engines">What's Coming</a>
+        <a href="#dgs-notify">Contact</a>
+      </nav>
+
+      <button class="dgs-nav-toggle" id="dgsNavToggle" aria-expanded="false" aria-controls="dgsMobileMenu"
+        aria-label="Open menu">
+        <span class="dgs-nav-toggle-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+
+    <div class="dgs-mobile-backdrop" id="dgsMobileBackdrop"></div>
+
+    <div class="dgs-mobile-menu" id="dgsMobileMenu" aria-hidden="true">
+      <div class="dgs-mobile-menu-head">
+        <a href="/" class="dgs-logo">
+          <span class="dgs-logo-mark">G</span>
+          Digital GrowthScale
+        </a>
+        <button class="dgs-mobile-close" id="dgsMobileClose" aria-label="Close menu">&times;</button>
+      </div>
+
+      <nav class="dgs-mobile-links" aria-label="Mobile">
+        <a href="#dgs-launch-hero">
+          <span>Launch</span>
+          <svg class="dgs-mobile-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="#dgs-engines">
+          <span>What's Coming</span>
+          <svg class="dgs-mobile-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="#dgs-notify">
+          <span>Contact</span>
+          <svg class="dgs-mobile-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
 
   <main>
 
@@ -300,7 +360,5 @@
   <script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/launching-soon.js"></script>
-
-  <script type="module" src="js/threads-canvas.js"></script>
 </body>
 </html>
