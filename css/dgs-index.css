@@ -387,18 +387,7 @@
   position: relative;
 }
 
-.dgs-founder-portrait::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 38px;
-  height: 38px;
-  border-top: 2px solid var(--action-teal);
-  border-right: 2px solid var(--action-teal);
-  opacity: 0.6;
-  pointer-events: none;
-}
+
 
 .dgs-founder-portrait img {
   width: 100%;

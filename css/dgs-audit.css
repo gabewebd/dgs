@@ -804,9 +804,9 @@
 
 /* Fluid layout — relative units for zoom resilience */
 #dgs-audit-hero .dgs-hero-content {
-  max-width: 50rem;
+  max-width: 75rem;
 }
 
 #dgs-audit-hero .dgs-hero-sub {
-  max-width: 40rem;
+  max-width: 55rem;
 }
