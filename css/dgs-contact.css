@@ -175,7 +175,7 @@
 .dgs-contact-section-title {
   font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: var(--space-sm);
+  margin-bottom: 1.5rem !important;
   color: var(--text-white);
   margin-top: 0;
 }

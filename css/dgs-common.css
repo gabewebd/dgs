@@ -634,18 +634,20 @@ main {
   flex-shrink: 0;
 }
 
-/* Replace text logo with DGS LOGO.png in header only */
-.dgs-header .dgs-logo {
+/* Replace text logo with DGS LOGO.png in header and mobile menu */
+.dgs-header .dgs-logo,
+.dgs-mobile-menu-head .dgs-logo {
   gap: 0;
   width: 8.25rem;
   height: 2.75rem;
-  background: url('../images/dg-logo.png') no-repeat left center / contain;
+  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a2baf5f6da402d7db6.png') no-repeat left center / contain;
   color: transparent !important;
   font-size: 0;
   overflow: hidden;
 }
 
-.dgs-header .dgs-logo .dgs-logo-mark {
+.dgs-header .dgs-logo .dgs-logo-mark,
+.dgs-mobile-menu-head .dgs-logo .dgs-logo-mark {
   display: none;
 }
 
@@ -1588,7 +1590,7 @@ body.dgs-menu-open {
   margin-bottom: 0.85rem;
   width: 9.25rem;
   height: 2.75rem;
-  background: url('../images/dg-logo.png') no-repeat left center / contain;
+  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a2baf5f6da402d7db6.png') no-repeat left center / contain;
   overflow: hidden;
 }
 
@@ -3043,18 +3045,20 @@ main {
   flex-shrink: 0;
 }
 
-/* Replace text logo with DGS LOGO.png in header only */
-.dgs-header .dgs-logo {
+/* Replace text logo with DGS LOGO.png in header and mobile menu */
+.dgs-header .dgs-logo,
+.dgs-mobile-menu-head .dgs-logo {
   gap: 0;
   width: 8.25rem;
   height: 2.75rem;
-  background: url('../images/dg-logo.png') no-repeat left center / contain;
+  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a2baf5f6da402d7db6.png') no-repeat left center / contain;
   color: transparent !important;
   font-size: 0;
   overflow: hidden;
 }
 
-.dgs-header .dgs-logo .dgs-logo-mark {
+.dgs-header .dgs-logo .dgs-logo-mark,
+.dgs-mobile-menu-head .dgs-logo .dgs-logo-mark {
   display: none;
 }
 
@@ -3997,7 +4001,7 @@ body.dgs-menu-open {
   margin-bottom: 0.85rem;
   width: 9.25rem;
   height: 2.75rem;
-  background: url('../images/dg-logo.png') no-repeat left center / contain;
+  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a2baf5f6da402d7db6.png') no-repeat left center / contain;
   overflow: hidden;
 }
 
