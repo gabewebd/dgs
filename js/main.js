@@ -40,23 +40,62 @@
     window.dgsLenis = lenis;
   }
 
+  function initGSAP(callback) {
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      if (window.gsap && window.ScrollTrigger) {
+        window.gsap.registerPlugin(window.ScrollTrigger);
+      }
+      if (callback) callback();
+      return;
+    }
+    if (document.querySelector('script[data-dgs-gsap]')) {
+      if (callback) {
+        window.addEventListener('dgs-gsap-ready', callback, { once: true });
+      }
+      return;
+    }
+    const s1 = document.createElement('script');
+    s1.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js';
+    s1.async = true;
+    s1.setAttribute('data-dgs-gsap', '');
+    s1.onload = function () {
+      const s2 = document.createElement('script');
+      s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js';
+      s2.async = true;
+      s2.onload = function () {
+        if (window.gsap && window.ScrollTrigger) {
+          window.gsap.registerPlugin(window.ScrollTrigger);
+          if (window.dgsLenis) {
+            window.dgsLenis.on('scroll', window.ScrollTrigger.update);
+          }
+          window.dispatchEvent(new CustomEvent('dgs-gsap-ready'));
+          if (callback) callback();
+        }
+      };
+      document.head.appendChild(s2);
+    };
+    document.head.appendChild(s1);
+  }
+
   function initSmoothScroll() {
     if (prefersReducedMotion) return;                 // honour reduced-motion
-    if (typeof Lenis !== 'undefined') { startLenis(); return; }
-    if (document.querySelector('script[data-dgs-lenis]')) return; // already loading
-    // Page didn't include Lenis — load it once, then initialise on load.
-    const s = document.createElement('script');
-    s.src = 'https://unpkg.com/lenis@1.3.25/dist/lenis.min.js';
-    s.async = true;
-    s.setAttribute('data-dgs-lenis', '');
-    s.onload = startLenis;
-    document.head.appendChild(s);
-    if (!document.querySelector('link[href*="lenis"]')) {
-      const l = document.createElement('link');
-      l.rel = 'stylesheet';
-      l.href = 'https://unpkg.com/lenis@1.3.25/dist/lenis.css';
-      document.head.appendChild(l);
+    if (typeof Lenis !== 'undefined') { startLenis(); }
+    else if (!document.querySelector('script[data-dgs-lenis]')) {
+      // Page didn't include Lenis — load it once, then initialise on load.
+      const s = document.createElement('script');
+      s.src = 'https://unpkg.com/lenis@1.3.25/dist/lenis.min.js';
+      s.async = true;
+      s.setAttribute('data-dgs-lenis', '');
+      s.onload = startLenis;
+      document.head.appendChild(s);
+      if (!document.querySelector('link[href*="lenis"]')) {
+        const l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = 'https://unpkg.com/lenis@1.3.25/dist/lenis.css';
+        document.head.appendChild(l);
+      }
     }
+    initGSAP();
   }
 
   initSmoothScroll();

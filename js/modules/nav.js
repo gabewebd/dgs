@@ -8,9 +8,10 @@
 export function initNavScroll() {
   const nav = document.querySelector('.dgs-nav');
   if (!nav || nav.dataset.dgsNavBound === 'true') return;
-  nav.dataset.dgsNavBound = 'true';
 
-  if (window.gsap && window.ScrollTrigger) {
+  function bindNav() {
+    if (!window.gsap || !window.ScrollTrigger || nav.dataset.dgsNavBound === 'true') return;
+    nav.dataset.dgsNavBound = 'true';
     window.gsap.registerPlugin(window.ScrollTrigger);
 
     const navTimeline = window.gsap.timeline({ paused: true });
@@ -46,6 +47,13 @@ export function initNavScroll() {
     if (window.scrollY > 20) {
       navTimeline.progress(1);
     }
+  }
+
+  if (window.gsap && window.ScrollTrigger) {
+    bindNav();
+  } else {
+    window.addEventListener('dgs-gsap-ready', bindNav, { once: true });
+    window.addEventListener('load', bindNav, { once: true });
   }
 }
 

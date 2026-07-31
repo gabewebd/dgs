@@ -590,6 +590,20 @@
   will-change: transform, opacity;
 }
 
+/* Idle drift for the chips on mobile, where the scroll-scrubbed desktop
+   disperse is disabled. Only translateY + a hair of rotation — never any
+   horizontal movement — so it can't push the layout wide (which previously
+   broke the mobile navbar). Applied per-breakpoint in the 768px block. */
+@keyframes dgs-cloud-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1.4deg);
+  }
+}
+
 /* ============================================================
    INTERACTIVE EXPLORER — accordion (expand to reveal photo + detail)
    ============================================================ */
@@ -1660,6 +1674,9 @@
   .dgs-btn-saas:hover .dgs-btn-flip-track,
   .dgs-btn-saas:focus-visible .dgs-btn-flip-track {
     transform: none;
+  }
+  .dgs-cloud-tag {
+    animation: none !important;
   }
 }
 
@@ -3941,7 +3958,13 @@
     padding-right: 1.25rem !important;
   }
 
-  .dgs-hero-title-main {
+  /* Shrink ALL title pieces together — the white spans, the teal word, and
+     the dot — so "Confidence." matches the rest of the headline on mobile
+     instead of inheriting the larger base h1 size and looking oversized. */
+  .dgs-hero--premium-split h1,
+  .dgs-hero-title-main,
+  .dgs-hero-teal-text,
+  .dgs-hero-dot {
     font-size: clamp(1.85rem, 5.5vw, 2.75rem) !important;
   }
 
@@ -3986,7 +4009,18 @@
   .dgs-cloud-tag {
     font-size: 0.68rem !important;
     padding: 0.25rem 1rem !important;
+    animation: dgs-cloud-float 3.6s ease-in-out infinite;
   }
+
+  /* Stagger each chip so the row breathes rather than bobbing in unison. */
+  .dgs-cloud-tag:nth-child(1) { animation-delay: 0s;     animation-duration: 3.6s; }
+  .dgs-cloud-tag:nth-child(2) { animation-delay: -0.5s;  animation-duration: 4.1s; }
+  .dgs-cloud-tag:nth-child(3) { animation-delay: -1s;    animation-duration: 3.8s; }
+  .dgs-cloud-tag:nth-child(4) { animation-delay: -1.6s;  animation-duration: 4.3s; }
+  .dgs-cloud-tag:nth-child(5) { animation-delay: -0.8s;  animation-duration: 3.9s; }
+  .dgs-cloud-tag:nth-child(6) { animation-delay: -2.1s;  animation-duration: 4.2s; }
+  .dgs-cloud-tag:nth-child(7) { animation-delay: -1.3s;  animation-duration: 3.7s; }
+  .dgs-cloud-tag:nth-child(8) { animation-delay: -2.6s;  animation-duration: 4s;   }
 
   .dgs-accord-header {
     padding: 1rem 1rem !important;

@@ -1,16 +1,13 @@
 # Local Netlify folder
 .netlify
 
-# Dependencies & Package management (Vanilla HTML/CSS/JS project)
+# Local dependencies (not tracked in Git)
 node_modules/
-package.json
-package-lock.json
 skills-lock.json
 
-# IDE, Agent & Tooling folders
+# IDE & Agent workspace folders
 .agents/
 .claude/
 .gemini/
 .mcp.json
 scratch/
-scripts/
