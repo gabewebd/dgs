@@ -2110,6 +2110,14 @@
     padding: 7rem 0 3rem !important;
   }
 
+  /* The global `.dgs-page h1` clamp forces ~44.8px here, which is oversized on
+     a phone. Bring the hero heading down to the same mobile scale as the index
+     hero. ID selector + !important to beat that global. */
+  #dgs-about-hero h1,
+  #dgs-about-hero h1 .dgs-hero-title-main {
+    font-size: clamp(1.9rem, 6.2vw, 2.6rem) !important;
+  }
+
   #story, #leadership, #why, #approach, #trust {
     padding: 3.5rem 0 !important;
   }

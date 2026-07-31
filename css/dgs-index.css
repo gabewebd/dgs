@@ -1252,7 +1252,7 @@
 }
 
 #dgs-hero h1 {
-  color: var(--bg-deep-navy);
+  color: #ffffff;
 }
 
 #dgs-hero .dgs-hero-sub {
@@ -3997,6 +3997,17 @@
 
   .dgs-challenges-head {
     margin-bottom: 2rem !important;
+  }
+
+  /* Growth Hub heading: the inline `white-space:nowrap` on the first line runs
+     wider than the phone viewport and the section's overflow:hidden crops it.
+     Let it wrap (!important beats the inline style) and ease the size down. */
+  #dgs-growth-hub .dgs-success-header-row h2 {
+    font-size: clamp(1.5rem, 6.4vw, 2rem) !important;
+  }
+
+  #dgs-growth-hub .dgs-success-header-row h2 span {
+    white-space: normal !important;
   }
 
   .dgs-challenge-cloud {

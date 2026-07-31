@@ -3477,14 +3477,23 @@ img,
 
 .dgs-service-hero h1 {
   font-family: var(--font-heading, "Manrope", sans-serif);
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
   font-weight: 800;
-  line-height: 1.06;
+  line-height: 1.08;
   letter-spacing: -0.03em;
   color: #ffffff;
   margin: 0 auto 1.5rem;
   max-width: 1140px;
   text-align: center;
+}
+
+@media (max-width: 480px) {
+  .dgs-service-hero h1,
+  .dgs-hero--premium-split h1 {
+    font-size: clamp(1.8rem, 7.5vw, 2.25rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+  }
 }
 
 .dgs-service-hero .dgs-hero-sub {
@@ -3514,6 +3523,19 @@ img,
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+}
+
+.dgs-hero-teal-text {
+  color: var(--action-teal, #00b39f) !important;
+  -webkit-text-fill-color: var(--action-teal, #00b39f) !important;
+  background: none !important;
+  display: inline;
+}
+
+.dgs-hero-dot {
+  color: var(--action-teal, #00b39f) !important;
+  -webkit-text-fill-color: var(--action-teal, #00b39f) !important;
+  display: inline;
 }
 
 .dgs-value-pills {
