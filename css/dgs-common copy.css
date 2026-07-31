@@ -6,22 +6,22 @@
 
 :root {
   /* ─── CORE BRAND PALETTE (4 colors only) ───
-     Deep Navy #0B132B · Emerald Teal #089D87 · Lemon Yellow #FFD200 · Steel Gray #5B6670
+     Deep Navy #0A1F33 · Emerald Teal #089D87 · Lemon Yellow #FFD200 · Steel Gray #5B6670
      Every other token below is a tint/shade of these four — no outside hues. */
 
   --bg-white: #FFFFFF;
 
-  --bg-deep-navy: #0B132B;
+  --bg-deep-navy: #0A1F33;
 
   --gradient-dark-section: var(--bg-deep-navy);
-  --bg-dark-navy: #0B132B;
+  --bg-dark-navy: #0A1F33;
 
   --bg-teal: #089D87;
 
   /* Card / darker surfaces = Deep Navy shaded, never a different blue hue */
   --surface-navy-card: color-mix(in srgb, var(--bg-deep-navy) 92%, white 8%);
 
-  --bg-navy-darkest: #0B132B;
+  --bg-navy-darkest: #0A1F33;
 
   --action-teal: #089D87;
 
@@ -104,7 +104,7 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #0B132B !important;
+  background-color: #0A1F33 !important;
 }
 
 .dgs-page {
@@ -113,14 +113,14 @@ html {
   font-family: var(--font-body);
   color: var(--text-light);
   background: var(--bg-deep-navy) !important;
-  background-color: #0B132B !important;
+  background-color: #0A1F33 !important;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 main {
-  background-color: #0B132B !important;
+  background-color: #0A1F33 !important;
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
@@ -899,7 +899,7 @@ body.dgs-menu-open {
 }
 
 .dgs-hero-gradient-text {
-  background: linear-gradient(135deg, #0B132B 0%, #089D87 35%, #FFD200 48%, #FFD200 52%, #089D87 65%, #0B132B 100%);
+  background: linear-gradient(135deg, #0A1F33 0%, #089D87 35%, #FFD200 48%, #FFD200 52%, #089D87 65%, #0A1F33 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

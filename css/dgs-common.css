@@ -5,95 +5,174 @@
    ============================================================ */
 
 :root {
-  /* ─── CORE BRAND PALETTE (4 colors only) ───
-     Deep Navy #0B132B · Emerald Teal #089D87 · Lemon Yellow #FFD200 · Steel Gray #5B6670
-     Every other token below is a tint/shade of these four — no outside hues. */
+  /* ═══ DIGITAL GROWTHSCALE FRAMEWORK 3.0 - STRUCTURAL TOKENS ═══
+     Palette architecture (60 / 15 / 10, remainder = neutrals):
+       60%  Deep Navy     #0A1F33  structural backgrounds and surfaces
+       15%  Growth Teal   #00B39F  brand accent, hovers, secondary emphasis
+       10%  Electric Blue #2D7FF9  interactive and informational accents
+       CTA  Signal Amber  #F5A623  reserved for primary conversion CTAs only.
+            Never decorative, never a general accent. */
 
+  /* Primitives */
+  --dgs-navy: #0A1F33;
+  --dgs-teal: #00B39F;
+  --dgs-blue: #2D7FF9;
+  --dgs-amber: #F5A623;
+  --dgs-steel: #5B6670;
+
+  /* Deep Navy structural ramp (60% layer) */
+  --dgs-navy-950: color-mix(in srgb, var(--dgs-navy) 78%, black 22%);
+  --dgs-navy-900: var(--dgs-navy);
+  --dgs-navy-800: color-mix(in srgb, var(--dgs-navy) 92%, white 8%);
+  --dgs-navy-700: color-mix(in srgb, var(--dgs-navy) 84%, white 16%);
+
+  /* Growth Teal accent ramp (15% layer) */
+  --dgs-teal-hover: color-mix(in srgb, var(--dgs-teal) 82%, white 18%);
+  --dgs-teal-deep: color-mix(in srgb, var(--dgs-teal) 78%, black 22%);
+  --dgs-teal-soft: color-mix(in srgb, var(--dgs-teal) 14%, transparent);
+
+  /* Electric Blue interactive ramp (10% layer) */
+  --dgs-blue-hover: color-mix(in srgb, var(--dgs-blue) 82%, white 18%);
+  --dgs-blue-soft: color-mix(in srgb, var(--dgs-blue) 14%, transparent);
+
+  /* Signal Amber conversion ramp (primary conversion CTAs ONLY) */
+  --dgs-amber-hover: color-mix(in srgb, var(--dgs-amber) 86%, black 14%);
+
+  /* Readability measure: running copy is capped between 60ch and 68ch */
+  --measure-min: 60ch;
+  --measure-max: 68ch;
+
+  /* Navigation glass: scrolled header blur strength */
+  --nav-blur: 12px;
+
+  /* ── Legacy aliases (kept so existing page sheets keep resolving) ── */
   --bg-white: #FFFFFF;
-
-  --bg-deep-navy: #0B132B;
-
+  --bg-deep-navy: var(--dgs-navy-900);
   --gradient-dark-section: var(--bg-deep-navy);
-  --bg-dark-navy: #0B132B;
-
-  --bg-teal: #089D87;
+  --bg-dark-navy: var(--dgs-navy-900);
+  --bg-teal: var(--dgs-teal);
 
   /* Card / darker surfaces = Deep Navy shaded, never a different blue hue */
-  --surface-navy-card: color-mix(in srgb, var(--bg-deep-navy) 92%, white 8%);
+  --surface-navy-card: var(--dgs-navy-800);
+  --bg-navy-darkest: var(--dgs-navy-950);
+  --action-teal: var(--dgs-teal);
 
-  --bg-navy-darkest: #0B132B;
+  /* Hover state = same Growth Teal, simply lightened */
+  --action-mint-hover: var(--dgs-teal-hover);
 
-  --action-teal: #089D87;
+  /* Legacy name, now Signal Amber. Apply to primary conversion CTAs only. */
+  --accent-yellow: var(--dgs-amber);
 
-  /* Hover state = same Emerald Teal, simply lightened */
-  --action-mint-hover: color-mix(in srgb, var(--action-teal) 70%, white 30%);
-
-  --accent-yellow: #FFD200;
-
-  --text-dark-primary: var(--bg-deep-navy);
-
-  --text-dark-muted: #5B6670;
-
+  --text-dark-primary: var(--dgs-navy-900);
+  --text-dark-muted: var(--dgs-steel);
   --text-light-primary: #FFFFFF;
-
   --text-light-muted: #F5F7F9;
-
   --text-white: #FFFFFF;
-
   --text-light: #FFFFFF;
 
   --surface-border: rgba(255, 255, 255, 0.08);
   --surface-border-light: rgba(255, 255, 255, 0.12);
-  --surface-glass: rgba(11, 19, 43, 0.92);
+  --surface-glass: color-mix(in srgb, var(--dgs-navy-900) 86%, transparent);
   --surface-hover: rgba(255, 255, 255, 0.04);
+
   /* Secondary/tertiary text on dark = Steel Gray lightened, no blue cast */
-  --text-secondary: color-mix(in srgb, #5B6670 45%, white 55%);
-  --text-tertiary: color-mix(in srgb, #5B6670 65%, white 35%);
+  --text-secondary: color-mix(in srgb, var(--dgs-steel) 45%, white 55%);
+  --text-tertiary: color-mix(in srgb, var(--dgs-steel) 65%, white 35%);
   /* Neutral light border/surface = Steel Gray tinted into white, used on light sections */
-  --surface-border-neutral: color-mix(in srgb, #5B6670 12%, white 88%);
+  --surface-border-neutral: color-mix(in srgb, var(--dgs-steel) 12%, white 88%);
 
-
-  --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-
+  --font-display: 'Sora', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Sora', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.75rem;
   --space-lg: 3rem;
-  --space-xl: 5rem;
-  --space-2xl: 7.5rem;
+  --space-xl: 6.5rem;
+  --space-2xl: 9.5rem;
 
-
-  --radius-xs: 4px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
-  --radius-xl: 18px;
-
-  --radius-full: 999px;
-
+  /* ═══ SHAPE SCALE (one documented radius system) ═══
+     Every border-radius on the site resolves to one of these steps.
+     Two documented exceptions, both deliberate and not scale steps:
+       - 50%  reserved for true circles (avatars, icon bubbles)
+       - asymmetric one-sided radii (e.g. 0 12px 12px 0) for
+         directional shapes such as tabs and left-edge markers */
+  --radius-xs: 2px;     /* hairline chips, progress fills */
+  --radius-sm: 3px;     /* small controls, tags */
+  --radius-md: 4px;     /* inputs, small cards */
+  --radius-lg: 6px;     /* buttons, standard cards */
+  --radius-xl: 8px;     /* large cards, panels */
+  --radius-full: 999px; /* pills, fully rounded */
 
   --max-width: 97.5rem;
   --max-width-narrow: 64rem;
-
 
   --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
   --duration-fast: 0.15s;
   --duration-base: 0.25s;
   --duration-slow: 0.4s;
 
-  /* Premium accent additions — depth, glass, gradients (visual layer only) */
-  --gradient-teal: linear-gradient(135deg, #0AB69C 0%, #089D87 55%, #067A69 100%);
-  --gradient-teal-soft: linear-gradient(135deg, rgba(8, 157, 135, 0.16) 0%, rgba(66, 194, 176, 0.05) 100%);
+  /* ═══ TYPOGRAPHY SYSTEM 3.1 ═══════════════════════════════════
+     One fluid modular scale (~1.2 ratio) shared by every page.
+     Sizes are tuned to the existing design so nothing jumps; they
+     only give the previously un-sized elements (h3–h6, captions,
+     labels) a single consistent source of truth. Components that
+     already tune a value keep winning via source order / specificity. */
+
+  /* Fluid type scale (min, preferred, max) */
+  --fs-display: clamp(2.8rem, 6vw, 4.8rem);
+  --fs-h1:      clamp(2.8rem, 6vw, 4.8rem);
+  --fs-h2:      clamp(2.2rem, 4.5vw, 3.2rem);
+  --fs-h3:      clamp(1.5rem, 2.4vw, 1.85rem);
+  --fs-h4:      clamp(1.2rem, 1.7vw, 1.4rem);
+  --fs-h5:      clamp(1.05rem, 1.3vw, 1.15rem);
+  --fs-h6:      1rem;
+  --fs-lead:    clamp(1.1rem, 1.5vw, 1.25rem); /* intro / subhead copy */
+  --fs-body-lg: 1.1rem;
+  --fs-body:    1.05rem;   /* default running copy */
+  --fs-body-sm: 0.95rem;
+  --fs-small:   0.875rem;
+  --fs-caption: 0.8125rem;
+  --fs-label:   0.78rem;   /* uppercase eyebrows / meta labels */
+
+  /* Line-height set (unitless, so they scale with font-size) */
+  --line-tight:   1.05;  /* display headings */
+  --line-heading: 1.2;   /* h2–h6 */
+  --line-snug:    1.35;  /* short subheads, card titles that wrap */
+  --line-normal:  1.5;   /* dense UI text, lists */
+  --line-body:    1.65;  /* running paragraphs */
+  --line-relaxed: 1.75;  /* airy lead copy */
+
+  /* Letter-spacing set */
+  --tracking-tighter: -0.03em; /* large display */
+  --tracking-tight:   -0.02em; /* headings */
+  --tracking-heading: -0.01em; /* smaller headings */
+  --tracking-normal:  0em;     /* body */
+  --tracking-wide:    0.02em;  /* buttons / small caps */
+  --tracking-label:   0.08em;  /* uppercase eyebrows / labels */
+
+  /* Vertical rhythm — paragraph & stack spacing */
+  --flow-tight: 0.5rem;
+  --flow:       0.85rem;
+  --flow-loose: 1.25rem;
+
+  /* Icon sizing (keeps glyphs aligned to the type scale) */
+  --icon-xs: 1rem;
+  --icon-sm: 1.25rem;
+  --icon-md: 1.5rem;
+  --icon-lg: 2rem;
+
+  /* Depth, glass, gradients (visual layer only) */
+  --gradient-teal: linear-gradient(135deg, #00C3AD 0%, #00B39F 55%, #008F7F 100%);
+  --gradient-teal-soft: linear-gradient(135deg, rgba(0, 179, 159, 0.16) 0%, rgba(0, 179, 159, 0.05) 100%);
   --gradient-mesh-dark: transparent;
   --shadow-sm: none;
   --shadow-md: none;
   --shadow-lg: none;
   --shadow-teal-glow: none;
-  --glass-blur: blur(16px);
+  --glass-blur: blur(var(--nav-blur));
 }
 
 .dgs-page,
@@ -106,7 +185,7 @@
 html {
   scroll-behavior: initial !important;
   scroll-padding-top: 100px;
-  background-color: #0B132B !important;
+  background-color: #0A1F33 !important;
   min-height: 100%;
   height: auto;
 }
@@ -134,14 +213,14 @@ html.lenis body {
   font-family: var(--font-body);
   color: var(--text-light);
   background: var(--bg-deep-navy) !important;
-  background-color: #0B132B !important;
+  background-color: #0A1F33 !important;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 main {
-  background-color: #0B132B !important;
+  background-color: #0A1F33 !important;
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
@@ -189,31 +268,86 @@ main {
 
 .dgs-page h1 {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 800;
   margin: 0;
-  line-height: 1.08;
-  letter-spacing: -0.01em;
+  font-size: var(--fs-h1);
+  line-height: var(--line-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
 }
 
 .dgs-page h2 {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 800;
   margin: 0;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-size: var(--fs-h2);
+  line-height: var(--line-heading);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
 }
 
-.dgs-page h3,
+/* h3/h4 gain a scale size they previously lacked; any component that
+   sizes its own headings via a descendant selector still wins (equal
+   specificity, defined later in source order). */
+.dgs-page h3 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  margin: 0;
+  font-size: var(--fs-h3);
+  line-height: var(--line-heading);
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+
 .dgs-page h4 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  margin: 0;
+  font-size: var(--fs-h4);
+  line-height: var(--line-snug);
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+
+.dgs-page h5 {
   font-family: var(--font-heading);
   font-weight: 700;
   margin: 0;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  font-size: var(--fs-h5);
+  line-height: var(--line-snug);
+  letter-spacing: var(--tracking-heading);
+}
+
+.dgs-page h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin: 0;
+  font-size: var(--fs-h6);
+  line-height: var(--line-normal);
+  letter-spacing: var(--tracking-normal);
 }
 
 .dgs-page p {
   margin: 0;
+  line-height: var(--line-body);
+}
+
+/* Consistent paragraph rhythm: stacked *prose* paragraphs get one rhythm
+   unit of separation. Scoped to unclassed <p> so component-styled
+   paragraphs (stats, labels, meta) keep their own tight spacing. */
+.dgs-page p:not([class]) + p:not([class]) {
+  margin-top: var(--flow);
+}
+
+/* Emphasis + inline meta text kept on-scale */
+.dgs-page strong,
+.dgs-page b {
+  font-weight: 700;
+}
+
+.dgs-page small {
+  font-size: var(--fs-small);
+  line-height: var(--line-normal);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -226,7 +360,6 @@ main {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-
 }
 
 .dgs-page a:focus-visible,
@@ -241,12 +374,12 @@ main {
 .dgs-container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 3.5rem;
+  padding: 0 7rem;
 }
 
 @media (max-width: 768px) {
   .dgs-container {
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
   }
 }
 
@@ -255,25 +388,104 @@ main {
 }
 
 .dgs-section {
-  padding: var(--space-xl) 0;
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0;
 }
 
 .dgs-section--lg {
-  padding: var(--space-2xl) 0;
+  padding: clamp(5rem, 11vw, 9.5rem) 0;
 }
 
 .dgs-hero:not(.dgs-service-hero) {
   padding-top: clamp(9.5rem, 13vw, 12rem) !important;
 }
 
+/* ─── DUOTONE HERO BACKDROP ─── */
+.dgs-hero-duotone {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  mask-image: radial-gradient(ellipse 90% 100% at 50% 0%, black 30%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 100% at 50% 0%, black 30%, transparent 78%);
+}
+
+.dgs-hero-duotone::before,
+.dgs-hero-duotone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.dgs-hero-duotone::before {
+  background-image: var(--dgs-duotone-img);
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(1) contrast(1.15) brightness(0.72);
+  opacity: 0.5;
+}
+
+.dgs-hero-duotone::after {
+  background: linear-gradient(135deg, #0A1F33 0%, #0d5f70 55%, #00B39F 100%);
+  mix-blend-mode: color;
+}
+
+.dgs-hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(10, 31, 51, 0.72) 0%, rgba(10, 31, 51, 0.55) 45%, rgba(10, 31, 51, 0.92) 100%);
+}
+
+/* ─── SERVICE HERO BADGE ─── */
+.dgs-service-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display, var(--font-heading));
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--action-teal);
+  background: rgba(0, 179, 159, 0.1);
+  border: 1px solid rgba(0, 179, 159, 0.28);
+  border-radius: var(--radius-full, 9999px);
+  padding: 0.45rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
 .dgs-section--dark,
 .dgs-section--darker {
-  background:
-    radial-gradient(circle at 0% 0%, rgba(8, 157, 135, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 100% 0%, rgba(255, 210, 0, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 100% 100%, rgba(255, 210, 0, 0.08) 0%, transparent 40%),
-    var(--bg-navy-darkest) !important;
+  background: #0A1F33 !important; /* Solid Deep Navy */
   color: var(--text-light-primary);
+  position: relative;
+  overflow: clip; /* clips decorative overflow without creating a scroll container, so position: sticky descendants (e.g. .dgs-csr-sticky) still work */
+}
+
+.dgs-section--dark::after,
+.dgs-section--darker::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(circle at 50% 100%, rgba(0, 179, 159, 0.08) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+.dgs-section--dark > .dgs-container,
+.dgs-section--darker > .dgs-container {
+  position: relative;
+  z-index: 2;
 }
 
 .dgs-section--teal {
@@ -303,13 +515,23 @@ main {
   font-family: var(--font-body);
   font-size: 1.05rem;
   font-weight: 600;
+  line-height: var(--line-normal);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: var(--tracking-label);
   color: var(--action-teal);
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
   margin-bottom: var(--space-xs);
+}
+
+/* Eyebrow icon/marker sits on the text baseline-center at a fixed size */
+.dgs-eyebrow svg,
+.dgs-eyebrow img,
+.dgs-eyebrow i {
+  flex-shrink: 0;
+  width: var(--icon-sm);
+  height: var(--icon-sm);
 }
 
 .dgs-section-head {
@@ -325,6 +547,8 @@ main {
 
 .dgs-section-head h2 {
   font-size: clamp(1.85rem, 4vw, 2.8rem);
+  line-height: var(--line-heading);
+  letter-spacing: var(--tracking-tight);
   margin-bottom: var(--space-sm);
   color: var(--text-light-primary);
 }
@@ -343,8 +567,8 @@ main {
 
 .dgs-section-head p {
   color: var(--text-light-muted);
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: var(--fs-body);
+  line-height: var(--line-relaxed);
 }
 
 .dgs-section--light .dgs-section-head p {
@@ -359,19 +583,17 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  padding: 0.55rem 1.45rem;
-  border-radius: var(--radius-md);
-  text-transform: uppercase;
+  gap: 0.6rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius-lg);
+  text-transform: none;
   letter-spacing: normal;
-
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.85rem;
+  font-weight: 600;
+  font-size: 0.95rem;
   border: 2px solid transparent;
   cursor: pointer;
   margin: 0.5rem 0;
-
   transition:
     transform var(--duration-fast) var(--ease-out),
     background var(--duration-base) var(--ease-out),
@@ -403,9 +625,9 @@ main {
 .dgs-btn--primary-accent {
   background: var(--accent-yellow);
   color: var(--text-dark-primary) !important;
-  border-radius: var(--radius-md);
-  font-weight: 700;
-  padding: 0.55rem 1.75rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  padding: 0.7rem 1.6rem;
   box-shadow: none;
   border: none !important;
   overflow: hidden;
@@ -430,13 +652,13 @@ main {
 .dgs-btn--secondary {
   background: transparent;
   color: var(--text-white) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
 }
 
 .dgs-btn--secondary:hover {
   border-color: var(--action-teal) !important;
   color: var(--action-teal) !important;
-  background: rgba(8, 157, 135, 0.08);
+  background: rgba(0, 179, 159, 0.08);
 }
 
 .dgs-btn--outline-dark {
@@ -455,26 +677,24 @@ main {
 }
 
 .dgs-btn--lg {
-  padding: 0.55rem 1.75rem;
+  padding: 0.8rem 1.9rem;
   font-size: 1rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
 }
 
 .dgs-btn--lg.dgs-btn--primary-accent {
-  padding: 0.55rem 1.75rem;
-
+  padding: 0.8rem 1.9rem;
 }
 
 .dgs-btn-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-md);
-
-  background: var(--bg-white) !important;
-  color: var(--text-dark-primary) !important;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent !important;
+  color: currentColor !important;
   flex-shrink: 0;
   transition: transform var(--duration-fast) var(--ease-out);
 }
@@ -494,7 +714,6 @@ main {
 .dgs-btn-icon svg {
   width: 16px;
   height: 16px;
-
   transition: transform var(--duration-fast) var(--ease-out);
 }
 
@@ -563,8 +782,8 @@ main {
   }
 
   .dgs-btn-icon {
-    width: 30px;
-    height: 30px;
+    width: auto;
+    height: auto;
   }
 
   .dgs-btn-icon svg {
@@ -580,9 +799,9 @@ main {
   right: 0;
   width: 100%;
   z-index: 100;
-  background: #011425;
-  border-bottom: 1px solid var(--surface-border);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 12px 30px -18px rgba(0, 0, 0, 0.6);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--duration-slow) var(--ease-out);
 }
 
 .dgs-header::before {
@@ -592,7 +811,7 @@ main {
   left: 0;
   width: 30rem;
   height: 30rem;
-  background: radial-gradient(circle at 0% 0%, rgba(8, 157, 135, 0.10) 0%, transparent 55%);
+  background: radial-gradient(circle at 0% 0%, rgba(0, 179, 159, 0.10) 0%, transparent 55%);
   pointer-events: none;
 }
 
@@ -600,9 +819,194 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 1.15rem;
-  padding-bottom: 1.15rem;
+  padding: 0.75rem 1rem;
   gap: var(--space-sm);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0;
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+  transition: all 0.4s var(--ease-out);
+}
+
+@media (min-width: 768px) {
+  .dgs-nav {
+    padding: 1rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-nav {
+    padding: 1.15rem 3.5rem;
+  }
+}
+
+.dgs-header.is-scrolled {
+  background-color: #0A1F33 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* ─── Premium Dropdown Megamenu (Linear App Style) ─── */
+.dgs-nav-item {
+  position: relative;
+  display: inline-block;
+}
+
+.dgs-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.dgs-dropdown-arrow {
+  width: 10px;
+  height: 10px;
+  stroke-width: 3px;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.dgs-dropdown-trigger:hover .dgs-dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dgs-dropdown-megamenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px);
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 1.25rem !important;
+  display: grid;
+  grid-template-columns: repeat(3, max-content) !important;
+  gap: 1.5rem !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12) !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out), visibility 0.2s;
+  z-index: 1000;
+  width: max-content !important; /* Hug its content! */
+}
+
+/* 2 column variant layout */
+.dgs-dropdown-megamenu.dgs-dropdown-2-col {
+  grid-template-columns: repeat(2, max-content) !important;
+}
+
+.dgs-dropdown-trigger:hover .dgs-dropdown-megamenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+}
+
+.dgs-dropdown-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+}
+
+.dgs-dropdown-column:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  padding-right: 1.5rem;
+}
+
+.dgs-dropdown-col-title {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(5, 17, 36, 0.45) !important; /* Muted gray for white background */
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2rem;
+}
+
+.dgs-dropdown-item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  padding: 0.6rem 0.75rem !important;
+  border-radius: var(--radius-lg) !important;
+  transition: background 0.2s var(--ease-out);
+  border: none !important;
+  text-decoration: none !important;
+}
+
+.dgs-dropdown-item::after {
+  display: none !important;
+}
+
+.dgs-dropdown-item:hover {
+  background: rgba(0, 0, 0, 0.02) !important;
+}
+
+.item-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.dgs-dropdown-item .item-title {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500 !important; /* Muted boldness */
+  color: #0A1F33 !important; /* Deep navy text */
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+/* Icon Container Box: default muted teal, hover solid navy */
+.item-icon-box {
+  width: 36px; /* Matched to height of nav links title + desc */
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 179, 159, 0.08) !important; /* Muted teal background by default */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.dgs-dropdown-item:hover .item-icon-box {
+  background: #0A1F33 !important; /* Navy background on hover */
+}
+
+.item-icon-box svg {
+  width: 16px !important;
+  height: 16px !important;
+  stroke: #00B39F !important; /* Growth Teal icon color by default */
+  stroke-width: 2px !important;
+  fill: none !important;
+  flex-shrink: 0;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.dgs-dropdown-item:hover .item-icon-box svg {
+  stroke: #00B39F !important; /* Remains Teal icon color on hover */
+}
+
+.dgs-dropdown-item:hover .item-title {
+  color: #00B39F !important; /* Growth Teal hover */
+}
+
+.dgs-dropdown-item .item-desc {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(5, 17, 36, 0.6) !important;
+  line-height: 1.25;
+  padding-left: 0 !important; /* Sits naturally inside text wrapper */
 }
 
 .dgs-logo {
@@ -619,6 +1023,7 @@ main {
 
 .dgs-nav-toggle {
   order: 4;
+  display: none; /* hidden by default — shown only below 1024px via media query */
 }
 
 .dgs-logo {
@@ -638,9 +1043,9 @@ main {
 .dgs-header .dgs-logo,
 .dgs-mobile-menu-head .dgs-logo {
   gap: 0;
-  width: 8.25rem;
+  width: 10rem;
   height: 2.75rem;
-  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a2baf5f6da402d7db6.png') no-repeat left center / contain;
+  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5f1fbc9c9b37b5fd51bdd5.png') no-repeat left center / contain;
   color: transparent !important;
   font-size: 0;
   overflow: hidden;
@@ -664,7 +1069,7 @@ main {
   font-size: 0.85rem;
   color: var(--text-white);
   flex-shrink: 0;
-  box-shadow: 0 3px 10px rgba(8, 157, 135, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: 0 3px 10px rgba(0, 179, 159, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .dgs-nav-links {
@@ -673,13 +1078,16 @@ main {
   align-items: center;
 }
 
-.dgs-nav-links a {
-  font-family: var(--font-display);
+.dgs-nav-links a,
+.dgs-dropdown-toggle,
+.dgs-dropdown-item,
+.dgs-mobile-links a {
+  font-family: var(--font-body) !important;
   color: var(--text-white);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.95rem; /* Slightly larger navigations */
+  font-weight: 500;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
+  text-transform: none;
   transition: color var(--duration-fast) var(--ease-out);
   text-decoration: none;
   position: relative;
@@ -695,7 +1103,7 @@ main {
   width: 0;
   height: 2px;
   background: var(--action-teal);
-  border-radius: 1px;
+  border-radius: var(--radius-xs);
   transition: width 0.3s var(--ease-out);
 }
 
@@ -742,7 +1150,7 @@ main {
 
 .dgs-nav-cta-group .dgs-btn--nav.dgs-btn--secondary {
   color: var(--text-white) !important;
-  border-color: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
 }
 
 .dgs-nav-cta-group .dgs-btn--nav.dgs-btn--secondary:hover {
@@ -751,8 +1159,8 @@ main {
 }
 
 .dgs-btn--nav .dgs-btn-icon {
-  width: 30px;
-  height: 30px;
+  width: auto;
+  height: auto;
 }
 
 .dgs-btn--nav .dgs-btn-icon svg {
@@ -789,7 +1197,7 @@ main {
   left: 0;
   width: 100%;
   height: 2px;
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
   background: currentColor;
   transition: transform var(--duration-base) var(--ease-out),
     opacity var(--duration-base) var(--ease-out),
@@ -859,7 +1267,8 @@ main {
   display: flex;
   flex-direction: column;
   padding: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .dgs-mobile-menu.is-open {
@@ -869,16 +1278,24 @@ main {
 }
 
 .dgs-mobile-menu-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
   padding: calc(1.5rem + env(safe-area-inset-top, 0px)) 1.5rem 1.25rem;
   border-bottom: 1px solid var(--surface-border);
   flex-shrink: 0;
   background: rgba(13, 22, 48, 0.99);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.dgs-mobile-menu-head .dgs-logo {
+  order: 1 !important;
 }
 
 .dgs-mobile-close {
+  order: 2 !important;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--surface-border-light);
   color: var(--text-white);
@@ -893,7 +1310,7 @@ main {
 }
 
 .dgs-mobile-close:hover {
-  background: rgba(8, 157, 135, 0.12);
+  background: rgba(0, 179, 159, 0.12);
   border-color: var(--action-teal);
   color: var(--action-teal);
   transform: rotate(90deg);
@@ -908,9 +1325,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0;
-  overflow-y: auto;
-  flex-grow: 1;
-  padding: 0.5rem 1.5rem 1.25rem;
+  padding: 0.5rem 1.5rem 1rem;
 }
 
 .dgs-mobile-links>a {
@@ -922,7 +1337,7 @@ main {
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 600;
-  padding: 1rem 0.15rem;
+  padding: 0.8rem 0.15rem;
   border-bottom: 1px solid var(--surface-border);
   text-decoration: none;
   transition: color var(--duration-base) var(--ease-out), padding-left var(--duration-base) var(--ease-out);
@@ -957,7 +1372,7 @@ main {
 }
 
 .dgs-mobile-nav-buttons {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -971,21 +1386,21 @@ main {
   text-align: center !important;
   padding: 0.85rem 1.5rem !important;
   font-size: 0.95rem !important;
-  font-weight: 700 !important;
-  border-radius: var(--radius-md) !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-lg) !important;
   box-sizing: border-box !important;
   display: inline-flex !important;
 }
 
 .dgs-mobile-nav-buttons .dgs-btn--secondary {
-  border: 1px solid var(--surface-border-light) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
   background: transparent !important;
   color: var(--text-white) !important;
 }
 
 .dgs-mobile-nav-buttons .dgs-btn--secondary:hover {
   border-color: var(--action-teal) !important;
-  background: rgba(8, 157, 135, 0.08) !important;
+  background: rgba(0, 179, 159, 0.08) !important;
 }
 
 html.dgs-menu-open,
@@ -993,24 +1408,60 @@ body.dgs-menu-open {
   overflow: hidden;
 }
 
-@media (min-width: 1024px) {
-  .dgs-nav-links {
-    display: flex;
-  }
-
-  .dgs-nav-cta {
-    display: inline-flex;
-  }
-
-  .dgs-nav-toggle {
-    display: none;
-  }
-
-  .dgs-mobile-menu,
-  .dgs-mobile-backdrop {
+@media (max-width: 1023px) {
+  .dgs-nav-links,
+  .dgs-nav-cta-group {
     display: none !important;
   }
 
+  .dgs-nav-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+    z-index: 205 !important;
+    cursor: pointer !important;
+  }
+
+  .dgs-nav-toggle-bars span {
+    background-color: #ffffff !important;
+  }
+
+  .dgs-mobile-menu {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    height: 100dvh !important;
+    width: min(86%, 23.75rem) !important;
+    z-index: 9999 !important;
+  }
+
+  .dgs-mobile-backdrop {
+    z-index: 9998 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-nav-links {
+    display: flex !important;
+  }
+
+  .dgs-nav-cta-group {
+    display: flex !important;
+  }
+
+  .dgs-nav-toggle {
+    display: none !important;
+  }
+
+  /* Do NOT set display:none on .dgs-mobile-menu — it uses
+     transform+visibility for its open/close animation. Setting
+     display:none would break .is-open and lock the drawer shut.
+     The drawer is visually absent because transform:translateX(105%)
+     pushes it off-screen on all viewports; only .is-open reveals it. */
+  .dgs-mobile-backdrop {
+    display: none !important;
+  }
 }
 
 .dgs-hero {
@@ -1045,7 +1496,7 @@ body.dgs-menu-open {
 }
 
 .dgs-hero-gradient-text {
-  background: linear-gradient(135deg, #0B132B 0%, #089D87 35%, #FFD200 48%, #FFD200 52%, #089D87 65%, #0B132B 100%);
+  background: linear-gradient(135deg, #0A1F33 0%, #00B39F 35%, #2D7FF9 48%, #2D7FF9 52%, #00B39F 65%, #0A1F33 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1103,7 +1554,7 @@ body.dgs-menu-open {
   gap: 0.15rem;
   padding: 0.85rem 1.5rem;
   border: 1.5px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.45rem;
+  border-radius: var(--radius-lg);
   background: transparent;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -1113,13 +1564,13 @@ body.dgs-menu-open {
 
 .dgs-form-tab:hover {
   border-color: var(--action-teal);
-  background: rgba(8, 157, 135, 0.06);
+  background: rgba(0, 179, 159, 0.06);
   opacity: 1;
 }
 
 .dgs-form-tab.is-active {
   border-color: var(--action-teal);
-  background: rgba(8, 157, 135, 0.08);
+  background: rgba(0, 179, 159, 0.08);
   opacity: 1;
 }
 
@@ -1150,14 +1601,12 @@ body.dgs-menu-open {
   .dgs-icon-cards {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
 @media (min-width: 900px) {
   .dgs-icon-cards {
     grid-template-columns: repeat(3, 1fr);
   }
-
 }
 
 .dgs-cards-4 {
@@ -1170,14 +1619,12 @@ body.dgs-menu-open {
   .dgs-cards-4 {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
 @media (min-width: 1024px) {
   .dgs-cards-4 {
     grid-template-columns: repeat(4, 1fr);
   }
-
 }
 
 .dgs-year-timeline {
@@ -1197,7 +1644,7 @@ body.dgs-menu-open {
   left: 0;
   right: 0;
   height: 2px;
-  background: rgba(8, 157, 135, 0.2);
+  background: rgba(0, 179, 159, 0.2);
 }
 
 .dgs-year-step {
@@ -1257,7 +1704,7 @@ body.dgs-menu-open {
   width: 48px;
   height: 48px;
   border-radius: var(--radius-sm);
-  background: rgba(8, 157, 135, 0.12);
+  background: rgba(0, 179, 159, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1299,7 +1746,6 @@ body.dgs-menu-open {
   .dgs-split--wide-right {
     grid-template-columns: 0.8fr 1.2fr;
   }
-
 }
 
 .dgs-testimonial-cards {
@@ -1312,14 +1758,12 @@ body.dgs-menu-open {
   .dgs-testimonial-cards {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
 @media (min-width: 1024px) {
   .dgs-testimonial-cards {
     grid-template-columns: repeat(4, 1fr);
   }
-
 }
 
 .dgs-testimonial-card {
@@ -1352,8 +1796,8 @@ body.dgs-menu-open {
 
 @media (min-width: 900px) {
   .dgs-premium-faq-layout {
-    grid-template-columns: 4fr 6fr;
-    gap: 6rem;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4.5rem;
   }
 
   .dgs-faq-sticky {
@@ -1364,7 +1808,7 @@ body.dgs-menu-open {
 
 /* --- FAQ ACCORDION --- */
 .dgs-faq-list {
-  max-width: 45rem;
+  width: 100%;
 }
 
 .dgs-faq-item {
@@ -1409,24 +1853,29 @@ body.dgs-menu-open {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1.5px solid var(--surface-border-neutral);
+  border: 1.5px solid rgba(0,0,0,0.08);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--action-teal);
+  color: #4a5568;
   transition:
     border-color var(--duration-base) var(--ease-out),
     background var(--duration-base) var(--ease-out),
     color var(--duration-base) var(--ease-out);
 }
 
+.dgs-section--darker .dgs-faq-number {
+  border-color: rgba(255,255,255,0.12);
+  color: var(--action-teal);
+}
+
 .dgs-faq-item.is-open .dgs-faq-number {
-  background: var(--accent-yellow);
-  border-color: var(--accent-yellow);
-  color: var(--bg-deep-navy);
+  background: #f5a623 !important;
+  border-color: #f5a623 !important;
+  color: #ffffff !important;
 }
 
 .dgs-faq-item.is-open .dgs-faq-question {
@@ -1434,20 +1883,29 @@ body.dgs-menu-open {
 }
 
 .dgs-section--light .dgs-faq-item.is-open .dgs-faq-question {
-  color: var(--action-teal);
+  color: var(--bg-deep-navy);
 }
 
 .dgs-faq-toggle {
   font-family: var(--font-body);
-  color: var(--action-teal);
+  color: #4a5568;
   font-size: 1.3rem;
   margin-left: auto;
-  transition: transform var(--duration-base) var(--ease-out);
+  transition: transform var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
   flex-shrink: 0;
+}
+
+.dgs-section--darker .dgs-faq-toggle {
+  color: var(--action-teal);
 }
 
 .dgs-faq-item.is-open .dgs-faq-toggle {
   transform: rotate(45deg);
+  color: #000000 !important;
+}
+
+.dgs-section--darker .dgs-faq-item.is-open .dgs-faq-toggle {
+  color: var(--action-teal) !important;
 }
 
 .dgs-faq-answer {
@@ -1460,8 +1918,8 @@ body.dgs-menu-open {
 .dgs-faq-answer p {
   padding-bottom: var(--space-sm);
   color: var(--text-muted);
-  font-size: 0.92rem;
-  line-height: 1.65;
+  font-size: 0.96rem;
+  line-height: 1.7;
 }
 
 .dgs-section--light .dgs-faq-answer p {
@@ -1471,21 +1929,18 @@ body.dgs-menu-open {
 .dgs-cta-banner {
   text-align: center;
   padding: calc(var(--space-2xl) * 0.85) 3.5rem;
-
   background:
-    radial-gradient(circle at 8% 30%, rgba(8, 157, 135, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 92% 70%, rgba(255, 210, 0, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 8% 30%, rgba(0, 179, 159, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 92% 70%, rgba(245, 166, 35, 0.12) 0%, transparent 45%),
     var(--bg-deep-navy) !important;
   background-color: var(--bg-deep-navy) !important;
   position: relative;
   overflow: hidden;
 }
 
-
 .dgs-cta-banner::before {
   display: none;
 }
-
 
 .dgs-cta-banner h2 {
   font-size: clamp(1.9rem, 4.5vw, 3rem);
@@ -1521,8 +1976,8 @@ body.dgs-menu-open {
 
 .dgs-footer {
   background:
-    radial-gradient(circle at 0% 0%, rgba(8, 157, 135, 0.10) 0%, transparent 50%),
-    var(--bg-navy-darkest);
+    radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
+    #0A1F33;
   color: var(--text-tertiary);
   padding: var(--space-xl) 0 10.5rem;
   font-size: 0.88rem;
@@ -1542,7 +1997,7 @@ body.dgs-menu-open {
   transform: translateX(-50%);
   width: min(900px, 90%);
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(8, 157, 135, 0.55) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 179, 159, 0.55) 50%, transparent 100%);
 }
 
 .dgs-footer::after {
@@ -1553,7 +2008,7 @@ body.dgs-menu-open {
   transform: translateX(-50%);
   width: 70%;
   aspect-ratio: 1 / 0.5;
-  background: radial-gradient(ellipse at center, rgba(255, 210, 0, 0.10) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(245, 166, 35, 0.10) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -1580,7 +2035,6 @@ body.dgs-menu-open {
   .dgs-footer-grid {
     grid-template-columns: 1.6fr 1fr 1fr 1fr;
   }
-
 }
 
 .dgs-footer-brand {
@@ -1588,9 +2042,9 @@ body.dgs-menu-open {
   align-items: center;
   gap: 0;
   margin-bottom: 0.85rem;
-  width: 9.25rem;
+  width: 10.5rem;
   height: 2.75rem;
-  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a2baf5f6da402d7db6.png') no-repeat left center / contain;
+  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5f1fbc9c9b37b5fd51bdd5.png') no-repeat left center / contain;
   overflow: hidden;
 }
 
@@ -1672,8 +2126,8 @@ body.dgs-menu-open {
 .dgs-footer-social a:hover {
   border-color: var(--action-teal);
   color: var(--action-teal);
-  background: rgba(8, 157, 135, 0.1);
-  box-shadow: 0 4px 16px rgba(8, 157, 135, 0.22);
+  background: rgba(0, 179, 159, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 179, 159, 0.22);
   transform: translateY(-2px);
 }
 
@@ -1727,17 +2181,13 @@ body.dgs-menu-open {
   text-transform: none;
   z-index: 1;
   max-width: 100%;
-
-  /* Gradient fill blended into the palette, kept to a very low opacity */
   background: linear-gradient(180deg,
-      rgba(255, 210, 0, 0.12) 0%,
-      rgba(255, 210, 0, 0.05) 45%,
-      rgba(255, 210, 0, 0.02) 100%);
+      rgba(245, 166, 35, 0.12) 0%,
+      rgba(245, 166, 35, 0.05) 45%,
+      rgba(245, 166, 35, 0.02) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-
-  /* Soft fade toward every edge so it never competes with real content */
   -webkit-mask-image:
     linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%),
     linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
@@ -1758,2433 +2208,83 @@ body.dgs-menu-open {
   }
 }
 
-
 .dgs-reveal {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(28px);
   will-change: transform, opacity;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Auto-stagger: main.js sets --dgs-reveal-i on grouped siblings so a grid or
+     list cascades in sequence instead of appearing all at once. */
+  transition-delay: calc(var(--dgs-reveal-i, 0) * 0.08s);
 }
 
 .dgs-reveal.is-visible {
   opacity: 1 !important;
-  transform: translateY(0) !important;
+  transform: none !important;
   visibility: visible !important;
+  /* Drop the compositor hint once settled so long pages don't keep hundreds of
+     promoted layers alive (keeps scrolling smooth). */
+  will-change: auto;
 }
 
-.dgs-cta-card {
-  background: radial-gradient(circle at 90% 10%, rgba(8, 157, 135, 0.16) 0%, var(--surface-navy-card) 60%);
-  border: 1px solid var(--surface-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl) var(--space-md);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
-}
+/* Reusable reveal directions — opt in with data-reveal="fade|left|right|scale".
+   Defaults (no attribute) keep the existing rise-up motion. */
+.dgs-reveal[data-reveal="fade"]  { transform: none; }
+.dgs-reveal[data-reveal="left"]  { transform: translateX(-28px); }
+.dgs-reveal[data-reveal="right"] { transform: translateX(28px); }
+.dgs-reveal[data-reveal="scale"] { transform: scale(0.965); }
 
-.dgs-cta-card:hover {
-  border-color: rgba(8, 157, 135, 0.3);
-  box-shadow: 0 12px 40px rgba(8, 157, 135, 0.08);
-}
-
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
-.dgs-page h1 {
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
-  font-size: clamp(2.8rem, 6vw, 4.8rem) !important;
-}
-
-.dgs-page h2 {
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  font-size: clamp(2.2rem, 4.5vw, 3.2rem) !important;
-}
-
-.dgs-card-visual-zone {
-  width: 100%;
-  height: 13.75rem;
-
-  background: radial-gradient(circle at center, rgba(11, 19, 43, 0.4) 0%, var(--bg-navy-darkest) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid var(--surface-border);
-  position: relative;
-  overflow: hidden;
-}
-
-.dgs-visual-placeholder {
-  width: 80%;
-  height: 70%;
-  border: 1px dashed rgba(8, 157, 135, 0.2);
-  border-radius: 8px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dgs-visual-placeholder::after {
-  content: 'GRAPHIC ASSET';
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  color: var(--text-dark-muted);
-}
-
-.dgs-visual-placeholder::before {
-  content: '';
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  border-radius: 10px;
-}
-
-.dgs-reveal {
-  visibility: hidden;
-
-}
-
-.dgs-carousel-container {
-  position: relative;
-  width: 100%;
-}
-
-.dgs-carousel-track {
-  display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding: 1rem 0.25rem;
-}
-
-.dgs-carousel-track::-webkit-scrollbar {
-  display: none;
-}
-
-.dgs-carousel-card {
-  flex: 0 0 calc(33.333% - 1rem);
-  scroll-snap-align: start;
-  background: #FFFFFF;
-  border: 1px solid var(--surface-border-neutral);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  box-shadow: 0 4px 24px rgba(11, 19, 43, 0.03);
-  transition: transform var(--duration-fast) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
-}
-
-.dgs-carousel-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(8, 157, 135, 0.25);
-  box-shadow: 0 12px 32px rgba(11, 19, 43, 0.08);
-}
-
-@media (max-width: 1024px) {
-  .dgs-carousel-card {
-    flex: 0 0 calc(50% - 0.75rem);
-  }
-
-}
-
-@media (max-width: 768px) {
-  .dgs-carousel-card {
-    flex: 0 0 85%;
-  }
-
-}
-
-.dgs-carousel-visual {
-  width: 100%;
-  height: 13.75rem;
-  background-size: cover;
-  background-position: center;
-  border-bottom: 1px solid var(--surface-border-neutral);
-  position: relative;
-}
-
-.dgs-carousel-badge {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--action-teal);
-  font-weight: 700;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  font-family: var(--font-display);
-}
-
-.dgs-carousel-content {
-  padding: 1.75rem 1.5rem;
-}
-
-.dgs-carousel-content h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--bg-deep-navy);
-  line-height: 1.3;
-}
-
-.dgs-carousel-content p {
-  margin: 0;
-  font-size: 0.88rem;
-  color: var(--text-dark-muted);
-  line-height: 1.5;
-}
-
-.dgs-carousel-controls {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.dgs-carousel-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  border: 1px solid var(--surface-border-neutral);
-  color: var(--bg-deep-navy);
-  cursor: pointer;
-  transition: all var(--duration-fast) var(--ease-out);
-}
-
-.dgs-carousel-arrow:hover {
-  background: var(--action-teal);
-  border-color: var(--action-teal);
-  color: var(--text-light-primary);
-}
-
-/* ─── MODULAR GRID PATTERN OVERLAYS ─── */
-.dgs-hero-pattern,
-.dgs-cta-pattern {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.dgs-hero-pattern span,
-.dgs-cta-pattern span {
-  flex: 1;
-  height: 100%;
-  border-right: 1px solid rgba(255, 255, 255, 0.035);
-}
-
-.dgs-hero-pattern span:last-child,
-.dgs-cta-pattern span:last-child {
-  border-right: none;
-}
-
-/* ─── SERVICES: PREMIUM ANIMATED CLICKABLE ROW LIST (Shared Component) ─── */
-.dgs-services-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-md);
-  margin-top: var(--space-xl);
-  border-top: none;
-}
-
-@media (min-width: 768px) {
-  .dgs-services-list {
-    grid-template-columns: repeat(2, 1fr);
+/* Respect users who ask for less motion: show everything, no slide/blur. */
+@media (prefers-reduced-motion: reduce) {
+  .dgs-reveal,
+  .dgs-reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    visibility: visible !important;
+    transition: none !important;
   }
 }
 
-@media (min-width: 1024px) {
-  .dgs-services-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.dgs-service-row {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.25rem;
-  padding: 2.25rem 2rem;
-  border: 1px solid var(--surface-border-neutral);
-  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  background: var(--bg-white);
-  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
-}
-
-.dgs-service-row:hover {
-  transform: translateY(-5px);
-  border-color: var(--bg-deep-navy);
-  box-shadow: 0 16px 36px rgba(11, 19, 62, 0.08);
-}
-
-/* Sweep background on hover */
-.dgs-service-row::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--bg-deep-navy);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.4s var(--ease-out);
-  z-index: 0;
-}
-
-.dgs-service-row:hover::before,
-.dgs-service-row:focus-visible::before {
-  transform: scaleY(1);
-}
-
-.dgs-service-row-icon {
-  position: relative;
-  z-index: 1;
-  flex-shrink: 0;
-  width: 3.25rem;
-  display: flex;
-  align-items: center;
-  color: var(--action-teal);
-  transition: color var(--duration-base) var(--ease-out), transform 0.4s var(--ease-out);
-}
-
-.dgs-service-row-icon svg {
-  stroke: var(--action-teal);
-  transition: stroke var(--duration-base) var(--ease-out);
-}
-
-.dgs-service-row-icon svg {
-  width: 28px;
-  height: 28px;
-}
-
-.dgs-service-row:hover .dgs-service-row-icon,
-.dgs-service-row:focus-visible .dgs-service-row-icon {
-  color: var(--action-mint-hover);
-  transform: scale(1.08);
-}
-
-.dgs-service-row:hover .dgs-service-row-icon svg,
-.dgs-service-row:focus-visible .dgs-service-row-icon svg {
-  stroke: var(--action-mint-hover);
-}
-
-.dgs-service-row-content {
-  position: relative;
-  z-index: 1;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.dgs-service-row-title {
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  line-height: 1.3;
-  color: var(--bg-deep-navy);
-  transition: color var(--duration-base) var(--ease-out);
-}
-
-.dgs-service-row:hover .dgs-service-row-title,
-.dgs-service-row:focus-visible .dgs-service-row-title {
-  color: var(--text-white);
-}
-
-.dgs-service-row-benefit {
-  font-size: 0.9rem;
-  color: var(--text-dark-muted);
-  line-height: 1.45;
-  transition: color var(--duration-base) var(--ease-out);
-}
-
-.dgs-service-row:hover .dgs-service-row-benefit,
-.dgs-service-row:focus-visible .dgs-service-row-benefit {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.dgs-service-row-arrow {
-  position: relative;
-  z-index: 1;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1.5px solid var(--surface-border-neutral);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--action-teal);
-  margin-top: 0.5rem;
-  transition: all 0.4s var(--ease-out);
-}
-
-.dgs-service-row-arrow svg {
-  width: 16px;
-  height: 16px;
-}
-
-.dgs-service-row:hover .dgs-service-row-arrow,
-.dgs-service-row:focus-visible .dgs-service-row-arrow {
-  border-color: rgba(255, 255, 255, 0.3);
-  color: var(--text-white);
-  transform: translateX(4px);
-}
-
-@media (max-width: 640px) {
-  .dgs-service-row {
-    padding: 1.75rem 1.5rem;
-  }
-
-  .dgs-hero-actions {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
-    width: 100% !important;
-  }
-
-  .dgs-hero-actions .dgs-btn {
-    width: auto !important;
-    text-align: center !important;
-    justify-content: center !important;
-    margin: 0 !important;
-    display: inline-flex !important;
-  }
-}
-
-
-/* Timeline step content card — teal outline at every breakpoint;
-   the connector line (mobile: vertical, desktop: horizontal) is drawn
-   on .dgs-timeline-step itself and sits behind this box (z-index 1 vs 2). */
-.dgs-timeline-content {
-  position: relative;
-  z-index: 2;
-  border: 1px solid rgba(8, 157, 135, 0.45);
-  border-radius: var(--radius-md);
-  padding: var(--space-sm) var(--space-md);
-}
-
-@media (max-width: 767px) {
-  .dgs-timeline {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 3.5rem !important;
-  }
-
-  .dgs-timeline-step {
-    position: relative;
-    text-align: center;
-  }
-
-  .dgs-timeline-step:not(:last-child)::after {
-    content: '' !important;
-    position: absolute !important;
-    /* top = this step's own circle center (padding-top + half the 44px circle) */
-    top: calc(var(--space-lg) + 22px) !important;
-    /* bottom is anchored to THIS step's own bottom edge (which already
-       accounts for its heading + paragraph, however long they are),
-       then extends past it through the flex gap (3.5rem) plus the next
-       step's top padding and half-circle — landing exactly on the next
-       circle's center every time, regardless of text length. The old
-       fixed `height: 3.5rem` only matched the gap itself and ran out
-       partway through the paragraph text, never reaching the next
-       circle at all. */
-    bottom: calc(-3.5rem - var(--space-lg) - 22px) !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 2px !important;
-    background: rgba(8, 157, 135, 0.4) !important;
-    z-index: 1 !important;
-    border: none !important;
-  }
-
-  /* Opaque fill (mobile only) so the vertical connector line above
-     runs behind the text instead of visibly crossing it. Outline
-     comes from the base .dgs-timeline-content rule above. */
-  .dgs-timeline-content {
-    background: var(--surface-navy-card) !important;
-  }
-
-  .dgs-section--light .dgs-timeline-content {
-    background: var(--bg-white) !important;
-  }
-}
-
-/* Center-aligned subtle breathing gradients for narrative flow sections */
-#dgs-pain-and-vision,
-#dgs-process,
-#dgs-audit-why {
-  background:
-    radial-gradient(circle at 50% 50%, rgba(8, 157, 135, 0.15) 0%, transparent 60%),
-    radial-gradient(circle at 100% 100%, rgba(255, 210, 0, 0.05) 0%, transparent 40%),
-    var(--bg-navy-darkest) !important;
-}
-
-/* ─────────────────────────────────────────────
-   THREE ENGINES SECTION (shared across pages)
-   ───────────────────────────────────────────── */
-.dgs-engines-section {
-  background: var(--bg-white);
-  padding: var(--space-xl) 0;
-}
-
-.dgs-engines-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-
-@media (max-width: 1024px) {
-  .dgs-engines-grid {
-    grid-template-columns: 1fr;
-    gap: 2.75rem;
-  }
-}
-
-.dgs-engines-heading h2 {
-  font-size: clamp(1.9rem, 3.8vw, 2.55rem);
-  color: var(--bg-deep-navy);
-  margin-bottom: var(--space-sm);
-  line-height: 1.15;
-}
-
-.dgs-engines-heading h2 .dgs-text-accent {
-  color: var(--action-teal);
-}
-
-.dgs-engines-rule {
-  width: 3.25rem;
-  height: 4px;
-  border-radius: var(--radius-full);
-  background: var(--accent-yellow);
-  margin-bottom: var(--space-md);
-}
-
-.dgs-engines-explore {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--bg-deep-navy);
-}
-
-.dgs-engines-explore svg {
-  width: 15px;
-  height: 15px;
-  transition: transform var(--duration-fast) var(--ease-out);
-}
-
-.dgs-engines-explore:hover {
-  color: var(--action-teal);
-}
-
-.dgs-engines-explore:hover svg {
-  transform: translateX(3px);
-}
-
-.dgs-engine-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.1rem;
-  position: relative;
-}
-
-.dgs-engine-icon {
-  width: 4rem;
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--action-teal);
-}
-
-.dgs-engine-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.dgs-engine-card h3 {
-  font-size: 1rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--bg-deep-navy);
-}
-
-.dgs-engine-card p {
-  font-size: 0.94rem;
-  line-height: 1.6;
-  color: var(--text-dark-muted);
-}
-
-/* Dividers between engine cards (desktop) */
-.dgs-engines-grid .dgs-engine-card:nth-of-type(2)::after,
-.dgs-engines-grid .dgs-engine-card:nth-of-type(3)::after {
-  content: '';
-  position: absolute;
-  top: 1rem;
-  bottom: 0.25rem;
-  right: -1.5rem;
-  width: 1px;
-  background: rgba(11, 19, 43, 0.18);
-}
-
-@media (max-width: 1024px) {
-  .dgs-engines-grid .dgs-engine-card::after {
-    display: none;
-  }
-}
-
-/* ─── TEXT LINK WITH UNDERLINE (secondary CTA style) ─── */
-.dgs-launch-link {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  color: inherit;
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: color var(--duration-base) var(--ease-out);
-}
-
-.dgs-launch-link span.dgs-underline {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: var(--action-teal);
-  transition: background var(--duration-base) var(--ease-out);
-}
-
-.dgs-launch-link:hover {
-  color: var(--action-teal);
-}
-
-.dgs-launch-link:hover span.dgs-underline {
-  background: var(--action-teal);
-}/* ============================================================
-   DIGITAL GROWTHSCALE — COMMON / SITE-WIDE STYLES (tokens, reset, header, footer, buttons, shared components)
-   Split from dgs-styles.css for per-page editing in GHL.
-   Load order: dgs-common.css FIRST, then this file.
+/* ============================================================
+   INTERACTION POLISH — consistent, GPU-friendly micro-motion.
+   Additive only: unifies focus + form-focus timing across the
+   site without changing any component's resting appearance.
    ============================================================ */
 
-:root {
-  /* ─── CORE BRAND PALETTE (4 colors only) ───
-     Deep Navy #0B132B · Emerald Teal #089D87 · Lemon Yellow #FFD200 · Steel Gray #5B6670
-     Every other token below is a tint/shade of these four — no outside hues. */
-
-  --bg-white: #FFFFFF;
-
-  --bg-deep-navy: #0B132B;
-
-  --gradient-dark-section: var(--bg-deep-navy);
-  --bg-dark-navy: #0B132B;
-
-  --bg-teal: #089D87;
-
-  /* Card / darker surfaces = Deep Navy shaded, never a different blue hue */
-  --surface-navy-card: color-mix(in srgb, var(--bg-deep-navy) 92%, white 8%);
-
-  --bg-navy-darkest: #0B132B;
-
-  --action-teal: #089D87;
-
-  /* Hover state = same Emerald Teal, simply lightened */
-  --action-mint-hover: color-mix(in srgb, var(--action-teal) 70%, white 30%);
-
-  --accent-yellow: #FFD200;
-
-  --text-dark-primary: var(--bg-deep-navy);
-
-  --text-dark-muted: #5B6670;
-
-  --text-light-primary: #FFFFFF;
-
-  --text-light-muted: #F5F7F9;
-
-  --text-white: #FFFFFF;
-
-  --text-light: #FFFFFF;
-
-  --surface-border: rgba(255, 255, 255, 0.08);
-  --surface-border-light: rgba(255, 255, 255, 0.12);
-  --surface-glass: rgba(11, 19, 43, 0.92);
-  --surface-hover: rgba(255, 255, 255, 0.04);
-  /* Secondary/tertiary text on dark = Steel Gray lightened, no blue cast */
-  --text-secondary: color-mix(in srgb, #5B6670 45%, white 55%);
-  --text-tertiary: color-mix(in srgb, #5B6670 65%, white 35%);
-  /* Neutral light border/surface = Steel Gray tinted into white, used on light sections */
-  --surface-border-neutral: color-mix(in srgb, #5B6670 12%, white 88%);
-
-
-  --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-
-
-  --space-2xs: 0.25rem;
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.75rem;
-  --space-lg: 3rem;
-  --space-xl: 5rem;
-  --space-2xl: 7.5rem;
-
-
-  --radius-xs: 4px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
-  --radius-xl: 18px;
-
-  --radius-full: 999px;
-
-
-  --max-width: 97.5rem;
-  --max-width-narrow: 64rem;
-
-
-  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --duration-fast: 0.15s;
-  --duration-base: 0.25s;
-  --duration-slow: 0.4s;
-
-  /* Premium accent additions — depth, glass, gradients (visual layer only) */
-  --gradient-teal: linear-gradient(135deg, #0AB69C 0%, #089D87 55%, #067A69 100%);
-  --gradient-teal-soft: linear-gradient(135deg, rgba(8, 157, 135, 0.16) 0%, rgba(66, 194, 176, 0.05) 100%);
-  --gradient-mesh-dark: transparent;
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
-  --shadow-teal-glow: none;
-  --glass-blur: blur(16px);
-}
-
-.dgs-page,
-.dgs-page *,
-.dgs-page *::before,
-.dgs-page *::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: initial !important;
-  scroll-padding-top: 100px;
-  background-color: #0B132B !important;
-  min-height: 100%;
-  height: auto;
-}
-
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.dgs-page {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-body);
-  color: var(--text-light);
-  background: var(--bg-deep-navy) !important;
-  background-color: #0B132B !important;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-main {
-  background-color: #0B132B !important;
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-/* --- MOBILE ONLY TEXT HELPERS --- */
-.dgs-mobile-only {
-  display: none !important;
-}
-
-.dgs-desktop-only {
-  display: inline !important;
-}
-
-@media (max-width: 768px) {
-  .dgs-mobile-only {
-    display: inline !important;
-  }
-
-  .dgs-desktop-only {
-    display: none !important;
-  }
-}
-
-.dgs-page img {
-  max-width: 100%;
-  display: block;
-}
-
-.dgs-page a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.dgs-page ul,
-.dgs-page ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.dgs-page button {
-  font-family: inherit;
-  cursor: pointer;
-}
-
-.dgs-page h1 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.08;
-  letter-spacing: -0.01em;
-}
-
-.dgs-page h2 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-}
-
-.dgs-page h3,
-.dgs-page h4 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
-
-.dgs-page p {
-  margin: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .dgs-page * {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
-
-}
-
-.dgs-page a:focus-visible,
-.dgs-page button:focus-visible,
-.dgs-page input:focus-visible,
-.dgs-page textarea:focus-visible,
-.dgs-page select:focus-visible {
-  outline: 3px solid var(--accent-yellow);
+/* Unified, accessible focus ring for keyboard users (mouse clicks are
+   unaffected thanks to :focus-visible). */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--action-teal);
   outline-offset: 2px;
 }
 
-.dgs-container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 3.5rem;
+/* Smooth form-field focus feedback — only paints/composites (border, shadow,
+   background), never properties that force layout. */
+input,
+textarea,
+select {
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (max-width: 768px) {
-  .dgs-container {
-    padding: 0 1.5rem;
+@media (prefers-reduced-motion: reduce) {
+  input,
+  textarea,
+  select {
+    transition: none;
   }
-}
-
-.dgs-container--narrow {
-  max-width: var(--max-width-narrow);
-}
-
-.dgs-section {
-  padding: var(--space-xl) 0;
-}
-
-.dgs-section--lg {
-  padding: var(--space-2xl) 0;
-}
-
-.dgs-hero:not(.dgs-service-hero) {
-  padding-top: clamp(9.5rem, 13vw, 12rem) !important;
-}
-
-.dgs-section--dark,
-.dgs-section--darker {
-  background:
-    radial-gradient(circle at 0% 0%, rgba(8, 157, 135, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 100% 0%, rgba(255, 210, 0, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 100% 100%, rgba(255, 210, 0, 0.08) 0%, transparent 40%),
-    var(--bg-navy-darkest) !important;
-  color: var(--text-light-primary);
-}
-
-.dgs-section--teal {
-  background: var(--bg-teal);
-  color: var(--text-light-primary);
-}
-
-.dgs-section--light {
-  background: var(--bg-white);
-  color: var(--text-dark-primary);
-}
-
-.dgs-section--light p,
-.dgs-section--light h2,
-.dgs-section--light h3,
-.dgs-section--light h4,
-.dgs-section--light span,
-.dgs-section--light li {
-  color: var(--text-dark-primary);
-}
-
-.dgs-text-center {
-  text-align: center;
-}
-
-.dgs-eyebrow {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--action-teal);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: var(--space-xs);
-}
-
-.dgs-section-head {
-  max-width: 56.25rem;
-  margin-bottom: var(--space-lg);
-}
-
-.dgs-section-head--center {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.dgs-section-head h2 {
-  font-size: clamp(1.85rem, 4vw, 2.8rem);
-  margin-bottom: var(--space-sm);
-  color: var(--text-light-primary);
-}
-
-.dgs-section--light .dgs-section-head h2 {
-  color: var(--text-dark-primary);
-}
-
-.dgs-section--teal .dgs-section-head h2 {
-  color: var(--text-light-primary);
-}
-
-.dgs-section-head h2 .dgs-text-accent {
-  color: var(--action-teal);
-}
-
-.dgs-section-head p {
-  color: var(--text-light-muted);
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-.dgs-section--light .dgs-section-head p {
-  color: var(--text-dark-muted);
-}
-
-.dgs-section--teal .dgs-section-head p {
-  color: var(--text-light-muted);
-}
-
-.dgs-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 0.55rem 1.45rem;
-  border-radius: var(--radius-md);
-  text-transform: uppercase;
-  letter-spacing: normal;
-
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.85rem;
-  border: 2px solid transparent;
-  cursor: pointer;
-  margin: 0.5rem 0;
-
-  transition:
-    transform var(--duration-fast) var(--ease-out),
-    background var(--duration-base) var(--ease-out),
-    border-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out);
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.dgs-btn:hover {
-  transform: translateY(-2px);
-}
-
-.dgs-btn--primary {
-  background: var(--accent-yellow);
-  color: var(--text-dark-primary) !important;
-  box-shadow: none;
-  border: none !important;
-  overflow: hidden;
-}
-
-.dgs-btn--primary:hover {
-  background: color-mix(in srgb, var(--accent-yellow) 85%, black 15%) !important;
-  color: var(--text-dark-primary) !important;
-  box-shadow: none;
-}
-
-.dgs-btn--primary-accent {
-  background: var(--accent-yellow);
-  color: var(--text-dark-primary) !important;
-  border-radius: var(--radius-md);
-  font-weight: 700;
-  padding: 0.55rem 1.75rem;
-  box-shadow: none;
-  border: none !important;
-  overflow: hidden;
-}
-
-.dgs-btn--primary-accent span {
-  color: var(--text-dark-primary) !important;
-  background: transparent !important;
-}
-
-.dgs-btn--primary-accent:hover {
-  background: color-mix(in srgb, var(--accent-yellow) 85%, black 15%) !important;
-  color: var(--text-dark-primary) !important;
-  box-shadow: none;
-}
-
-.dgs-btn--primary-accent:hover span {
-  color: var(--text-dark-primary) !important;
-  background: transparent !important;
-}
-
-.dgs-btn--secondary {
-  background: transparent;
-  color: var(--text-white) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
-}
-
-.dgs-btn--secondary:hover {
-  border-color: var(--action-teal) !important;
-  color: var(--action-teal) !important;
-  background: rgba(8, 157, 135, 0.08);
-}
-
-.dgs-btn--outline-dark {
-  background: transparent;
-  border-color: var(--bg-deep-navy);
-  color: var(--bg-deep-navy);
-}
-
-.dgs-btn--outline-dark:hover {
-  background: var(--bg-deep-navy);
-  color: var(--bg-white);
-}
-
-.dgs-btn--block {
-  width: 100%;
-}
-
-.dgs-btn--lg {
-  padding: 0.55rem 1.75rem;
-  font-size: 1rem;
-  border-radius: var(--radius-md);
-}
-
-.dgs-btn--lg.dgs-btn--primary-accent {
-  padding: 0.55rem 1.75rem;
-
-}
-
-.dgs-btn-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-md);
-
-  background: var(--bg-white) !important;
-  color: var(--text-dark-primary) !important;
-  flex-shrink: 0;
-  transition: transform var(--duration-fast) var(--ease-out);
-}
-
-.dgs-nav-cta-group .dgs-btn {
-  margin: 0 !important;
-}
-
-.dgs-btn--primary-accent .dgs-btn-icon {
-  background: transparent !important;
-  color: var(--text-dark-primary) !important;
-  width: auto;
-  height: auto;
-  border-radius: 0;
-}
-
-.dgs-btn-icon svg {
-  width: 16px;
-  height: 16px;
-
-  transition: transform var(--duration-fast) var(--ease-out);
-}
-
-@keyframes dgs-btn-bounce {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  30% {
-    transform: translateY(-3px);
-  }
-
-  50% {
-    transform: translateY(-3px);
-  }
-
-  70% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes dgs-btn-icon-bounce {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  30% {
-    transform: translateY(-3px);
-  }
-
-  50% {
-    transform: translateY(-3px);
-  }
-
-  70% {
-    transform: translateY(0);
-  }
-}
-
-.dgs-btn:hover>* {
-  animation: dgs-btn-bounce 0.45s ease-in-out;
-}
-
-.dgs-btn:hover .dgs-btn-icon svg {
-  animation: dgs-btn-icon-bounce 0.45s ease-in-out;
-}
-
-@media (max-width: 640px) {
-  .dgs-btn {
-    font-size: 0.9rem;
-    padding: 0.6rem 1.3rem;
-  }
-
-  .dgs-btn--lg {
-    padding: 0.6rem 1.5rem;
-    font-size: 0.94rem;
-  }
-
-  .dgs-btn--lg.dgs-btn--primary-accent,
-  .dgs-btn--primary-accent {
-    padding: 0.6rem 1.5rem;
-  }
-
-  .dgs-btn-icon {
-    width: 30px;
-    height: 30px;
-  }
-
-  .dgs-btn-icon svg {
-    width: 15px;
-    height: 15px;
-  }
-}
-
-.dgs-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 100;
-  background: #011425;
-  border-bottom: 1px solid var(--surface-border);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 12px 30px -18px rgba(0, 0, 0, 0.6);
-}
-
-.dgs-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 30rem;
-  height: 30rem;
-  background: radial-gradient(circle at 0% 0%, rgba(8, 157, 135, 0.10) 0%, transparent 55%);
-  pointer-events: none;
-}
-
-.dgs-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 1.15rem;
-  padding-bottom: 1.15rem;
-  gap: var(--space-sm);
-}
-
-.dgs-logo {
-  order: 1;
-}
-
-.dgs-nav-links {
-  order: 2;
-}
-
-.dgs-nav-cta-group {
-  order: 3;
-}
-
-.dgs-nav-toggle {
-  order: 4;
-}
-
-.dgs-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: var(--text-white) !important;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  flex-shrink: 0;
-}
-
-/* Replace text logo with DGS LOGO.png in header and mobile menu */
-.dgs-header .dgs-logo,
-.dgs-mobile-menu-head .dgs-logo {
-  gap: 0;
-  width: 8.25rem;
-  height: 2.75rem;
-  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a2baf5f6da402d7db6.png') no-repeat left center / contain;
-  color: transparent !important;
-  font-size: 0;
-  overflow: hidden;
-}
-
-.dgs-header .dgs-logo .dgs-logo-mark,
-.dgs-mobile-menu-head .dgs-logo .dgs-logo-mark {
-  display: none;
-}
-
-.dgs-logo-mark {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--gradient-teal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 0.85rem;
-  color: var(--text-white);
-  flex-shrink: 0;
-  box-shadow: 0 3px 10px rgba(8, 157, 135, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-}
-
-.dgs-nav-links {
-  display: none;
-  gap: 2.25rem;
-  align-items: center;
-}
-
-.dgs-nav-links a {
-  font-family: var(--font-display);
-  color: var(--text-white);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  transition: color var(--duration-fast) var(--ease-out);
-  text-decoration: none;
-  position: relative;
-  padding: 0.55rem 0;
-  border: 2px solid transparent;
-}
-
-.dgs-nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--action-teal);
-  border-radius: 1px;
-  transition: width 0.3s var(--ease-out);
-}
-
-.dgs-nav-links a:hover::after,
-.dgs-nav-links a.is-active::after {
-  width: 100%;
-}
-
-.dgs-nav-links a:hover,
-.dgs-nav-links a.is-active {
-  color: var(--action-teal);
-}
-
-.dgs-nav-cta {
-  display: none;
-}
-
-.dgs-nav-cta-group {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .dgs-nav-cta-group {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    flex-shrink: 0;
-  }
-}
-
-.dgs-btn--nav,
-.dgs-btn--secondary.dgs-btn--nav {
-  padding: 0.55rem 1.25rem;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  border-width: 2px;
-  border-style: solid;
-  border-color: transparent;
-}
-
-.dgs-nav-cta.dgs-btn--nav {
-  padding: 0.35rem 1rem;
-}
-
-.dgs-nav-cta-group .dgs-btn--nav.dgs-btn--secondary {
-  color: var(--text-white) !important;
-  border-color: rgba(255, 255, 255, 0.25) !important;
-}
-
-.dgs-nav-cta-group .dgs-btn--nav.dgs-btn--secondary:hover {
-  color: var(--action-teal) !important;
-  border-color: var(--action-teal) !important;
-}
-
-.dgs-btn--nav .dgs-btn-icon {
-  width: 30px;
-  height: 30px;
-}
-
-.dgs-btn--nav .dgs-btn-icon svg {
-  width: 14px;
-  height: 14px;
-}
-
-.dgs-nav-toggle {
-  background: none;
-  border: none;
-  color: var(--text-white);
-  padding: 0.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  flex-shrink: 0;
-  -webkit-tap-highlight-color: transparent;
-  position: relative;
-  z-index: 201;
-}
-
-/* ─── ANIMATED HAMBURGER ↔ X ICON ─── */
-.dgs-nav-toggle-bars {
-  position: relative;
-  width: 22px;
-  height: 15px;
-  display: inline-block;
-}
-
-.dgs-nav-toggle-bars span {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  border-radius: 2px;
-  background: currentColor;
-  transition: transform var(--duration-base) var(--ease-out),
-    opacity var(--duration-base) var(--ease-out),
-    top var(--duration-base) var(--ease-out);
-}
-
-.dgs-nav-toggle-bars span:nth-child(1) {
-  top: 0;
-}
-
-.dgs-nav-toggle-bars span:nth-child(2) {
-  top: 6.5px;
-}
-
-.dgs-nav-toggle-bars span:nth-child(3) {
-  top: 13px;
-}
-
-.dgs-nav-toggle[aria-expanded="true"] .dgs-nav-toggle-bars span:nth-child(1) {
-  top: 6.5px;
-  transform: rotate(45deg);
-}
-
-.dgs-nav-toggle[aria-expanded="true"] .dgs-nav-toggle-bars span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-
-.dgs-nav-toggle[aria-expanded="true"] .dgs-nav-toggle-bars span:nth-child(3) {
-  top: 6.5px;
-  transform: rotate(-45deg);
-}
-
-/* ─── OFF-CANVAS BACKDROP ─── */
-.dgs-mobile-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(4, 8, 20, 0.62);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--duration-slow) var(--ease-out), visibility var(--duration-slow) var(--ease-out);
-  z-index: 150;
-}
-
-.dgs-mobile-backdrop.is-open {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* ─── PREMIUM OFF-CANVAS MOBILE DRAWER ─── */
-.dgs-mobile-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100dvh;
-  width: min(86%, 23.75rem);
-  background: linear-gradient(180deg, rgba(13, 22, 48, 0.99) 0%, rgba(8, 14, 33, 0.99) 100%);
-  border-left: 1px solid var(--surface-border-light);
-  box-shadow: -24px 0 60px rgba(0, 0, 0, 0.45);
-  transform: translateX(105%);
-  visibility: hidden;
-  pointer-events: none;
-  transition: transform var(--duration-slow) cubic-bezier(0.16, 1, 0.3, 1), visibility var(--duration-slow) cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 200;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  overflow: hidden;
-}
-
-.dgs-mobile-menu.is-open {
-  transform: translateX(0);
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.dgs-mobile-menu-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: calc(1.5rem + env(safe-area-inset-top, 0px)) 1.5rem 1.25rem;
-  border-bottom: 1px solid var(--surface-border);
-  flex-shrink: 0;
-  background: rgba(13, 22, 48, 0.99);
-}
-
-.dgs-mobile-close {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--surface-border-light);
-  color: var(--text-white);
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: background var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
-}
-
-.dgs-mobile-close:hover {
-  background: rgba(8, 157, 135, 0.12);
-  border-color: var(--action-teal);
-  color: var(--action-teal);
-  transform: rotate(90deg);
-}
-
-.dgs-mobile-close svg {
-  width: 16px;
-  height: 16px;
-}
-
-.dgs-mobile-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  overflow-y: auto;
-  flex-grow: 1;
-  padding: 0.5rem 1.5rem 1.25rem;
-}
-
-.dgs-mobile-links>a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  color: var(--text-light);
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 600;
-  padding: 1rem 0.15rem;
-  border-bottom: 1px solid var(--surface-border);
-  text-decoration: none;
-  transition: color var(--duration-base) var(--ease-out), padding-left var(--duration-base) var(--ease-out);
-}
-
-.dgs-mobile-links>a:last-of-type {
-  border-bottom: none;
-}
-
-.dgs-mobile-link-arrow {
-  width: 16px;
-  height: 16px;
-  color: var(--action-teal);
-  opacity: 0;
-  transform: translateX(-6px);
-  flex-shrink: 0;
-  transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
-}
-
-.dgs-mobile-links>a:hover,
-.dgs-mobile-links>a:focus-visible,
-.dgs-mobile-links>a.is-active {
-  color: var(--action-teal);
-  padding-left: 0.5rem;
-}
-
-.dgs-mobile-links>a:hover .dgs-mobile-link-arrow,
-.dgs-mobile-links>a:focus-visible .dgs-mobile-link-arrow,
-.dgs-mobile-links>a.is-active .dgs-mobile-link-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.dgs-mobile-nav-buttons {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
-}
-
-.dgs-mobile-nav-buttons .dgs-btn {
-  width: 100% !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
-  padding: 0.85rem 1.5rem !important;
-  font-size: 0.95rem !important;
-  font-weight: 700 !important;
-  border-radius: var(--radius-md) !important;
-  box-sizing: border-box !important;
-  display: inline-flex !important;
-}
-
-.dgs-mobile-nav-buttons .dgs-btn--secondary {
-  border: 1px solid var(--surface-border-light) !important;
-  background: transparent !important;
-  color: var(--text-white) !important;
-}
-
-.dgs-mobile-nav-buttons .dgs-btn--secondary:hover {
-  border-color: var(--action-teal) !important;
-  background: rgba(8, 157, 135, 0.08) !important;
-}
-
-html.dgs-menu-open,
-body.dgs-menu-open {
-  overflow: hidden;
-}
-
-@media (min-width: 1024px) {
-  .dgs-nav-links {
-    display: flex;
-  }
-
-  .dgs-nav-cta {
-    display: inline-flex;
-  }
-
-  .dgs-nav-toggle {
-    display: none;
-  }
-
-  .dgs-mobile-menu,
-  .dgs-mobile-backdrop {
-    display: none !important;
-  }
-
-}
-
-.dgs-hero {
-  background: var(--bg-white);
-  color: var(--bg-deep-navy);
-  padding: 6rem 0 7rem;
-  overflow: hidden;
-  position: relative;
-  border-bottom: 1px solid var(--surface-border-neutral);
-}
-
-@media (min-width: 768px) {
-  .dgs-hero {
-    padding: 10rem 0 13rem;
-  }
-}
-
-.dgs-hero::after {
-  display: none;
-}
-
-.dgs-hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.dgs-hero h1 {
-  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
-  margin-bottom: var(--space-sm);
-  max-width: 62.5rem;
-  color: var(--bg-deep-navy);
-}
-
-.dgs-hero-gradient-text {
-  background: linear-gradient(135deg, #0B132B 0%, #089D87 35%, #FFD200 48%, #FFD200 52%, #089D87 65%, #0B132B 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  animation: dgs-gradient-rotation 8s linear infinite;
-  display: inline-block;
-  padding-bottom: 0.15em;
-  margin-bottom: -0.15em;
-}
-
-@keyframes dgs-gradient-rotation {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.dgs-hero-sub {
-  font-size: 1.08rem;
-  color: var(--text-dark-muted);
-  max-width: 45rem;
-  margin-bottom: var(--space-md);
-  line-height: 1.7;
-}
-
-.dgs-hero-note {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-}
-
-.dgs-pill--sm {
-  font-size: 0.72rem;
-  padding: 0.3rem 0.65rem;
-  font-weight: 500;
-}
-
-.dgs-form-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.dgs-form-tab {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.15rem;
-  padding: 0.85rem 1.5rem;
-  border: 1.5px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.45rem;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  opacity: 0.55;
-  min-width: 180px;
-}
-
-.dgs-form-tab:hover {
-  border-color: var(--action-teal);
-  background: rgba(8, 157, 135, 0.06);
-  opacity: 1;
-}
-
-.dgs-form-tab.is-active {
-  border-color: var(--action-teal);
-  background: rgba(8, 157, 135, 0.08);
-  opacity: 1;
-}
-
-.dgs-form-tab-label {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--bg-deep-navy);
-}
-
-.dgs-form-tab-desc {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--text-secondary);
-  line-height: 1.3;
-}
-
-.dgs-icon-cards {
-  display: grid;
-  gap: var(--space-sm);
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 600px) {
-  .dgs-icon-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-}
-
-@media (min-width: 900px) {
-  .dgs-icon-cards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-}
-
-.dgs-cards-4 {
-  display: grid;
-  gap: var(--space-sm);
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 600px) {
-  .dgs-cards-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-}
-
-@media (min-width: 1024px) {
-  .dgs-cards-4 {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-}
-
-.dgs-year-timeline {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-sm);
-  overflow-x: auto;
-  padding-bottom: var(--space-sm);
-  position: relative;
-}
-
-.dgs-year-timeline::before {
-  content: '';
-  position: absolute;
-  top: 22px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: rgba(8, 157, 135, 0.2);
-}
-
-.dgs-year-step {
-  text-align: center;
-  flex: 0 0 auto;
-  min-width: 8rem;
-  position: relative;
-}
-
-.dgs-year-dot {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--action-teal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto var(--space-xs);
-  position: relative;
-  z-index: 2;
-}
-
-.dgs-year-dot svg {
-  width: 14px;
-  height: 14px;
-  color: var(--text-white);
-}
-
-.dgs-year-label {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--action-teal);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  display: block;
-  margin-bottom: 0.3rem;
-}
-
-.dgs-year-step h4 {
-  font-size: 0.95rem;
-  margin-bottom: 0.3rem;
-  color: var(--text-white);
-}
-
-.dgs-year-step p {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
-.dgs-value-card {
-  padding: var(--space-md);
-}
-
-.dgs-value-card-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-sm);
-  background: rgba(8, 157, 135, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--space-sm);
-  color: var(--action-teal);
-}
-
-.dgs-value-card-icon svg {
-  width: 24px;
-  height: 24px;
-}
-
-.dgs-value-card h3 {
-  font-size: 1.05rem;
-  margin-bottom: 0.4rem;
-  color: var(--text-white);
-}
-
-.dgs-value-card p {
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.dgs-pullquote {
-  border-left: 3px solid var(--action-teal);
-  padding-left: var(--space-sm);
-  font-size: 1.02rem;
-  font-style: italic;
-  color: var(--text-light);
-  margin: var(--space-md) 0;
-}
-
-@media (min-width: 860px) {
-  .dgs-split--wide-left {
-    grid-template-columns: 1.3fr 0.7fr;
-  }
-
-  .dgs-split--wide-right {
-    grid-template-columns: 0.8fr 1.2fr;
-  }
-
-}
-
-.dgs-testimonial-cards {
-  display: grid;
-  gap: var(--space-sm);
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 600px) {
-  .dgs-testimonial-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-}
-
-@media (min-width: 1024px) {
-  .dgs-testimonial-cards {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-}
-
-.dgs-testimonial-card {
-  background: var(--surface-navy-card);
-  border: 1px solid var(--surface-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-}
-
-.dgs-testimonial-card-quote {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.65;
-  margin-bottom: var(--space-sm);
-}
-
-.dgs-testimonial-card-author {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-style: italic;
-}
-
-/* --- PREMIUM FAQ LAYOUT (sticky left rail) --- */
-.dgs-premium-faq-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-
-@media (min-width: 900px) {
-  .dgs-premium-faq-layout {
-    grid-template-columns: 4fr 6fr;
-    gap: 6rem;
-  }
-
-  .dgs-faq-sticky {
-    position: sticky;
-    top: 8.75rem;
-  }
-}
-
-/* --- FAQ ACCORDION --- */
-.dgs-faq-list {
-  max-width: 45rem;
-}
-
-.dgs-faq-item {
-  border-bottom: 1px solid var(--surface-border);
-}
-
-.dgs-section--light .dgs-faq-item {
-  border-bottom-color: #E4E8EA;
-}
-
-.dgs-faq-question {
-  width: 100%;
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 1.35rem 0;
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-  font-family: var(--font-heading);
-  font-size: 1.02rem;
-  font-weight: 600;
-  color: var(--text-white);
-  transition: color var(--duration-fast) var(--ease-out);
-  cursor: pointer;
-}
-
-.dgs-faq-question:hover {
-  color: var(--action-mint-hover);
-}
-
-.dgs-section--light .dgs-faq-question {
-  color: var(--bg-deep-navy);
-}
-
-.dgs-faq-question-text {
-  flex-grow: 1;
-}
-
-.dgs-faq-number {
-  flex-shrink: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 1.5px solid var(--surface-border-neutral);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--action-teal);
-  transition:
-    border-color var(--duration-base) var(--ease-out),
-    background var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out);
-}
-
-.dgs-faq-item.is-open .dgs-faq-number {
-  background: var(--accent-yellow);
-  border-color: var(--accent-yellow);
-  color: var(--bg-deep-navy);
-}
-
-.dgs-faq-item.is-open .dgs-faq-question {
-  color: var(--action-mint-hover);
-}
-
-.dgs-section--light .dgs-faq-item.is-open .dgs-faq-question {
-  color: var(--action-teal);
-}
-
-.dgs-faq-toggle {
-  font-family: var(--font-body);
-  color: var(--action-teal);
-  font-size: 1.3rem;
-  margin-left: auto;
-  transition: transform var(--duration-base) var(--ease-out);
-  flex-shrink: 0;
-}
-
-.dgs-faq-item.is-open .dgs-faq-toggle {
-  transform: rotate(45deg);
-}
-
-.dgs-faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  padding-left: 2.95rem;
-  transition: max-height var(--duration-base) var(--ease-out);
-}
-
-.dgs-faq-answer p {
-  padding-bottom: var(--space-sm);
-  color: var(--text-muted);
-  font-size: 0.92rem;
-  line-height: 1.65;
-}
-
-.dgs-section--light .dgs-faq-answer p {
-  color: var(--text-dark-muted) !important;
-}
-
-.dgs-cta-banner {
-  text-align: center;
-  padding: calc(var(--space-2xl) * 0.85) 3.5rem;
-
-  background:
-    radial-gradient(circle at 8% 30%, rgba(8, 157, 135, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 92% 70%, rgba(255, 210, 0, 0.12) 0%, transparent 45%),
-    var(--bg-deep-navy) !important;
-  background-color: var(--bg-deep-navy) !important;
-  position: relative;
-  overflow: hidden;
-}
-
-
-.dgs-cta-banner::before {
-  display: none;
-}
-
-
-.dgs-cta-banner h2 {
-  font-size: clamp(1.9rem, 4.5vw, 3rem);
-  margin-bottom: var(--space-md);
-  color: var(--text-white);
-  max-width: 50rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.dgs-cta-banner h2 .dgs-text-accent {
-  color: var(--action-teal);
-}
-
-.dgs-cta-banner p {
-  color: var(--text-secondary);
-  max-width: 35rem;
-  margin: 0 auto var(--space-md);
-  font-size: 1rem;
-}
-
-@media (max-width: 640px) {
-  .dgs-cta-banner {
-    padding: 2.5rem 1.5rem;
-  }
-}
-
-.dgs-cta-note {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-top: var(--space-xs);
-}
-
-.dgs-footer {
-  background:
-    radial-gradient(circle at 0% 0%, rgba(8, 157, 135, 0.10) 0%, transparent 50%),
-    var(--bg-navy-darkest);
-  color: var(--text-tertiary);
-  padding: var(--space-xl) 0 10.5rem;
-  font-size: 0.88rem;
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-top: 1px solid var(--surface-border);
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-.dgs-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(900px, 90%);
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(8, 157, 135, 0.55) 50%, transparent 100%);
-}
-
-.dgs-footer::after {
-  content: '';
-  position: absolute;
-  bottom: -40%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  aspect-ratio: 1 / 0.5;
-  background: radial-gradient(ellipse at center, rgba(255, 210, 0, 0.10) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.dgs-footer>.dgs-container {
-  position: relative;
-  z-index: 2;
-}
-
-.dgs-page main {
-  position: relative;
-  background: var(--bg-deep-navy);
-  margin-bottom: 0 !important;
-}
-
-.dgs-footer-grid {
-  display: grid;
-  gap: var(--space-lg) var(--space-md);
-  margin-bottom: var(--space-lg);
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-  .dgs-footer-grid {
-    grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  }
-
-}
-
-.dgs-footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin-bottom: 0.85rem;
-  width: 9.25rem;
-  height: 2.75rem;
-  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a2baf5f6da402d7db6.png') no-repeat left center / contain;
-  overflow: hidden;
-}
-
-.dgs-footer-brand .dgs-logo-mark {
-  display: none;
-}
-
-.dgs-footer-brand span {
-  display: none;
-}
-
-.dgs-footer-desc {
-  max-width: 18.75rem;
-  color: var(--text-tertiary);
-  font-size: 0.85rem;
-  line-height: 1.6;
-}
-
-.dgs-footer-col h4 {
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-xs);
-}
-
-.dgs-footer-col a {
-  display: block;
-  padding: 0.3rem 0;
-  color: var(--text-tertiary);
-  font-size: 0.85rem;
-  transition: color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
-  text-decoration: none;
-  position: relative;
-  width: fit-content;
-}
-
-.dgs-footer-col a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0.1rem;
-  width: 0;
-  height: 1px;
-  background: var(--action-teal);
-  transition: width var(--duration-base) var(--ease-out);
-}
-
-.dgs-footer-col a:hover {
-  color: var(--text-white);
-  transform: translateX(2px);
-}
-
-.dgs-footer-col a:hover::after {
-  width: 100%;
-}
-
-.dgs-footer-social {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: var(--space-sm);
-}
-
-.dgs-footer-social a {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--surface-border);
-  background: rgba(255, 255, 255, 0.02);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-tertiary);
-  transition: all var(--duration-base) var(--ease-out);
-  padding: 0;
-}
-
-.dgs-footer-social a:hover {
-  border-color: var(--action-teal);
-  color: var(--action-teal);
-  background: rgba(8, 157, 135, 0.1);
-  box-shadow: 0 4px 16px rgba(8, 157, 135, 0.22);
-  transform: translateY(-2px);
-}
-
-.dgs-footer-social svg {
-  width: 16px;
-  height: 16px;
-}
-
-.dgs-footer-bottom {
-  border-top: 1px solid var(--surface-border);
-  padding-top: var(--space-md);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  letter-spacing: 0.01em;
-}
-
-.dgs-footer-bottom a {
-  color: var(--text-tertiary);
-  transition: color var(--duration-fast) var(--ease-out);
-  text-decoration: none;
-}
-
-.dgs-footer-bottom a:hover {
-  color: var(--text-white);
-}
-
-.dgs-footer-legal {
-  display: flex;
-  gap: var(--space-md);
-}
-
-.dgs-footer-watermark {
-  position: absolute;
-  bottom: -2.5rem;
-  left: 0;
-  right: 0;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(3.2rem, 13.5vw, 13.5rem);
-  line-height: 1;
-  text-align: center;
-  letter-spacing: -0.03em;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-transform: none;
-  z-index: 1;
-  max-width: 100%;
-
-  /* Gradient fill blended into the palette, kept to a very low opacity */
-  background: linear-gradient(180deg,
-      rgba(255, 210, 0, 0.12) 0%,
-      rgba(255, 210, 0, 0.05) 45%,
-      rgba(255, 210, 0, 0.02) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-
-  /* Soft fade toward every edge so it never competes with real content */
-  -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  mask-image:
-    linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-  mask-composite: intersect;
-  mask-repeat: no-repeat;
-  mask-size: 100% 100%;
-}
-
-@media (max-width: 768px) {
-  .dgs-footer-watermark {
-    display: none !important;
-  }
-}
-
-
-.dgs-reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  will-change: transform, opacity;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.dgs-reveal.is-visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  visibility: visible !important;
 }
 
 .dgs-cta-card {
-  background: radial-gradient(circle at 90% 10%, rgba(8, 157, 135, 0.16) 0%, var(--surface-navy-card) 60%);
+  background: radial-gradient(circle at 90% 10%, rgba(0, 179, 159, 0.16) 0%, var(--surface-navy-card) 60%);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-md);
@@ -4195,8 +2295,8 @@ body.dgs-menu-open {
 }
 
 .dgs-cta-card:hover {
-  border-color: rgba(8, 157, 135, 0.3);
-  box-shadow: 0 12px 40px rgba(8, 157, 135, 0.08);
+  border-color: rgba(0, 179, 159, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 179, 159, 0.08);
 }
 
 html.lenis,
@@ -4237,8 +2337,7 @@ html.lenis body {
 .dgs-card-visual-zone {
   width: 100%;
   height: 13.75rem;
-
-  background: radial-gradient(circle at center, rgba(11, 19, 43, 0.4) 0%, var(--bg-navy-darkest) 100%);
+  background: radial-gradient(circle at center, rgba(10, 31, 51, 0.4) 0%, var(--bg-navy-darkest) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4250,8 +2349,8 @@ html.lenis body {
 .dgs-visual-placeholder {
   width: 80%;
   height: 70%;
-  border: 1px dashed rgba(8, 157, 135, 0.2);
-  border-radius: 8px;
+  border: 1px dashed rgba(0, 179, 159, 0.2);
+  border-radius: var(--radius-lg);
   position: relative;
   display: flex;
   align-items: center;
@@ -4274,12 +2373,11 @@ html.lenis body {
   right: -4px;
   bottom: -4px;
   border: 1px solid rgba(255, 255, 255, 0.03);
-  border-radius: 10px;
+  border-radius: var(--radius-xl);
 }
 
 .dgs-reveal {
   visibility: hidden;
-
 }
 
 .dgs-carousel-container {
@@ -4311,28 +2409,26 @@ html.lenis body {
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 4px 24px rgba(11, 19, 43, 0.03);
+  box-shadow: 0 4px 24px rgba(10, 31, 51, 0.03);
   transition: transform var(--duration-fast) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
 }
 
 .dgs-carousel-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(8, 157, 135, 0.25);
-  box-shadow: 0 12px 32px rgba(11, 19, 43, 0.08);
+  border-color: rgba(0, 179, 159, 0.25);
+  box-shadow: 0 12px 32px rgba(10, 31, 51, 0.08);
 }
 
 @media (max-width: 1024px) {
   .dgs-carousel-card {
     flex: 0 0 calc(50% - 0.75rem);
   }
-
 }
 
 @media (max-width: 768px) {
   .dgs-carousel-card {
     flex: 0 0 85%;
   }
-
 }
 
 .dgs-carousel-visual {
@@ -4458,7 +2554,7 @@ html.lenis body {
   gap: 1.25rem;
   padding: 2.25rem 2rem;
   border: 1px solid var(--surface-border-neutral);
-  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
   text-decoration: none;
   position: relative;
   overflow: hidden;
@@ -4504,9 +2600,6 @@ html.lenis body {
 .dgs-service-row-icon svg {
   stroke: var(--action-teal);
   transition: stroke var(--duration-base) var(--ease-out);
-}
-
-.dgs-service-row-icon svg {
   width: 28px;
   height: 28px;
 }
@@ -4605,14 +2698,13 @@ html.lenis body {
   }
 }
 
-
 /* Timeline step content card — teal outline at every breakpoint;
    the connector line (mobile: vertical, desktop: horizontal) is drawn
    on .dgs-timeline-step itself and sits behind this box (z-index 1 vs 2). */
 .dgs-timeline-content {
   position: relative;
   z-index: 2;
-  border: 1px solid rgba(8, 157, 135, 0.45);
+  border: 1px solid rgba(0, 179, 159, 0.45);
   border-radius: var(--radius-md);
   padding: var(--space-sm) var(--space-md);
 }
@@ -4633,34 +2725,29 @@ html.lenis body {
   .dgs-timeline-step:not(:last-child)::after {
     content: '' !important;
     position: absolute !important;
-    /* top = this step's own circle center (padding-top + half the 44px circle) */
     top: calc(var(--space-lg) + 22px) !important;
-    /* bottom is anchored to THIS step's own bottom edge (which already
-       accounts for its heading + paragraph, however long they are),
-       then extends past it through the flex gap (3.5rem) plus the next
-       step's top padding and half-circle — landing exactly on the next
-       circle's center every time, regardless of text length. The old
-       fixed `height: 3.5rem` only matched the gap itself and ran out
-       partway through the paragraph text, never reaching the next
-       circle at all. */
     bottom: calc(-3.5rem - var(--space-lg) - 22px) !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    background: rgba(8, 157, 135, 0.4) !important;
+    background: rgba(0, 179, 159, 0.4) !important;
     z-index: 1 !important;
     border: none !important;
   }
 
-  /* Opaque fill (mobile only) so the vertical connector line above
-     runs behind the text instead of visibly crossing it. Outline
-     comes from the base .dgs-timeline-content rule above. */
   .dgs-timeline-content {
     background: var(--surface-navy-card) !important;
+    color: #ffffff !important;
   }
 
-  .dgs-section--light .dgs-timeline-content {
-    background: var(--bg-white) !important;
+  .dgs-timeline-content h3,
+  .dgs-timeline-content .dgs-step-title {
+    color: #ffffff !important;
+  }
+
+  .dgs-timeline-content p,
+  .dgs-timeline-content .dgs-step-desc {
+    color: rgba(255, 255, 255, 0.82) !important;
   }
 }
 
@@ -4669,8 +2756,8 @@ html.lenis body {
 #dgs-process,
 #dgs-audit-why {
   background:
-    radial-gradient(circle at 50% 50%, rgba(8, 157, 135, 0.15) 0%, transparent 60%),
-    radial-gradient(circle at 100% 100%, rgba(255, 210, 0, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(0, 179, 159, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(245, 166, 35, 0.05) 0%, transparent 40%),
     var(--bg-navy-darkest) !important;
 }
 
@@ -4785,7 +2872,7 @@ html.lenis body {
   bottom: 0.25rem;
   right: -1.5rem;
   width: 1px;
-  background: rgba(11, 19, 43, 0.18);
+  background: rgba(10, 31, 51, 0.18);
 }
 
 @media (max-width: 1024px) {
@@ -4826,10 +2913,11 @@ html.lenis body {
 .dgs-mobile-socials {
   display: flex;
   gap: 1rem;
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
   border-top: 1px solid var(--surface-border);
-  margin-top: auto; /* Pushes to bottom of flex drawer */
+  margin-top: 1.25rem;
 }
+
 .dgs-mobile-socials a {
   width: 42px;
   height: 42px;
@@ -4842,12 +2930,823 @@ html.lenis body {
   color: var(--text-tertiary);
   transition: all var(--duration-base) var(--ease-out);
 }
+
 .dgs-mobile-socials a:hover {
   border-color: var(--action-teal);
   color: var(--action-teal);
-  background: rgba(8, 157, 135, 0.1);
+  background: rgba(0, 179, 159, 0.1);
 }
+
 .dgs-mobile-socials svg {
   width: 18px;
   height: 18px;
+}
+
+/* ============================================================
+   FRAMEWORK 3.0 - NAVIGATION GLASS STATE + READABILITY MEASURE
+   Appended layer: these rules intentionally resolve last.
+   ============================================================ */
+
+/* Scrolled navigation state (toggled by js/modules/nav.js at 50px):
+   at rest the header is solid Deep Navy (heroes are white, so the bar
+   must always carry its own contrast); once scrolled it becomes a
+   translucent navy glass with a 12px backdrop blur. Only paint-level
+   properties transition (background-color, border-color, box-shadow),
+   and the header is promoted to its own compositor layer, so the
+   effect runs at 60fps with zero layout shift. */
+.dgs-header {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  transform: translateY(0);
+  transition: background-color 0.3s var(--ease-out), transform 0.4s var(--ease-out);
+  will-change: transform;
+}
+
+/* Scroll-direction reveal: slide the header up out of view */
+.dgs-header--hidden {
+  transform: translateY(-100%) !important;
+}
+
+.dgs-header.is-scrolled {
+  background-color: #0A1F33 !important; /* Solid Navy Dark */
+  border-bottom: none !important; /* Remove the white line/border */
+  box-shadow: none !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.dgs-header--scrolled {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.dgs-header::before,
+.dgs-header::after {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dgs-header,
+  .dgs-header::before,
+  .dgs-header::after {
+    transition: none;
+  }
+}
+
+/* Readability measure: running copy capped at 60-68ch (tokens in :root) */
+.dgs-page :where(p) {
+  max-inline-size: var(--measure-max);
+}
+
+/* Centered compositions keep their axis when the cap applies */
+.dgs-page :where(.dgs-text-center, .dgs-section-head--center, .dgs-cta-banner, .dgs-year-step, .dgs-timeline-step, [class*="--center"]) :where(p),
+.dgs-page :where(.dgs-cta-banner)>:where(p) {
+  margin-inline: auto;
+}
+
+.dgs-measure {
+  max-inline-size: var(--measure-max) !important;
+}
+
+.dgs-measure--tight {
+  max-inline-size: var(--measure-min) !important;
+}
+
+/* ── Framework 3.0 button system: accent text link (reference: "Explore Solutions →") ── */
+.dgs-launch-link {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--dgs-amber);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.dgs-launch-link span.dgs-underline {
+  display: none;
+}
+
+.dgs-launch-link::after {
+  content: '\2192';
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.dgs-launch-link:hover {
+  color: var(--dgs-amber-hover);
+}
+
+.dgs-launch-link:hover::after {
+  transform: translateX(3px);
+}
+
+/* On light (white hero) sections amber text fails contrast: navy label, amber arrow */
+.dgs-hero .dgs-launch-link {
+  color: var(--text-dark-primary);
+}
+
+
+/* ============================================================
+   SAAS CTA BUTTON (canonical) — moved here from dgs-index.css so
+   every page (solutions, etc.) shares the exact homepage button.
+   Reference: index.html hero + nav + final CTA.
+   ============================================================ */
+.dgs-btn-saas {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-xl);
+  font-family: var(--font-body);
+  font-weight: 650;
+  font-size: 0.95rem;
+  letter-spacing: 0.005em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+  box-sizing: border-box;
+}
+
+/* Larger size for hero / final CTA */
+.dgs-btn-saas.dgs-btn-saas--lg {
+  padding: 1rem 2rem;
+  font-size: 1.02rem;
+  border-radius: var(--radius-lg);
+}
+
+/* Stopwatch / slot-machine label flip on hover */
+.dgs-btn-flip {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  overflow: hidden;
+  height: 1.4em;
+  line-height: var(--line-tight);
+}
+
+/* Global reset to remove drop-shadow / filter / heavy box shadows on photos and images */
+img,
+[role="img"],
+.dgs-hero-visual-frame,
+.dgs-exec-media,
+.dgs-partner-photo,
+.dgs-founder-portrait,
+.dgs-sol-split-media,
+.dgs-csr-media,
+.dgs-sol-figure {
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+.dgs-btn-flip-track {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.42s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.dgs-btn-flip-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 1.4em;
+  white-space: nowrap;
+}
+
+.dgs-btn-saas:hover .dgs-btn-flip-track,
+.dgs-btn-saas:focus-visible .dgs-btn-flip-track {
+  transform: translateY(-50%);
+}
+
+.dgs-btn-saas:hover .dgs-btn-flip-line .dgs-btn-icon svg {
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-btn-flip-track {
+    transition: none;
+  }
+  .dgs-btn-saas:hover .dgs-btn-flip-track,
+  .dgs-btn-saas:focus-visible .dgs-btn-flip-track {
+    transform: none;
+  }
+}
+
+.dgs-btn-saas--primary {
+  background-color: var(--dgs-amber) !important;
+  color: #0A1F33 !important;
+  border: 1px solid var(--dgs-amber) !important;
+}
+
+.dgs-btn-saas--primary:hover {
+  background-color: #e0961f !important;
+  border-color: #e0961f !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(245, 166, 35, 0.28);
+}
+
+.dgs-btn-saas--secondary {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+.dgs-btn-saas--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================================
+   GLOBAL BRAND PROMISE LINK STYLE (.dgs-promise-link)
+   Teal underline text link component with animated arrow icon
+   ============================================================ */
+.dgs-promise-link {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--action-teal) !important;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+  align-self: flex-start;
+  transition: color var(--duration-base, 0.2s) var(--ease-out, ease);
+}
+
+.dgs-promise-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--action-teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base, 0.2s) var(--ease-out, ease);
+}
+
+.dgs-promise-link:hover::after {
+  transform: scaleX(1);
+}
+
+.dgs-promise-link .dgs-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+  transition: transform var(--duration-base, 0.2s) var(--ease-out, ease);
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
+.dgs-promise-link .dgs-btn-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5px;
+}
+
+.dgs-promise-link:hover .dgs-btn-icon {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   GLOBAL WHY DIGITAL GROWTHSCALE CARD SYSTEM (.dgs-why-card)
+   Balanced line-height and tight spacing to eliminate awkward wraps
+   ============================================================ */
+.dgs-why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem 2rem;
+}
+
+@media (min-width: 600px) {
+  .dgs-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-why-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem 2rem;
+  }
+}
+
+.dgs-why-card {
+  position: relative;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  transition: transform 0.4s var(--ease-out, ease);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dgs-why-card:hover {
+  transform: translateY(-5px);
+}
+
+.dgs-why-icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(150deg, rgba(0, 179, 159, 0.16) 0%, rgba(45, 127, 249, 0.1) 100%);
+  border: 1px solid rgba(0, 179, 159, 0.22);
+  color: var(--action-teal, #00B39F);
+  margin-bottom: 1.15rem;
+  transition: all 0.35s ease;
+}
+
+.dgs-why-icon-box svg {
+  width: 26px;
+  height: 26px;
+  transition: transform 0.35s ease;
+}
+
+.dgs-why-card:hover .dgs-why-icon-box {
+  border-color: rgba(0, 179, 159, 0.5);
+  box-shadow: 0 0 18px rgba(0, 179, 159, 0.22);
+}
+
+.dgs-why-card:hover .dgs-why-icon-box svg {
+  transform: scale(1.08);
+}
+
+.dgs-why-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-white, #ffffff);
+  margin: 0 0 0.65rem 0;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.dgs-why-desc {
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--text-light-muted, rgba(255, 255, 255, 0.68));
+  margin: 0;
+}
+
+.dgs-case-note {
+  margin-top: 3.25rem !important;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--text-tertiary, rgba(255, 255, 255, 0.5));
+  text-align: center;
+}
+
+/* ─────────────────────────────────────────
+   GLOBAL: Modernized reduced border-radius & zero drop-shadows sitewide
+   ───────────────────────────────────────── */
+
+/* 1. All cards, panels, containers, and modules: sharp modern radius (8-10px max) */
+.dgs-card,
+.dgs-panel,
+.dgs-challenge-card,
+.dgs-challenge-stage,
+.dgs-outcome-card,
+.dgs-case-card,
+.dgs-stat-card,
+.dgs-metric-card,
+.dgs-resource-card,
+.dgs-service-card,
+.dgs-industry-card,
+.dgs-hub-card,
+.dgs-feature-card,
+.dgs-step-card,
+.dgs-next-step-card,
+.dgs-process-card,
+.dgs-pillar-card,
+.dgs-diff-card,
+.dgs-tag-card,
+.dgs-waiver-banner,
+.dgs-ghl-placeholder-box,
+.dgs-fsol-card,
+.dgs-hero-stats-panel,
+.dgs-contact-form-single,
+.dgs-ghl-placeholder-box,
+[class*="-card"],
+[class*="-panel"]:not(nav):not(.dgs-ghl-panel) {
+  border-radius: var(--radius-xl) !important;
+  box-shadow: none !important;
+}
+
+/* 2. All images, photo frames, and media containers */
+img,
+.dgs-hero-visual-frame,
+.dgs-panel-media,
+.dgs-panel-media img,
+.dgs-case-img,
+.dgs-case-img img,
+.dgs-outcome-img,
+.dgs-outcome-img img,
+.dgs-photo-frame,
+.dgs-img-wrap,
+.dgs-fsol-card-bg img {
+  border-radius: var(--radius-lg) !important;
+  box-shadow: none !important;
+}
+
+/* 3. Sitewide shadow removal for all components, hover states, and overlays */
+*,
+*::before,
+*::after {
+  box-shadow: none !important;
+}
+
+/* ============================================================
+   DESIGN SYSTEM 3.1 — ICON ALIGNMENT, RHYTHM & RESPONSIVE POLISH
+   Appended last so it resolves after component sheets, but kept
+   low-specificity and additive (`:where()` = 0 specificity) so
+   every tuned component keeps its identity. Covers the genuinely
+   global concerns: inline-icon alignment, opt-in text roles, and
+   responsive rhythm step-downs.
+   ============================================================ */
+
+/* ── Inline icon alignment ──────────────────────────────────
+   An inline SVG that accompanies text now sits optically centered
+   on that text instead of dropping to the baseline. Ignored inside
+   flex rows (where components already center their icons), so this
+   only corrects stray inline glyphs in prose, links, and pills. */
+.dgs-page :where(p, span, a, li, h1, h2, h3, h4, h5, h6) > svg {
+  vertical-align: -0.125em;
+}
+
+/* Icons inside buttons / links never shrink away from their label. */
+.dgs-page :where(a, button) svg {
+  flex-shrink: 0;
+}
+
+/* ── Opt-in text-role utilities ─────────────────────────────
+   New markup can adopt the system without inventing new sizes;
+   existing markup is unaffected (these classes aren't in use yet). */
+.dgs-lead {
+  font-size: var(--fs-lead);
+  line-height: var(--line-relaxed);
+  font-weight: 400;
+}
+
+.dgs-caption {
+  font-size: var(--fs-caption);
+  line-height: var(--line-normal);
+  color: var(--text-tertiary);
+}
+
+.dgs-label {
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--line-normal);
+}
+
+/* ── Responsive rhythm step-downs ───────────────────────────
+   Keep vertical rhythm proportional as the viewport narrows:
+   tighten section-head spacing and scale the eyebrow down. */
+@media (max-width: 768px) {
+  .dgs-section-head {
+    margin-bottom: var(--space-md);
+  }
+
+  .dgs-eyebrow {
+    font-size: 0.95rem;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dgs-eyebrow {
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================================
+   GLOBAL SERVICE HERO LAYOUT
+   ============================================================ */
+
+.dgs-service-hero > .dgs-container {
+  position: relative;
+  z-index: 5;
+}
+
+.dgs-svc-hero-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.dgs-service-hero .dgs-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1140px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dgs-service-hero h1 {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0 auto 1.5rem;
+  max-width: 1140px;
+  text-align: center;
+}
+
+.dgs-service-hero .dgs-hero-sub {
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 720px;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dgs-service-hero .dgs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+/* ============================================================
+   GLOBAL HERO TYPOGRAPHY & PILLS
+   ============================================================ */
+
+.dgs-hero-title-main {
+  background: linear-gradient(to bottom, #ffffff 55%, #cfd8e3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.dgs-value-pills {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 0.6rem; 
+  margin-top: 1.5rem; 
+  margin-bottom: 0.5rem;
+}
+
+.dgs-pill {
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dgs-pill--teal {
+  background: rgba(0, 179, 159, 0.15);
+  border: 1px solid rgba(0, 179, 159, 0.4);
+  color: #1affeb; /* brighter teal for dark mode contrast */
+}
+
+/* ============================================================
+   GLOBAL FINAL CTA BLOCK (.dgs-sol-final-cta)
+   ============================================================ */
+.dgs-sol-final-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px) 0 0 / 60px 60px,
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px) 0 0 / 60px 60px,
+    var(--bg-navy-darkest, #0A1F33) !important;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  padding: clamp(5rem, 11vw, 9.5rem) 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dgs-sol-final-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  pointer-events: none;
+}
+
+.dgs-sol-final-cta::before {
+  content: "SCALE";
+  position: absolute;
+  bottom: -2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: 26vw;
+  line-height: 0.75;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  pointer-events: none;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245, 166, 35, 0.035);
+  background: linear-gradient(180deg, rgba(245, 166, 35, 0.05) 0%, transparent 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.dgs-sol-final-cta::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70vw;
+  height: 50vh;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(0, 179, 159, 0.12) 0%,
+    rgba(45, 127, 249, 0.12) 40%,
+    transparent 70%);
+  animation: dgs-sol-cta-breathe 8s ease-in-out infinite alternate;
+}
+
+@keyframes dgs-sol-cta-breathe {
+  0%   { transform: translate(-50%, -50%) scale(1);    opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; }
+}
+
+.dgs-sol-final-cta > *:not(.dgs-sol-final-bg) {
+  position: relative;
+  z-index: 2;
+}
+
+.dgs-sol-final-cta h2 {
+  max-width: 66rem;
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem) !important;
+  line-height: 1.22;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.12));
+  margin: 0 auto 1.5rem auto;
+}
+
+.dgs-sol-final-cta h2 .dgs-text-accent {
+  -webkit-text-fill-color: var(--action-teal);
+  filter: none;
+}
+
+.dgs-sol-final-cta p {
+  max-width: 42rem;
+  margin: 0 auto 3rem auto;
+  color: var(--text-light-secondary, rgba(255,255,255,0.7));
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.dgs-sol-final-ctas {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .dgs-sol-final-cta {
+    padding: 3.5rem 1.25rem !important;
+  }
+
+  .dgs-sol-final-cta h2 {
+    font-size: clamp(1.4rem, 5vw, 1.85rem) !important;
+    line-height: 1.3 !important;
+    word-break: break-word !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .dgs-sol-final-cta p {
+    font-size: 0.98rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 2rem !important;
+    padding: 0 0.5rem !important;
+  }
+
+  .dgs-sol-final-cta::before {
+    font-size: 35vw !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dgs-sol-final-ctas,
+  .dgs-hero-actions,
+  .dgs-cta-actions,
+  .dgs-mobile-nav-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+  }
+
+  .dgs-sol-final-ctas > a,
+  .dgs-sol-final-ctas > .dgs-btn-saas,
+  .dgs-sol-final-ctas > .dgs-btn,
+  .dgs-hero-actions > a,
+  .dgs-hero-actions > .dgs-btn-saas,
+  .dgs-hero-actions > .dgs-btn,
+  .dgs-cta-actions > a,
+  .dgs-cta-actions > .dgs-btn-saas,
+  .dgs-cta-actions > .dgs-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   UNIFIED BUTTON CORNER ROUNDING (Matches solutions.html)
+   Enforces consistent 8px corner rounding (var(--radius-lg))
+   across all button variants, navbar CTAs, forms, and footer.
+   ════════════════════════════════════════════════════════════ */
+.dgs-btn,
+.dgs-btn-saas,
+.dgs-btn-saas--primary,
+.dgs-btn-saas--secondary,
+.dgs-btn-saas--lg,
+.dgs-btn--primary,
+.dgs-btn--secondary,
+.dgs-btn--primary-accent,
+.dgs-btn--outline,
+.dgs-btn--outline-teal,
+.dgs-btn--outline-dark,
+.dgs-btn--nav,
+.dgs-btn--lg,
+#dgs-nav-cta,
+.dgs-newsletter-form button,
+.dgs-mobile-nav-buttons .dgs-btn,
+.dgs-mobile-nav-buttons .dgs-btn-saas,
+button.dgs-btn-saas,
+a.dgs-btn-saas,
+a.dgs-btn,
+.dgs-header .dgs-btn-saas,
+.dgs-footer .dgs-btn-saas {
+  border-radius: var(--radius-lg, 6px) !important;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE NAVBAR COMPACT PADDING
+   Reduces left/right inset space on mobile viewports.
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .dgs-header .dgs-nav,
+  .dgs-container.dgs-nav,
+  header .dgs-nav {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
 }

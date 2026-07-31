@@ -1,2 +1,16 @@
 # Local Netlify folder
 .netlify
+
+# Dependencies & Package management (Vanilla HTML/CSS/JS project)
+node_modules/
+package.json
+package-lock.json
+skills-lock.json
+
+# IDE, Agent & Tooling folders
+.agents/
+.claude/
+.gemini/
+.mcp.json
+scratch/
+scripts/

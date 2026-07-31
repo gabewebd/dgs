@@ -5,5 +5,43 @@
 
 [build]
   functions = "netlify/functions"
-  command = ""
+  # Expand the shared navbar/footer (includes/*.html) into every page so the
+  # published HTML always matches the single source of truth. See scripts/build-includes.js.
+  command = "npm run build:includes"
   publish = "."
+
+# Clean URLs for industry pages, e.g. /industries/outsourcing -> industries/outsourcing.html
+[[redirects]]
+  from = "/industries/:slug"
+  to = "/industries/:slug.html"
+  status = 200
+
+# Clean URLs for solution pages, e.g. /solutions/growth-systems-audit -> solutions/growth-systems-audit.html
+[[redirects]]
+  from = "/solutions/:slug"
+  to = "/solutions/:slug.html"
+  status = 200
+
+# Resources page renamed to Growth Hub - send old links/bookmarks to the new page
+[[redirects]]
+  from = "/resources"
+  to = "/growth-hub"
+  status = 301
+
+# Services page renamed to Solutions - send old links/bookmarks to the new page
+[[redirects]]
+  from = "/services"
+  to = "/solutions"
+  status = 301
+
+# GHL Careers iFrame Source clean URLs
+[[redirects]]
+  from = "/careers-source"
+  to = "/careers-source.html"
+  status = 200
+
+[[redirects]]
+  from = "/careers-embed"
+  to = "/careers-source.html"
+  status = 200
+

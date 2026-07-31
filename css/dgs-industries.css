@@ -1,84 +1,359 @@
 /* ============================================================
    DIGITAL GROWTHSCALE — INDUSTRIES PAGE-SPECIFIC STYLES
-   Split from dgs-styles.css for per-page editing in GHL.
    Load order: dgs-common.css FIRST, then this file.
    ============================================================ */
 
-.dgs-industry-cards {
+#dgs-industries-hero {
+  padding-top: 9rem;
+  padding-bottom: 5rem;
+  text-align: center;
+  background: var(--bg-deep-navy);
+  position: relative;
+}
+
+/* Solution Selector Tab Bar */
+.dgs-selector-tabs {
   display: grid;
-  gap: var(--space-sm);
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 4rem;
 }
 
-@media (min-width: 480px) {
-  .dgs-industry-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-}
-
-@media (min-width: 768px) {
-  .dgs-industry-cards {
+@media (min-width: 600px) {
+  .dgs-selector-tabs {
     grid-template-columns: repeat(3, 1fr);
   }
+}
 
+@media (min-width: 900px) {
+  .dgs-selector-tabs {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .dgs-selector-tabs {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.dgs-tab-btn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xl);
+  padding: 1.1rem 1rem;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dgs-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-white);
+}
+
+.dgs-tab-btn.is-active {
+  background: var(--bg-white);
+  border-color: var(--bg-white);
+  color: var(--bg-deep-navy);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.06);
+}
+
+.dgs-tab-btn-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+}
+
+.dgs-tab-btn.is-active .dgs-tab-btn-icon {
+  opacity: 1;
+}
+
+/* Selector Content Display Pane */
+.dgs-selector-pane {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s var(--ease-out);
+}
+
+.dgs-selector-pane.is-active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Split Columns inside Industry view */
+.dgs-industry-view-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 992px) {
+  .dgs-industry-view-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.dgs-industry-view-head {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dgs-industry-view-head h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: var(--text-white);
+  line-height: 1.15;
+  margin: 0 0 1.25rem 0;
+  letter-spacing: -0.03em;
+}
+
+/* Problems List styling */
+.dgs-problems-box {
+  background: rgba(235, 87, 87, 0.02);
+  border: 1px solid rgba(235, 87, 87, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.dgs-problems-box h4 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #eb5757;
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.dgs-problems-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.dgs-problems-list li {
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.dgs-problems-list li::before {
+  content: "·";
+  color: #eb5757;
+  font-weight: 900;
+  font-size: 1.8rem;
+  line-height: 0.6;
+  margin-top: 0.2rem;
+}
+
+/* Expected Results Box styling */
+.dgs-results-box {
+  background: rgba(0, 179, 159, 0.02);
+  border: 1px solid rgba(0, 179, 159, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+}
+
+.dgs-results-box h4 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--action-teal);
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.dgs-results-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.dgs-results-list li {
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.dgs-results-list li::before {
+  content: "";
+  display: inline-flex;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--action-teal);
+  flex-shrink: 0;
+  margin-top: 0.55rem;
+}
+
+/* Recommended Solutions Card */
+.dgs-rec-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.dgs-rec-box h4 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin: 0 0 1.5rem 0;
+}
+
+.dgs-rec-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.dgs-rec-step-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.4rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-xl);
+  color: var(--text-white);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s var(--ease-out);
+}
+
+.dgs-rec-step-link:hover {
+  background: rgba(0, 179, 159, 0.08);
+  border-color: var(--action-teal);
+  padding-left: 1.8rem;
+}
+
+.dgs-rec-step-link svg {
+  width: 18px;
+  height: 18px;
+  color: var(--action-teal);
+  transition: transform 0.3s;
+}
+
+.dgs-rec-step-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* AEO Snippet box inside Industry Selector */
+.dgs-industry-aeo {
+  background: rgba(45, 127, 249, 0.03);
+  border-left: 4px solid var(--dgs-blue);
+  border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+  padding: 1.8rem 2rem;
+}
+
+.dgs-industry-aeo h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin: 0 0 0.8rem 0;
+  line-height: 1.4;
+}
+
+.dgs-industry-aeo p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================================
+   SERVICE HERO BASE (self-contained)
+   Migrated here so this page needs only dgs-common.css + this
+   sheet. Common already provides the centered grid, content, h1,
+   sub, actions, badge, scrim, duotone, value-pills and title-main;
+   only the dark base shell and the decorative overlays lived in the
+   old service-detail sheet, so they are re-declared below.
+   ============================================================ */
+
+.dgs-service-hero {
+  padding: 7rem 0 0;
+  background-color: #0A1F33 !important;
+  color: var(--text-white);
+  position: relative;
+  overflow: visible;
+  text-align: center;
 }
 
 @media (min-width: 1024px) {
-  .dgs-industry-cards {
-    grid-template-columns: repeat(4, 1fr);
+  .dgs-service-hero {
+    padding: 9rem 0 0;
   }
-
 }
 
-.dgs-industry-card {
-  background: var(--text-white);
-  border: 1px solid #E4E8EA;
-  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
-  padding: var(--space-md);
-  color: var(--bg-deep-navy);
-  transition:
-    border-color var(--duration-base) var(--ease-out),
-    transform var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out);
+/* This page's hero has no photo below the copy, so give the content
+   block the bottom breathing room the photo normally provides. */
+.dgs-service-hero .dgs-hero-content {
+  padding-bottom: 3.5rem;
 }
 
-.dgs-industry-card:hover {
-  border-color: var(--action-teal);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(8, 157, 135, 0.08);
+/* Depth: mesh grid + soft spotlight (scoped copies of the homepage treatment) */
+.dgs-service-hero .dgs-hero-mesh-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 90%);
+  pointer-events: none;
 }
 
-.dgs-industry-card-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-sm);
-  background: rgba(8, 157, 135, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--space-sm);
-  color: var(--action-teal);
-}
-
-.dgs-industry-card-icon svg {
-  width: 28px;
-  height: 28px;
-}
-
-.dgs-industry-card h3 {
-  font-size: 1rem;
-  margin-bottom: 0.35rem;
-  color: var(--bg-deep-navy);
-}
-
-.dgs-industry-card p {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  line-height: 1.55;
-}
-
-/* Fluid layout — relative units for zoom resilience */
-#dgs-industries-hero .dgs-hero-content {
-  max-width: 45rem;
+.dgs-service-hero .dgs-hero-spotlight {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 80vw;
+  height: 60vh;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 179, 159, 0.14) 0%, rgba(45, 127, 249, 0.06) 50%, transparent 80%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -20%);
 }

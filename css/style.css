@@ -10,16 +10,21 @@
    ============================================================ */
 
 :root {
-  /* ---- Brand colors (official DG Brand Guidelines, 2026 Edition) ----
-     Usage ratio per the brand book: 70% navy, 20% teal, 8% mint, 2% gold.
-     Gold is intentionally rare, reserve it for single moments of emphasis,
-     never as a general accent color. */
-  --navy: #08142C;        /* primary background, 70% of the palette */
-  --navy-deep: #050C1C;   /* darkest background, footer */
-  --navy-card: #0E1D3D;   /* cards / panels on navy sections */
-  --teal: #4AA89E;        /* secondary accent, buttons, links, 20% */
-  --mint: #73C8B7;        /* tertiary accent, highlights, icons, 8% */
-  --gold: #F5C845;        /* rare emphasis only, 2%, use sparingly */
+  /* ---- Brand colors (DGS Framework 3.0) ----
+     Usage ratio: 60% Deep Navy, 15% Growth Teal, 10% Electric Blue,
+     remainder neutrals. Signal Amber is NOT a general accent: it is
+     strictly reserved for primary conversion CTAs. */
+  --navy: #0A1F33;        /* Deep Navy: primary background, 60% of the palette */
+  --navy-deep: #0A1F33;   /* darkest background, footer */
+  --navy-card: #213143;   /* cards / panels on navy sections */
+  --teal: #00B39F;        /* Growth Teal: secondary accent, hovers, 15% */
+  --mint: #2EC1B0;        /* Growth Teal lightened, hover states */
+  --blue: #2D7FF9;        /* Electric Blue: interactive accents, links, 10% */
+  --gold: #F5A623;        /* Signal Amber: primary conversion CTAs ONLY */
+
+  /* ---- Readability measure: running copy capped between 60 and 68ch ---- */
+  --measure-min: 60ch;
+  --measure-max: 68ch;
   --gray: #5B6670;        /* muted text, borders, dividers */
   --cream: #F5F7F9;       /* light section background, brand light gray */
   --white: #FFFFFF;
@@ -72,9 +77,12 @@ p { margin: 0; }
 
 /* Visible keyboard focus for every interactive element */
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 3px solid var(--gold);
+  outline: 3px solid var(--blue);
   outline-offset: 2px;
 }
+
+/* Readability: cap running copy at the Framework 3.0 measure */
+:where(p, li) { max-inline-size: var(--measure-max); }
 
 /* ---------- Layout helpers ---------- */
 .container {
@@ -131,7 +139,7 @@ section { padding: var(--space-xl) 0; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(11, 19, 43, 0.94);
+  background: rgba(10, 31, 51, 0.94);
   backdrop-filter: blur(6px);
 }
 .nav {
@@ -262,7 +270,7 @@ section { padding: var(--space-xl) 0; }
 .stack-layer:nth-child(5) { border-left: 3px solid var(--mint); }
 .stack-layer:nth-child(6) {
   border-left: 3px solid var(--gold);
-  background: rgba(255, 210, 0, 0.08);
+  background: rgba(245, 166, 35, 0.08);
   color: var(--white);
   font-weight: 600;
 }
@@ -404,7 +412,7 @@ section { padding: var(--space-xl) 0; }
   font-family: var(--font-body);
   font-size: 0.8rem;
   padding: 0.4rem 0.8rem;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   border: 1px solid #D7DEE0;
   color: var(--navy);
 }

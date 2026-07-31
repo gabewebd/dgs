@@ -23,7 +23,7 @@
 .dgs-next-steps {
   background: var(--surface-navy-card);
   border: 1px solid var(--surface-border);
-  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
   padding: var(--space-md);
 }
 
@@ -91,7 +91,7 @@
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: rgba(8, 157, 135, 0.1);
+  background: rgba(0, 179, 159, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;

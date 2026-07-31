@@ -7,15 +7,15 @@
    ------------------------------------------------------------ */
 :root {
   --bg-white: #FFFFFF;
-  --bg-deep-navy: #0B132B;
+  --bg-deep-navy: #0A1F33;
   --gradient-dark-section: var(--bg-deep-navy);
-  --bg-dark-navy: #0B132B;
-  --bg-teal: #089D87;
+  --bg-dark-navy: #0A1F33;
+  --bg-teal: #00B39F;
   --surface-navy-card: color-mix(in srgb, var(--bg-deep-navy) 92%, white 8%);
-  --bg-navy-darkest: #0B132B;
-  --action-teal: #089D87;
+  --bg-navy-darkest: #0A1F33;
+  --action-teal: #00B39F;
   --action-mint-hover: color-mix(in srgb, var(--action-teal) 70%, white 30%);
-  --accent-yellow: #FFD200;
+  --accent-yellow: #F5A623;
   --text-dark-primary: var(--bg-deep-navy);
   --text-dark-muted: #5B6670;
   --text-light-primary: #FFFFFF;
@@ -24,15 +24,15 @@
   --text-light: #FFFFFF;
   --surface-border: rgba(255, 255, 255, 0.08);
   --surface-border-light: rgba(255, 255, 255, 0.12);
-  --surface-glass: rgba(11, 19, 43, 0.92);
+  --surface-glass: rgba(10, 31, 51, 0.92);
   --surface-hover: rgba(255, 255, 255, 0.04);
   --text-secondary: color-mix(in srgb, #5B6670 45%, white 55%);
   --text-tertiary: color-mix(in srgb, #5B6670 65%, white 35%);
   --surface-border-neutral: color-mix(in srgb, #5B6670 12%, white 88%);
 
-  --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Sora', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Sora', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
@@ -57,8 +57,8 @@
   --duration-base: 0.25s;
   --duration-slow: 0.4s;
 
-  --gradient-teal: linear-gradient(135deg, #0AB69C 0%, #089D87 55%, #067A69 100%);
-  --gradient-teal-soft: linear-gradient(135deg, rgba(8, 157, 135, 0.16) 0%, rgba(66, 194, 176, 0.05) 100%);
+  --gradient-teal: linear-gradient(135deg, #00C3AD 0%, #00B39F 55%, #008F7F 100%);
+  --gradient-teal-soft: linear-gradient(135deg, rgba(0, 179, 159, 0.16) 0%, rgba(46, 193, 176, 0.05) 100%);
   --gradient-mesh-dark: transparent;
   --shadow-sm: none;
   --shadow-md: none;
@@ -79,7 +79,7 @@
 
 html {
   scroll-behavior: initial !important;
-  background-color: #0B132B !important;
+  background-color: #0A1F33 !important;
   min-height: 100%;
   height: auto;
 }
@@ -98,14 +98,14 @@ html.lenis, html.lenis body {
   font-family: var(--font-body);
   color: var(--text-light);
   background: var(--bg-deep-navy) !important;
-  background-color: #0B132B !important;
+  background-color: #0A1F33 !important;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 main {
-  background-color: #0B132B !important;
+  background-color: #0A1F33 !important;
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
@@ -298,7 +298,7 @@ main {
 .dgs-btn--secondary:hover {
   border-color: var(--action-teal) !important;
   color: var(--action-teal) !important;
-  background: rgba(8, 157, 135, 0.08);
+  background: rgba(0, 179, 159, 0.08);
 }
 
 .dgs-btn--block {
@@ -399,7 +399,7 @@ main {
   right: 0;
   width: 100%;
   z-index: 100;
-  background: #011425;
+  background: #0A1F33;
   border-bottom: 1px solid var(--surface-border);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 12px 30px -18px rgba(0, 0, 0, 0.6);
 }
@@ -411,7 +411,7 @@ main {
   left: 0;
   width: 30rem;
   height: 30rem;
-  background: radial-gradient(circle at 0% 0%, rgba(8, 157, 135, 0.10) 0%, transparent 55%);
+  background: radial-gradient(circle at 0% 0%, rgba(0, 179, 159, 0.10) 0%, transparent 55%);
   pointer-events: none;
 }
 
@@ -475,7 +475,7 @@ main {
   gap: 0;
   width: 9.25rem;
   height: 2.75rem;
-  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a2baf5f6da402d7db6.png') no-repeat left center / contain;
+  background: url('../images/DGS White and Yellow.png') no-repeat left center / contain;
   color: transparent !important;
   font-size: 0;
   overflow: hidden;
@@ -499,7 +499,7 @@ main {
   font-size: 0.85rem;
   color: var(--text-white);
   flex-shrink: 0;
-  box-shadow: 0 3px 10px rgba(8, 157, 135, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: 0 3px 10px rgba(0, 179, 159, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .dgs-nav-links {
@@ -530,7 +530,7 @@ main {
   width: 0;
   height: 2px;
   background: var(--action-teal);
-  border-radius: 1px;
+  border-radius: var(--radius-xs);
   transition: width 0.3s var(--ease-out);
 }
 
@@ -624,7 +624,7 @@ main {
   left: 0;
   width: 100%;
   height: 2px;
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
   background: currentColor;
   transition: transform var(--duration-base) var(--ease-out),
     opacity var(--duration-base) var(--ease-out),
@@ -728,7 +728,7 @@ main {
 }
 
 .dgs-mobile-close:hover {
-  background: rgba(8, 157, 135, 0.12);
+  background: rgba(0, 179, 159, 0.12);
   border-color: var(--action-teal);
   color: var(--action-teal);
   transform: rotate(90deg);
@@ -820,7 +820,7 @@ main {
 
 .dgs-mobile-nav-buttons .dgs-btn--secondary:hover {
   border-color: var(--action-teal) !important;
-  background: rgba(8, 157, 135, 0.08) !important;
+  background: rgba(0, 179, 159, 0.08) !important;
 }
 
 html.dgs-menu-open,
@@ -849,7 +849,7 @@ body.dgs-menu-open {
    ------------------------------------------------------------ */
 .dgs-footer {
   background:
-    radial-gradient(circle at 0% 0%, rgba(8, 157, 135, 0.10) 0%, transparent 50%),
+    radial-gradient(circle at 0% 0%, rgba(0, 179, 159, 0.10) 0%, transparent 50%),
     var(--bg-navy-darkest);
   color: var(--text-tertiary);
   padding: var(--space-xl) 0 10.5rem;
@@ -883,7 +883,7 @@ body.dgs-menu-open {
   transform: translateX(-50%);
   width: min(900px, 90%);
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(8, 157, 135, 0.55) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 179, 159, 0.55) 50%, transparent 100%);
 }
 
 .dgs-footer::after {
@@ -894,7 +894,7 @@ body.dgs-menu-open {
   transform: translateX(-50%);
   width: 70%;
   aspect-ratio: 1 / 0.5;
-  background: radial-gradient(ellipse at center, rgba(255, 210, 0, 0.10) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(245, 166, 35, 0.10) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -930,7 +930,7 @@ body.dgs-menu-open {
   margin-bottom: 0.85rem;
   width: 9.25rem;
   height: 2.75rem;
-  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a2baf5f6da402d7db6.png') no-repeat left center / contain;
+  background: url('../images/DGS White and Yellow.png') no-repeat left center / contain;
   overflow: hidden;
 }
 
@@ -1012,8 +1012,8 @@ body.dgs-menu-open {
 .dgs-footer-social a:hover {
   border-color: var(--action-teal);
   color: var(--action-teal);
-  background: rgba(8, 157, 135, 0.1);
-  box-shadow: 0 4px 16px rgba(8, 157, 135, 0.22);
+  background: rgba(0, 179, 159, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 179, 159, 0.22);
   transform: translateY(-2px);
 }
 
@@ -1067,7 +1067,7 @@ body.dgs-menu-open {
   text-transform: none;
   z-index: 1;
   max-width: 100%;
-  background: linear-gradient(180deg, rgba(255, 210, 0, 0.12) 0%, rgba(255, 210, 0, 0.05) 45%, rgba(255, 210, 0, 0.02) 100%);
+  background: linear-gradient(180deg, rgba(245, 166, 35, 0.12) 0%, rgba(245, 166, 35, 0.05) 45%, rgba(245, 166, 35, 0.02) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1097,9 +1097,9 @@ body.dgs-menu-open {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 12% 15%, rgba(8, 157, 135, 0.16) 0%, transparent 45%),
-    radial-gradient(circle at 92% 8%, rgba(255, 210, 0, 0.07) 0%, transparent 40%),
-    radial-gradient(circle at 100% 90%, rgba(8, 157, 135, 0.10) 0%, transparent 45%),
+    radial-gradient(circle at 12% 15%, rgba(0, 179, 159, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 92% 8%, rgba(245, 166, 35, 0.07) 0%, transparent 40%),
+    radial-gradient(circle at 100% 90%, rgba(0, 179, 159, 0.10) 0%, transparent 45%),
     var(--bg-deep-navy);
   padding-top: 8.5rem;
   padding-bottom: var(--space-xl);
@@ -1199,7 +1199,7 @@ body.dgs-menu-open {
   gap: 1.2rem;
   padding: 0.35rem 1.4rem 0.35rem 0.35rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 40px;
+  border-radius: var(--radius-xl);
   background: rgba(255, 255, 255, 0.02);
   margin-top: 0.75rem;
   margin-bottom: var(--space-md);
@@ -1229,8 +1229,8 @@ body.dgs-menu-open {
   width: 3.4rem;
   height: 3.4rem;
   border-radius: 50%;
-  border: 1.5px solid rgba(8, 157, 135, 0.45);
-  background: rgba(8, 157, 135, 0.08);
+  border: 1.5px solid rgba(0, 179, 159, 0.45);
+  background: rgba(0, 179, 159, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1328,7 +1328,7 @@ body.dgs-menu-open {
    ───────────────────────────────────────────── */
 .dgs-countdown-section {
   background:
-    radial-gradient(circle at 50% 0%, rgba(8, 157, 135, 0.1) 0%, transparent 55%),
+    radial-gradient(circle at 50% 0%, rgba(0, 179, 159, 0.1) 0%, transparent 55%),
     var(--bg-navy-darkest);
   border-top: 1px solid var(--surface-border);
   border-bottom: 1px solid var(--surface-border);
@@ -1617,7 +1617,7 @@ body.dgs-menu-open {
   bottom: 0.25rem;
   right: -1.5rem;
   width: 1px;
-  background: rgba(11, 19, 43, 0.18);
+  background: rgba(10, 31, 51, 0.18);
 }
 
 @media (max-width: 1024px) {
@@ -1632,8 +1632,8 @@ body.dgs-menu-open {
    ───────────────────────────────────────────── */
 .dgs-notify-section {
   background:
-    radial-gradient(circle at 0% 100%, rgba(8, 157, 135, 0.14) 0%, transparent 45%),
-    radial-gradient(circle at 100% 0%, rgba(255, 210, 0, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(0, 179, 159, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 100% 0%, rgba(245, 166, 35, 0.05) 0%, transparent 40%),
     var(--bg-deep-navy);
   padding: var(--space-2xl) 0;
 }
@@ -1729,7 +1729,7 @@ body.dgs-menu-open {
 .dgs-notify-input:focus {
   outline: none;
   border-color: var(--action-teal);
-  background: rgba(8, 157, 135, 0.06);
+  background: rgba(0, 179, 159, 0.06);
 }
 
 .dgs-notify-submit {
@@ -1782,8 +1782,8 @@ body.dgs-menu-open {
   gap: 0.6rem;
   padding: 0.85rem 1rem;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(8, 157, 135, 0.4);
-  background: rgba(8, 157, 135, 0.1);
+  border: 1px solid rgba(0, 179, 159, 0.4);
+  background: rgba(0, 179, 159, 0.1);
   color: var(--action-teal);
   font-size: 0.9rem;
   font-weight: 600;
@@ -1817,15 +1817,15 @@ body.dgs-menu-open {
    ------------------------------------------------------------ */
 :root {
   --bg-white: #FFFFFF;
-  --bg-deep-navy: #0B132B;
+  --bg-deep-navy: #0A1F33;
   --gradient-dark-section: var(--bg-deep-navy);
-  --bg-dark-navy: #0B132B;
-  --bg-teal: #089D87;
+  --bg-dark-navy: #0A1F33;
+  --bg-teal: #00B39F;
   --surface-navy-card: color-mix(in srgb, var(--bg-deep-navy) 92%, white 8%);
-  --bg-navy-darkest: #0B132B;
-  --action-teal: #089D87;
+  --bg-navy-darkest: #0A1F33;
+  --action-teal: #00B39F;
   --action-mint-hover: color-mix(in srgb, var(--action-teal) 70%, white 30%);
-  --accent-yellow: #FFD200;
+  --accent-yellow: #F5A623;
   --text-dark-primary: var(--bg-deep-navy);
   --text-dark-muted: #5B6670;
   --text-light-primary: #FFFFFF;
@@ -1834,15 +1834,15 @@ body.dgs-menu-open {
   --text-light: #FFFFFF;
   --surface-border: rgba(255, 255, 255, 0.08);
   --surface-border-light: rgba(255, 255, 255, 0.12);
-  --surface-glass: rgba(11, 19, 43, 0.92);
+  --surface-glass: rgba(10, 31, 51, 0.92);
   --surface-hover: rgba(255, 255, 255, 0.04);
   --text-secondary: color-mix(in srgb, #5B6670 45%, white 55%);
   --text-tertiary: color-mix(in srgb, #5B6670 65%, white 35%);
   --surface-border-neutral: color-mix(in srgb, #5B6670 12%, white 88%);
 
-  --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Sora', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Sora', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
@@ -1867,8 +1867,8 @@ body.dgs-menu-open {
   --duration-base: 0.25s;
   --duration-slow: 0.4s;
 
-  --gradient-teal: linear-gradient(135deg, #0AB69C 0%, #089D87 55%, #067A69 100%);
-  --gradient-teal-soft: linear-gradient(135deg, rgba(8, 157, 135, 0.16) 0%, rgba(66, 194, 176, 0.05) 100%);
+  --gradient-teal: linear-gradient(135deg, #00C3AD 0%, #00B39F 55%, #008F7F 100%);
+  --gradient-teal-soft: linear-gradient(135deg, rgba(0, 179, 159, 0.16) 0%, rgba(46, 193, 176, 0.05) 100%);
   --gradient-mesh-dark: transparent;
   --shadow-sm: none;
   --shadow-md: none;
@@ -1889,7 +1889,7 @@ body.dgs-menu-open {
 
 html {
   scroll-behavior: initial !important;
-  background-color: #0B132B !important;
+  background-color: #0A1F33 !important;
   min-height: 100%;
   height: auto;
 }
@@ -1908,14 +1908,14 @@ html.lenis, html.lenis body {
   font-family: var(--font-body);
   color: var(--text-light);
   background: var(--bg-deep-navy) !important;
-  background-color: #0B132B !important;
+  background-color: #0A1F33 !important;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 main {
-  background-color: #0B132B !important;
+  background-color: #0A1F33 !important;
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
@@ -2108,7 +2108,7 @@ main {
 .dgs-btn--secondary:hover {
   border-color: var(--action-teal) !important;
   color: var(--action-teal) !important;
-  background: rgba(8, 157, 135, 0.08);
+  background: rgba(0, 179, 159, 0.08);
 }
 
 .dgs-btn--block {
@@ -2209,7 +2209,7 @@ main {
   right: 0;
   width: 100%;
   z-index: 100;
-  background: #011425;
+  background: #0A1F33;
   border-bottom: 1px solid var(--surface-border);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 12px 30px -18px rgba(0, 0, 0, 0.6);
 }
@@ -2221,7 +2221,7 @@ main {
   left: 0;
   width: 30rem;
   height: 30rem;
-  background: radial-gradient(circle at 0% 0%, rgba(8, 157, 135, 0.10) 0%, transparent 55%);
+  background: radial-gradient(circle at 0% 0%, rgba(0, 179, 159, 0.10) 0%, transparent 55%);
   pointer-events: none;
 }
 
@@ -2285,7 +2285,7 @@ main {
   gap: 0;
   width: 9.25rem;
   height: 2.75rem;
-  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a2baf5f6da402d7db6.png') no-repeat left center / contain;
+  background: url('../images/DGS White and Yellow.png') no-repeat left center / contain;
   color: transparent !important;
   font-size: 0;
   overflow: hidden;
@@ -2309,7 +2309,7 @@ main {
   font-size: 0.85rem;
   color: var(--text-white);
   flex-shrink: 0;
-  box-shadow: 0 3px 10px rgba(8, 157, 135, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: 0 3px 10px rgba(0, 179, 159, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .dgs-nav-links {
@@ -2340,7 +2340,7 @@ main {
   width: 0;
   height: 2px;
   background: var(--action-teal);
-  border-radius: 1px;
+  border-radius: var(--radius-xs);
   transition: width 0.3s var(--ease-out);
 }
 
@@ -2434,7 +2434,7 @@ main {
   left: 0;
   width: 100%;
   height: 2px;
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
   background: currentColor;
   transition: transform var(--duration-base) var(--ease-out),
     opacity var(--duration-base) var(--ease-out),
@@ -2538,7 +2538,7 @@ main {
 }
 
 .dgs-mobile-close:hover {
-  background: rgba(8, 157, 135, 0.12);
+  background: rgba(0, 179, 159, 0.12);
   border-color: var(--action-teal);
   color: var(--action-teal);
   transform: rotate(90deg);
@@ -2630,7 +2630,7 @@ main {
 
 .dgs-mobile-nav-buttons .dgs-btn--secondary:hover {
   border-color: var(--action-teal) !important;
-  background: rgba(8, 157, 135, 0.08) !important;
+  background: rgba(0, 179, 159, 0.08) !important;
 }
 
 html.dgs-menu-open,
@@ -2659,7 +2659,7 @@ body.dgs-menu-open {
    ------------------------------------------------------------ */
 .dgs-footer {
   background:
-    radial-gradient(circle at 0% 0%, rgba(8, 157, 135, 0.10) 0%, transparent 50%),
+    radial-gradient(circle at 0% 0%, rgba(0, 179, 159, 0.10) 0%, transparent 50%),
     var(--bg-navy-darkest);
   color: var(--text-tertiary);
   padding: var(--space-xl) 0 10.5rem;
@@ -2693,7 +2693,7 @@ body.dgs-menu-open {
   transform: translateX(-50%);
   width: min(900px, 90%);
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(8, 157, 135, 0.55) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 179, 159, 0.55) 50%, transparent 100%);
 }
 
 .dgs-footer::after {
@@ -2704,7 +2704,7 @@ body.dgs-menu-open {
   transform: translateX(-50%);
   width: 70%;
   aspect-ratio: 1 / 0.5;
-  background: radial-gradient(ellipse at center, rgba(255, 210, 0, 0.10) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(245, 166, 35, 0.10) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -2740,7 +2740,7 @@ body.dgs-menu-open {
   margin-bottom: 0.85rem;
   width: 9.25rem;
   height: 2.75rem;
-  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a2baf5f6da402d7db6.png') no-repeat left center / contain;
+  background: url('../images/DGS White and Yellow.png') no-repeat left center / contain;
   overflow: hidden;
 }
 
@@ -2822,8 +2822,8 @@ body.dgs-menu-open {
 .dgs-footer-social a:hover {
   border-color: var(--action-teal);
   color: var(--action-teal);
-  background: rgba(8, 157, 135, 0.1);
-  box-shadow: 0 4px 16px rgba(8, 157, 135, 0.22);
+  background: rgba(0, 179, 159, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 179, 159, 0.22);
   transform: translateY(-2px);
 }
 
@@ -2877,7 +2877,7 @@ body.dgs-menu-open {
   text-transform: none;
   z-index: 1;
   max-width: 100%;
-  background: linear-gradient(180deg, rgba(255, 210, 0, 0.12) 0%, rgba(255, 210, 0, 0.05) 45%, rgba(255, 210, 0, 0.02) 100%);
+  background: linear-gradient(180deg, rgba(245, 166, 35, 0.12) 0%, rgba(245, 166, 35, 0.05) 45%, rgba(245, 166, 35, 0.02) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -2907,9 +2907,9 @@ body.dgs-menu-open {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 12% 15%, rgba(8, 157, 135, 0.16) 0%, transparent 45%),
-    radial-gradient(circle at 92% 8%, rgba(255, 210, 0, 0.07) 0%, transparent 40%),
-    radial-gradient(circle at 100% 90%, rgba(8, 157, 135, 0.10) 0%, transparent 45%),
+    radial-gradient(circle at 12% 15%, rgba(0, 179, 159, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 92% 8%, rgba(245, 166, 35, 0.07) 0%, transparent 40%),
+    radial-gradient(circle at 100% 90%, rgba(0, 179, 159, 0.10) 0%, transparent 45%),
     var(--bg-deep-navy);
   padding-top: 8.5rem;
   padding-bottom: var(--space-xl);
@@ -3009,7 +3009,7 @@ body.dgs-menu-open {
   gap: 1.2rem;
   padding: 0.35rem 1.4rem 0.35rem 0.35rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 40px;
+  border-radius: var(--radius-xl);
   background: rgba(255, 255, 255, 0.02);
   margin-top: 0.75rem;
   margin-bottom: var(--space-md);
@@ -3039,8 +3039,8 @@ body.dgs-menu-open {
   width: 3.4rem;
   height: 3.4rem;
   border-radius: 50%;
-  border: 1.5px solid rgba(8, 157, 135, 0.45);
-  background: rgba(8, 157, 135, 0.08);
+  border: 1.5px solid rgba(0, 179, 159, 0.45);
+  background: rgba(0, 179, 159, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3138,7 +3138,7 @@ body.dgs-menu-open {
    ───────────────────────────────────────────── */
 .dgs-countdown-section {
   background:
-    radial-gradient(circle at 50% 0%, rgba(8, 157, 135, 0.1) 0%, transparent 55%),
+    radial-gradient(circle at 50% 0%, rgba(0, 179, 159, 0.1) 0%, transparent 55%),
     var(--bg-navy-darkest);
   border-top: 1px solid var(--surface-border);
   border-bottom: 1px solid var(--surface-border);
@@ -3427,7 +3427,7 @@ body.dgs-menu-open {
   bottom: 0.25rem;
   right: -1.5rem;
   width: 1px;
-  background: rgba(11, 19, 43, 0.18);
+  background: rgba(10, 31, 51, 0.18);
 }
 
 @media (max-width: 1024px) {
@@ -3442,8 +3442,8 @@ body.dgs-menu-open {
    ───────────────────────────────────────────── */
 .dgs-notify-section {
   background:
-    radial-gradient(circle at 0% 100%, rgba(8, 157, 135, 0.14) 0%, transparent 45%),
-    radial-gradient(circle at 100% 0%, rgba(255, 210, 0, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(0, 179, 159, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 100% 0%, rgba(245, 166, 35, 0.05) 0%, transparent 40%),
     var(--bg-deep-navy);
   padding: var(--space-2xl) 0;
 }
@@ -3539,7 +3539,7 @@ body.dgs-menu-open {
 .dgs-notify-input:focus {
   outline: none;
   border-color: var(--action-teal);
-  background: rgba(8, 157, 135, 0.06);
+  background: rgba(0, 179, 159, 0.06);
 }
 
 .dgs-notify-submit {
@@ -3592,8 +3592,8 @@ body.dgs-menu-open {
   gap: 0.6rem;
   padding: 0.85rem 1rem;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(8, 157, 135, 0.4);
-  background: rgba(8, 157, 135, 0.1);
+  border: 1px solid rgba(0, 179, 159, 0.4);
+  background: rgba(0, 179, 159, 0.1);
   color: var(--action-teal);
   font-size: 0.9rem;
   font-weight: 600;
@@ -3643,7 +3643,7 @@ body.dgs-menu-open {
 .dgs-mobile-socials a:hover {
   border-color: var(--action-teal);
   color: var(--action-teal);
-  background: rgba(8, 157, 135, 0.1);
+  background: rgba(0, 179, 159, 0.1);
 }
 .dgs-mobile-socials svg {
   width: 18px;

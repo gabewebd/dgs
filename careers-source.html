@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital GrowthScale Job Openings</title>
+  
+  <!-- Direct Access Redirect Guard -->
+  <script>
+    if (window === window.top) {
+        window.location.href = "https://digitalgrowthscale.com/careers";
+    }
+  </script>
+
+  <base target="_blank">
+
+  <!-- ========================================================================
+       Force EVERY job listing link to open the full posting in a NEW browser
+       tab, completely outside of this iframe. Covers both the static cards
+       below and any dynamically generated (e.g. GHL blog) "Read More" links.
+       ======================================================================== -->
+  <script>
+    (function () {
+      // Stamp target/rel on a single anchor so it escapes the iframe.
+      function forceNewTab(anchor) {
+        if (!anchor || anchor.tagName !== "A") return;
+        anchor.setAttribute("target", "_blank");
+        anchor.setAttribute("rel", "noopener noreferrer");
+      }
+
+      // Stamp every anchor currently in the document.
+      function forceAll(root) {
+        var links = (root || document).querySelectorAll("a");
+        for (var i = 0; i < links.length; i++) forceNewTab(links[i]);
+      }
+
+      // 1) Belt-and-suspenders: rewrite the clicked anchor in the capture
+      //    phase, before the browser performs the default navigation.
+      document.addEventListener("click", function (e) {
+        var anchor = e.target.closest && e.target.closest("a");
+        if (anchor) forceNewTab(anchor);
+      }, true);
+
+      // 2) Initial pass once the DOM is parsed.
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function () { forceAll(); });
+      } else {
+        forceAll();
+      }
+
+      // 3) Watch for dynamically injected job cards/links and stamp them too.
+      var startObserver = function () {
+        if (!window.MutationObserver || !document.body) return;
+        new MutationObserver(function (mutations) {
+          for (var m = 0; m < mutations.length; m++) {
+            var added = mutations[m].addedNodes;
+            for (var n = 0; n < added.length; n++) {
+              var node = added[n];
+              if (node.nodeType !== 1) continue; // elements only
+              if (node.tagName === "A") forceNewTab(node);
+              if (node.querySelectorAll) forceAll(node);
+            }
+          }
+        }).observe(document.body, { childList: true, subtree: true });
+      };
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", startObserver);
+      } else {
+        startObserver();
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ============================================================================
+       DIGITAL GROWTHSCALE — GHL CAREERS IFRAME SOURCE STYLES
+       ============================================================================ */
+    :root {
+      --dgs-navy:        #0A1F33;
+      --dgs-surface:     #0E2742;
+      --dgs-teal:        #00B39F;
+      --dgs-amber:       #F5A623;
+      --dgs-text:        #FFFFFF;
+      --dgs-text-muted:  #A7B2C4;
+      --dgs-line:        rgba(255, 255, 255, 0.10);
+      --dgs-radius:      6px;
+      --font-heading:    'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: transparent;
+      font-family: var(--font-body);
+      color: var(--dgs-text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hl-blog {
+      width: 100%;
+      padding: 0;
+    }
+
+    .hl-blog .blog-items {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    /* Role Card Styling matching main site */
+    .dgs-role-card-premium {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--dgs-line);
+      border-radius: var(--dgs-radius);
+      padding: 1.5rem;
+      transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+      position: relative;
+    }
+
+    .dgs-role-card-premium:hover {
+      border-color: var(--dgs-teal);
+      transform: translateY(-2px);
+      background: rgba(0, 179, 159, 0.04);
+    }
+
+    .dgs-role-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .dgs-role-dept-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--dgs-teal);
+      background: rgba(0, 179, 159, 0.12);
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+    }
+
+    .dgs-role-meta-badge {
+      font-size: 0.82rem;
+      color: var(--dgs-text-muted);
+    }
+
+    .dgs-role-body h4 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--dgs-text);
+    }
+
+    .dgs-role-body p {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--dgs-text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .dgs-promise-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--dgs-amber);
+      text-decoration: none;
+      transition: color 0.2s ease, gap 0.2s ease;
+    }
+
+    .dgs-promise-link:hover {
+      color: var(--dgs-teal);
+      gap: 0.75rem;
+    }
+
+    .dgs-btn-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dgs-btn-icon svg {
+      width: 14px;
+      height: 14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- GHL CAREERS EMBED CONTENT ONLY — NO NAVBAR, NO FOOTER -->
+  <div class="hl-blog">
+    <div class="blog-items">
+      
+      <!-- Role 1 -->
+      <div class="dgs-role-card-premium">
+        <div class="dgs-role-header-row">
+          <span class="dgs-role-dept-tag">Engineering</span>
+          <span class="dgs-role-meta-badge">Remote • Full-time</span>
+        </div>
+        <div class="dgs-role-body">
+          <h4>AI Systems Engineer</h4>
+          <p>Build custom AI agent pipelines and workflow automations connecting enterprise CRMs and operational databases.</p>
+        </div>
+        <a href="https://digitalgrowthscale.com/contact?apply=ai-systems-engineer" target="_blank" rel="noopener noreferrer" class="dgs-promise-link">
+          Apply for Position
+          <span class="dgs-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
+      </div>
+
+      <!-- Role 2 -->
+      <div class="dgs-role-card-premium">
+        <div class="dgs-role-header-row">
+          <span class="dgs-role-dept-tag">Operations</span>
+          <span class="dgs-role-meta-badge">Remote • Full-time</span>
+        </div>
+        <div class="dgs-role-body">
+          <h4>Operations Associate</h4>
+          <p>Manage client onboarding journeys, audit documentation flow, and coordinate cross-functional project deliverables.</p>
+        </div>
+        <a href="https://digitalgrowthscale.com/contact?apply=operations-associate" target="_blank" rel="noopener noreferrer" class="dgs-promise-link">
+          Apply for Position
+          <span class="dgs-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
+      </div>
+
+      <!-- Role 3 -->
+      <div class="dgs-role-card-premium">
+        <div class="dgs-role-header-row">
+          <span class="dgs-role-dept-tag">Engineering</span>
+          <span class="dgs-role-meta-badge">Remote • Full-time</span>
+        </div>
+        <div class="dgs-role-body">
+          <h4>CRM Automation Developer</h4>
+          <p>Design high-converting lead generation funnels, automated follow-up cadences, and multi-channel API hooks.</p>
+        </div>
+        <a href="https://digitalgrowthscale.com/contact?apply=crm-automation-developer" target="_blank" rel="noopener noreferrer" class="dgs-promise-link">
+          Apply for Position
+          <span class="dgs-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

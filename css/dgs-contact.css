@@ -18,8 +18,8 @@
 
 .dgs-pill--teal {
   color: var(--action-teal);
-  border-color: rgba(8, 157, 135, 0.3);
-  background: rgba(8, 157, 135, 0.08);
+  border-color: rgba(0, 179, 159, 0.3);
+  background: rgba(0, 179, 159, 0.08);
 }
 
 .dgs-section--light .dgs-pill {
@@ -42,7 +42,7 @@
 
 .dgs-form {
   background: var(--text-white);
-  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
   padding: var(--space-lg);
   color: var(--bg-deep-navy);
 }
@@ -96,7 +96,7 @@
 .dgs-form-row select:focus {
   border-color: var(--action-teal);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(8, 157, 135, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 179, 159, 0.1);
 }
 
 .dgs-form-row textarea {
@@ -118,7 +118,7 @@
 .dgs-next-steps {
   background: var(--surface-navy-card);
   border: 1px solid var(--surface-border);
-  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
   padding: var(--space-md);
 }
 
@@ -142,18 +142,17 @@
 }
 
 .dgs-next-step-num {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--action-teal);
-  color: var(--text-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: none;
+  border-radius: 0;
+  width: auto;
+  height: auto;
+  color: var(--action-teal);
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.78rem;
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1;
   flex-shrink: 0;
+  display: block;
 }
 
 .dgs-next-step h4 {
@@ -228,8 +227,8 @@
 }
 
 .dgs-value-pills .dgs-pill {
-  background: rgba(8, 157, 135, 0.08);
-  border-color: rgba(8, 157, 135, 0.2);
+  background: rgba(0, 179, 159, 0.08);
+  border-color: rgba(0, 179, 159, 0.2);
   color: var(--action-teal);
   font-size: 0.78rem;
   font-weight: 600;
@@ -340,7 +339,7 @@
 .dgs-contact-link:hover .dgs-contact-link-icon {
   border-color: var(--action-teal) !important;
   color: var(--action-teal) !important;
-  background: rgba(8, 157, 135, 0.08) !important;
+  background: rgba(0, 179, 159, 0.08) !important;
 }
 
 .dgs-section--light .dgs-contact-link:hover {
@@ -409,4 +408,187 @@
   .dgs-form-iframe-wrap .dgs-form-iframe {
     padding: 0 0.75rem;
   }
+}
+
+/* --- HERO SECTION STYLING (Inherits from dgs-service-detail.css) --- */
+#dgs-contact-hero .dgs-hero-visual-frame {
+  margin: 2.5rem auto -5.5rem !important;
+}
+
+#dgs-contact-form-section {
+  padding-top: 11.5rem !important;
+}
+
+#dgs-contact-hero .dgs-pill--teal {
+  color: #00B39F !important;
+  border-color: rgba(0, 179, 159, 0.35) !important;
+  background: rgba(0, 179, 159, 0.12) !important;
+}
+
+/* Single column contact form & process grid */
+.dgs-contact-form-single {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.dgs-next-steps-section {
+  margin-top: 4.5rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid rgba(10, 31, 51, 0.08);
+}
+
+.dgs-next-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .dgs-next-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-next-steps-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-next-step-card {
+  background: var(--surface-navy-card, rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+
+.dgs-next-step-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 179, 159, 0.35);
+}
+
+/* --- GHL FORM TABS & PLACEHOLDERS --- */
+.dgs-inquiry-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dgs-inquiry-tab {
+  background: var(--bg-white);
+  border: 1px solid #DCE1E4;
+  border-radius: var(--radius-full);
+  padding: 0.55rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--bg-deep-navy);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.dgs-inquiry-tab:hover {
+  border-color: var(--action-teal);
+  color: var(--action-teal);
+}
+
+.dgs-inquiry-tab.is-active {
+  background: var(--bg-deep-navy);
+  color: var(--text-white);
+  border-color: var(--bg-deep-navy);
+  box-shadow: 0 4px 12px rgba(10, 31, 51, 0.15);
+}
+
+.dgs-ghl-panel {
+  display: none;
+}
+
+.dgs-ghl-panel.is-active {
+  display: block;
+}
+
+.dgs-ghl-placeholder-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(0, 179, 159, 0.4);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.dgs-ghl-placeholder-box:hover {
+  border-color: var(--action-teal);
+}
+
+.dgs-ghl-placeholder-badge {
+  display: inline-block;
+  background: rgba(0, 179, 159, 0.12);
+  color: var(--action-teal);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.75rem;
+}
+
+.dgs-ghl-placeholder-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+.dgs-ghl-placeholder-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.dgs-waiver-banner {
+  background: rgba(0, 179, 159, 0.06);
+  border: 1px solid rgba(0, 179, 159, 0.25);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.dgs-waiver-banner h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--bg-deep-navy);
+  margin-bottom: 0.5rem;
+}
+
+.dgs-waiver-banner ol {
+  margin: 0.5rem 0 1rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--slate-text, #64748B);
+  line-height: 1.6;
+}
+
+.dgs-waiver-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--action-teal);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.dgs-waiver-download-btn:hover {
+  opacity: 0.9;
 }

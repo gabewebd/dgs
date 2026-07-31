@@ -1,59 +1,325 @@
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta property="og:description"
-  content="We're not an agency. We're a systems partner. Built by a founder who hit the same ceiling every scaling business hits.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="images/og-cover.svg">
-<link rel="shortcut icon" href="/favicon_io/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/favicon_io/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
-<link rel="manifest" href="/favicon_io/site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-  href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap"
-  rel="stylesheet">
-<link rel="stylesheet" href="css/dgs-common.css">
-<link rel="stylesheet" href="css/dgs-about.css">
-<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.25/dist/lenis.css">
+  <title>About Digital GrowthScale | AI-First Business Transformation</title>
+  <meta name="description" content="Why Digital GrowthScale exists: to help businesses scale through systems, AI, and people. Meet our leadership, methodology, and track record.">
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="About Digital GrowthScale | AI-First Business Transformation">
+  <meta property="og:description" content="Why Digital GrowthScale exists: to help businesses scale through systems, AI, and people. Meet our leadership, methodology, and track record.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/og-cover.svg">
+  <meta property="og:url" content="https://www.digitalgrowthscale.com/about">
 
+  <link rel="shortcut icon" href="/favicon_io/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon_io/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/dgs-common.css">
+  <link rel="stylesheet" href="css/dgs-about.css">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.25/dist/lenis.css">
+
+  <style>
+    .dgs-header .dgs-logo,
+    .dgs-mobile-menu-head .dgs-logo,
+    .dgs-footer-brand {
+      background-image: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5f1fbc9c9b37b5fd51bdd5.png');
+    }
+  </style>
 </head>
 
 <body class="dgs-page">
-  <!-- HEADER -->
-  <header class="dgs-header">
+
+  <!--============================================================
+      HEADER / NAVIGATION
+      ============================================================-->
+  <!-- dgs:include:navbar:start | AUTO-GENERATED from includes/navbar.html — edit that file, then run: npm run build:includes -->
+<header class="dgs-header" id="navbar">
     <div class="dgs-container dgs-nav">
-      <a href="/" class="dgs-logo" id="dgs-logo">
+
+      <!-- Logo -->
+      <a href="/" class="dgs-logo" id="dgs-logo" aria-label="Digital GrowthScale Home">
         <span class="dgs-logo-mark">G</span>
-        Digital GrowthScale
+        <span class="dgs-logo-text">Digital GrowthScale</span>
       </a>
 
-      <nav class="dgs-nav-links" aria-label="Primary">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/services">Services</a>
-        <a href="/industries">Industries</a>
+      <!-- Desktop Nav Links -->
+      <nav class="dgs-nav-links" aria-label="Primary Navigation">
+        <a href="/" class="is-active">Home</a>
+        
+        <!-- About Dropdown -->
+        <div class="dgs-nav-item dgs-dropdown-trigger">
+          <a href="/about" class="dgs-dropdown-toggle">
+            About
+            <svg class="dgs-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="dgs-dropdown-megamenu dgs-dropdown-2-col">
+            <div class="dgs-dropdown-column">
+              <span class="dgs-dropdown-col-title">Identity</span>
+              <a href="/about#story" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Our Story</span>
+                  <span class="item-desc">How we started</span>
+                </span>
+              </a>
+              <a href="/about#leadership" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Leadership</span>
+                  <span class="item-desc">Meet the team</span>
+                </span>
+              </a>
+              <a href="/careers" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Careers</span>
+                  <span class="item-desc">We're hiring</span>
+                </span>
+              </a>
+            </div>
+            <div class="dgs-dropdown-column">
+              <span class="dgs-dropdown-col-title">Mission</span>
+              <a href="/about#why" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Why DGS</span>
+                  <span class="item-desc">Our core focus</span>
+                </span>
+              </a>
+              <a href="/about#approach" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Our Approach</span>
+                  <span class="item-desc">CSR &amp; values</span>
+                </span>
+              </a>
+              <a href="/trust" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Trust Center</span>
+                  <span class="item-desc">Impact and trust</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solutions Dropdown -->
+        <div class="dgs-nav-item dgs-dropdown-trigger">
+          <a href="/solutions" class="dgs-dropdown-toggle">
+            Solutions
+            <svg class="dgs-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="dgs-dropdown-megamenu">
+            <div class="dgs-dropdown-column">
+              <span class="dgs-dropdown-col-title">Transform</span>
+              <a href="/solutions/growth-systems-audit" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Systems Audit</span>
+                  <span class="item-desc">Map bottlenecks &amp; workflows</span>
+                </span>
+              </a>
+              <a href="/solutions/intelligent-automation" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">AI Consulting</span>
+                  <span class="item-desc">AI strategy &amp; consulting</span>
+                </span>
+              </a>
+              <a href="/solutions/growth-os-setup" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Growth OS Setup</span>
+                  <span class="item-desc">Business operating systems</span>
+                </span>
+              </a>
+            </div>
+            <div class="dgs-dropdown-column">
+              <span class="dgs-dropdown-col-title">Enable</span>
+              <a href="/solutions/crm-funnel-automation" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">CRM &amp; Funnels</span>
+                  <span class="item-desc">Lead generation systems</span>
+                </span>
+              </a>
+              <a href="/solutions/remote-staffing-solutions" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Remote Staffing</span>
+                  <span class="item-desc">Outsourcing &amp; remote teams</span>
+                </span>
+              </a>
+              <a href="/solutions/recruitment-executive-search" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Recruitment</span>
+                  <span class="item-desc">Talent mapping &amp; search</span>
+                </span>
+              </a>
+            </div>
+            <div class="dgs-dropdown-column">
+              <span class="dgs-dropdown-col-title">Elevate</span>
+              <a href="/solutions/corporate-training" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">AI Learning</span>
+                  <span class="item-desc">Corporate training &amp; literacy</span>
+                </span>
+              </a>
+              <a href="/solutions/eor-hr-support" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Ops Support</span>
+                  <span class="item-desc">Finance, legal, HR &amp; compliance</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Industries Dropdown -->
+        <div class="dgs-nav-item dgs-dropdown-trigger">
+          <a href="/industries" class="dgs-dropdown-toggle">
+            Industries
+            <svg class="dgs-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="dgs-dropdown-megamenu dgs-dropdown-2-col">
+            <div class="dgs-dropdown-column">
+              <span class="dgs-dropdown-col-title">Framework</span>
+              <a href="/industries#selector" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Solution Selector</span>
+                  <span class="item-desc">Find your systems fit</span>
+                </span>
+              </a>
+              <a href="/industries#problems" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Problems to Solutions</span>
+                  <span class="item-desc">Resolving operations gaps</span>
+                </span>
+              </a>
+            </div>
+            <div class="dgs-dropdown-column">
+              <span class="dgs-dropdown-col-title">Proof</span>
+              <a href="/industries#results" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Results &amp; Cases</span>
+                  <span class="item-desc">Client outcome metrics</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Growth Hub Dropdown -->
+        <div class="dgs-nav-item dgs-dropdown-trigger">
+          <a href="/growth-hub" class="dgs-dropdown-toggle">
+            Growth Hub
+            <svg class="dgs-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="dgs-dropdown-megamenu dgs-dropdown-2-col">
+            <div class="dgs-dropdown-column">
+              <span class="dgs-dropdown-col-title">Content</span>
+              <a href="/growth-hub#learn" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Learn</span>
+                  <span class="item-desc">Guides &amp; systems tutorials</span>
+                </span>
+              </a>
+              <a href="/growth-hub#implement" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Implement</span>
+                  <span class="item-desc">Blueprints &amp; systems tools</span>
+                </span>
+              </a>
+              <a href="/growth-hub#inspire" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Inspire</span>
+                  <span class="item-desc">Case studies &amp; success</span>
+                </span>
+              </a>
+            </div>
+            <div class="dgs-dropdown-column">
+              <span class="dgs-dropdown-col-title">Connect</span>
+              <a href="/contact" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Connect</span>
+                  <span class="item-desc">Consultation requests</span>
+                </span>
+              </a>
+              <a href="/#dgs-homepage-faq" class="dgs-dropdown-item">
+                <span class="item-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">FAQs</span>
+                  <span class="item-desc">Frequently asked questions</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="/contact">Contact</a>
       </nav>
 
+      <!-- Desktop CTAs -->
       <div class="dgs-nav-cta-group">
-        <a href="/audit" class="dgs-btn dgs-btn--secondary dgs-btn--nav">
-          Business Growth Systems Audit
-        </a>
-        <a href="/contact" class="dgs-btn dgs-btn--primary-accent dgs-btn--nav dgs-nav-cta" id="dgs-nav-cta">
-          Book Now
-          <span class="dgs-btn-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+        <a href="/audit" class="dgs-btn-saas dgs-btn-saas--primary" id="dgs-nav-cta">
+          <span class="dgs-btn-flip">
+            <span class="dgs-btn-flip-track">
+              <span class="dgs-btn-flip-line">
+                Get a Systems Audit
+                <span class="dgs-btn-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </span>
+              <span class="dgs-btn-flip-line" aria-hidden="true">
+                Get a Systems Audit
+                <span class="dgs-btn-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </span>
+            </span>
           </span>
         </a>
       </div>
 
+      <!-- Mobile Toggle -->
       <button class="dgs-nav-toggle" id="dgsNavToggle" aria-expanded="false" aria-controls="dgsMobileMenu"
         aria-label="Open menu">
         <span class="dgs-nav-toggle-bars" aria-hidden="true">
@@ -64,17 +330,23 @@
       </button>
     </div>
 
+    <!-- Mobile Menu Container -->
     <div class="dgs-mobile-backdrop" id="dgsMobileBackdrop"></div>
-
     <div class="dgs-mobile-menu" id="dgsMobileMenu" aria-hidden="true">
       <div class="dgs-mobile-menu-head">
         <a href="/" class="dgs-logo">
           <span class="dgs-logo-mark">G</span>
           Digital GrowthScale
         </a>
+        <button class="dgs-mobile-close" id="dgsMobileClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
 
-      <nav class="dgs-mobile-links" aria-label="Mobile">
+      <nav class="dgs-mobile-links" aria-label="Mobile Navigation">
         <a href="/">
           <span>Home</span>
           <svg class="dgs-mobile-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -89,8 +361,8 @@
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
         </a>
-        <a href="/services">
-          <span>Services</span>
+        <a href="/solutions">
+          <span>Solutions</span>
           <svg class="dgs-mobile-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14M13 6l6 6-6 6" />
@@ -103,383 +375,897 @@
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
         </a>
-        <div class="dgs-mobile-nav-buttons"
-          style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
-          <a href="/audit" class="dgs-btn dgs-btn--secondary dgs-btn--block">
-            Business Growth Systems Audit
-          </a>
-          <a href="/contact" class="dgs-btn dgs-btn--primary-accent dgs-btn--block">
-            Book a Consultation
-            <span class="dgs-btn-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+        <a href="/growth-hub">
+          <span>Growth Hub</span>
+          <svg class="dgs-mobile-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/contact">
+          <span>Contact</span>
+          <svg class="dgs-mobile-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+
+        <div class="dgs-mobile-nav-buttons">
+          <a href="/audit" class="dgs-btn-saas dgs-btn-saas--primary">
+            <span class="dgs-btn-flip">
+              <span class="dgs-btn-flip-track">
+                <span class="dgs-btn-flip-line">
+                  Get a Systems Audit
+                  <span class="dgs-btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </span>
+                <span class="dgs-btn-flip-line" aria-hidden="true">
+                  Get a Systems Audit
+                  <span class="dgs-btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </span>
+              </span>
             </span>
           </a>
         </div>
       </nav>
+
+      <!-- Mobile Socials -->
       <div class="dgs-mobile-socials">
         <a href="https://www.facebook.com/DigitalWorkforcePH" target="_blank" rel="noopener" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
           </svg>
         </a>
         <a href="https://www.instagram.com/_digitalconsultingph" target="_blank" rel="noopener" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
           </svg>
         </a>
-        <a href="https://www.linkedin.com/company/digital-consulting-ph/" target="_blank" rel="noopener"
-          aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/company/digital-consulting-ph/" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
           </svg>
         </a>
-        <a href="mailto:faith@digitalgrowthscale.ph" aria-label="Email">
+        <a href="mailto:faith@digitalgrowthscale.com" aria-label="Email">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <rect x="2" y="4" width="20" height="16" rx="2" />
             <path d="M22 7l-10 7L2 7" />
           </svg>
         </a>
       </div>
-
     </div>
   </header>
+<!-- dgs:include:navbar:end -->
 
   <main>
 
     <!-- HERO -->
-    <section class="dgs-hero" id="dgs-about-hero"
-      style="background: var(--bg-dark-navy); padding: 9rem 0 6rem; text-align: center; position: relative; border-bottom: none;">
-      <!-- Subtle background glow -->
-      <div
-        style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 30%, rgba(8, 157, 135, 0.15) 0%, transparent 60%); pointer-events: none;">
+    <section class="dgs-hero dgs-service-hero" id="dgs-about-hero">
+      <div class="dgs-hero-duotone" aria-hidden="true"
+        style="--dgs-duotone-img:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1920&auto=format&fit=crop');">
       </div>
-      <div class="dgs-container" style="position: relative; z-index: 1;">
-        <div class="dgs-hero-content"
-          style="max-width:960px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
-          <span class="dgs-eyebrow dgs-reveal"
-            style="color: var(--action-teal); margin-bottom: 0.5rem; display: inline-block;">About Us</span>
-          <h1 class="dgs-reveal" style="color: var(--text-white); margin-bottom: var(--space-md);">We Did Not Set Out to
-            Build<br><span class="dgs-hero-gradient-text">Just Another Company.</span></h1>
-          <p class="dgs-hero-sub dgs-reveal" style="color: var(--text-secondary); text-align: center; margin: 0;">
-            Digital
-            GrowthScale exists because businesses deserve a partner that actually understands what it takes to grow, one
-            that combines real human talent with intelligent systems and shows up for every stage of the journey.</p>
+      <div class="dgs-hero-scrim" aria-hidden="true"></div>
+      <div class="dgs-hero-mesh-overlay"></div>
+      <div class="dgs-hero-spotlight"></div>
+      <div class="dgs-container">
+        <div class="dgs-svc-hero-grid">
+          <div class="dgs-hero-content">
+            <h1 class="dgs-reveal is-visible"><span class="dgs-hero-title-main">Why Digital GrowthScale?</span></h1>
+            <p class="dgs-hero-sub dgs-reveal is-visible">Digital GrowthScale exists because most growing businesses are held back by their operations, not their opportunities. We were built to close the gap between AI's promise and practical business results.</p>
+            <div class="dgs-hero-actions dgs-reveal is-visible">
+              <a href="/contact" class="dgs-btn-saas dgs-btn-saas--primary dgs-btn-saas--lg">
+                <span class="dgs-btn-flip">
+                  <span class="dgs-btn-flip-track">
+                    <span class="dgs-btn-flip-line">Book a Consultation<span class="dgs-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
+                    <span class="dgs-btn-flip-line" aria-hidden="true">Book a Consultation<span class="dgs-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></span>
+                  </span>
+                </span>
+              </a>
+              <a href="/audit" class="dgs-btn-saas dgs-btn-saas--secondary dgs-btn-saas--lg">
+                <span class="dgs-btn-flip">
+                  <span class="dgs-btn-flip-track">
+                    <span class="dgs-btn-flip-line">Get a Systems Audit</span>
+                    <span class="dgs-btn-flip-line" aria-hidden="true">Get a Systems Audit</span>
+                  </span>
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- BRAND STORY (Upgraded to Premium Layout) -->
-    <section class="dgs-section dgs-section--light" id="dgs-brand-story"
-      style="padding-top: 8rem; padding-bottom: 8rem; background: var(--bg-white);">
+    <!--============================================================
+        SECTION 3.1: OUR STORY & AEO BLOCK (100% Full-Width White Section)
+        ============================================================-->
+    <section class="dgs-section dgs-section--light" id="story" style="background: #ffffff; padding: 6rem 0; width: 100%;">
       <div class="dgs-container">
-        <div class="dgs-premium-story-layout">
-
-          <!-- Left: Sticky Heading Area -->
-          <div class="dgs-story-sticky dgs-reveal">
-            <span class="dgs-eyebrow"
-              style="color: var(--action-teal); display: inline-block; margin-bottom: 1.25rem; letter-spacing: 0.1em;">Our
-              Story</span>
-            <h2
-              style="font-size: clamp(2.5rem, 5vw, 4.2rem); line-height: 1.1; margin-bottom: 1.5rem; color: var(--bg-deep-navy); letter-spacing: -0.03em;">
-              Built from the<br><span style="color: var(--action-teal);">inside out.</span></h2>
-            <div style="width: 60px; height: 3px; background: var(--accent-yellow); margin-top: 2rem;"></div>
-          </div>
-
-          <!-- Right: Editorial Text Flow -->
-          <div class="dgs-story-text-flow dgs-reveal dgs-reveal-delay-1">
-            <p class="dgs-story-lead">Businesses today are not competing on effort alone. They are competing on speed,
-              intelligence, adaptability, and the ability to build systems that scale without breaking.</p>
-
-            <div class="dgs-story-divider"></div>
-
-            <p>We saw this firsthand. Working alongside founders, CEOs, and growing teams across industries, we kept
-              encountering the same pattern: great talent slowed down by scattered tools, unclear processes, and teams
-              stretched across work that should have been systemized.</p>
-
-            <p>That observation became a conviction, and that conviction became <strong
-                style="color:var(--action-teal);">Digital GrowthScale.</strong></p>
-
-            <p>Today we bring together intelligent automation, CRM and funnel systems, remote staffing, recruitment,
-              lead generation, corporate training, and business growth operating system setup into one connected
-              partner—so your business can move forward with clarity and confidence.</p>
-
-            <p>We believe the future of work belongs to businesses that combine human expertise with intelligent systems
-              and clear operating frameworks. That is the future we are building toward, one client at a time.</p>
-
-          </div>
-
+        
+        <!-- H2 & Eyebrow -->
+        <div class="dgs-reveal" style="max-width: 900px; margin: 0 auto 2.5rem auto; text-align: center;">
+          <span class="dgs-eyebrow" style="color: var(--action-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; display: block;">Our Story</span>
+          <h2 style="font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; color: #0A1F33; letter-spacing: -0.02em; margin-bottom: 1.25rem;">
+            Why does Digital GrowthScale exist?
+          </h2>
         </div>
+
+        <!-- AEO Snippet Block -->
+        <div class="dgs-aeo-snippet dgs-reveal" style="max-width: 1000px; margin: 0 auto 4rem auto; padding: 2rem 2.25rem; background: #F0F4F8; border-left: 4px solid var(--action-teal); border-radius: 10px;">
+          <p style="font-size: 1.1rem; line-height: 1.7; color: #0A1F33; margin: 0; font-weight: 500;">
+            Digital GrowthScale exists because most growing businesses are held back by their operations, not their opportunities. We were built to close the gap between AI's promise and practical business results, combining strategy, systems, talent, and hands-on implementation in one partner.
+          </p>
+        </div>
+
+        <!-- Editorial Story Flow -->
+        <div class="dgs-story-grid dgs-reveal" style="max-width: 920px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; color: #334155; display: flex; flex-direction: column; gap: 1.75rem;">
+          <p style="margin: 0;">
+            We watched the same story repeat across hundreds of businesses: ambitious founders, real demand, capable people, and operations held together by spreadsheets, memory, and heroic effort. Growth stalled not because the market said no, but because the business couldn't say yes at scale.
+          </p>
+          <p style="margin: 0;">
+            Meanwhile, AI arrived with enormous promise and very little practical guidance. Businesses were told to "adopt AI" without anyone showing them where, how, or why.
+          </p>
+          <p style="margin: 0; font-weight: 600; color: #0A1F33; border-left: 3px solid var(--action-teal); padding-left: 1.25rem;">
+            Digital GrowthScale was built to be the partner we couldn't find: AI-first in capability, business-first in thinking, and hands-on in implementation. We don't hand you a strategy and leave. We consult, strategize, realize, and sustain, until the results are yours to keep.
+          </p>
+          <p style="margin: 0;">
+            Today, our network has placed close to 900 professionals across 200+ clients on six continents, and our systems run inside businesses from single-founder firms to enterprise teams.
+          </p>
+        </div>
+
       </div>
     </section>
 
-    <!-- MISSION / VISION / CORE BELIEF (North Star Layout) -->
-    <section class="dgs-section dgs-section--darker" id="dgs-beliefs" style="padding-top: 8rem; padding-bottom: 8rem;">
+    <!--============================================================
+        SECTION 3.2: LEADERSHIP (3D Portrait Stage & Showcase)
+        ============================================================-->
+    <section class="dgs-section dgs-section--dark" id="leadership" style="background: #0A1F33; padding: 6rem 0; width: 100%; overflow: hidden;">
       <div class="dgs-container">
-        <div class="dgs-beliefs-layout">
-          <!-- Left: Sticky Heading Area -->
-          <div class="dgs-beliefs-sticky dgs-reveal">
-            <span class="dgs-eyebrow"
-              style="color: var(--action-teal); letter-spacing: 0.1em; display: block; margin-bottom: 1.25rem;">Our
-              Core</span>
-            <h2
-              style="font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.1; color: var(--text-white); margin-bottom: 1.5rem; letter-spacing: -0.02em;">
-              What drives<br><span style="color: var(--action-teal);">Digital GrowthScale</span></h2>
-            <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-top: 1.5rem;">Smarter
-              frameworks. Ready teams. Systems built to let you operate at scale.</p>
-          </div>
+        
+        <div class="dgs-section-head dgs-reveal" style="max-width: 860px; margin: 0 auto 3.5rem auto; text-align: center;">
+          <h2 style="font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; color: #ffffff; letter-spacing: -0.02em; margin-bottom: 1.25rem;">
+            Leadership.
+          </h2>
+          <p style="font-size: 1.1rem; line-height: 1.65; color: rgba(255, 255, 255, 0.75); margin: 0;">
+            Operators, not observers. Our leadership team has built, staffed, automated, and scaled businesses of their own. The advice you get has been tested on our own P&amp;L first.
+          </p>
+        </div>
 
-          <!-- Right: Timeline Stack -->
-          <div class="dgs-beliefs-timeline dgs-reveal dgs-reveal-delay-1">
-            <div class="dgs-timeline-connector"></div>
+        <!-- Interactive Leader Showcase Container -->
+        <div class="dgs-leader-showcase-wrap dgs-reveal" id="leaderShowcase" style="max-width: 1100px; margin: 0 auto;">
+          <style>
+            .dgs-showcase-grid {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 2.5rem;
+              align-items: center;
+            }
+            @media (min-width: 900px) {
+              .dgs-showcase-grid {
+                grid-template-columns: 360px 1fr;
+                gap: 3.5rem;
+              }
+            }
 
-            <div class="dgs-timeline-item">
-              <div class="dgs-timeline-badge">01</div>
-              <div class="dgs-timeline-content">
-                <span class="dgs-belief-label">Our Mission</span>
-                <h3>To help businesses shape the future of work.</h3>
-                <p>We combine human talent, intelligent automation, and structured systems into scalable growth
-                  solutions. We help leaders turn scattered effort into repeatable operations so teams can move faster,
-                  execute with confidence, and grow..</p>
+            /* 3D Stage Container on the Left */
+            .dgs-3d-stage-container {
+              position: relative;
+              width: 100%;
+              max-width: 360px;
+              height: 460px;
+              margin: 0 auto;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              perspective: 1200px;
+            }
+
+            .dgs-3d-stage {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              transform-style: preserve-3d;
+            }
+
+            /* Portrait Cards (3:4 ratio vertical cards, NO circles) */
+            .dgs-portrait-card {
+              position: absolute;
+              top: 10px;
+              left: 50%;
+              width: 310px;
+              height: 430px;
+              margin-left: -155px;
+              border-radius: 20px;
+              overflow: hidden;
+              background: #0D2847;
+              border: 1px solid rgba(255, 255, 255, 0.12);
+              box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+              transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                          opacity 0.6s ease,
+                          box-shadow 0.6s ease,
+                          border-color 0.6s ease;
+              user-select: none;
+              transform-origin: center center;
+              will-change: transform, opacity;
+              cursor: pointer;
+            }
+
+            .dgs-portrait-img-wrap {
+              position: relative;
+              width: 100%;
+              height: 100%;
+            }
+
+            .dgs-portrait-img-wrap img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center top;
+              display: block;
+              transition: transform 0.6s ease;
+            }
+
+            .dgs-portrait-overlay {
+              position: absolute;
+              inset: 0;
+              background: linear-gradient(to top, rgba(10, 31, 51, 0.95) 0%, rgba(10, 31, 51, 0.25) 55%, transparent 100%);
+              pointer-events: none;
+            }
+
+            .dgs-portrait-badge {
+              position: absolute;
+              bottom: 1.25rem;
+              left: 1.25rem;
+              right: 1.25rem;
+              background: rgba(10, 31, 51, 0.82);
+              backdrop-filter: blur(12px);
+              -webkit-backdrop-filter: blur(12px);
+              border: 1px solid rgba(255, 255, 255, 0.15);
+              border-radius: 12px;
+              padding: 0.75rem 1rem;
+              display: flex;
+              flex-direction: column;
+              z-index: 2;
+              transition: border-color 0.3s ease;
+            }
+
+            .dgs-portrait-name {
+              font-size: 1.05rem;
+              font-weight: 800;
+              color: #ffffff;
+              line-height: 1.2;
+            }
+
+            .dgs-portrait-role {
+              font-size: 0.75rem;
+              font-weight: 700;
+              color: var(--action-teal);
+              text-transform: uppercase;
+              letter-spacing: 0.08em;
+              margin-top: 0.2rem;
+            }
+
+            /* Leader Detail Panels on the Right */
+            .dgs-leader-spotlight-card {
+              background: rgba(255, 255, 255, 0.03);
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              border-radius: 20px;
+              padding: 2.75rem 2.5rem;
+              position: relative;
+              min-height: 420px;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            }
+
+            .dgs-leader-detail-panel {
+              display: none;
+              opacity: 0;
+              transform: translateY(12px);
+              transition: opacity 0.4s ease, transform 0.4s ease;
+            }
+            .dgs-leader-detail-panel.is-active {
+              display: flex;
+              flex-direction: column;
+              opacity: 1;
+              transform: translateY(0);
+            }
+
+            .dgs-ctrl-btn {
+              background: rgba(255, 255, 255, 0.05);
+              border: 1px solid rgba(255, 255, 255, 0.12);
+              border-radius: 50%;
+              width: 40px;
+              height: 40px;
+              color: #ffffff;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: all 0.25s ease;
+            }
+            .dgs-ctrl-btn:hover {
+              background: rgba(0, 179, 159, 0.2);
+              border-color: var(--action-teal);
+              color: var(--action-teal);
+              transform: scale(1.05);
+            }
+          </style>
+
+          <div class="dgs-showcase-grid">
+            
+            <!-- Left: 3D Portrait Stage -->
+            <div class="dgs-3d-stage-container">
+              <div class="dgs-3d-stage" id="leadership3dStage">
+                
+                <!-- Card 0: Faith Natividad -->
+                <div class="dgs-portrait-card" data-card="0" onclick="switchLeader(0)">
+                  <div class="dgs-portrait-img-wrap">
+                    <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a577da7524a3ec4c6c5a530.webp" alt="Faith Natividad">
+                    <div class="dgs-portrait-overlay"></div>
+                  </div>
+                  <div class="dgs-portrait-badge">
+                    <span class="dgs-portrait-name">Faith Natividad</span>
+                    <span class="dgs-portrait-role">Founder &amp; CEO</span>
+                  </div>
+                </div>
+
+                <!-- Card 1: Earl Palanca -->
+                <div class="dgs-portrait-card" data-card="1" onclick="switchLeader(1)">
+                  <div class="dgs-portrait-img-wrap">
+                    <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a39c9b37b5fda71097.webp" alt="Earl Palanca">
+                    <div class="dgs-portrait-overlay"></div>
+                  </div>
+                  <div class="dgs-portrait-badge">
+                    <span class="dgs-portrait-name">Earl Palanca</span>
+                    <span class="dgs-portrait-role">Chief Operating Officer</span>
+                  </div>
+                </div>
+
+                <!-- Card 2: Engr. Jhon Bin Arat -->
+                <div class="dgs-portrait-card" data-card="2" onclick="switchLeader(2)">
+                  <div class="dgs-portrait-img-wrap">
+                    <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a4baf5f6da402d7df6.webp" alt="Engr. Jhon Bin Arat">
+                    <div class="dgs-portrait-overlay"></div>
+                  </div>
+                  <div class="dgs-portrait-badge">
+                    <span class="dgs-portrait-name">Engr. Jhon Bin Arat</span>
+                    <span class="dgs-portrait-role">Technical &amp; Project Director</span>
+                  </div>
+                </div>
+
+                <!-- Card 3: Arch. Joanna Natividad -->
+                <div class="dgs-portrait-card" data-card="3" onclick="switchLeader(3)">
+                  <div class="dgs-portrait-img-wrap">
+                    <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a29c9b37b5fda70fc9.webp" alt="Arch. Joanna Natividad">
+                    <div class="dgs-portrait-overlay"></div>
+                  </div>
+                  <div class="dgs-portrait-badge">
+                    <span class="dgs-portrait-name">Arch. Joanna Natividad</span>
+                    <span class="dgs-portrait-role">Business Development &amp; Project Director</span>
+                  </div>
+                </div>
+
               </div>
             </div>
 
-            <div class="dgs-timeline-item">
-              <div class="dgs-timeline-badge">02</div>
-              <div class="dgs-timeline-content">
-                <span class="dgs-belief-label">Our Vision</span>
-                <h3>Helping teams scale with clarity.</h3>
-                <p>To become one of the leading business growth and workforce transformation partners in the
-                  Philippines and global markets, helping companies scale through smarter systems, future ready
-                  teams, and intelligent automation.</p>
+            <!-- Right: Active Executive Details Spotlight Card -->
+            <div class="dgs-leader-spotlight-card">
+              
+              <!-- Panel 0: Faith Natividad -->
+              <div class="dgs-leader-detail-panel is-active" id="leaderPanel-0">
+                <div style="margin-bottom: 1.5rem;">
+                  <span style="font-size: 0.85rem; font-weight: 700; color: var(--action-teal); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Founder &amp; CEO</span>
+                  <h3 style="font-size: 2.1rem; font-weight: 800; color: #ffffff; margin: 0 0 0.4rem 0; letter-spacing: -0.02em;">Faith Natividad</h3>
+                  <p style="font-size: 1.05rem; font-weight: 600; color: rgba(255, 255, 255, 0.9); margin: 0;">AI Business Coach &amp; Future of Work Strategist</p>
+                </div>
+                <p style="font-size: 1.02rem; line-height: 1.75; color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">
+                  Pioneered workforce and AI systems across international markets. Faith built Digital GrowthScale after experiencing the exact operational hurdles that founders face when scaling. Her philosophy centers on human-centered automation and founder emancipation. When not keynoting global conferences or designing growth systems, she works directly with enterprise leaders.
+                </p>
+                <div style="padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                  <span style="font-size: 0.82rem; font-weight: 600; color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.06); padding: 0.4rem 0.9rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.08);">APBC Member &middot; Keynote Speaker</span>
+                  <a href="https://www.linkedin.com/in/faithnatividad/" target="_blank" rel="noopener" style="color: var(--action-teal); text-decoration: none; font-weight: 700; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 0.45rem;">
+                    Connect on LinkedIn <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                  </a>
+                </div>
               </div>
-            </div>
 
-            <div class="dgs-timeline-item">
-              <div class="dgs-timeline-badge">03</div>
-              <div class="dgs-timeline-content">
-                <span class="dgs-belief-label">What We Believe</span>
-                <h3>People and technology, together.</h3>
-                <p>The future of work is not about choosing between people and technology. It belongs to businesses
-                  that know how to combine human expertise, intelligent automation, and clear operating systems to
-                  build something that lasts.</p>
+              <!-- Panel 1: Earl Palanca -->
+              <div class="dgs-leader-detail-panel" id="leaderPanel-1">
+                <div style="margin-bottom: 1.5rem;">
+                  <span style="font-size: 0.85rem; font-weight: 700; color: var(--action-teal); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Chief Operating Officer</span>
+                  <h3 style="font-size: 2.1rem; font-weight: 800; color: #ffffff; margin: 0 0 0.4rem 0; letter-spacing: -0.02em;">Earl Palanca</h3>
+                  <p style="font-size: 1.05rem; font-weight: 600; color: rgba(255, 255, 255, 0.9); margin: 0;">Operations Strategist &amp; Scaling Specialist</p>
+                </div>
+                <p style="font-size: 1.02rem; line-height: 1.75; color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">
+                  Brings deep operational expertise in building high-performing remote teams and workflow architecture. Earl manages cross-functional execution and service delivery across international clients, ensuring every system runs with zero-drama precision.
+                </p>
+                <div style="padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                  <span style="font-size: 0.82rem; font-weight: 600; color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.06); padding: 0.4rem 0.9rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.08);">IBPAP &amp; Operations Specialist</span>
+                  <a href="https://www.linkedin.com/company/digital-consulting-ph/" target="_blank" rel="noopener" style="color: var(--action-teal); text-decoration: none; font-weight: 700; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 0.45rem;">
+                    Connect on LinkedIn <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                  </a>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- FOUNDER BIO (Upgraded to Premium Editorial Layout) -->
-    <section class="dgs-section dgs-section--light" id="dgs-founder-bio"
-      style="padding: 8rem 0; background: var(--bg-white);">
-      <div class="dgs-container">
-        <div class="dgs-premium-founder-layout dgs-reveal">
-
-          <!-- Left side: Image spanning full height -->
-          <div class="dgs-founder-image-col">
-            <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a577da7524a3ec4c6c5a530.webp"
-              alt="Faith Natividad, Founder of Digital GrowthScale, intelligent growth and operations partner Philippines"
-              style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);" />
-          </div>
-
-          <!-- Right side: Editorial text -->
-          <div class="dgs-founder-text-col">
-            <span class="dgs-eyebrow" style="color: var(--action-teal); margin-bottom: 1.25rem;">From the Founder</span>
-            <h2
-              style="font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.1; margin-bottom: 3rem; color: var(--bg-deep-navy); letter-spacing: -0.02em;">
-              Built for business owners<br>ready to <span style="color: var(--action-teal);">scale intelligently.</span>
-            </h2>
-
-            <div class="dgs-founder-body">
-              <p>There was a time when I watched good businesses struggle. Not because they lacked talent or drive, but
-                because everything depended on one person carrying it all, and no system existed to carry it with them.
-              </p>
-              <p>I built Digital GrowthScale because I wanted to change that. I wanted to create a partner that could
-                walk alongside founders and business owners, not just deliver a service and leave, but actually help
-                them build the systems, teams, and structure they need to grow on their own terms.</p>
-              <p>This is the partner I wished existed when I was the one trying to scale. Now it is here for you.</p>
-            </div>
-
-            <div class="dgs-founder-identity">
-              <div class="dgs-founder-line"></div>
-              <div>
-                <p class="dgs-founder-name">Faith Natividad</p>
-                <p class="dgs-founder-title">Founder, Digital GrowthScale</p>
-                <p class="dgs-founder-credo">Intelligent Systems. Limitless Growth.</p>
+              <!-- Panel 2: Engr. Jhon Bin Arat -->
+              <div class="dgs-leader-detail-panel" id="leaderPanel-2">
+                <div style="margin-bottom: 1.5rem;">
+                  <span style="font-size: 0.85rem; font-weight: 700; color: var(--action-teal); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Technical &amp; Project Director</span>
+                  <h3 style="font-size: 2.1rem; font-weight: 800; color: #ffffff; margin: 0 0 0.4rem 0; letter-spacing: -0.02em;">Engr. Jhon Bin Arat</h3>
+                  <p style="font-size: 1.05rem; font-weight: 600; color: rgba(255, 255, 255, 0.9); margin: 0;">AI Engineering &amp; Systems Architecture Director</p>
+                </div>
+                <p style="font-size: 1.02rem; line-height: 1.75; color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">
+                  Leads technical execution, AI tool integration, and custom automation architecture. Jhon transforms complex operational requirements into seamless technical workflows, ensuring client infrastructure is resilient and scalable.
+                </p>
+                <div style="padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                  <span style="font-size: 0.82rem; font-weight: 600; color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.06); padding: 0.4rem 0.9rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.08);">Licensed Engineer &middot; Systems Integrator</span>
+                  <a href="https://www.linkedin.com/company/digital-consulting-ph/" target="_blank" rel="noopener" style="color: var(--action-teal); text-decoration: none; font-weight: 700; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 0.45rem;">
+                    Connect on LinkedIn <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                  </a>
+                </div>
               </div>
-            </div>
-          </div>
 
+              <!-- Panel 3: Arch. Joanna Natividad -->
+              <div class="dgs-leader-detail-panel" id="leaderPanel-3">
+                <div style="margin-bottom: 1.5rem;">
+                  <span style="font-size: 0.85rem; font-weight: 700; color: var(--action-teal); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.4rem;">Business Development &amp; Project Director</span>
+                  <h3 style="font-size: 2.1rem; font-weight: 800; color: #ffffff; margin: 0 0 0.4rem 0; letter-spacing: -0.02em;">Arch. Joanna Natividad</h3>
+                  <p style="font-size: 1.05rem; font-weight: 600; color: rgba(255, 255, 255, 0.9); margin: 0;">Growth Architecture &amp; Client Solutions Director</p>
+                </div>
+                <p style="font-size: 1.02rem; line-height: 1.75; color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">
+                  Drives strategic partnerships, client alignment, and multi-market project expansion, ensuring client goals translate into scalable operational systems and lasting business value.
+                </p>
+                <div style="padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                  <span style="font-size: 0.82rem; font-weight: 600; color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.06); padding: 0.4rem 0.9rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.08);">Licensed Architect &middot; Growth Director</span>
+                  <a href="https://www.linkedin.com/company/digital-consulting-ph/" target="_blank" rel="noopener" style="color: var(--action-teal); text-decoration: none; font-weight: 700; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 0.45rem;">
+                    Connect on LinkedIn <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Controls & Indicator Navigation Bar -->
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                <div class="dgs-showcase-dots" style="display: flex; gap: 0.5rem; align-items: center;">
+                  <span class="dgs-dot is-active" data-dot="0" onclick="switchLeader(0)" style="width: 24px; height: 6px; border-radius: 999px; background: var(--action-teal); cursor: pointer; transition: all 0.3s ease;"></span>
+                  <span class="dgs-dot" data-dot="1" onclick="switchLeader(1)" style="width: 8px; height: 6px; border-radius: 999px; background: rgba(255, 255, 255, 0.2); cursor: pointer; transition: all 0.3s ease;"></span>
+                  <span class="dgs-dot" data-dot="2" onclick="switchLeader(2)" style="width: 8px; height: 6px; border-radius: 999px; background: rgba(255, 255, 255, 0.2); cursor: pointer; transition: all 0.3s ease;"></span>
+                  <span class="dgs-dot" data-dot="3" onclick="switchLeader(3)" style="width: 8px; height: 6px; border-radius: 999px; background: rgba(255, 255, 255, 0.2); cursor: pointer; transition: all 0.3s ease;"></span>
+                </div>
+
+                <div style="display: flex; gap: 0.6rem;">
+                  <button type="button" class="dgs-ctrl-btn" onclick="prevLeader()" aria-label="Previous leader">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                  </button>
+                  <button type="button" class="dgs-ctrl-btn" onclick="nextLeader()" aria-label="Next leader">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
         </div>
+
+        <script>
+          (function() {
+            let currentLeader = 0;
+            const totalLeaders = 4;
+            let autoCycleInterval = null;
+
+            function update3dCards(activeIndex) {
+              const cards = document.querySelectorAll('.dgs-portrait-card');
+              const total = cards.length;
+
+              cards.forEach((card, idx) => {
+                let diff = (idx - activeIndex + total) % total;
+
+                if (diff === 0) {
+                  // Active Front Card
+                  card.style.transform = 'translate3d(0px, 0px, 0px) rotateY(0deg) scale(1)';
+                  card.style.opacity = '1';
+                  card.style.zIndex = '10';
+                  card.style.borderColor = 'var(--action-teal)';
+                  card.style.boxShadow = '0 20px 50px -10px rgba(0, 179, 159, 0.4), 0 0 30px rgba(0, 179, 159, 0.25)';
+                  card.style.cursor = 'default';
+                } else if (diff === 1) {
+                  // Next Card (Right 3D angle behind)
+                  card.style.transform = 'translate3d(45px, -15px, -100px) rotateY(-16deg) scale(0.88)';
+                  card.style.opacity = '0.55';
+                  card.style.zIndex = '5';
+                  card.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                  card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+                  card.style.cursor = 'pointer';
+                } else if (diff === total - 1) {
+                  // Prev Card (Left 3D angle behind)
+                  card.style.transform = 'translate3d(-45px, -15px, -100px) rotateY(16deg) scale(0.88)';
+                  card.style.opacity = '0.55';
+                  card.style.zIndex = '5';
+                  card.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                  card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+                  card.style.cursor = 'pointer';
+                } else {
+                  // Back Card (Deepest in background)
+                  card.style.transform = 'translate3d(0px, -30px, -190px) rotateY(0deg) scale(0.78)';
+                  card.style.opacity = '0.2';
+                  card.style.zIndex = '2';
+                  card.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+                  card.style.boxShadow = 'none';
+                  card.style.cursor = 'pointer';
+                }
+              });
+            }
+
+            window.switchLeader = function(index) {
+              currentLeader = index;
+              
+              // 1. Update 3D Stage Cards
+              update3dCards(currentLeader);
+
+              // 2. Update detail panels active state
+              document.querySelectorAll('.dgs-leader-detail-panel').forEach((panel, idx) => {
+                if (idx === index) {
+                  panel.classList.add('is-active');
+                } else {
+                  panel.classList.remove('is-active');
+                }
+              });
+
+              // 3. Update pagination dots
+              document.querySelectorAll('.dgs-showcase-dots .dgs-dot').forEach((dot, idx) => {
+                if (idx === index) {
+                  dot.style.width = '24px';
+                  dot.style.background = 'var(--action-teal)';
+                } else {
+                  dot.style.width = '8px';
+                  dot.style.background = 'rgba(255, 255, 255, 0.2)';
+                }
+              });
+
+              restartAutoCycle();
+            };
+
+            window.nextLeader = function() {
+              const next = (currentLeader + 1) % totalLeaders;
+              window.switchLeader(next);
+            };
+
+            window.prevLeader = function() {
+              const prev = (currentLeader - 1 + totalLeaders) % totalLeaders;
+              window.switchLeader(prev);
+            };
+
+            function restartAutoCycle() {
+              if (autoCycleInterval) clearInterval(autoCycleInterval);
+              autoCycleInterval = setInterval(() => {
+                window.nextLeader();
+              }, 5500);
+            }
+
+            // Initial position update on load
+            document.addEventListener('DOMContentLoaded', () => {
+              update3dCards(0);
+              restartAutoCycle();
+            });
+
+            // Fallback immediate call if DOM already loaded
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+              update3dCards(0);
+              restartAutoCycle();
+            }
+
+            const wrap = document.getElementById('leaderShowcase');
+            if (wrap) {
+              wrap.addEventListener('mouseenter', () => {
+                if (autoCycleInterval) clearInterval(autoCycleInterval);
+              });
+              wrap.addEventListener('mouseleave', () => {
+                restartAutoCycle();
+              });
+            }
+          })();
+        </script>
+
       </div>
     </section>
 
-    <!-- PARTNERS -->
-    <section class="dgs-section dgs-section--light" id="dgs-partners">
+    <!--============================================================
+        SECTION 3.3: WHY DIGITAL GROWTHSCALE (100% Full-Width White Section)
+        ============================================================-->
+    <section class="dgs-section dgs-section--light" id="why" style="background: #ffffff; padding: 6rem 0; width: 100%;">
       <div class="dgs-container">
-        <div class="dgs-section-head dgs-section-head--center dgs-reveal" style="margin-bottom: var(--space-lg);">
-          <span class="dgs-eyebrow" style="color: var(--action-teal);">Our Partners</span>
-          <h2 style="color: var(--bg-deep-navy);">The people behind<br><span style="color: var(--action-teal);">the
-              system.</span></h2>
+        
+        <div class="dgs-section-head dgs-reveal" style="max-width: 900px; margin: 0 auto 4rem auto; text-align: center;">
+          <span class="dgs-eyebrow" style="color: var(--action-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; display: block;">Core Differentiators</span>
+          <h2 style="font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; color: #0A1F33; letter-spacing: -0.02em; margin-bottom: 1.25rem;">
+            Why Digital GrowthScale?
+          </h2>
+          <p style="font-size: 1.1rem; color: #475569; margin: 0;">
+            Built to scale your business with clarity, precision, and confidence without founder burnout.
+          </p>
         </div>
 
-        <div class="dgs-partners-grid">
-          <div class="dgs-partner-card dgs-reveal">
-            <div class="dgs-partner-photo">
-              <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a39c9b37b5fda71097.webp"
-                alt="Earl Palanca" style="width:100%;height:100%;object-fit:cover;" />
-            </div>
-            <h3 class="dgs-partner-name">Earl Palanca</h3>
-            <p class="dgs-partner-role">Chief Operating Officer</p>
+        <div class="dgs-diff-grid dgs-reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.75rem;">
+          
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 2rem;">
+            <span style="color: var(--action-teal); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 0.6rem;">1. Integrated Ecosystem</span>
+            <p style="font-size: 0.95rem; line-height: 1.65; color: #334155; margin: 0;">We bring strategy, systems, staffing, and corporate training under one roof. No juggling multiple vendors or fragmented point solutions.</p>
           </div>
 
-          <div class="dgs-partner-card dgs-reveal">
-            <div class="dgs-partner-photo">
-              <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a4baf5f6da402d7df6.webp"
-                alt="Engr. Jhon Bin Arat" style="width:100%;height:100%;object-fit:cover;" />
-            </div>
-            <h3 class="dgs-partner-name">Engr. Jhon Bin Arat</h3>
-            <p class="dgs-partner-role">Technical and Project Director</p>
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 2rem;">
+            <span style="color: var(--action-teal); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 0.6rem;">2. AI-First &amp; Human-Centered</span>
+            <p style="font-size: 0.95rem; line-height: 1.65; color: #334155; margin: 0;">We leverage cutting-edge AI automation while elevating human talent. Technology scales the operation, people drive the vision.</p>
           </div>
 
-          <div class="dgs-partner-card dgs-reveal">
-            <div class="dgs-partner-photo">
-              <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a29c9b37b5fda70fc9.webp"
-                alt="Arch. Joanna Natividad" style="width:100%;height:100%;object-fit:cover;" />
-            </div>
-            <h3 class="dgs-partner-name">Arch. Joanna Natividad</h3>
-            <p class="dgs-partner-role">Business Development and Project Director</p>
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 2rem;">
+            <span style="color: var(--action-teal); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 0.6rem;">3. CSR Methodology</span>
+            <p style="font-size: 0.95rem; line-height: 1.65; color: #334155; margin: 0;">Every engagement follows our battle-tested framework: Consult, Strategize, Realize, and Sustain. Predictable outcomes through structured execution.</p>
           </div>
+
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 2rem;">
+            <span style="color: var(--action-teal); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 0.6rem;">4. Global Talent Engine</span>
+            <p style="font-size: 0.95rem; line-height: 1.65; color: #334155; margin: 0;">Placed ~900 professionals across 200+ clients on six continents. We connect you with world-class talent vetted for immediate operational impact.</p>
+          </div>
+
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 2rem;">
+            <span style="color: var(--action-teal); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 0.6rem;">5. Tested on Our Own P&amp;L</span>
+            <p style="font-size: 0.95rem; line-height: 1.65; color: #334155; margin: 0;">Operators, not observers. The strategies, AI workflows, and systems we recommend have been built and proven in our own business first.</p>
+          </div>
+
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 2rem;">
+            <span style="color: var(--action-teal); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 0.6rem;">6. Hands-On Implementation</span>
+            <p style="font-size: 0.95rem; line-height: 1.65; color: #334155; margin: 0;">We build alongside your team rather than handing off a report. From system configuration to team onboarding, we ensure complete adoption.</p>
+          </div>
+
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 2rem;">
+            <span style="color: var(--action-teal); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 0.6rem;">7. End-to-End Governance</span>
+            <p style="font-size: 0.95rem; line-height: 1.65; color: #334155; margin: 0;">Built for peace of mind across finance, HR, legal, and data privacy. We ensure your scaled operations stay fully compliant.</p>
+          </div>
+
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 2rem;">
+            <span style="color: var(--action-teal); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 0.6rem;">8. Sustainable Capability Transfer</span>
+            <p style="font-size: 0.95rem; line-height: 1.65; color: #334155; margin: 0;">We don't build vendor lock-in. We document systems, train your internal team, and transfer capability so results outlast us.</p>
+          </div>
+
         </div>
+
       </div>
     </section>
 
-    <!-- BRAND VALUES (Why Digital GrowthScale) -->
-    <section class="dgs-section dgs-section--light" id="dgs-values">
+    <!--============================================================
+        SECTION 3.4: OUR APPROACH (CSR FRAMEWORK) (Dark Navy Background)
+        ============================================================-->
+    <section class="dgs-section dgs-section--dark" id="approach" style="background: #0A1F33; padding: 6rem 0; width: 100%;">
       <div class="dgs-container">
-        <div class="dgs-section-head dgs-section-head--center dgs-reveal" style="margin-bottom: var(--space-lg);">
-          <span class="dgs-eyebrow" style="color: var(--action-teal);">Why Digital GrowthScale</span>
-          <h2 style="color: var(--bg-deep-navy);">Built to scale your business<br><span
-              style="color: var(--action-teal);">without breaking it.</span></h2>
+        
+        <!-- H2 Header -->
+        <div class="dgs-reveal" style="max-width: 900px; margin: 0 auto 2.5rem auto; text-align: center;">
+          <h2 style="font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; color: #ffffff; letter-spacing: -0.02em; margin-bottom: 1.25rem;">
+            What is the CSR Framework?
+          </h2>
         </div>
 
-        <div class="dgs-services-list dgs-reveal">
-          <div class="dgs-service-row">
-            <span class="dgs-service-row-icon">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-                <line x1="9" y1="9" x2="9.01" y2="9" />
-                <line x1="15" y1="9" x2="15.01" y2="9" />
-              </svg>
-            </span>
-            <div class="dgs-service-row-content">
-              <span class="dgs-service-row-title">1. People first, always.</span>
-              <span class="dgs-service-row-benefit">We believe real human expertise and intelligent automation work best
-                together, not in place of each other.</span>
-            </div>
-          </div>
-          <div class="dgs-service-row">
-            <span class="dgs-service-row-icon">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z" />
-                <path d="M12 12v9M5 7l7 5 7-5" />
-              </svg>
-            </span>
-            <div class="dgs-service-row-content">
-              <span class="dgs-service-row-title">2. Practical, not generic.</span>
-              <span class="dgs-service-row-benefit">Every system we build is designed around how your business actually
-                operates, not a template applied to everyone.</span>
-            </div>
-          </div>
-          <div class="dgs-service-row">
-            <span class="dgs-service-row-icon">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="2" y1="12" x2="22" y2="12" />
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-              </svg>
-            </span>
-            <div class="dgs-service-row-content">
-              <span class="dgs-service-row-title">3. Local roots, global reach.</span>
-              <span class="dgs-service-row-benefit">We are built in the Philippines and serve both local and
-                international clients, with systems that scale across markets.</span>
-            </div>
-          </div>
-          <div class="dgs-service-row">
-            <span class="dgs-service-row-icon">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M3 9h18M9 21V9" />
-              </svg>
-            </span>
-            <div class="dgs-service-row-content">
-              <span class="dgs-service-row-title">4. Built to reduce founder dependency.</span>
-              <span class="dgs-service-row-benefit">Everything we do is designed to give you back your time, by building
-                systems and teams that do not need you to manage every detail.</span>
-            </div>
-          </div>
+        <!-- AEO Snippet Block -->
+        <div class="dgs-aeo-snippet dgs-reveal" style="max-width: 1000px; margin: 0 auto 4rem auto; padding: 2rem 2.25rem; background: rgba(0, 179, 159, 0.08); border-left: 4px solid var(--action-teal); border-radius: 10px;">
+          <p style="font-size: 1.05rem; line-height: 1.7; color: rgba(255, 255, 255, 0.9); margin: 0; font-weight: 500;">
+            The CSR Framework is Digital GrowthScale's four-stage engagement methodology: Consult (diagnose the business), Strategize (design the roadmap), Realize (implement systems, automation, and talent alongside the client), and Sustain (measure outcomes and transfer capability). Every engagement, regardless of service, follows these four stages.
+          </p>
         </div>
+
+        <!-- 4 Stages Grid -->
+        <div class="dgs-csr-grid dgs-reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.75rem;">
+          
+          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 2rem;">
+            <span style="font-size: 1.5rem; font-weight: 800; color: var(--action-teal); display: block; margin-bottom: 0.75rem;">01 Consult</span>
+            <p style="font-size: 0.92rem; line-height: 1.65; color: rgba(255, 255, 255, 0.75); margin: 0;">We start with questions, not quotations. Operations deep-dive, stakeholder interviews, data review. Deliverable: a clear diagnosis of what's actually limiting growth.</p>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 2rem;">
+            <span style="font-size: 1.5rem; font-weight: 800; color: var(--action-teal); display: block; margin-bottom: 0.75rem;">02 Strategize</span>
+            <p style="font-size: 0.92rem; line-height: 1.65; color: rgba(255, 255, 255, 0.75); margin: 0;">A roadmap, not a wish list. Prioritized initiatives, system architecture, talent plan, and KPIs, sequenced by impact and feasibility.</p>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 2rem;">
+            <span style="font-size: 1.5rem; font-weight: 800; color: var(--action-teal); display: block; margin-bottom: 0.75rem;">03 Realize</span>
+            <p style="font-size: 0.92rem; line-height: 1.65; color: rgba(255, 255, 255, 0.75); margin: 0;">We build alongside your team. Systems configured, automations live, people hired and onboarded, teams trained.</p>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 2rem;">
+            <span style="font-size: 1.5rem; font-weight: 800; color: var(--action-teal); display: block; margin-bottom: 0.75rem;">04 Sustain</span>
+            <p style="font-size: 0.92rem; line-height: 1.65; color: rgba(255, 255, 255, 0.75); margin: 0;">Results that outlast us. Performance reviews against KPIs, optimization cycles, documentation, and capability transfer.</p>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
-    <!-- FINAL CTA -->
-    <section class="dgs-cta-banner" id="dgs-about-cta">
+    <!--============================================================
+        SECTION 3.5: IMPACT / TRUST CENTER (100% Full-Width White Section)
+        ============================================================-->
+    <section class="dgs-section dgs-section--light" id="trust" style="background: #ffffff; padding: 6rem 0; width: 100%;">
+      <div class="dgs-container">
+        
+        <div class="dgs-section-head dgs-reveal" style="max-width: 900px; margin: 0 auto 3.5rem auto; text-align: center;">
+          <span class="dgs-eyebrow" style="color: var(--action-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; display: block;">Trust &amp; Track Record</span>
+          <h2 style="font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; color: #0A1F33; letter-spacing: -0.02em; margin-bottom: 1.25rem;">
+            The Numbers Behind the Name.
+          </h2>
+          <p style="font-size: 1.1rem; color: #475569; margin: 0;">
+            Verified metrics. Real business outcomes across global markets.
+          </p>
+        </div>
+
+        <!-- Verified Stat Grid -->
+        <div class="dgs-stats-grid dgs-reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; text-align: center;">
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 2rem 1.5rem;">
+            <div style="font-size: clamp(2.5rem, 4vw, 3.2rem); font-weight: 800; color: var(--action-teal); line-height: 1;">~900</div>
+            <span style="font-size: 0.9rem; font-weight: 600; color: #0A1F33; display: block; margin-top: 0.5rem;">Professionals Placed</span>
+          </div>
+
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 2rem 1.5rem;">
+            <div style="font-size: clamp(2.5rem, 4vw, 3.2rem); font-weight: 800; color: var(--action-teal); line-height: 1;">200+</div>
+            <span style="font-size: 0.9rem; font-weight: 600; color: #0A1F33; display: block; margin-top: 0.5rem;">Clients Served</span>
+          </div>
+
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 2rem 1.5rem;">
+            <div style="font-size: clamp(2.5rem, 4vw, 3.2rem); font-weight: 800; color: var(--action-teal); line-height: 1;">6</div>
+            <span style="font-size: 0.9rem; font-weight: 600; color: #0A1F33; display: block; margin-top: 0.5rem;">Continents Covered</span>
+          </div>
+
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 2rem 1.5rem;">
+            <div style="font-size: clamp(2.5rem, 4vw, 3.2rem); font-weight: 800; color: var(--action-teal); line-height: 1;">10,000+</div>
+            <span style="font-size: 0.9rem; font-weight: 600; color: #0A1F33; display: block; margin-top: 0.5rem;">Hours Automated Monthly</span>
+          </div>
+
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 2rem 1.5rem;">
+            <div style="font-size: clamp(2.5rem, 4vw, 3.2rem); font-weight: 800; color: var(--action-teal); line-height: 1;">1,500+</div>
+            <span style="font-size: 0.9rem; font-weight: 600; color: #0A1F33; display: block; margin-top: 0.5rem;">Corporate Learners Trained</span>
+          </div>
+        </div>
+
+        <!-- Trust Credentials Row -->
+        <div class="dgs-trust-badges dgs-reveal" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem; align-items: center; padding-top: 2rem; border-top: 1px solid #E2E8F0;">
+          <div style="text-align: center;">
+            <span style="font-size: 0.85rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">Affiliations &amp; Memberships</span>
+            <span style="font-size: 1.05rem; font-weight: 700; color: #0A1F33;">APBC &middot; IBPAP &middot; AMCHAM</span>
+          </div>
+          <div style="text-align: center;">
+            <span style="font-size: 0.85rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">Governance</span>
+            <span style="font-size: 1.05rem; font-weight: 700; color: #0A1F33;">Data Privacy &amp; EOR Compliant</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!--============================================================
+        FINAL CTA (Dark Navy Background)
+        ============================================================-->
+    <section class="dgs-cta-banner dgs-section--darker dgs-sol-final-cta" id="dgs-final-cta">
+      <div class="dgs-sol-final-bg" style="background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1400&auto=format&fit=crop')"></div>
       <h2 class="dgs-reveal">Ready to meet the team<br><span class="dgs-text-accent">behind the system?</span></h2>
-      <p class="dgs-cta-note dgs-reveal" style="margin-bottom:var(--space-md);color:var(--text-secondary);">Book a
-        Business
-        Growth Systems Audit and find out exactly how Digital GrowthScale can help your business scale with clarity
-        and confidence.</p>
-      <a href="/contact" class="dgs-btn dgs-btn--primary-accent dgs-btn--lg dgs-reveal" id="dgs-about-cta-btn">
-        <span class="dgs-desktop-only">Book a Business Growth Systems Audit</span>
-        <span class="dgs-mobile-only">Book Your Audit Now</span>
-        <span class="dgs-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg></span>
-      </a>
+      <p class="dgs-reveal">Book a Business Growth Systems Audit and find out exactly how Digital GrowthScale can help your business scale with clarity and confidence.</p>
+
+      <div class="dgs-sol-final-ctas dgs-reveal">
+          <a href="/audit" class="dgs-btn-saas dgs-btn-saas--primary dgs-btn-saas--lg" id="dgs-final-cta-primary">
+            <span class="dgs-btn-flip">
+              <span class="dgs-btn-flip-track">
+                <span class="dgs-btn-flip-line">
+                  Get a Systems Audit
+                  <span class="dgs-btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </span>
+                <span class="dgs-btn-flip-line" aria-hidden="true">
+                  Get a Systems Audit
+                  <span class="dgs-btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </span>
+              </span>
+            </span>
+          </a>
+          <a href="/contact" class="dgs-btn-saas dgs-btn-saas--secondary dgs-btn-saas--lg" id="dgs-final-cta-secondary">
+            <span class="dgs-btn-flip">
+              <span class="dgs-btn-flip-track">
+                <span class="dgs-btn-flip-line">Book a Consultation</span>
+                <span class="dgs-btn-flip-line" aria-hidden="true">Book a Consultation</span>
+              </span>
+            </span>
+          </a>
+      </div>
     </section>
 
   </main>
 
-  <footer class="dgs-footer">
+  <!--============================================================
+      FOOTER
+      ============================================================-->
+  <!-- dgs:include:footer:start | AUTO-GENERATED from includes/footer.html — edit that file, then run: npm run build:includes -->
+<footer class="dgs-footer" style="padding-top: 5rem; padding-bottom: 3rem;">
     <div class="dgs-container">
-      <div class="dgs-footer-grid">
-        <div>
-          <div class="dgs-footer-brand"><span class="dgs-logo-mark">G</span><span>Digital GrowthScale</span></div>
-          <p class="dgs-footer-desc">We design intelligent operating systems that let businesses scale without
-            depending on founders.
-          </p>
-
+      
+      <!-- Top Row: Tagline + Newsletter Block -->
+      <div class="dgs-footer-top" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 3rem; margin-bottom: 3rem;">
+        
+        <!-- Left Side: Brand & Tagline -->
+        <div style="flex: 1.2; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="dgs-footer-brand">
+              <span class="dgs-logo-mark">G</span>
+              <span>Digital GrowthScale</span>
+            </div>
+            <p class="dgs-footer-tagline" style="font-family: var(--font-heading); font-size: clamp(1.25rem, 2.2vw, 1.6rem); font-weight: 700; color: #ffffff; line-height: 1.35; margin: 1.5rem 0 0 0; max-width: 440px;">
+              Build an AI-Ready Business That Scales with Confidence
+            </p>
+          </div>
         </div>
+
+        <!-- Right Side: Newsletter Block -->
+        <div class="dgs-footer-newsletter" style="flex: 1.5; min-width: 280px; max-width: 540px;">
+          <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: #ffffff; margin: 0 0 0.5rem 0; font-weight: 700; line-height: 1.4;">
+            Executive insights on AI, systems, and the future of work.
+          </h4>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0 0 1.25rem 0; font-family: var(--font-body);">
+            One email a week. No hype, no spam.
+          </p>
+          <form class="dgs-newsletter-form" style="display: flex; gap: 0.6rem; width: 100%;" onsubmit="event.preventDefault(); alert('Subscribed!');">
+            <input type="email" placeholder="Your work email" required style="flex: 1; padding: 0.75rem 1.1rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.03); color: #ffffff; font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: border-color 0.3s;" />
+            <button type="submit" class="dgs-btn-saas dgs-btn-saas--primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem; border-radius: 8px; font-weight: 650; font-family: var(--font-body); height: auto;">
+              <span class="dgs-btn-flip">
+                <span class="dgs-btn-flip-track">
+                  <span class="dgs-btn-flip-line">Subscribe</span>
+                  <span class="dgs-btn-flip-line" aria-hidden="true">Subscribe</span>
+                </span>
+              </span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Middle Row: Columns -->
+      <div class="dgs-footer-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
         <div class="dgs-footer-col">
-          <h4>Pages</h4>
+          <h4>Navigation</h4>
           <a href="/">Home</a>
           <a href="/about">About</a>
-          <a href="/services">Services</a>
-          <a href="/audit">Business Growth Systems Audit</a>
+          <a href="/solutions">Solutions</a>
           <a href="/industries">Industries</a>
+          <a href="/growth-hub">Growth Hub</a>
+          <a href="/contact">Contact</a>
         </div>
         <div class="dgs-footer-col">
-          <h4>Services</h4>
-          <a href="/services">Business Growth Systems Audit</a>
-          <a href="/services">AI Automation &amp; Digital Transformation Consulting</a>
-          <a href="/services">CRM, Funnel &amp; Lead Generation Systems</a>
-          <a href="/services">Business Growth Operating System Setup</a>
-          <a href="/services">Outsourcing &amp; Remote Staffing Solutions</a>
-          <a href="/services">Recruitment, Executive Search &amp; Talent Mapping</a>
-          <a href="/services">Corporate Learning, AI Literacy &amp; Productivity Training</a>
-          <a href="/services">Finance, Legal, Compliance &amp; HR Operations Support</a>
+          <h4>Transform</h4>
+          <a href="/solutions/growth-systems-audit" style="padding: 0.15rem 0; font-size: 0.82rem;">Systems Audit</a>
+          <a href="/solutions/intelligent-automation" style="padding: 0.15rem 0; font-size: 0.82rem;">AI Consulting</a>
+          <a href="/solutions/growth-os-setup" style="padding: 0.15rem 0; font-size: 0.82rem;">Growth OS Setup</a>
+        </div>
+        <div class="dgs-footer-col">
+          <h4>Enable</h4>
+          <a href="/solutions/crm-funnel-automation" style="padding: 0.15rem 0; font-size: 0.82rem;">CRM &amp; Funnels</a>
+          <a href="/solutions/remote-staffing-solutions" style="padding: 0.15rem 0; font-size: 0.82rem;">Remote Staffing</a>
+          <a href="/solutions/recruitment-executive-search" style="padding: 0.15rem 0; font-size: 0.82rem;">Recruitment</a>
+        </div>
+        <div class="dgs-footer-col">
+          <h4>Elevate</h4>
+          <a href="/solutions/corporate-training" style="padding: 0.15rem 0; font-size: 0.82rem;">AI Learning</a>
+          <a href="/solutions/eor-hr-support" style="padding: 0.15rem 0; font-size: 0.82rem;">Ops Support</a>
         </div>
         <div class="dgs-footer-col">
           <h4>Connect</h4>
@@ -513,19 +1299,25 @@
           </div>
         </div>
       </div>
-      <div class="dgs-footer-bottom">
-        <span>© <span id="dgsYear"></span> Digital GrowthScale. All rights reserved.</span>
-        <div class="dgs-footer-legal">
-          <a href="/privacy-policy">Privacy Policy</a>
-          <a href="/terms-of-service">Terms of Service</a>
-        </div>
+      
+      <!-- Bottom Row: Legal Middle Dots -->
+      <div class="dgs-footer-bottom" style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); text-align: center;">
+        <span style="font-family: var(--font-body); font-size: 0.82rem; color: var(--text-tertiary); line-height: 1.6; display: inline-block;">
+          &copy; <span id="dgsYear"></span> Digital GrowthScale. All rights reserved. &middot; 
+          <a href="/privacy-policy" style="color: inherit; text-decoration: none; transition: color 0.25s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color=''">Privacy Policy</a> &middot; 
+          <a href="/terms-of-service" style="color: inherit; text-decoration: none; transition: color 0.25s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color=''">Terms of Use</a> &middot; 
+          <a href="/cookie-policy" style="color: inherit; text-decoration: none; transition: color 0.25s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color=''">Cookie Policy</a> &middot; 
+          <a href="/data-protection-notice" style="color: inherit; text-decoration: none; transition: color 0.25s;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color=''">Data Protection Notice</a>
+        </span>
       </div>
     </div>
     <div class="dgs-footer-watermark" aria-hidden="true">Digital GrowthScale</div>
   </footer>
+<!-- dgs:include:footer:end -->
+
+  <!-- Scripts -->
   <script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
   <script src="js/main.js"></script>
-  <!-- GSAP ScrollTrigger Integration for Section-Isolated Animation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
@@ -534,7 +1326,7 @@
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
           gsap.registerPlugin(ScrollTrigger);
 
-          document.querySelectorAll('.dgs-reveal').forEach((el, i) => {
+          document.querySelectorAll('.dgs-reveal').forEach((el) => {
             gsap.fromTo(el,
               { opacity: 0, y: 30 },
               {
@@ -564,7 +1356,6 @@
         initAnimations();
       }
 
-      // Safe global fallback timeout (1.2 seconds) to guarantee content visibility under all conditions
       setTimeout(function () {
         document.querySelectorAll('.dgs-reveal').forEach(function (el) {
           el.classList.add('is-visible');
@@ -573,3 +1364,4 @@
     })();
   </script>
 </body>
+</html>

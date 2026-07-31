@@ -1,0 +1,385 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE - CAREERS STYLESHEET (dgs-careers.css)
+   ============================================================ */
+
+/* ─── CAREERS HERO OVERRIDES ─── */
+.dgs-hero-careers {
+  padding: 8rem 0 7rem;
+  background-color: var(--bg-deep-navy, #0A1F33) !important;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  isolation: isolate;
+}
+
+@media (min-width: 1024px) {
+  .dgs-hero-careers {
+    padding: 10rem 0 8rem;
+  }
+}
+
+.dgs-hero-careers .dgs-hero-content,
+.dgs-hero-careers .dgs-service-hero-copy {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dgs-hero-careers h1 {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0 auto 1.5rem;
+}
+
+/* ─── CAREERS HUB SECTION ─── */
+#careers-hub.dgs-section {
+  padding-top: 6rem;
+  padding-bottom: 7rem;
+  background: var(--bg-white, #ffffff);
+}
+
+@media (min-width: 1024px) {
+  #careers-hub.dgs-section {
+    padding-top: 7.5rem;
+    padding-bottom: 8.5rem;
+  }
+}
+
+/* Split Hub Layout */
+.dgs-careers-hub-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .dgs-careers-hub-layout {
+    grid-template-columns: 5.2fr 6.8fr;
+    gap: 5.5rem;
+  }
+}
+
+.dgs-careers-sticky-col {
+  position: sticky;
+  top: 7.5rem;
+}
+
+.dgs-careers-sticky-heading {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.3rem);
+  color: var(--bg-deep-navy, #0A1F33);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0.5rem 0 1.25rem 0;
+  letter-spacing: -0.02em;
+}
+
+/* AEO / Overview Box */
+.dgs-careers-aeo-card {
+  margin: 1.5rem 0 2rem;
+  padding: 1.25rem 1.5rem;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg, 12px);
+}
+
+.dgs-careers-aeo-card p {
+  color: var(--bg-deep-navy, #0A1F33);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── VALUE STACK & 4 PILLAR CARDS ─── */
+.dgs-careers-values-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.dgs-careers-value-pill {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.35rem 1.5rem;
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: 0 4px 16px rgba(10, 31, 51, 0.02);
+  transition: all 0.35s var(--ease-out, ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.dgs-careers-value-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--action-teal, #00b39f);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s var(--ease-out, ease-out);
+}
+
+.dgs-careers-value-pill:hover {
+  border-color: rgba(0, 179, 159, 0.3);
+  transform: translateY(-3px) translateX(4px);
+  box-shadow: 0 12px 28px rgba(0, 179, 159, 0.07), 0 4px 12px rgba(10, 31, 51, 0.03);
+}
+
+.dgs-careers-value-pill:hover::before {
+  transform: scaleY(1);
+}
+
+.dgs-careers-value-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-lg, 10px);
+  background: rgba(0, 179, 159, 0.1);
+  border: 1px solid rgba(0, 179, 159, 0.2);
+  color: var(--action-teal, #00b39f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.dgs-careers-value-pill:hover .dgs-careers-value-icon {
+  transform: scale(1.06) rotate(3deg);
+}
+
+.dgs-careers-value-pill h4 {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bg-deep-navy, #0A1F33);
+  margin: 0 0 0.25rem 0;
+}
+
+.dgs-careers-value-pill p {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  color: var(--text-dark-muted, #5a6e85);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ─── ROLES COLUMN ─── */
+.dgs-roles-section-heading {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  color: var(--bg-deep-navy, #0A1F33);
+  font-weight: 800;
+  margin: 0.5rem 0 0.4rem 0;
+  letter-spacing: -0.02em;
+}
+
+.dgs-roles-section-sub {
+  color: var(--text-dark-muted, #5a6e85);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* ─── PREMIUM ROLE CARDS ─── */
+.dgs-role-card-premium {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding: 2rem;
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-left: 4px solid var(--action-teal, #00b39f);
+  border-radius: 0 var(--radius-xl, 16px) var(--radius-xl, 16px) 0;
+  box-shadow: 0 4px 20px rgba(10, 31, 51, 0.03);
+  transition: all 0.35s var(--ease-out, ease-out);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.dgs-role-card-premium:hover {
+  border-color: rgba(0, 179, 159, 0.3);
+  border-left-color: var(--action-teal, #00b39f);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(10, 31, 51, 0.07);
+}
+
+.dgs-role-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dgs-role-dept-tag {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--action-teal, #00b39f);
+  background: rgba(0, 179, 159, 0.08);
+  border: 1px solid rgba(0, 179, 159, 0.2);
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+}
+
+.dgs-role-meta-badge {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dark-muted, #5a6e85);
+}
+
+.dgs-role-body h4 {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--bg-deep-navy, #0A1F33);
+  margin: 0 0 0.4rem 0;
+  letter-spacing: -0.015em;
+  transition: color 0.3s ease;
+}
+
+.dgs-role-card-premium:hover .dgs-role-body h4 {
+  color: var(--action-teal, #00b39f);
+}
+
+.dgs-role-body p {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  color: var(--text-dark-muted, #5a6e85);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── HIRING PROCESS & TALENT COMMUNITY BOXES ─── */
+.dgs-hiring-process-box {
+  margin-top: 2.5rem;
+  padding: 1.85rem;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-xl, 16px);
+  transition: all 0.35s ease;
+}
+
+.dgs-hiring-process-box:hover {
+  border-color: #CBD5E1;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(10, 31, 51, 0.04);
+}
+
+.dgs-hiring-process-box h4 {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: 1.15rem;
+  color: var(--bg-deep-navy, #0A1F33);
+  font-weight: 700;
+  margin: 0 0 0.6rem 0;
+}
+
+.dgs-hiring-steps {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--action-teal, #00b39f);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.02em;
+}
+
+.dgs-hiring-meta {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.9rem;
+  color: var(--text-dark-muted, #5a6e85);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dgs-talent-community-box {
+  margin-top: 1.5rem;
+  padding: 1.85rem;
+  background: #ffffff;
+  border: 1px dashed #CBD5E1;
+  border-radius: var(--radius-xl, 16px);
+  transition: all 0.35s ease;
+}
+
+.dgs-talent-community-box:hover {
+  border-color: var(--action-teal, #00b39f);
+  background: rgba(0, 179, 159, 0.02);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 179, 159, 0.05);
+}
+
+.dgs-talent-community-box h4 {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: 1.15rem;
+  color: var(--bg-deep-navy, #0A1F33);
+  font-weight: 700;
+  margin: 0 0 0.4rem 0;
+}
+
+.dgs-talent-community-box p {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  color: var(--text-dark-muted, #5a6e85);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Link Actions */
+.dgs-promise-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--action-teal, #00b39f);
+  text-decoration: none;
+  transition: color 0.3s, gap 0.3s;
+}
+
+.dgs-promise-link:hover {
+  color: #008f7f;
+  gap: 0.65rem;
+}
+
+.dgs-promise-link .dgs-btn-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ─── CAREERS IFRAME CONTAINER ─── */
+.careers-iframe-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg, 6px);
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  background: transparent;
+}
+
+.careers-iframe-container iframe {
+  width: 100%;
+  border: none;
+  min-height: 800px;
+  display: block;
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .careers-iframe-container iframe {
+    min-height: 900px;
+  }
+}

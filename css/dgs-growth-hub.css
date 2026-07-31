@@ -1,0 +1,1240 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — GROWTH HUB SPECIFIC STYLES
+   Inspired by premium consulting networks (Accenture/Rippling level)
+   ============================================================ */
+
+/* ─── GENERAL LAYOUT & VARIABLES ─── */
+:root {
+  --hub-card-bg: rgba(255, 255, 255, 0.02);
+  --hub-card-border: rgba(255, 255, 255, 0.06);
+  --hub-card-hover-border: rgba(0, 179, 159, 0.3);
+}
+
+.dgs-hub-section {
+  padding: 7rem 0;
+  position: relative;
+}
+
+/* ─── ALTERNATING SECTION RHYTHM ───────────────────────────────
+   Growth Hub sections alternate between White (#ffffff) and Navy (#0A1F33).
+   Section order:
+   - Hero: Navy (#0A1F33)
+   - Learn (#learn): White (#ffffff)
+   - Implement (#implement): Navy (#0A1F33)
+   - Inspire (#inspire): White (#ffffff)
+   - Connect (#connect): Navy (#0A1F33)
+   - FAQs (#faqs): White (#ffffff)
+   - Final CTA (#dgs-final-cta): Navy (#0A1F33)
+   ------------------------------------------------------------- */
+.dgs-hub-section.dgs-section--darker {
+  background: var(--dgs-navy-950, #061524) !important;
+}
+.dgs-hub-section.dgs-section--dark {
+  background: var(--bg-dark-navy, #0A1F33) !important;
+}
+.dgs-hub-section.dgs-section--light {
+  background: #ffffff !important;
+  color: var(--text-dark-primary, #0f172a);
+}
+
+/* Headings & copy on light background sections */
+.dgs-hub-section.dgs-section--light .dgs-hub-head h2 {
+  color: #0A1F33 !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-hub-head p {
+  color: #475569 !important;
+}
+
+/* Learn Section Cards: photo backdrop cards must always keep bright white/teal text */
+.dgs-learn-card {
+  border: 1px solid rgba(10, 31, 51, 0.12);
+  box-shadow: 0 4px 20px rgba(10, 31, 51, 0.06);
+}
+.dgs-learn-card .dgs-learn-title {
+  color: #ffffff !important;
+}
+.dgs-learn-card .dgs-learn-pill {
+  color: var(--action-teal, #00B39F) !important;
+}
+.dgs-learn-card .dgs-learn-link {
+  color: var(--action-teal, #00B39F) !important;
+}
+.dgs-learn-card:hover .dgs-learn-link {
+  color: #ffffff !important;
+}
+.dgs-learn-overlay {
+  background: linear-gradient(to bottom, rgba(10, 31, 51, 0.15) 0%, rgba(10, 31, 51, 0.65) 45%, rgba(10, 31, 51, 0.96) 100%) !important;
+}
+
+/* Inspire Section Cards on light background */
+.dgs-hub-section.dgs-section--light .dgs-insp-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(10, 31, 51, 0.12) !important;
+  box-shadow: 0 4px 20px rgba(10, 31, 51, 0.05) !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-card:hover {
+  border-color: var(--action-teal, #00B39F) !important;
+  background: #ffffff !important;
+  box-shadow: 0 16px 36px rgba(10, 31, 51, 0.12) !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-media {
+  border: 1px solid rgba(10, 31, 51, 0.08);
+  background: rgba(10, 31, 51, 0.02);
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-meta {
+  color: #00B39F !important;
+  font-weight: 700 !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-headline {
+  color: #0A1F33 !important;
+  font-weight: 800 !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-val {
+  color: #334155 !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-metric {
+  border-top: 1px solid rgba(10, 31, 51, 0.12) !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-figure {
+  color: #0A1F33 !important;
+  font-weight: 800 !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-unit {
+  color: #00B39F !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-caption {
+  color: #475569 !important;
+  font-weight: 500 !important;
+}
+
+
+/* ─── HERO (scoped copy of the shared service-hero treatment) ─── */
+.dgs-service-hero {
+  padding: 7rem 0 5rem;
+  background-color: #0A1F33 !important;
+  color: var(--text-white);
+  position: relative;
+  overflow: visible;
+  text-align: center;
+  border-bottom: none;
+}
+
+@media (min-width: 1024px) {
+  .dgs-service-hero {
+    padding: 9rem 0 6rem;
+  }
+}
+
+/* Photo bed, matching the solutions / industries / about hero pattern.
+   `.dgs-hero-photo-bg` appears in the markup on those pages but was never
+   defined in any stylesheet, so the rule lives here. Sits below the mesh and
+   spotlight, masked toward the bottom so the copy stays legible. */
+.dgs-service-hero .dgs-hero-photo-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+}
+
+/* Duotone backdrop. The base layer is desaturated, then a navy/teal gradient
+   is composited with mix-blend-mode: color, which keeps the photo's luminance
+   and takes hue and saturation from the gradient. */
+.dgs-hero-duotone {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  mask-image: radial-gradient(ellipse 90% 100% at 50% 0%, black 30%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 100% at 50% 0%, black 30%, transparent 78%);
+}
+
+.dgs-hero-duotone::before,
+.dgs-hero-duotone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.dgs-hero-duotone::before {
+  background-image: var(--dgs-duotone-img);
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(1) contrast(1.15) brightness(0.72);
+  opacity: 0.5;
+}
+
+.dgs-hero-duotone::after {
+  background: linear-gradient(135deg, #0A1F33 0%, #0d5f70 55%, #00B39F 100%);
+  mix-blend-mode: color;
+}
+
+/* Legibility scrim over the duotone so hero copy keeps its contrast */
+.dgs-hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(10, 31, 51, 0.72) 0%, rgba(10, 31, 51, 0.55) 45%, rgba(10, 31, 51, 0.92) 100%);
+}
+
+.dgs-service-hero .dgs-hero-mesh-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 90%);
+  pointer-events: none;
+}
+
+.dgs-service-hero .dgs-hero-spotlight {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 80vw;
+  height: 60vh;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 179, 159, 0.14) 0%, rgba(45, 127, 249, 0.06) 50%, transparent 80%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -20%);
+}
+
+.dgs-service-hero > .dgs-container {
+  position: relative;
+  z-index: 5;
+}
+
+.dgs-svc-hero-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.dgs-service-hero .dgs-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1140px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dgs-service-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0 auto 1.5rem;
+  max-width: 1140px;
+  text-align: center;
+}
+
+.dgs-service-hero h1 .dgs-hero-title-main {
+  background: linear-gradient(to bottom, #ffffff 55%, #cfd8e3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.dgs-service-hero .dgs-hero-sub {
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 720px;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dgs-service-hero .dgs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.dgs-service-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--action-teal);
+  background: rgba(0, 179, 159, 0.1);
+  border: 1px solid rgba(0, 179, 159, 0.28);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ─── JUMP NAV ─── */
+.dgs-hub-jumpnav {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background: rgba(10, 31, 51, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hub-card-border);
+  transition: all 0.3s;
+}
+
+.dgs-hub-jumpnav-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 1.1rem 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.dgs-hub-jumpnav-row::-webkit-scrollbar {
+  display: none;
+}
+
+.dgs-hub-jumpnav-row a {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
+  position: relative;
+  padding: 0.25rem 0;
+}
+.dgs-hub-jumpnav-row a:hover {
+  color: var(--action-teal, #00B39F) !important;
+}
+.dgs-hub-jumpnav-row a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--action-teal);
+  transition: all 0.3s;
+  transform: translateX(-50%);
+}
+.dgs-hub-jumpnav-row a:hover::after {
+  width: 100%;
+}
+
+/* ─── SECTION HEADS ─── */
+.dgs-hub-head {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4.5rem;
+}
+.dgs-hub-head h2 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+.dgs-hub-head p {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* ─── LEARN SECTION (Accenture/Rippling-level visual grid) ─── */
+.dgs-learn-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.2rem;
+}
+@media (min-width: 768px) {
+  .dgs-learn-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.dgs-learn-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #0A1F33;
+  border: 1px solid var(--hub-card-border);
+  transition: all 0.4s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+  justify-content: flex-end;
+}
+.dgs-learn-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--hub-card-hover-border);
+  box-shadow: 0 20px 40px rgba(0, 179, 159, 0.12);
+}
+
+.dgs-learn-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s var(--ease-out);
+  z-index: 1;
+}
+.dgs-learn-card:hover .dgs-learn-img {
+  transform: scale(1.05);
+}
+
+.dgs-learn-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10, 31, 51, 0.1) 0%, rgba(10, 31, 51, 0.5) 40%, rgba(10, 31, 51, 0.95) 100%);
+  z-index: 2;
+}
+
+.dgs-learn-content {
+  position: relative;
+  z-index: 3;
+  padding: 2.5rem;
+}
+
+.dgs-learn-pill {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--action-teal);
+  margin-bottom: 0.8rem;
+}
+
+.dgs-learn-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #ffffff;
+  margin: 0 0 1.2rem 0;
+}
+
+.dgs-learn-link {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--action-teal);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+.dgs-learn-card:hover .dgs-learn-link {
+  color: #ffffff;
+}
+.dgs-learn-link svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s;
+}
+.dgs-learn-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* ─── IMPLEMENT SECTION (resource library, gated once) ─── */
+/* Asymmetric split: the pack contents on the left, a single capture on the
+   right. One form for five resources, not five forms. */
+.dgs-impl-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+@media (min-width: 960px) {
+  .dgs-impl-layout {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
+    gap: 4rem;
+  }
+}
+
+/* Contents list: hairline between rows only, never above and below each row */
+.dgs-impl-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dgs-impl-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.4rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--hub-card-border);
+}
+.dgs-impl-row:first-child {
+  padding-top: 0;
+}
+.dgs-impl-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dgs-impl-thumb {
+  flex: 0 0 auto;
+  width: 96px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--hub-card-border);
+  filter: saturate(0.75);
+  transition: filter 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+.dgs-impl-row:hover .dgs-impl-thumb {
+  filter: saturate(1);
+  border-color: var(--hub-card-hover-border);
+}
+@media (min-width: 560px) {
+  .dgs-impl-thumb {
+    width: 128px;
+    height: 96px;
+  }
+}
+
+.dgs-impl-row-text {
+  min-width: 0;
+}
+
+.dgs-impl-type {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--action-teal);
+  margin-bottom: 0.5rem;
+}
+
+/* Scoped past `.dgs-page h3` in dgs-common.css, which outranks a bare class */
+.dgs-impl-row .dgs-impl-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.dgs-impl-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+  max-width: 52ch;
+}
+
+/* Single capture panel */
+.dgs-impl-gate {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--hub-card-border);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+}
+@media (min-width: 960px) {
+  .dgs-impl-gate {
+    position: sticky;
+    top: 6.5rem;
+  }
+}
+
+.dgs-impl-gate .dgs-impl-gate-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.4rem 0;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.dgs-impl-gate-note {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 0 1.75rem 0;
+}
+
+.dgs-impl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+/* Labels sit above inputs. Placeholders are not labels. */
+.dgs-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.dgs-field-label {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.dgs-impl-input {
+  width: 100%;
+  padding: 0.8rem 1.1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.dgs-impl-input:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.dgs-impl-input:focus-visible {
+  border-color: var(--action-teal);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(0, 179, 159, 0.28);
+}
+.dgs-impl-input[aria-invalid="true"] {
+  border-color: #ff8a8a;
+}
+
+.dgs-field-error {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: #ff9d9d;
+  min-height: 0;
+}
+.dgs-field-error:empty {
+  display: none;
+}
+
+.dgs-impl-submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.25rem;
+}
+
+.dgs-impl-privacy {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.dgs-impl-success {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.25rem 1.4rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 179, 159, 0.32);
+  background: rgba(0, 179, 159, 0.08);
+}
+.dgs-impl-success[hidden] {
+  display: none;
+}
+.dgs-impl-success:focus-visible {
+  outline: 2px solid var(--action-teal);
+  outline-offset: 3px;
+}
+.dgs-impl-success svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--action-teal);
+  margin-top: 0.1rem;
+}
+.dgs-impl-success p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+/* ─── INSPIRE SECTION (proof, outcome-led) ─── */
+/* One featured case spanning the row, two standard cases below.
+   Three cells for three stories, no empty tile. */
+.dgs-insp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+}
+@media (min-width: 992px) {
+  .dgs-insp-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* Featured spans the row: photo fills the left column across both rows,
+     copy and metrics stack on the right. */
+  /* Scoped past the later `.dgs-insp-card { display: flex }` base rule,
+     which would otherwise win on equal specificity. */
+  .dgs-insp-grid .dgs-insp-card--featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    grid-template-areas:
+      "media body"
+      "media metrics";
+    align-items: start;
+    column-gap: 3rem;
+    row-gap: 2rem;
+  }
+  /* The photo is taken out of flow so the copy column governs the row
+     heights, then stretched to fill whatever height that produces. Without
+     this the image's own height drives the card and it grows unbounded. */
+  .dgs-insp-grid .dgs-insp-card--featured .dgs-insp-media {
+    grid-area: media;
+    align-self: stretch;
+    position: relative;
+    min-height: 320px;
+  }
+  .dgs-insp-grid .dgs-insp-card--featured .dgs-insp-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .dgs-insp-card--featured .dgs-insp-body {
+    grid-area: body;
+  }
+  .dgs-insp-card--featured .dgs-insp-metrics {
+    grid-area: metrics;
+    margin-top: 0;
+  }
+}
+
+.dgs-insp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--hub-card-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  transition: border-color 0.4s var(--ease-out), background 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+.dgs-insp-card:hover {
+  border-color: var(--hub-card-hover-border);
+  background: rgba(255, 255, 255, 0.035);
+  transform: translateY(-5px);
+}
+
+.dgs-insp-media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--hub-card-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dgs-insp-media img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: saturate(0.8);
+  transition: transform 0.6s var(--ease-out), filter 0.4s var(--ease-out);
+}
+.dgs-insp-card:hover .dgs-insp-media img {
+  transform: scale(1.04);
+  filter: saturate(1);
+}
+
+.dgs-insp-meta {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.58);
+  margin-bottom: 1rem;
+}
+
+.dgs-insp-card .dgs-insp-headline {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin: 0 0 0.9rem 0;
+  max-width: 34ch;
+}
+.dgs-insp-card--featured .dgs-insp-headline {
+  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+}
+
+.dgs-insp-val {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+  max-width: 52ch;
+}
+
+/* The outcome is the visual anchor, not a paragraph buried at the bottom */
+.dgs-insp-metrics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  align-content: end;
+  margin-top: auto;
+}
+@media (min-width: 560px) {
+  .dgs-insp-card--featured .dgs-insp-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.dgs-insp-metric {
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(0, 179, 159, 0.28);
+}
+
+.dgs-insp-figure {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(2.6rem, 5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+}
+
+.dgs-insp-unit {
+  font-size: 0.42em;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--action-teal);
+  margin-left: 0.2em;
+}
+
+.dgs-insp-caption {
+  display: block;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.66);
+  max-width: 30ch;
+}
+
+/* ─── CONNECT SECTION (community events) ───────────────────────
+   Two-up card grid. Equal-height cards with the status and CTA pinned to a
+   footer rule, so both events line up regardless of copy length.
+   ------------------------------------------------------------- */
+.dgs-conn-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+}
+@media (min-width: 900px) {
+  .dgs-conn-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.dgs-conn-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--hub-card-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  overflow: hidden;
+  transition: border-color 0.4s var(--ease-out), background 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+/* Accent rule along the card top edge, brightening on hover */
+.dgs-conn-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--action-teal), transparent 70%);
+  opacity: 0.45;
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.dgs-conn-card:hover {
+  border-color: var(--hub-card-hover-border);
+  background: rgba(255, 255, 255, 0.035);
+  transform: translateY(-4px);
+}
+.dgs-conn-card:hover::before {
+  opacity: 1;
+}
+
+/* Format meta as discrete chips rather than a dot-separated string */
+.dgs-conn-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.dgs-conn-format,
+.dgs-conn-detail {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.8rem;
+  line-height: 1;
+}
+
+.dgs-conn-format {
+  color: var(--action-teal);
+  background: rgba(0, 179, 159, 0.1);
+  border: 1px solid rgba(0, 179, 159, 0.28);
+}
+
+.dgs-conn-detail {
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--hub-card-border);
+}
+
+.dgs-conn-card .dgs-conn-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1.25rem 0;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  max-width: 30ch;
+}
+
+/* Photo bleeds to the card edges, cancelling the 2.5rem card padding */
+.dgs-conn-media {
+  margin: -2.5rem -2.5rem 1.75rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dgs-conn-media img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  filter: saturate(0.8);
+  transition: transform 0.6s var(--ease-out), filter 0.4s var(--ease-out);
+}
+.dgs-conn-card:hover .dgs-conn-media img {
+  transform: scale(1.04);
+  filter: saturate(1);
+}
+
+/* Term/definition pairs read better than a bulleted list for two fixed
+   attributes that every event carries. */
+.dgs-conn-specs {
+  margin: 0 0 2rem 0;
+  padding: 0;
+}
+
+.dgs-conn-specs dt {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+}
+
+.dgs-conn-specs dd {
+  margin: 0 0 1.2rem 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+}
+.dgs-conn-specs dd:last-child {
+  margin-bottom: 0;
+}
+
+/* Pinned to the card bottom so both cards align on the CTA row */
+.dgs-conn-foot {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--hub-card-border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dgs-conn-date {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+/* ─── FAQS SECTION ─── */
+.dgs-faq-category {
+  margin-bottom: 5rem;
+}
+.dgs-faq-category:last-child {
+  margin-bottom: 0;
+}
+
+.dgs-faq-category-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--bg-deep-navy);
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(10, 31, 51, 0.08);
+  padding-bottom: 0.8rem;
+}
+
+/* Accordion */
+.dgs-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dgs-faq-item {
+  border-bottom: 1px solid rgba(10, 31, 51, 0.08);
+}
+
+.dgs-faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 1.5rem 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--bg-deep-navy);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+.dgs-faq-question:hover {
+  color: var(--action-teal);
+}
+
+.dgs-faq-number {
+  color: var(--action-teal);
+  margin-right: 1.25rem;
+  font-weight: 700;
+}
+
+.dgs-faq-question-text {
+  flex: 1;
+}
+
+/* Toggle: draw a crisp + with two bars instead of the literal "+" glyph,
+   which renders as a thin, lopsided mark once rotated. Closed = +,
+   open = a clean × (whole control rotated 45deg). */
+.dgs-faq-toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-left: 1.5rem;
+  font-size: 0;            /* hides the literal "+" in the markup */
+  color: transparent;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dgs-faq-toggle::before,
+.dgs-faq-toggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 2.5px;
+  border-radius: 2px;
+  background: var(--action-teal);
+  transform: translate(-50%, -50%);
+}
+.dgs-faq-toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.dgs-faq-item.is-open .dgs-faq-toggle {
+  transform: rotate(45deg);
+}
+
+/* Collapsed by default; js/main.js opens an item by setting the answer's
+   inline max-height to its scrollHeight. Using max-height (not display:none)
+   keeps that mechanism working and gives a smooth expand/collapse. */
+.dgs-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  color: var(--text-dark-muted);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dgs-faq-answer p {
+  margin: 0;
+  padding-bottom: 1.8rem;
+}
+
+/* ─── FINAL CTA ───────────────────────────────────────────────
+   Scoped copy of the solutions / about final CTA (.dgs-sol-final-cta). This
+   page does not load dgs-about.css, so the rules have to live here.
+   ------------------------------------------------------------- */
+.dgs-sol-final-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px) 0 0 / 60px 60px,
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px) 0 0 / 60px 60px,
+    var(--bg-navy-darkest, #0A1F33) !important;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+/* faded photo background */
+.dgs-sol-final-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  pointer-events: none;
+}
+
+/* giant SCALE watermark */
+.dgs-sol-final-cta::before {
+  content: "SCALE";
+  position: absolute;
+  bottom: -2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: 26vw;
+  line-height: 0.75;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  pointer-events: none;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245, 166, 35, 0.035);
+  background: linear-gradient(180deg, rgba(245, 166, 35, 0.05) 0%, transparent 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* breathing teal/blue aurora */
+.dgs-sol-final-cta::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70vw;
+  height: 50vh;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 50%,
+      rgba(0, 179, 159, 0.12) 0%,
+      rgba(45, 127, 249, 0.12) 40%,
+      transparent 70%);
+  animation: dgs-sol-cta-breathe 8s ease-in-out infinite alternate;
+}
+
+@keyframes dgs-sol-cta-breathe {
+  0%   { transform: translate(-50%, -50%) scale(1);    opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; }
+}
+
+/* lift real content above the decorative layers */
+.dgs-sol-final-cta > *:not(.dgs-sol-final-bg) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Heading: two clean lines + white gradient text-glow */
+.dgs-sol-final-cta h2 {
+  max-width: 66rem;
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem) !important;
+  line-height: 1.22;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.12));
+}
+
+/* keep the teal accent line solid (don't let the gradient clip swallow it) */
+.dgs-sol-final-cta h2 .dgs-text-accent {
+  -webkit-text-fill-color: var(--action-teal);
+  filter: none;
+}
+
+.dgs-sol-final-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+/* ─── REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  .dgs-sol-final-cta::after {
+    animation: none;
+    opacity: 0.65;
+  }
+  .dgs-insp-media img,
+  .dgs-conn-media img,
+  .dgs-impl-thumb,
+  .dgs-learn-card,
+  .dgs-learn-img,
+  .dgs-insp-card,
+  .dgs-conn-card,
+  .dgs-impl-input {
+    transition: none;
+  }
+  .dgs-learn-card:hover,
+  .dgs-insp-card:hover {
+    transform: none;
+  }
+  .dgs-learn-card:hover .dgs-learn-img,
+  .dgs-insp-card:hover .dgs-insp-media img,
+  .dgs-conn-card:hover .dgs-conn-media img {
+    transform: none;
+  }
+}

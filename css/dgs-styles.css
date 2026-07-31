@@ -14,26 +14,28 @@
   /* Surface Mechanics */
   --bg-white: #FFFFFF;
   /* True crisp background for mapped white wireframe sections */
-  --bg-deep-navy: #0B132B;
+  --bg-deep-navy: #0A1F33;
   /* Base fallbacks */
 
   /* Static Deep Navy for standard dark sections */
   --gradient-dark-section: var(--bg-deep-navy);
-  --bg-dark-navy: #0B132B;
+  --bg-dark-navy: #0A1F33;
   /* Solid premium dark navy background */
-  --bg-teal: #089D87;
+  --bg-teal: #00B39F;
   /* Solid branding teal background */
-  --surface-navy-card: #111C3A;
+  --surface-navy-card: #213143;
   /* Elevated layout blocks and card panels */
-  --bg-navy-darkest: #0B132B;
+  --bg-navy-darkest: #0A1F33;
 
   /* Primary Branding Actions (image_c16547.png Rules) */
-  --action-teal: #089D87;
+  --action-teal: #00B39F;
   /* Base standard primary button fill */
-  --action-mint-hover: #42C2B0;
+  --action-mint-hover: #2EC1B0;
   /* Hover states, active focus rings */
-  --accent-yellow: #FFD200;
-  /* Rare high-priority contextual highlights */
+  --accent-yellow: #F5A623;
+  /* Signal Amber: reserved for primary conversion CTAs only */
+  --accent-blue: #2D7FF9;
+  /* Electric Blue: interactive and informational accents (10%) */
 
   /* Neutral Typography Layering */
   --text-dark-primary: #111625;
@@ -52,7 +54,7 @@
   /* Supplementary surface tones */
   --surface-border: rgba(255, 255, 255, 0.08);
   --surface-border-light: rgba(255, 255, 255, 0.12);
-  --surface-glass: rgba(11, 19, 43, 0.92);
+  --surface-glass: rgba(10, 31, 51, 0.92);
   --surface-hover: rgba(255, 255, 255, 0.04);
   --text-secondary: #B7C0CC;
   --text-tertiary: #8792A0;
@@ -323,8 +325,8 @@ html {
   justify-content: center;
   gap: 0.75rem;
   padding: 0.55rem 1.45rem;
-  border-radius: var(--radius-full);
-  /* Premium pill-shaped geometry matching Image 2 */
+  border-radius: var(--radius-lg);
+  /* Matching solutions.html 8px corner rounding */
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.95rem;
@@ -354,7 +356,7 @@ html {
 }
 
 .dgs-btn--primary:hover {
-  background: linear-gradient(135deg, #089D87 0%, #FFD200 100%) !important;
+  background: #2EC1B0 !important;
   color: var(--bg-deep-navy) !important;
   box-shadow: none;
 }
@@ -363,8 +365,8 @@ html {
   background: var(--action-teal);
   /* primary variant mapping */
   color: var(--text-light-primary) !important;
-  border-radius: var(--radius-full);
-  /* Pill geometry wrapper */
+  border-radius: var(--radius-lg);
+  /* Matching solutions.html 8px corner rounding */
   font-weight: 700;
   padding: 0.4rem 0.4rem 0.4rem 1.45rem;
   /* Balanced padding around the icon container */
@@ -373,7 +375,7 @@ html {
 }
 
 .dgs-btn--primary-accent:hover {
-  background: linear-gradient(135deg, #089D87 0%, #FFD200 100%) !important;
+  background: #2EC1B0 !important;
   color: var(--bg-deep-navy) !important;
   box-shadow: none;
 }
@@ -407,7 +409,7 @@ html {
 .dgs-btn--lg {
   padding: 0.65rem 1.75rem;
   font-size: 1rem;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-lg);
 }
 
 .dgs-btn--lg.dgs-btn--primary-accent {
@@ -620,7 +622,7 @@ html {
 }
 
 .dgs-hero-gradient-text {
-  background: linear-gradient(135deg, #0B132B 0%, #089D87 35%, #FFD200 48%, #FFD200 52%, #089D87 65%, #0B132B 100%);
+  background: linear-gradient(135deg, #0A1F33 0%, #00B39F 35%, #2D7FF9 48%, #2D7FF9 52%, #00B39F 65%, #0A1F33 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -793,8 +795,8 @@ html {
 
 .dgs-pill--teal {
   color: var(--action-teal);
-  border-color: rgba(8, 157, 135, 0.3);
-  background: rgba(8, 157, 135, 0.08);
+  border-color: rgba(0, 179, 159, 0.3);
+  background: rgba(0, 179, 159, 0.08);
 }
 
 .dgs-section--light .dgs-pill {
@@ -851,7 +853,7 @@ html {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-sm);
-  background: rgba(8, 157, 135, 0.12);
+  background: rgba(0, 179, 159, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -951,7 +953,7 @@ html {
   width: 48px;
   height: 48px;
   border-radius: var(--radius-sm);
-  background: rgba(8, 157, 135, 0.1);
+  background: rgba(0, 179, 159, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1141,7 +1143,7 @@ html {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-sm);
-  background: rgba(8, 157, 135, 0.1);
+  background: rgba(0, 179, 159, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1231,7 +1233,7 @@ html {
     left: calc(50% + 22px);
     right: calc(-50% + 22px);
     height: 0;
-    border-top: 2px solid rgba(8, 157, 135, 0.4);
+    border-top: 2px solid rgba(0, 179, 159, 0.4);
     z-index: 1;
   }
 }
@@ -1255,7 +1257,7 @@ html {
   left: 0;
   right: 0;
   height: 2px;
-  background: rgba(8, 157, 135, 0.2);
+  background: rgba(0, 179, 159, 0.2);
 }
 
 .dgs-year-step {
@@ -1337,7 +1339,7 @@ html {
   width: 48px;
   height: 48px;
   border-radius: var(--radius-sm);
-  background: rgba(8, 157, 135, 0.12);
+  background: rgba(0, 179, 159, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1426,7 +1428,7 @@ html {
 }
 
 .dgs-comparison-header span:last-child {
-  background: rgba(8, 157, 135, 0.12);
+  background: rgba(0, 179, 159, 0.12);
   color: var(--action-teal);
 }
 
@@ -1631,7 +1633,7 @@ html {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-sm);
-  background: rgba(8, 157, 135, 0.12);
+  background: rgba(0, 179, 159, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1705,8 +1707,8 @@ html {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(8, 157, 135, 0.15);
-  border: 1px solid rgba(8, 157, 135, 0.25);
+  background: rgba(0, 179, 159, 0.15);
+  border: 1px solid rgba(0, 179, 159, 0.25);
   color: var(--action-teal);
   font-size: 0.9rem;
   font-weight: 700;
@@ -1841,8 +1843,8 @@ html {
   text-align: center;
   padding: var(--space-xl) 0;
   background:
-    radial-gradient(circle at 8% 30%, rgba(8, 157, 135, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 92% 70%, rgba(255, 210, 0, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 8% 30%, rgba(0, 179, 159, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 92% 70%, rgba(245, 166, 35, 0.12) 0%, transparent 45%),
     var(--bg-deep-navy);
   position: relative;
   overflow: hidden;
@@ -1858,7 +1860,7 @@ html {
   max-width: 960px;
   background: var(--surface-navy-card);
   border: 1px solid var(--surface-border-light);
-  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
   padding: 4rem 2.5rem;
   box-shadow: none;
 }
@@ -1944,7 +1946,7 @@ html {
 .dgs-form-row select:focus {
   border-color: var(--action-teal);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(8, 157, 135, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 179, 159, 0.1);
 }
 
 .dgs-form-row textarea {
@@ -1992,18 +1994,17 @@ html {
 }
 
 .dgs-next-step-num {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--action-teal);
-  color: var(--text-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: none;
+  border-radius: 0;
+  width: auto;
+  height: auto;
+  color: var(--action-teal);
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.78rem;
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1;
   flex-shrink: 0;
+  display: block;
 }
 
 .dgs-next-step h4 {
@@ -2220,7 +2221,7 @@ html {
 .dgs-article-card-image {
   width: 100%;
   height: 160px;
-  background: linear-gradient(135deg, rgba(8, 157, 135, 0.15) 0%, rgba(11, 19, 43, 0.5) 100%);
+  background: linear-gradient(135deg, rgba(0, 179, 159, 0.15) 0%, rgba(10, 31, 51, 0.5) 100%);
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -2307,7 +2308,7 @@ html {
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: rgba(8, 157, 135, 0.15);
+  background: rgba(0, 179, 159, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2513,8 +2514,8 @@ html {
 }
 
 .dgs-value-pills .dgs-pill {
-  background: rgba(8, 157, 135, 0.08);
-  border-color: rgba(8, 157, 135, 0.2);
+  background: rgba(0, 179, 159, 0.08);
+  border-color: rgba(0, 179, 159, 0.2);
   color: var(--action-teal);
   font-size: 0.78rem;
   font-weight: 600;
@@ -2533,7 +2534,7 @@ html {
 
 /* ─── CUSTOM PREMIUM CTA CARD ─── */
 .dgs-cta-card {
-  background: radial-gradient(circle at 90% 10%, rgba(8, 157, 135, 0.16) 0%, var(--surface-navy-card) 60%);
+  background: radial-gradient(circle at 90% 10%, rgba(0, 179, 159, 0.16) 0%, var(--surface-navy-card) 60%);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-md);
@@ -2544,8 +2545,8 @@ html {
 }
 
 .dgs-cta-card:hover {
-  border-color: rgba(8, 157, 135, 0.3);
-  box-shadow: 0 12px 40px rgba(8, 157, 135, 0.08);
+  border-color: rgba(0, 179, 159, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 179, 159, 0.08);
 }
 
 /* Light section overrides for resources page */
@@ -2688,7 +2689,7 @@ html.lenis body {
   width: 100%;
   height: 220px;
   /* Slightly taller for real graphics later */
-  background: radial-gradient(circle at center, rgba(11, 19, 43, 0.4) 0%, var(--bg-navy-darkest) 100%);
+  background: radial-gradient(circle at center, rgba(10, 31, 51, 0.4) 0%, var(--bg-navy-darkest) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2701,8 +2702,8 @@ html.lenis body {
 .dgs-visual-placeholder {
   width: 80%;
   height: 70%;
-  border: 1px dashed rgba(8, 157, 135, 0.2);
-  border-radius: 8px;
+  border: 1px dashed rgba(0, 179, 159, 0.2);
+  border-radius: var(--radius-lg);
   position: relative;
   display: flex;
   align-items: center;
@@ -2725,7 +2726,7 @@ html.lenis body {
   right: -4px;
   bottom: -4px;
   border: 1px solid rgba(255, 255, 255, 0.03);
-  border-radius: 10px;
+  border-radius: var(--radius-xl);
 }
 
 /* Hide default opacity/transform on CSS reveal class because GSAP handles it now */
@@ -2769,14 +2770,14 @@ html.lenis body {
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 4px 24px rgba(11, 19, 43, 0.03);
+  box-shadow: 0 4px 24px rgba(10, 31, 51, 0.03);
   transition: transform var(--duration-fast) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
 }
 
 .dgs-carousel-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(8, 157, 135, 0.25);
-  box-shadow: 0 12px 32px rgba(11, 19, 43, 0.08);
+  border-color: rgba(0, 179, 159, 0.25);
+  box-shadow: 0 12px 32px rgba(10, 31, 51, 0.08);
 }
 
 @media (max-width: 1024px) {
@@ -2887,7 +2888,7 @@ html.lenis body {
   border-radius: var(--radius-md);
   position: relative;
   transition: transform var(--duration-fast) var(--ease-out), border-color var(--duration-base) var(--ease-out);
-  box-shadow: 0 4px 20px rgba(11, 19, 43, 0.05);
+  box-shadow: 0 4px 20px rgba(10, 31, 51, 0.05);
 }
 
 .dgs-problem-card:hover {
@@ -2902,9 +2903,9 @@ html.lenis body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(8, 157, 135, 0.08);
+  background: rgba(0, 179, 159, 0.08);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(8, 157, 135, 0.15);
+  border: 1px solid rgba(0, 179, 159, 0.15);
   color: var(--action-mint-hover);
 }
 
@@ -3043,7 +3044,7 @@ html.lenis body {
 .dgs-audit-card {
   background: var(--surface-navy-card);
   border: 1px solid var(--surface-border-light);
-  border-radius: var(--radius-xl) 6px var(--radius-xl) var(--radius-xl);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
   padding: 2.5rem;
   box-shadow: none;
   position: relative;
@@ -3056,11 +3057,11 @@ html.lenis body {
   letter-spacing: 0.12em;
   font-weight: 700;
   color: var(--action-mint-hover);
-  background: rgba(8, 157, 135, 0.1);
+  background: rgba(0, 179, 159, 0.1);
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius-full);
   margin-bottom: var(--space-md);
-  border: 1px solid rgba(8, 157, 135, 0.25);
+  border: 1px solid rgba(0, 179, 159, 0.25);
 }
 
 .dgs-audit-card h3 {
@@ -3086,14 +3087,14 @@ html.lenis body {
   flex-shrink: 0;
   width: 28px;
   height: 28px;
-  background: rgba(8, 157, 135, 0.15);
+  background: rgba(0, 179, 159, 0.15);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--action-mint-hover);
   margin-top: 0.15rem;
-  box-shadow: 0 0 10px rgba(8, 157, 135, 0.1);
+  box-shadow: 0 0 10px rgba(0, 179, 159, 0.1);
 }
 
 .dgs-deliverable-icon svg {
