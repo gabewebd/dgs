@@ -1,0 +1,172 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — 404 PAGE SPECIFIC STYLES
+   ============================================================ */
+
+/* Same navy + teal/amber radial-glow recipe as .dgs-cta-banner
+   (dgs-common.css), the site's standard "premium navy" background. */
+.dgs-error-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(circle at 8% 24%, rgba(0, 179, 159, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 92% 76%, rgba(245, 166, 35, 0.12) 0%, transparent 45%),
+    var(--bg-deep-navy);
+  padding: 9rem 0 5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+  .dgs-error-section {
+    padding: 8rem 0 4rem;
+  }
+}
+
+.dgs-error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Console Window styling */
+.dgs-console-window {
+  width: 100%;
+  max-width: 30rem;
+  background: var(--bg-deep-navy);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 40px -15px rgba(10, 31, 51, 0.35);
+  overflow: hidden;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.dgs-console-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dgs-console-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dgs-console-dot--red { background: #FF5F56; }
+.dgs-console-dot--yellow { background: #FFBD2E; }
+.dgs-console-dot--green { background: #27C93F; }
+
+.dgs-console-title {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.dgs-console-body {
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.dgs-console-line {
+  color: var(--text-white);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Syntax Highlighting */
+.dgs-code-keyword {
+  color: #FFBD2E; /* Warm yellow */
+  font-weight: bold;
+}
+
+.dgs-code-number {
+  color: #27C93F; /* Green status */
+}
+
+.dgs-code-string {
+  color: var(--action-mint-hover); /* Teal string */
+}
+
+.dgs-code-comment {
+  color: #5B6670; /* Muted gray comment */
+  font-style: italic;
+}
+
+/* Fluid layout — relative units for zoom resilience */
+.dgs-error-section .dgs-container {
+  max-width: 45rem;
+}
+
+.dgs-error-section .dgs-error-desc {
+  max-width: 36.25rem;
+}
+
+.dgs-error-actions .dgs-btn {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.55);
+  background: transparent;
+}
+
+.dgs-error-actions .dgs-btn:hover {
+  background: #ffffff;
+  color: var(--bg-deep-navy);
+  border-color: #ffffff;
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-5f715ef85f {
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 75vh !important;
+}
+
+.dgs-il-e201497c6a {
+  max-width: 720px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.dgs-il-512ab6f48b {
+  margin-bottom: var(--space-md) !important;
+  color: #ffffff !important;
+  line-height: 1.1 !important;
+  font-size: clamp(2.8rem, 5vw, 4.2rem) !important;
+  letter-spacing: -0.02em !important;
+  text-align: center !important;
+}
+
+.dgs-il-b999a15f59 {
+  max-width: 580px !important;
+  text-align: center !important;
+  margin-bottom: var(--space-lg) !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-size: 1.15rem !important;
+  line-height: 1.7 !important;
+}
+
+.dgs-il-43bcf13663 {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+  margin-top: var(--space-md) !important;
+}
+

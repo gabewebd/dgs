@@ -1,0 +1,821 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — METHODOLOGY PAGE (Strategic, no-nav)
+   Load order: dgs-common.css, THEN this file. (No other per-page sheet —
+   this page must be fully self-contained on top of common.css only.)
+   ============================================================ */
+
+/* ─── HERO (dark navy service-hero shell; content-layout rules already
+   live in common.css's "GLOBAL SERVICE HERO LAYOUT" block, but the base
+   shell — background, padding, overflow — and the breadcrumb/spotlight
+   only ever lived in dgs-solution-detail.css, which this page no longer
+   loads, so they're reproduced here) ─── */
+.dgs-service-hero {
+  padding: 8rem 0 5rem;
+  background-color: #0A1F33 !important;
+  color: var(--text-white);
+  position: relative;
+  overflow: visible;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .dgs-service-hero {
+    padding: 10.5rem 0 6.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dgs-service-hero {
+    padding: 8.5rem 0 4.5rem;
+  }
+}
+
+.dgs-service-hero .dgs-hero-spotlight {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 80vw;
+  height: 60vh;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 179, 159, 0.14) 0%, rgba(45, 127, 249, 0.06) 50%, transparent 80%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -20%);
+}
+
+.dgs-svc-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 5;
+}
+
+.dgs-svc-breadcrumb a {
+  color: rgba(255, 255, 255, 0.88);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.dgs-svc-breadcrumb a:hover {
+  color: var(--action-teal);
+}
+
+.dgs-svc-breadcrumb span[aria-hidden] {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.dgs-svc-breadcrumb .dgs-svc-current {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ─── AEO SNIPPET (light section variant) ─── */
+.dgs-method-aeo {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 1.9rem 2.2rem;
+  background: rgba(0, 179, 159, 0.05);
+  border-left: 4px solid var(--action-teal);
+  border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+  text-align: left;
+}
+
+.dgs-method-aeo p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--bg-deep-navy);
+  font-weight: 500;
+}
+
+/* ─── CSR FRAMEWORK GRAPHIC (verbatim from about.html §3.4) ─── */
+.dgs-method-csr {
+  position: relative;
+  z-index: 1;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .dgs-method-csr {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+  }
+}
+
+.dgs-method-csr-step {
+  --csr-accent: var(--dgs-teal);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+@media (min-width: 900px) {
+  .dgs-method-csr-step {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.1rem;
+    min-width: 0;
+  }
+
+  .dgs-method-csr-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 42px;
+    left: 84px;
+    right: -60px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.18);
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+.dgs-method-csr-step--blue {
+  --csr-accent: var(--dgs-blue);
+}
+
+.dgs-method-csr-icon {
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: 1.5px solid color-mix(in srgb, var(--csr-accent) 40%, transparent);
+  background: color-mix(in srgb, var(--csr-accent) 8%, transparent);
+  transition: border-color var(--duration-base) var(--ease-out), background-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-method-csr-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.dgs-method-csr-step:hover .dgs-method-csr-icon {
+  border-color: var(--csr-accent);
+  background: color-mix(in srgb, var(--csr-accent) 16%, transparent);
+  transform: translateY(-3px);
+}
+
+.dgs-method-csr-connector {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .dgs-method-csr-connector {
+    display: flex;
+    align-items: center;
+    flex: 0 0 60px;
+    height: 84px;
+    margin: 0 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.dgs-method-csr-line {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.dgs-method-csr-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--csr-accent, var(--dgs-teal));
+}
+
+.dgs-method-csr-arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-left: 0.4rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.dgs-method-csr-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.dgs-method-csr-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-white, #fff);
+}
+
+.dgs-method-csr-desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  max-width: 100%;
+}
+
+@media (min-width: 900px) {
+  .dgs-method-csr-desc {
+    max-width: 30ch;
+  }
+}
+
+/* ─── CARD CAROUSEL: shared viewport/nav chrome for the AI Readiness
+   Framework and Business Maturity Model sections below. Shows ~2 cards
+   with a third peeking at the edge; swipe/trackpad-scroll natively via
+   overflow-x + scroll-snap, mouse users get click-drag, and the prev/next
+   buttons step by exactly one card width (js/methodology carousel init,
+   inline script at the bottom of methodology.html). ─── */
+.dgs-carousel {
+  position: relative;
+  margin-top: 3.5rem;
+}
+
+.dgs-carousel-viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+}
+
+.dgs-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.dgs-carousel-viewport.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+.dgs-carousel-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.dgs-carousel-btn {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-full, 999px);
+  border: 1px solid var(--surface-border-neutral);
+  background: var(--bg-white, #fff);
+  color: var(--bg-deep-navy);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out), opacity var(--duration-base) var(--ease-out);
+}
+
+.dgs-carousel-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.dgs-carousel-btn:hover {
+  border-color: var(--dgs-blue);
+  color: var(--dgs-blue);
+}
+
+.dgs-carousel-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ─── AI READINESS FRAMEWORK: 5 dimension cards, in the carousel above ─── */
+.dgs-dim-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.25rem;
+  padding: 0.25rem 0.25rem 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .dgs-dim-grid {
+    gap: 1.5rem;
+  }
+}
+
+.dgs-dim-card {
+  flex: 0 0 80%;
+  min-width: 0;
+  scroll-snap-align: start;
+  background: var(--bg-white, #fff);
+  border: 1px solid var(--surface-border-neutral);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  transition: border-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+}
+
+@media (min-width: 640px) {
+  .dgs-dim-card {
+    flex-basis: 44%;
+  }
+}
+
+.dgs-dim-card:hover {
+  border-color: var(--dgs-blue);
+  transform: translateY(-3px);
+}
+
+.dgs-dim-num {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--dgs-blue);
+}
+
+.dgs-dim-icon {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: rgba(45, 127, 249, 0.08);
+  border: 1px solid rgba(45, 127, 249, 0.25);
+  color: var(--dgs-blue);
+}
+
+.dgs-dim-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.dgs-dim-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--bg-deep-navy);
+  margin: 0;
+}
+
+.dgs-dim-desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-dark-muted);
+  margin: 0;
+}
+
+/* ─── BUSINESS MATURITY MODEL: 5-level ascending staircase, in the
+   carousel above ─── */
+.dgs-mat-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 0.25rem 0.25rem 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .dgs-mat-grid {
+    gap: 1.25rem;
+  }
+}
+
+.dgs-mat-card {
+  flex: 0 0 80%;
+  min-width: 0;
+  scroll-snap-align: start;
+  /* Same fill formula as the AI Readiness Assessment results page
+     (dgs-assessment.css .dgs-asmres-mat-step), so a visitor who's taken
+     that assessment recognizes this instantly as the same model. */
+  --mat-fill: #E7EBEF;
+  --mat-ink: var(--bg-deep-navy);
+  --mat-divider: var(--surface-border-neutral);
+  background: var(--mat-fill);
+  border: 1px solid var(--surface-border-neutral);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .dgs-mat-card {
+    flex-basis: 44%;
+  }
+}
+
+.dgs-mat-card[data-level="1"] { align-self: flex-end; }
+.dgs-mat-card[data-level="2"] { align-self: flex-end; margin-bottom: 0.9rem; }
+.dgs-mat-card[data-level="3"] { align-self: flex-end; margin-bottom: 1.8rem; }
+.dgs-mat-card[data-level="4"] { align-self: flex-end; margin-bottom: 2.7rem; }
+.dgs-mat-card[data-level="5"] { align-self: flex-end; margin-bottom: 3.6rem; }
+
+.dgs-mat-card[data-level="1"] { --mat-fill: color-mix(in srgb, var(--dgs-navy) 6%, white 94%); }
+.dgs-mat-card[data-level="2"] { --mat-fill: color-mix(in srgb, var(--dgs-teal) 22%, white 78%); }
+.dgs-mat-card[data-level="3"] { --mat-fill: var(--dgs-teal); }
+.dgs-mat-card[data-level="4"] { --mat-fill: color-mix(in srgb, var(--dgs-teal) 55%, var(--dgs-blue) 45%); }
+.dgs-mat-card[data-level="5"] { --mat-fill: var(--dgs-navy); }
+
+.dgs-mat-card[data-level="3"],
+.dgs-mat-card[data-level="4"],
+.dgs-mat-card[data-level="5"] {
+  --mat-ink: #ffffff;
+  --mat-divider: rgba(255, 255, 255, 0.25);
+  border-color: transparent;
+}
+
+/* Selectors below are scoped under .dgs-mat-card (not bare classes) so
+   they out-specificity common.css's sitewide ".dgs-section--light h3/p/span"
+   rule — without that, the level-3/4/5 dark-fill cards would have their
+   --mat-ink: #fff overridden back to navy-on-navy (invisible) text. */
+.dgs-mat-card .dgs-mat-level {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mat-ink);
+  opacity: 0.7;
+}
+
+.dgs-mat-card .dgs-mat-name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--mat-ink);
+  margin: 0;
+}
+
+.dgs-mat-card .dgs-mat-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--mat-ink);
+  opacity: 0.85;
+  margin: 0;
+}
+
+.dgs-mat-card .dgs-mat-move {
+  margin-top: 0.35rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--mat-divider);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--mat-ink);
+}
+
+.dgs-mat-card .dgs-mat-move strong {
+  color: var(--mat-ink);
+  font-weight: 700;
+}
+
+/* ─── TRANSFORMATION ROADMAP: sticky left heading + scrollable right
+   track — same "CSR Journey" component the solution pages use
+   (dgs-solution-detail.css .dgs-csr-layout), reproduced here since this
+   page no longer loads that sheet. ─── */
+.dgs-csr-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-top: 3.5rem;
+}
+
+@media (min-width: 900px) {
+  .dgs-csr-layout {
+    grid-template-columns: 4fr 6fr;
+    gap: 5.5rem;
+  }
+
+  .dgs-csr-sticky {
+    position: sticky;
+    top: 8.75rem;
+  }
+}
+
+.dgs-csr-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  counter-reset: csr;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.dgs-csr-step {
+  position: relative;
+  padding: 2.2rem 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), background-color var(--duration-base) var(--ease-out);
+}
+
+.dgs-csr-step:hover {
+  border-color: rgba(0, 179, 159, 0.35);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dgs-csr-step-num {
+  counter-increment: csr;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--action-teal);
+  background: rgba(0, 179, 159, 0.08);
+  color: var(--action-teal);
+  font-family: var(--font-display, var(--font-heading));
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-bottom: 1.1rem;
+}
+
+.dgs-csr-step-num::before {
+  content: '0' counter(csr);
+}
+
+.dgs-csr-step h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-white, #fff);
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.01em;
+}
+
+.dgs-csr-step p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* ─── Framework nav strip (jump links at top of hero) ─── */
+.dgs-method-jumpnav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+
+.dgs-method-jumpnav a {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: border-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
+}
+
+.dgs-method-jumpnav a:hover {
+  border-color: var(--dgs-teal);
+  color: var(--dgs-teal);
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-method-hero-duotone {
+  /* PLACEHOLDER photo — swap for a final brand/team image */
+  --dgs-duotone-img:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop') !important;
+}
+
+.dgs-il-0a39867626 {
+  padding-bottom: 4rem !important;
+}
+
+.dgs-il-245c10d1a4 {
+  max-width: 820px !important;
+  margin: 0 auto 2rem auto !important;
+  text-align: center !important;
+}
+
+.dgs-il-18317876ab {
+  color: var(--bg-deep-navy) !important;
+}
+
+.dgs-il-fecaab7ea9 {
+  background: radial-gradient(circle at 50% 50%, rgba(45, 127, 249, 0.18) 0%, rgba(45, 127, 249, 0) 70%), #0A1F33 !important;
+  padding: 6rem 0 !important;
+}
+
+.dgs-il-eee297b4e2 {
+  max-width: 820px !important;
+  margin: 0 auto 1.5rem auto !important;
+  text-align: center !important;
+}
+
+.dgs-il-b92d15bb6d {
+  justify-content:center !important;
+  color: var(--action-teal) !important;
+}
+
+.dgs-il-7117e3abfb {
+  color: #ffffff !important;
+}
+
+.dgs-il-bc9491ffc2 {
+  color: rgba(255,255,255,0.85) !important;
+  font-size: 1.1rem !important;
+  line-height: 1.75 !important;
+  margin: 0 auto !important;
+  max-width: 68ch !important;
+}
+
+.dgs-il-2d44e0f3e8 {
+  padding: 6.5rem 0 !important;
+}
+
+.dgs-il-d772aa4260 {
+  justify-content:center !important;
+  color: var(--dgs-blue) !important;
+}
+
+.dgs-il-f9063bc66c {
+  color: var(--text-dark-muted) !important;
+  font-size: 1.08rem !important;
+  line-height: 1.7 !important;
+  margin: 0 auto !important;
+  max-width: 68ch !important;
+}
+
+.dgs-il-c8b2732628 {
+  font-size: 1.08rem !important;
+  line-height: 1.7 !important;
+  margin: 0 auto !important;
+  max-width: 68ch !important;
+}
+
+.dgs-il-e2686f6a6d {
+  background: radial-gradient(circle at 50% 50%, rgba(0, 179, 159, 0.16) 0%, rgba(0, 179, 159, 0) 70%), #0A1F33 !important;
+  padding: 6.5rem 0 !important;
+}
+
+.dgs-il-09f1c56410 {
+  padding-top: 7rem !important;
+  padding-bottom: 7rem !important;
+}
+
+.dgs-il-c375cc7a76 {
+  color:var(--action-teal) !important;
+}
+
+.dgs-il-555b20047d {
+  color: var(--bg-deep-navy) !important;
+  font-size: clamp(2.2rem, 4vw, 3.2rem) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 1.25rem !important;
+  letter-spacing: -0.02em !important;
+}
+
+.dgs-il-78c360413a {
+  color: var(--action-teal) !important;
+}
+
+.dgs-il-4819f8adc9 {
+  color: var(--text-dark-muted) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.7 !important;
+  margin: 0 !important;
+  max-width: 28rem !important;
+}
+
+.dgs-il-2cfbdbb9ba {
+  width: 60px !important;
+  height: 3px !important;
+  background: var(--accent-yellow) !important;
+  margin-top: 2rem !important;
+}
+
+.dgs-il-cdd32ee3e5 {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a7e049f5fc842636e63d865.png') !important;
+}
+
+/* ─── FINAL CTA ───────────────────────────────────────────────
+   Scoped copy of the solutions/about/growth-hub final CTA polish
+   (.dgs-sol-final-cta). common.css only has the plain default (visible
+   photo, hard-edged section); this page doesn't load dgs-about.css or
+   dgs-solution-detail.css, so the faded/masked "premium" treatment used
+   on growth-hub.html has to live here too. ------------------------- */
+.dgs-sol-final-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg-navy-darkest, #0A1F33) !important;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+.dgs-sol-final-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  pointer-events: none;
+}
+
+.dgs-sol-final-cta::before {
+  content: none;
+}
+
+.dgs-sol-final-cta::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70vw;
+  height: 50vh;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 50%,
+      rgba(0, 179, 159, 0.12) 0%,
+      rgba(45, 127, 249, 0.12) 40%,
+      transparent 70%);
+  animation: dgs-sol-cta-breathe 8s ease-in-out infinite alternate;
+}
+
+@keyframes dgs-sol-cta-breathe {
+  0%   { transform: translate(-50%, -50%) scale(1);    opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; }
+}
+
+.dgs-sol-final-cta > *:not(.dgs-sol-final-bg) {
+  position: relative;
+  z-index: 2;
+}
+
+.dgs-sol-final-cta h2 {
+  max-width: 66rem;
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem) !important;
+  line-height: 1.22;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.12));
+}
+
+.dgs-sol-final-cta h2 .dgs-text-accent {
+  -webkit-text-fill-color: var(--action-teal);
+  filter: none;
+}
+
+.dgs-sol-final-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-sol-final-cta::after {
+    animation: none;
+    opacity: 0.65;
+  }
+}
+

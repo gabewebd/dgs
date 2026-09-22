@@ -1,0 +1,29 @@
+/* ============================================================
+   ISOLATED HEADER TEST PAGE (dev-only, not part of the site build)
+   ============================================================ */
+.dgs-header .dgs-logo,
+.dgs-mobile-menu-head .dgs-logo {
+  background-image: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5f1fbc9c9b37b5fd51bdd5.png');
+}
+
+/* This file only mounts the header, so give it something to scroll
+   against — otherwise there's no page height to test the
+   scroll-hide/reveal or "is-scrolled" glass behavior against. */
+body.dgs-page {
+  min-height: 220vh;
+  background: var(--bg-white, #ffffff);
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-7395eb7161 {
+  padding: 8rem 2rem 4rem !important;
+  max-width: 640px !important;
+  margin: 0 auto !important;
+}
+
+.dgs-il-4097071bea {
+  font-family: var(--font-heading, sans-serif) !important;
+}
+

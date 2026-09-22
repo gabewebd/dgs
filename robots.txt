@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+Disallow: /*copy*
+Disallow: /careers-source.html
+Disallow: /hub.html
+Disallow: /email.html
+Disallow: /services.html
+Disallow: /cta-form-template.html
+Disallow: /resrouce%20download%20cta.html
+
+# Dev/build tooling, not site content
+Disallow: /includes/
+Disallow: /scripts/
+Disallow: /scratch/
+Disallow: /strategy/
+Disallow: /docs/
+Disallow: /components/
+Disallow: /figma/
+Disallow: /netlify/
+Disallow: /node_modules/

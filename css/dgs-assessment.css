@@ -1,0 +1,1150 @@
+/* ============================================================
+   GROWTH HUB — AI READINESS ASSESSMENT (Interactive)
+   Independent stylesheet for the scored quiz experience. Inherits
+   --ga-navy / --ga-teal / --ga-blue / --ga-amber / --ga-ink / --ga-muted /
+   --ga-hairline / --ga-surface from the .dgs-ga scope it's nested inside
+   (see dgs-growth-article.css). Does not touch that file.
+
+   2026-08-19 visual overhaul: sharp/geometric enterprise redesign, all
+   selectors and data-attributes kept identical to js/dgs-assessment.js —
+   this file only restyles, it never renames a hook the script queries.
+   Local tokens below (--asm-*) intentionally use a deeper navy than the
+   sitewide --ga-navy for a more "ink" structural color on this one
+   component, per the brand direction given for this redesign.
+   ============================================================ */
+
+.dgs-asm {
+  --asm-navy: #040e2c;
+  --asm-navy-soft: color-mix(in srgb, #040e2c 90%, white 10%);
+  --asm-slate: #465364;
+  --asm-slate-soft: #7C8793;
+  --asm-mist: #F4F6F8;
+  --asm-border: rgba(4, 14, 44, 0.14);
+  --asm-border-soft: rgba(4, 14, 44, 0.08);
+  --asm-teal: var(--action-teal, #00B39F);
+  --asm-amber: var(--dgs-amber, #F5A623);
+
+  position: relative;
+  z-index: 0;
+  background: #ffffff;
+  padding: 4.5rem 1.5rem 6rem;
+}
+
+.dgs-asm::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: #ffffff;
+}
+
+.dgs-asm-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* ─── Progress bar ───────────────────────────────────────────
+   A static label frames the bar so it reads as one deliberate
+   instrument, not a bare form-library progress element. Thin
+   white "cut" lines every 20% mark the five dimensions, visible
+   over both the track and the fill. ─────────────────────────── */
+.dgs-asm-progress-bar {
+  margin-bottom: 2.5rem;
+}
+
+.dgs-asm-progress-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--asm-slate-soft);
+  margin-bottom: 0.75rem;
+}
+
+.dgs-asm-progress-track {
+  height: 6px;
+  border-radius: var(--radius-xs, 2px);
+  background: var(--asm-border-soft);
+  overflow: hidden;
+  position: relative;
+}
+
+.dgs-asm-progress-track::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent 0,
+    transparent calc(20% - 1px),
+    #ffffff calc(20% - 1px),
+    #ffffff 20%
+  );
+  pointer-events: none;
+}
+
+.dgs-asm-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--asm-teal);
+  transition: width 0.35s var(--ease-out, ease);
+}
+
+/* ─── Card shell ─────────────────────────────────────────────
+   Flat, bordered, sharply cornered. No shadow, no heavy navy top
+   edge (2026-08-31: removed per feedback, read as a leftover "quiz
+   chrome" accent that fought the consulting-report tone) — the
+   1px hairline border alone signals the instrument boundary. ──── */
+.dgs-asm-card {
+  background: #ffffff;
+  border: 1px solid var(--asm-border);
+  border-radius: var(--radius-xl, 8px);
+  padding: 3rem 3rem 2.75rem;
+}
+
+@media (max-width: 640px) {
+  .dgs-asm-card {
+    padding: 2rem 1.35rem 1.85rem;
+  }
+}
+
+.dgs-asm-screen[hidden] {
+  display: none;
+}
+
+/* ─── Shared text bits ───────────────────────────────────────
+   eyebrow -> heading -> lede is the fixed hierarchy on every
+   screen; the eyebrow carries a small geometric tick instead of
+   just being caps text, so it reads as a label, not a stray line. */
+.dgs-asm-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--asm-teal);
+  margin-bottom: 1rem;
+}
+
+.dgs-asm-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  background: var(--asm-teal);
+  flex-shrink: 0;
+}
+
+/* !important below beats .dgs-page h2/p (class+element = higher
+   specificity than a single component class) — without it these
+   rules silently lose to the sitewide h2/p reset regardless of
+   stylesheet load order. Same fix applied throughout this file
+   wherever a rule targets a bare h1-h6/p/a/button. */
+.dgs-asm-heading {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3.2vw, 2.1rem) !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--asm-navy);
+  margin: 0 0 1rem !important;
+}
+
+.dgs-asm-lede {
+  font-family: var(--font-body);
+  font-size: 1.04rem;
+  line-height: 1.75 !important;
+  color: var(--asm-slate);
+  max-width: 54ch;
+  margin: 0 0 2.25rem !important;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────
+   Sharp corners (radius-lg = 6px, not a pill), no shadow lift.
+   Interaction reads through a background/border shift and a 1px
+   nudge, not a floating card effect. ───────────────────────── */
+.dgs-asm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body) !important;
+  font-weight: 700;
+  font-size: 0.96rem;
+  letter-spacing: 0.01em;
+  padding: 1rem 1.75rem;
+  border-radius: var(--radius-lg, 6px);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.dgs-asm-btn--primary {
+  background: var(--asm-navy);
+  color: #ffffff;
+}
+
+.dgs-asm-btn--primary:hover {
+  background: var(--asm-navy-soft);
+  transform: translateY(-1px);
+}
+
+.dgs-asm-btn--amber {
+  background: var(--asm-amber);
+  color: var(--asm-navy) !important;
+}
+
+.dgs-asm-btn--amber:hover {
+  background: var(--dgs-amber-hover, #dc9420);
+  transform: translateY(-1px);
+}
+
+.dgs-asm-btn--ghost {
+  background: transparent;
+  color: var(--asm-slate);
+  border-color: var(--asm-border);
+  padding: 0.85rem 1.4rem;
+}
+
+.dgs-asm-btn--ghost:hover {
+  border-color: var(--asm-navy);
+  color: var(--asm-navy);
+}
+
+.dgs-asm-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-asm-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ─── Question screen ─────────────────────────────────────────
+   The dimension label is a solid navy tag (a "you are here"
+   marker), separated from the question count by a hairline rule
+   so the meta row reads as instrumentation, not stray captions. */
+.dgs-asm-q-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 1.85rem;
+  border-bottom: 1px solid var(--asm-border-soft);
+}
+
+.dgs-asm-q-dim {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--asm-navy);
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-sm, 3px);
+}
+
+.dgs-asm-q-progress {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--asm-slate-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.dgs-asm-q-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+  line-height: 1.42 !important;
+  letter-spacing: -0.01em;
+  color: var(--asm-navy);
+  margin: 0 0 2.5rem !important;
+}
+
+.dgs-asm-scale {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.dgs-asm-scale-btn {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  max-width: 64px;
+  border-radius: var(--radius-md, 4px);
+  border: 1.5px solid var(--asm-border);
+  background: #ffffff;
+  color: var(--asm-navy);
+  font-family: var(--font-heading) !important;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.dgs-asm-scale-btn:hover {
+  border-color: var(--asm-teal);
+  background: color-mix(in srgb, var(--asm-teal) 8%, white);
+}
+
+.dgs-asm-scale-btn.is-selected {
+  background: var(--asm-navy);
+  border-color: var(--asm-navy);
+  color: #ffffff;
+}
+
+.dgs-asm-scale-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--asm-slate-soft);
+  margin-bottom: 2.25rem;
+}
+
+.dgs-asm-q-nav {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--asm-border-soft);
+}
+
+/* ─── Email gate: GHL lead-capture iframe ───────────────────────
+   The form itself (name/email fields, validation) lives inside the
+   embedded GHL widget. No fixed/min height here on purpose: GHL's
+   form_embed.js resizes the iframe to its actual content height via
+   postMessage, so the wrapper just hugs whatever height that ends up
+   being instead of forcing a tall fixed box around a short form. */
+.dgs-asm-iframe-wrap {
+  border: 1.5px solid var(--asm-border);
+  border-radius: var(--radius-md, 4px);
+  background: var(--asm-mist);
+  overflow: hidden;
+  line-height: 0;
+}
+
+.dgs-asm-iframe-wrap iframe {
+  display: block;
+  width: 100%;
+}
+
+.dgs-asm-continue {
+  width: 100%;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.dgs-asm-privacy {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--asm-slate-soft);
+  margin: 1.5rem 0 0 !important;
+}
+
+/* ============================================================
+   RESULTS — AI Readiness Snapshot (business maturity report)
+   Everything below is scoped to .dgs-asmres, the results screen.
+   Local tokens map straight to the DGS 3.0 palette (dgs-common.css
+   :root): navy structure, teal = strength/progression, electric
+   blue = attention/gap, amber reserved ONLY for the primary score
+   figure and the closing CTA button, never used decoratively
+   elsewhere on this screen (brand rule).
+   ============================================================ */
+.dgs-asmres {
+  --asmres-blue: var(--dgs-blue, #2D7FF9);
+}
+
+/* The report needs more air than the quiz card, so the shell widens
+   itself only while the results screen is the one showing. Falls
+   back gracefully (fixed 760px) in browsers without :has(). Gated
+   to >=900px only: below that, the pre-existing .dgs-asm-card
+   padding rules (640px/480px/360px, further down this file) already
+   handle mobile correctly, and a :has()-scoped override here would
+   outrank them on specificity even at those narrower widths, so it
+   must not exist below the gate at all. */
+@media (min-width: 900px) {
+  .dgs-asm-inner:has([data-asm-screen="results"]:not([hidden])) {
+    max-width: 1120px;
+  }
+
+  .dgs-asm-inner:has([data-asm-screen="results"]:not([hidden])) .dgs-asm-card {
+    padding: 3.5rem 3.5rem 3rem;
+  }
+}
+
+/* ─── 01 — Header ─── */
+.dgs-asmres-head {
+  margin-bottom: 2.5rem;
+}
+
+.dgs-asmres-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--asm-teal);
+  margin-bottom: 0.9rem;
+}
+
+.dgs-asmres-kicker::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  background: var(--asm-teal);
+  flex-shrink: 0;
+}
+
+.dgs-asmres-title {
+  font-family: var(--font-heading) !important;
+  font-weight: 800;
+  font-size: clamp(1.65rem, 3.4vw, 2.3rem) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--asm-navy);
+  margin: 0 0 0.75rem !important;
+}
+
+.dgs-asmres-dek {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7 !important;
+  color: var(--asm-slate);
+  max-width: 60ch;
+  margin: 0 !important;
+}
+
+/* ─── 02 — Primary score ─── */
+.dgs-asmres-score {
+  text-align: center;
+  padding: 2.25rem 0 2.5rem;
+  margin-bottom: 3rem;
+  border-top: 1px solid var(--asm-border-soft);
+  border-bottom: 1px solid var(--asm-border-soft);
+}
+
+.dgs-asmres-score-num {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(3.2rem, 7.5vw, 4.6rem);
+  line-height: 1;
+  color: var(--asm-amber);
+  letter-spacing: -0.03em;
+}
+
+.dgs-asmres-score-num span {
+  font-size: 0.34em;
+  font-weight: 700;
+  color: var(--asm-slate-soft);
+}
+
+.dgs-asmres-level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.15rem 0 1.35rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--radius-sm, 3px);
+  background: var(--asm-navy);
+  color: #ffffff;
+}
+
+.dgs-asmres-level-num {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.dgs-asmres-level-name {
+  font-family: var(--font-heading);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--asm-teal);
+}
+
+.dgs-asmres-interp {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.75 !important;
+  color: var(--asm-slate);
+  max-width: 58ch;
+  margin: 0 auto !important;
+}
+
+/* ─── Shared section label ─── */
+.dgs-asmres-section {
+  margin-bottom: 3.25rem;
+}
+
+.dgs-asmres-section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--asm-navy);
+  margin: 0 0 1.5rem;
+}
+
+.dgs-asmres-section-label::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  background: var(--asm-teal);
+  flex-shrink: 0;
+}
+
+/* ─── 03 — Maturity model: five-step ascending staircase ───
+   Same fill formula as the Methodology page's Business Maturity
+   Model (dgs-methodology.css .dgs-mat-card), so a visitor who's seen
+   that page recognizes this instantly as the same model. ─────── */
+.dgs-asmres-mat-track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 1.75rem;
+}
+
+@media (min-width: 820px) {
+  .dgs-asmres-mat-track {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 0.6rem;
+  }
+}
+
+.dgs-asmres-mat-step {
+  --mat-fill: #E7EBEF;
+  --mat-ink: var(--asm-navy);
+  position: relative;
+  flex: 1;
+  background: var(--mat-fill);
+  border-radius: var(--radius-md, 4px) var(--radius-md, 4px) 0 0;
+  padding: 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+@media (min-width: 820px) {
+  .dgs-asmres-mat-step {
+    min-width: 0;
+  }
+
+  .dgs-asmres-mat-step[data-level="1"] { min-height: 5rem; }
+  .dgs-asmres-mat-step[data-level="2"] { min-height: 6.1rem; }
+  .dgs-asmres-mat-step[data-level="3"] { min-height: 7.2rem; }
+  .dgs-asmres-mat-step[data-level="4"] { min-height: 8.3rem; }
+  .dgs-asmres-mat-step[data-level="5"] { min-height: 9.4rem; }
+}
+
+.dgs-asmres-mat-step[data-level="1"] { --mat-fill: color-mix(in srgb, var(--dgs-navy) 6%, white 94%); }
+.dgs-asmres-mat-step[data-level="2"] { --mat-fill: color-mix(in srgb, var(--dgs-teal) 22%, white 78%); }
+.dgs-asmres-mat-step[data-level="3"] { --mat-fill: var(--dgs-teal); --mat-ink: #ffffff; }
+.dgs-asmres-mat-step[data-level="4"] { --mat-fill: color-mix(in srgb, var(--dgs-teal) 55%, var(--dgs-blue) 45%); --mat-ink: #ffffff; }
+.dgs-asmres-mat-step[data-level="5"] { --mat-fill: var(--dgs-navy); --mat-ink: #ffffff; }
+
+.dgs-asmres-mat-code {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--mat-ink);
+  opacity: 0.85;
+}
+
+.dgs-asmres-mat-name {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--mat-ink);
+}
+
+/* Desktop-only: the outline ring is the "current" affordance for the
+   staircase. Kept out of the base rule (and out of the mobile query
+   below) on purpose, it must never leak into the mobile row layout,
+   which has its own tint+border-left affordance instead. */
+@media (min-width: 820px) {
+  .dgs-asmres-mat-step.is-current {
+    outline: 2px solid var(--asm-navy);
+    outline-offset: 3px;
+  }
+}
+
+.dgs-asmres-mat-tag {
+  position: absolute;
+  top: -1.6rem;
+  left: 0;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--asm-navy);
+  padding: 0.22rem 0.5rem;
+  border-radius: var(--radius-xs, 2px);
+  white-space: nowrap;
+}
+
+@media (max-width: 819px) {
+  .dgs-asmres-mat-step {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.85rem;
+    border-radius: var(--radius-md, 4px);
+    border-left: 5px solid var(--mat-fill);
+    background: #ffffff;
+    padding: 0.85rem 1.1rem;
+  }
+
+  .dgs-asmres-mat-step[data-level] { min-height: 0; }
+  .dgs-asmres-mat-code,
+  .dgs-asmres-mat-name { color: var(--asm-navy); opacity: 1; }
+  .dgs-asmres-mat-code { color: var(--dgs-teal); }
+
+  .dgs-asmres-mat-step.is-current {
+    border-left-color: var(--asm-navy);
+    background: color-mix(in srgb, var(--asm-navy) 5%, white);
+  }
+
+  .dgs-asmres-mat-tag {
+    position: static;
+    top: auto;
+    left: auto;
+    /* The tag markup is emitted before the code/name spans (so it can
+       be absolutely positioned above the step on desktop). In this
+       row layout it needs to render AFTER them instead, flush right,
+       or the auto margin below collapses all the row's free space in
+       front of it, leaving a large dead gap before the badge. */
+    order: 1;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+}
+
+/* ─── 04 — Readiness framework: connected dimension row ─── */
+.dgs-asmres-dims {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.dgs-asmres-dim {
+  position: relative;
+  flex: 1 1 140px;
+  background: #ffffff;
+  border: 1px solid var(--asm-border);
+  border-top: 3px solid var(--asmres-blue);
+  border-radius: var(--radius-md, 4px);
+  padding: 1.1rem 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dgs-asmres-dim-name {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--asm-slate-soft);
+}
+
+.dgs-asmres-dim-score {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--asm-navy);
+  letter-spacing: -0.02em;
+}
+
+.dgs-asmres-dim-meter {
+  height: 4px;
+  border-radius: var(--radius-xs, 2px);
+  background: var(--asm-border-soft);
+  overflow: hidden;
+}
+
+.dgs-asmres-dim-meter span {
+  display: block;
+  height: 100%;
+  background: var(--dgs-teal);
+}
+
+.dgs-asmres-dim.is-weakest .dgs-asmres-dim-meter span {
+  background: var(--asmres-blue);
+}
+
+.dgs-asmres-dim.is-weakest {
+  border-top-color: var(--asmres-blue);
+}
+
+.dgs-asmres-dim-flag {
+  position: absolute;
+  top: -0.6rem;
+  right: 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--asmres-blue);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-xs, 2px);
+}
+
+.dgs-asmres-dim-arrow {
+  display: none;
+  align-items: center;
+  flex: 0 0 auto;
+  color: var(--asm-border);
+}
+
+.dgs-asmres-dim-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (min-width: 820px) {
+  .dgs-asmres-dim-arrow {
+    display: flex;
+  }
+}
+
+@media (max-width: 819px) {
+  .dgs-asmres-dims {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .dgs-asmres-dim {
+    /* The desktop rule sets `flex: 1 1 140px` as a min column WIDTH
+       for the horizontal row layout. .dgs-asmres-dims switches to
+       flex-direction:column here, which flips the main axis to
+       vertical, so that same 140px basis silently became a forced
+       min-HEIGHT instead, ballooning every card to 140px regardless
+       of its actual (much shorter) content. Reset it explicitly. */
+    flex: 0 1 auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    border-top: none;
+    border-left: 3px solid var(--asmres-blue);
+    padding: 0.9rem 1.1rem;
+  }
+
+  .dgs-asmres-dim-name { flex: 1 1 auto; }
+  .dgs-asmres-dim-meter { flex: 1 1 90px; }
+  .dgs-asmres-dim-flag { top: 0.5rem; right: 0.5rem; }
+}
+
+/* ─── 05 — Strengths vs gaps ─── */
+.dgs-asmres-sg {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .dgs-asmres-sg {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.dgs-asmres-sg-col h3 {
+  font-family: var(--font-heading) !important;
+  font-weight: 700;
+  font-size: 0.92rem !important;
+  letter-spacing: 0.02em;
+  color: var(--asm-navy);
+  margin: 0 0 1.1rem !important;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--dgs-teal);
+}
+
+.dgs-asmres-sg-col--gap h3 {
+  border-bottom-color: var(--asmres-blue);
+}
+
+.dgs-asmres-sg-item {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--asm-border-soft);
+}
+
+.dgs-asmres-sg-item:last-child {
+  border-bottom: none;
+}
+
+.dgs-asmres-sg-dim {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dgs-teal);
+  margin-bottom: 0.3rem;
+}
+
+.dgs-asmres-sg-col--gap .dgs-asmres-sg-dim {
+  color: var(--asmres-blue);
+}
+
+.dgs-asmres-sg-item p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.55 !important;
+  color: var(--asm-slate);
+  margin: 0 !important;
+}
+
+/* ─── 06 — Priorities: numbered consulting-style list ─── */
+.dgs-asmres-priorities {
+  display: flex;
+  flex-direction: column;
+}
+
+.dgs-asmres-priority {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--asm-border-soft);
+}
+
+.dgs-asmres-priority:first-child {
+  padding-top: 0;
+}
+
+.dgs-asmres-priority:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dgs-asmres-priority-num {
+  flex: 0 0 auto;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--asm-border);
+  min-width: 2rem;
+}
+
+.dgs-asmres-priority-title {
+  font-family: var(--font-heading) !important;
+  font-weight: 700;
+  font-size: 1rem !important;
+  color: var(--asm-navy);
+  margin: 0 0 0.35rem !important;
+}
+
+.dgs-asmres-priority-desc {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.6 !important;
+  color: var(--asm-slate);
+  margin: 0 !important;
+}
+
+/* ─── Recommended solutions: compact link row, not a card grid ─── */
+.dgs-asmres-solutions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+}
+
+/* The link itself is .dgs-promise-link (dgs-common.css) — same
+   component as "Read More" / "Apply for Position" on careers.html —
+   so color, underline and hover behavior all come from there. Default
+   navy text with a hover-only underline was easy to miss against this
+   much whitespace; the shared teal component reads as a clear CTA. */
+.dgs-asmres-solution-link {
+  font-size: 0.9rem;
+}
+
+/* ─── 07 — Next maturity step ───
+   Mobile: current state -> down arrow -> next state, stacked, one
+   column, matching the roadmap reading order. Desktop (>=640px):
+   the same three pieces sit in a row with a right-pointing arrow. */
+.dgs-asmres-next {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  background: var(--asm-mist);
+  border-radius: var(--radius-lg, 6px);
+  padding: 1.5rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .dgs-asmres-next {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: left;
+    gap: 1.5rem;
+    padding: 1.75rem 2rem;
+  }
+}
+
+.dgs-asmres-next-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+@media (min-width: 640px) {
+  .dgs-asmres-next-state {
+    align-items: flex-start;
+  }
+}
+
+.dgs-asmres-next-state span {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--asm-slate-soft);
+}
+
+.dgs-asmres-next-state strong {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--asm-navy);
+}
+
+.dgs-asmres-next-state--target strong {
+  color: var(--dgs-teal);
+}
+
+.dgs-asmres-next-arrow {
+  color: var(--asm-slate-soft);
+}
+
+.dgs-asmres-next-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (min-width: 640px) {
+  .dgs-asmres-next-arrow {
+    transform: rotate(-90deg);
+  }
+}
+
+.dgs-asmres-next-copy {
+  flex: 1 1 100%;
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  line-height: 1.6 !important;
+  color: var(--asm-slate);
+  margin: 0 !important;
+}
+
+.dgs-asmres-next.is-maxed .dgs-asmres-next-state--target,
+.dgs-asmres-next.is-maxed .dgs-asmres-next-arrow {
+  display: none;
+}
+
+/* ─── Bridge CTA ─── */
+.dgs-asm-bridge {
+  background: var(--asm-navy);
+  border-left: 3px solid var(--asm-teal);
+  border-radius: var(--radius-md, 4px);
+  padding: 1.9rem 2rem;
+  text-align: center;
+}
+
+.dgs-asmres-cta-kicker {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--asm-teal);
+  margin-bottom: 0.75rem;
+}
+
+.dgs-asm-bridge p {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #ffffff;
+  margin: 0 0 1.25rem;
+}
+
+.dgs-asm-restart {
+  display: block;
+  text-align: center;
+  font-family: var(--font-body) !important;
+  font-size: 0.85rem;
+  color: var(--asm-slate-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--asm-border);
+  margin: 1.75rem auto 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dgs-asm-restart:hover {
+  color: var(--asm-navy);
+}
+
+/* ─── Mobile: keep tiles/type from cramping or overflowing ─── */
+@media (max-width: 480px) {
+  .dgs-asm {
+    padding: 3.5rem 1rem 4.5rem;
+  }
+
+  .dgs-asm-scale {
+    gap: 0.4rem;
+  }
+
+  .dgs-asm-scale-btn {
+    max-width: none;
+    font-size: 0.95rem;
+  }
+
+  .dgs-asm-q-meta {
+    gap: 0.5rem;
+  }
+
+  .dgs-asm-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ─── Extra-narrow phones (320-360px): the 5-tile scale row and
+   card padding both need a bit more room to give here to keep
+   the tap targets comfortable and avoid any horizontal crowding. */
+@media (max-width: 360px) {
+  .dgs-asm-card {
+    padding: 1.75rem 1rem 1.6rem;
+  }
+
+  .dgs-asm-scale {
+    gap: 0.3rem;
+  }
+
+  .dgs-asm-scale-btn {
+    font-size: 0.85rem;
+  }
+
+  .dgs-asm-q-text {
+    font-size: 1.3rem;
+  }
+}
+
+/* ============================================================
+   RESULTS — mobile tuning. The section-by-section rules above
+   already reflow each block to a single column below 820px/640px;
+   this pass just tightens the vertical rhythm and horizontal
+   padding so the report doesn't feel like a desktop layout that
+   got squeezed, on phones from ~390px down to 320px. ============ */
+@media (max-width: 640px) {
+  .dgs-asmres-head {
+    margin-bottom: 2rem;
+  }
+
+  .dgs-asmres-score {
+    padding: 1.75rem 0 2rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .dgs-asmres-level-badge {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 0.15rem;
+    text-align: center;
+  }
+
+  .dgs-asmres-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .dgs-asmres-section-label {
+    margin-bottom: 1.15rem;
+  }
+
+  .dgs-asmres-priority {
+    gap: 0.9rem;
+    padding: 1rem 0;
+  }
+
+  .dgs-asmres-solutions {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .dgs-asmres-cta {
+    padding: 1.6rem 1.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .dgs-asmres-mat-step,
+  .dgs-asmres-dim {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .dgs-asmres-sg-item p,
+  .dgs-asmres-priority-desc,
+  .dgs-asmres-next-copy {
+    font-size: 0.86rem;
+  }
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-07e6d16ec2 {
+  --ga-cat: var(--ga-teal) !important;
+}
+

@@ -1,0 +1,1243 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE - CAREERS STYLESHEET (dgs-careers.css)
+   ============================================================ */
+
+/* ─── CAREERS HERO OVERRIDES ─── */
+.dgs-hero-careers {
+  padding: 8rem 0 7rem;
+  background-color: var(--bg-deep-navy, #0A1F33) !important;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  isolation: isolate;
+}
+
+@media (min-width: 1024px) {
+  .dgs-hero-careers {
+    padding: 10rem 0 8rem;
+  }
+}
+
+.dgs-hero-careers .dgs-hero-content,
+.dgs-hero-careers .dgs-service-hero-copy {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dgs-hero-careers h1 {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0 auto 1.5rem;
+}
+
+/* ─── CAREERS WHY-JOIN + OPEN ROLES SECTIONS ─── */
+#careers-why.dgs-section,
+#careers-hub.dgs-section {
+  padding-top: 6rem;
+  padding-bottom: 7rem;
+  background: var(--bg-white, #ffffff);
+}
+
+/* #careers-why and #careers-hub are adjacent siblings — giving both the
+   section's full bottom AND top padding stacked them into one oversized
+   gap between the pillar row and "Open Roles". #careers-why only needs
+   its own top padding; the touching bottom edge is covered by
+   #careers-hub's top padding instead. */
+#careers-why.dgs-section {
+  padding-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+  #careers-why.dgs-section,
+  #careers-hub.dgs-section {
+    padding-top: 7.5rem;
+    padding-bottom: 8.5rem;
+  }
+
+  #careers-why.dgs-section {
+    padding-bottom: 0;
+  }
+}
+
+/* Photo left, heading + copy + value grid right */
+.dgs-careers-why-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+.dgs-careers-why-media {
+  align-self: stretch;
+  border-radius: var(--radius-lg, 14px);
+  overflow: hidden;
+}
+
+.dgs-careers-why-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.dgs-careers-why-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .dgs-careers-why-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .dgs-careers-why-media img {
+    min-height: 260px;
+  }
+}
+
+.dgs-careers-why-head {
+  text-align: left;
+}
+
+/* .dgs-section--light span (dgs-common.css) is a class+element pair —
+   more specific than the bare .dgs-eyebrow class — so without this
+   scoped override the eyebrow silently rendered navy instead of teal. */
+#careers-why .dgs-eyebrow,
+#careers-hub .dgs-eyebrow {
+  color: var(--action-teal, #00b39f);
+}
+
+/* Eyebrow is inline-flex (dgs-common.css), which centers fine under the
+   section head's text-align: center — pin it explicitly so it can't
+   drift left if that ancestor's layout ever changes. */
+#careers-hub .dgs-roles-section-head .dgs-eyebrow {
+  justify-content: center;
+  width: 100%;
+}
+
+.dgs-careers-why-head .dgs-careers-sticky-heading {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.3rem);
+  color: var(--bg-deep-navy, #0A1F33);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0.75rem 0 0 0;
+  letter-spacing: -0.02em;
+}
+
+.dgs-careers-why-head-copy {
+  color: var(--bg-deep-navy, #0A1F33);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  margin: 1.5rem 0 0 0;
+}
+
+/* ─── VALUE STACK & 4 PILLAR ITEMS ─── */
+.dgs-careers-values-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem 2rem;
+}
+
+@media (min-width: 600px) {
+  .dgs-careers-values-stack {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Flat icon/title/desc pattern, matching industries.html's
+   .dgs-industry-select-card family (no card border/shadow, icon box +
+   title + description + bottom divider). */
+.dgs-careers-value-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(10, 31, 51, 0.09);
+  transition: transform 0.35s var(--ease-out, ease-out);
+}
+
+.dgs-careers-value-pill:hover {
+  transform: translateY(-3px);
+}
+
+.dgs-careers-value-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #e3f7f5 0%, #e7f2fe 100%);
+  border: 1px solid rgba(0, 179, 159, 0.22);
+  color: var(--bg-deep-navy, #0A1F33);
+  margin-bottom: 1.1rem;
+  transition: all 0.35s var(--ease-out, ease-out);
+}
+
+.dgs-careers-value-pill:hover .dgs-careers-value-icon {
+  background: var(--action-teal, #00b39f);
+  color: #ffffff;
+  border-color: var(--action-teal, #00b39f);
+  box-shadow: 0 6px 18px rgba(0, 179, 159, 0.28);
+}
+
+/* Without an explicit size, each inline SVG falls back to its own
+   intrinsic/default box (browser-dependent, not the viewBox), so the four
+   icons rendered at different, inconsistent sizes. Pin them all to the
+   same 28px, matching industries.html's .dgs-ind-icon-box svg. */
+.dgs-careers-value-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Scoped under .dgs-careers-value-pill (not bare) so these beat the
+   sitewide .dgs-section--light h4/p color rule in dgs-common.css, same
+   specificity issue as the talent-community AEO card above. */
+.dgs-careers-value-pill .dgs-careers-value-title {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--bg-deep-navy, #0A1F33);
+  margin: 0 0 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.dgs-careers-value-pill:hover .dgs-careers-value-title {
+  color: var(--action-teal, #00b39f);
+}
+
+.dgs-careers-value-pill .dgs-careers-value-desc {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.9rem;
+  color: var(--text-dark-muted, #5a6e85);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ─── OPEN ROLES SECTION ───
+   Heading size matches .dgs-careers-sticky-heading ("Why join Digital
+   GrowthScale?") above it, so the two section headings on this page
+   read at the same scale. Selector scoped to its own wrapper (two
+   classes, not just .dgs-roles-section-heading alone): "Open Roles"
+   is an <h3>, and dgs-common.css's sitewide `.dgs-page h3` rule
+   (one class + one type = higher specificity than one bare class)
+   was winning over a single-class selector here, quietly shrinking
+   this heading back down to the sitewide h3 size no matter what
+   font-size got set on the bare class. `.dgs-careers-why-head
+   .dgs-careers-sticky-heading` right above uses the same two-class
+   scoping for the exact same reason, which is why THAT heading
+   already rendered at the intended size. */
+.dgs-roles-section-head {
+  max-width: 720px;
+  margin: 0 auto 1rem;
+  text-align: center;
+}
+
+.dgs-roles-section-head .dgs-roles-section-heading {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.3rem);
+  color: var(--bg-deep-navy, #0A1F33);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0.75rem 0 1rem 0;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.dgs-roles-section-sub {
+  color: var(--text-dark-muted, #5a6e85);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+  text-align: center;
+}
+
+/* ─── PREMIUM ROLE CARDS ─── */
+.dgs-roles-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .dgs-roles-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .dgs-roles-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-role-card-premium {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding: 2rem;
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-xl, 16px);
+  box-shadow: 0 4px 20px rgba(10, 31, 51, 0.03);
+  transition: all 0.35s var(--ease-out, ease-out);
+  position: relative;
+}
+
+.dgs-role-card-premium:hover {
+  border-color: rgba(0, 179, 159, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(10, 31, 51, 0.07);
+}
+
+.dgs-role-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dgs-role-dept-tag {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--action-teal, #00b39f);
+  background: rgba(0, 179, 159, 0.08);
+  border: 1px solid rgba(0, 179, 159, 0.2);
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+}
+
+.dgs-role-meta-badge {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dark-muted, #5a6e85);
+}
+
+.dgs-role-body h4 {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--bg-deep-navy, #0A1F33);
+  margin: 0 0 0.4rem 0;
+  letter-spacing: -0.015em;
+  transition: color 0.3s ease;
+}
+
+.dgs-role-body h4 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dgs-role-card-premium:hover .dgs-role-body h4 {
+  color: var(--action-teal, #00b39f);
+}
+
+.dgs-role-body p {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  color: var(--text-dark-muted, #5a6e85);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dgs-role-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* ============================================================
+   NATIVE GHL CAREERS LISTING WIDGET
+   ------------------------------------------------------------
+   Careers "Open Roles" is a GHL Blog List widget pointed at the
+   Careers blog channel (confirmed live, 2026-09-16 saved copy of
+   the Careers page: the widget renders hl-blog-post-home /
+   blog-title / blog-description / readme-btn — the same widget
+   family the site's own Growth Hub listing uses). This section
+   restyles those exact native classes to look like the
+   .dgs-role-card-premium grid above instead of GHL's own default
+   blog-list look — no DOM is rebuilt, no card markup is hand-authored
+   here; every value below targets a real, confirmed selector.
+   .dgs-ghl-native-listing-slot is the wrapper career-main-layout.html
+   puts around the native widget (replaces .dgs-roles-list's own grid
+   with block, since the real grid now lives one level deeper, on the
+   widget's own .flex.flex-wrap row).
+   ============================================================ */
+.dgs-roles-list.dgs-ghl-native-listing-slot {
+  display: block;
+}
+
+/* Local-preview-only reset: only matches inside
+   career-main-layout.html's own .dgs-ghl-native-listing-slot wrapper
+   (this class does not exist on the real live page — see the real
+   fix below), kept so the local file previews correctly regardless
+   of the fix below. */
+.dgs-roles-list.dgs-ghl-native-listing-slot,
+.dgs-roles-list.dgs-ghl-native-listing-slot .hl-blog-post-home,
+.dgs-roles-list.dgs-ghl-native-listing-slot .hl-blog-post-home > .flex.flex-wrap {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* THE REAL FIX (confirmed against the live saved DOM, 2026-09-17):
+   the "Open Roles" Blog List widget is NOT nested inside #careers-hub
+   at all. It's pasted into GHL as its own, separate Custom Code
+   element, which GHL wraps in its own top-level Section — a sibling
+   AFTER </main> closes, not a descendant of it (verified: in the
+   saved HTML, </main> closes, several wrapper divs close right after
+   it, then a brand-new <div id="section-...", class="fullSection
+   c-section c-wrapper section-..."> begins, and .hl-blog-post-home is
+   inside THAT). That Section's own GHL-generated scoped style sets
+   `background-color:var(--transparent)` (confirmed, literally
+   transparent) — so whatever shows through as "navy" is the page's
+   own default canvas color behind it, which every OTHER section on
+   this page happens to paint over explicitly (.dgs-section--light,
+   .dgs-hero-duotone, etc.) but this bare, separate widget Section
+   never did.
+   Fix: give the widget's own STABLE wrapper classes an explicit
+   opaque white background. Deliberately NOT using the random
+   per-element ID class (e.g. section-TVAMz1vWu1 above) since GHL
+   regenerates that on every page edit/republish — .fullSection,
+   .c-row, .c-column, .c-custom-code, .custom-code-container are the
+   same reusable builder classes on every GHL page. Scoped narrowly
+   with :has(.hl-blog-post-home) so this can never affect any other
+   custom-code Section sitewide (Growth Hub's own listing, the
+   footer's own custom-code paste, etc.) — requires a :has()-capable
+   browser (all current Chrome/Edge/Safari; no fallback needed for
+   GHL's own preview/live rendering). */
+.fullSection:has(.hl-blog-post-home),
+.c-row:has(.hl-blog-post-home),
+.c-column:has(.hl-blog-post-home),
+.c-custom-code:has(.hl-blog-post-home),
+.custom-code-container:has(.hl-blog-post-home) {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+/* WIDTH FIX (confirmed root cause of the grid rendering as narrow,
+   left-stuck columns with a huge empty gap on the right, 2026-09-18):
+   .hl-blog-post-home's own ancestor chain — .vertical.inner, the
+   column/row/section wrappers GHL's page builder puts around every
+   Custom Code element — defaults to shrink-to-fit sizing (a builder
+   "column" only stretches to its parent's full width when the
+   element inside is explicitly full-width; nothing here tells it
+   to be). My grid-template-columns below was already correct, but a
+   3-equal-column grid inside a shrink-wrapped, content-width
+   container still renders as 3 narrow columns bunched at the start
+   of the row — exactly the reported symptom. Forcing width:100% up
+   the same stable ancestor chain already used for the background fix
+   (never the random per-element ID classes, which GHL regenerates on
+   every edit) makes the whole chain stretch to the real available
+   content width before the grid ever divides it into 3 columns. */
+.fullSection:has(.hl-blog-post-home),
+.c-row:has(.hl-blog-post-home),
+.c-column:has(.hl-blog-post-home),
+.c-custom-code:has(.hl-blog-post-home),
+.custom-code-container:has(.hl-blog-post-home),
+.vertical.inner:has(.hl-blog-post-home) {
+  width: 100% !important;
+  max-width: 100% !important;
+  /* Same ancestor chain also carries GHL's own generated padding
+     (confirmed on the Career Detail hero's identical ancestor chain,
+     e.g. "padding:20px 0" on the section, "padding:10px 5px" on the
+     column) — zeroed here too so the grid gets the FULL available
+     width, not width-minus-native-padding. */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Belt-and-suspenders: GHL's own scoped style already sets this
+   widget's background to white (confirmed:
+   .hl-blog-post-home{background-color:#ffffffff} in the live page's
+   own generated <style>), but restating it here means the widget
+   stays white even if that per-page generated rule is ever missing
+   or reordered. */
+.hl-blog-post-home {
+  background-color: #ffffff !important;
+  width: 100% !important;
+}
+
+/* 3 columns x however many rows GHL's own pagination provides — the
+   page-size (6 per page, or whatever the widget's own "posts per
+   page" setting is set to in GHL) is controlled entirely by GHL, not
+   by this CSS or by any JS in this repo. This grid just lays out
+   however many cards are actually present on any given page. */
+.hl-blog-post-home > .flex.flex-wrap {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 700px) {
+  .hl-blog-post-home > .flex.flex-wrap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .hl-blog-post-home > .flex.flex-wrap {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ============================================================
+   CAREERS PAGE — GHL "GRID" LAYOUT LIST WIDGET
+   ------------------------------------------------------------
+   Alternate DOM/classes GHL's Blog List widget renders when its own
+   layout setting is switched from "Compact" to "Grid" (confirmed
+   live, 2026-09-19 saved copy of the Careers page):
+
+     .hl-blog-post-home
+       > .flex.flex-wrap
+         > .blog-post-wrapper                (single wrapper — GHL's
+                                               own live markup mis-nests
+                                               every job's
+                                               .blog-post-wrapper-list
+                                               INSIDE the previous job's
+                                               instead of beside it as
+                                               a sibling; js/dgs-careers.js's
+                                               flattenGridCards() promotes
+                                               them all to direct
+                                               children of THIS element
+                                               first — a CSS grid only
+                                               lays out direct children,
+                                               so nothing below does
+                                               anything useful until
+                                               that JS fix has run)
+           > .blog-post-wrapper-list.three-col     (repeats per job)
+             > .blog-post-wrapper-wrapper
+               > .blog-box
+                 > a                          (empty image link — no
+                                               featured image on any
+                                               Careers job, confirmed)
+                 > .standard-blog-content
+                   > h2.blog-title > a        (job title + link)
+                   > .flex.items-center        (category/date slot,
+                     > .text-black.text-xs x2   both empty, same as
+                                                 the Compact widget)
+                   > p.blog-description
+                   > .flex.flex-wrap           (empty tags slot)
+                   > .flex > a.blog-button.readme-btn  (Read more)
+
+   Every selector below is scoped under .hl-blog-post-home, so this
+   can never leak onto Growth Hub's own blog listing or any other GHL
+   blog widget elsewhere on the site. Kept as its own block (not
+   merged into the Compact rules above) since it targets a completely
+   different class family for the same visual result.
+   ============================================================ */
+
+/* .blog-post-wrapper is .flex.flex-wrap's ONLY child in Grid mode —
+   without this it would be squeezed into just the first track of the
+   outer grid above (2/3 columns sitting empty beside it) instead of
+   using the full row to lay out its OWN grid of cards below. */
+.hl-blog-post-home > .flex.flex-wrap > .blog-post-wrapper {
+  grid-column: 1 / -1;
+}
+
+.hl-blog-post-home .blog-post-wrapper {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 700px) {
+  .hl-blog-post-home .blog-post-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .hl-blog-post-home .blog-post-wrapper {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.hl-blog-post-home .blog-post-wrapper-list {
+  display: flex;
+  min-width: 0;
+  width: 100%;
+}
+
+.hl-blog-post-home .blog-post-wrapper-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-xl, 16px);
+  box-shadow: 0 4px 20px rgba(10, 31, 51, 0.03);
+  transition: all 0.35s var(--ease-out, ease-out);
+  overflow: hidden;
+}
+
+.hl-blog-post-home .blog-post-wrapper-wrapper:hover {
+  border-color: rgba(0, 179, 159, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(10, 31, 51, 0.07);
+}
+
+/* Empty image slot: confirmed empty on every live Careers job (no
+   featured image) — hidden outright so it can't reserve a
+   thumbnail-height area above the text. */
+.hl-blog-post-home .blog-box > a {
+  display: none !important;
+}
+
+.hl-blog-post-home .standard-blog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+/* Category/date meta row: both slots confirmed empty on every live
+   Careers posting (same GHL per-list "show category/date" toggle the
+   Compact widget above also leaves off) — collapses instead of
+   reserving a blank row while it stays empty. */
+.hl-blog-post-home .standard-blog-content > .flex.items-center:has(.text-black.text-xs:empty):not(:has(.text-black.text-xs:not(:empty))) {
+  display: none;
+}
+
+.hl-blog-post-home h2.blog-title {
+  font-family: var(--font-heading, 'Sora', sans-serif) !important;
+  font-size: 1.3rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em !important;
+  text-transform: none !important;
+  margin: 0 !important;
+  line-height: 1.25 !important;
+}
+
+.hl-blog-post-home h2.blog-title a {
+  color: var(--bg-deep-navy, #0A1F33) !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease;
+}
+
+.hl-blog-post-home .blog-post-wrapper-wrapper:hover h2.blog-title a {
+  color: var(--action-teal, #00b39f) !important;
+}
+
+.hl-blog-post-home p.blog-description {
+  font-family: var(--font-body, 'Inter', sans-serif) !important;
+  font-size: 0.92rem !important;
+  color: var(--text-dark-muted, #5a6e85) !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+.hl-blog-post-home .standard-blog-content > .flex.flex-wrap:empty {
+  display: none;
+}
+
+.hl-blog-post-home a.blog-button.readme-btn {
+  font-family: var(--font-body, 'Inter', sans-serif) !important;
+  font-size: 0.95rem !important;
+  font-weight: 650 !important;
+  color: var(--action-teal, #00b39f) !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  margin-top: 0.5rem !important;
+}
+
+.hl-blog-post-home a.blog-button.readme-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: currentColor !important;
+  transition: transform 0.25s var(--ease-out, ease-out);
+}
+
+.hl-blog-post-home a.blog-button.readme-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* Card unit. GHL's "compact list" layout repeats
+   .blog-post-wrapper-compact per job (verified against the one live
+   posting; if a listing with 2+ jobs ever shows the repeat happening
+   one level down instead, on .blog-post-wrapper-compact-list, move
+   these box rules there — .content-width-compact/.blog-title/etc.
+   below are unaffected either way). minmax(0,1fr) on the grid
+   columns (not plain 1fr) plus min-width:0 here matters specifically
+   because this card contains long unbroken text (job titles) — a
+   plain 1fr grid track won't shrink narrower than its content's
+   intrinsic min-content width by default, which silently overrides
+   equal column widths the moment a title is longer than the others. */
+.blog-post-wrapper-compact {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-xl, 16px);
+  box-shadow: 0 4px 20px rgba(10, 31, 51, 0.03);
+  transition: all 0.35s var(--ease-out, ease-out);
+  overflow: hidden;
+}
+
+.blog-post-wrapper-compact:hover {
+  border-color: rgba(0, 179, 159, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(10, 31, 51, 0.07);
+}
+
+.blog-post-wrapper-compact .blog-compact-content {
+  display: flex;
+  width: 100%;
+}
+
+/* GHL's own compact-list theme (BlogHome.hoI8HRLt.css, confirmed)
+   sets .content-width-compact{max-width:60%;width:60%} — a leftover
+   from that layout's image-plus-text row (60% text / 40% image);
+   every Careers card has no image, so this reserved the other 40% as
+   dead space inside each card. Same specificity family, so this
+   selector (2 classes) already outranks GHL's own (1 class) without
+   needing !important — restated here for clarity, not as a fight. */
+.blog-post-wrapper-compact .content-width-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* The empty second column .content-width-compact used to share the
+   row with — GHL's reserved image slot, confirmed empty
+   (<div><a href="..."><!----></a></div>) on every Careers posting
+   since none has a featured image. Hidden outright so it can't
+   reserve any width at all next to the 100% text column above. */
+.blog-post-wrapper-compact .blog-compact-content > div:not(.content-width-compact) {
+  display: none !important;
+}
+
+/* Category/date meta slot: empty on the one confirmed live posting
+   (GHL's per-list "show category/date" toggle was off), but a real
+   native hook GHL can populate — styled defensively as a dept-tag row
+   so it matches .dgs-role-header-row the moment it's turned on, and
+   collapses cleanly (no empty gap) while it stays empty. */
+.blog-post-wrapper-compact .text-black.text-xs:empty {
+  display: none;
+}
+
+.blog-post-wrapper-compact .text-black.text-xs {
+  font-family: var(--font-body, 'Inter', sans-serif) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: var(--action-teal, #00b39f) !important;
+  order: -1;
+}
+
+.blog-post-wrapper-compact h2.blog-title {
+  font-family: var(--font-heading, 'Sora', sans-serif) !important;
+  font-size: 1.3rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em !important;
+  margin: 0 !important;
+  line-height: 1.25 !important;
+}
+
+.blog-post-wrapper-compact h2.blog-title a {
+  color: var(--bg-deep-navy, #0A1F33) !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease;
+}
+
+.blog-post-wrapper-compact:hover h2.blog-title a {
+  color: var(--action-teal, #00b39f) !important;
+}
+
+.blog-post-wrapper-compact p.blog-description {
+  font-family: var(--font-body, 'Inter', sans-serif) !important;
+  font-size: 0.92rem !important;
+  color: var(--text-dark-muted, #5a6e85) !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+.blog-post-wrapper-compact a.blog-button.readme-btn {
+  font-family: var(--font-body, 'Inter', sans-serif) !important;
+  font-size: 0.95rem !important;
+  font-weight: 650 !important;
+  color: var(--action-teal, #00b39f) !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  margin-top: 0.5rem !important;
+}
+
+.blog-post-wrapper-compact a.blog-button.readme-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: currentColor !important;
+  transition: transform 0.25s var(--ease-out, ease-out);
+}
+
+.blog-post-wrapper-compact a.blog-button.readme-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* Pagination: only visible once there are enough jobs to paginate;
+   kept minimal (GHL drives the disabled/active state itself). */
+.hl-blog-post-home .pagination-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.hl-blog-post-home .pagination-button {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark-muted, #5a6e85);
+  background: transparent;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-md, 6px);
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hl-blog-post-home .pagination-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.hl-blog-post-home .pagination-button.active {
+  color: #ffffff;
+  background: var(--action-teal, #00b39f);
+  border-color: var(--action-teal, #00b39f);
+}
+
+.hl-blog-post-home .pagination-button:not(:disabled):hover {
+  border-color: var(--action-teal, #00b39f);
+  color: var(--action-teal, #00b39f);
+}
+
+/* ─── HIRING PROCESS (CSR-track format shared with solution pages,
+   from dgs-solution-detail.css: .dgs-csr-layout/-sticky/-track/-step) ─── */
+#careers-hiring-process.dgs-section {
+  padding-top: 6rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (min-width: 1024px) {
+  #careers-hiring-process.dgs-section {
+    padding-top: 7.5rem;
+    padding-bottom: 4.5rem;
+  }
+}
+
+/* ─── TALENT COMMUNITY (navy AEO-banner card, adapted from
+   dgs-industries-detail.css's .dgs-aeo-navy-banner family, minus the
+   ecosystem-stack marquee/badge side) ─── */
+#careers-talent-community.dgs-section {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (min-width: 1024px) {
+  #careers-talent-community.dgs-section {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+}
+
+.dgs-aeo-navy-banner {
+  background: #0A1F33;
+  border-radius: var(--radius-xl, 24px);
+  padding: clamp(2.25rem, 4vw, 3.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 50px rgba(10, 31, 51, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.dgs-aeo-navy-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 450px;
+  height: 100%;
+  background: radial-gradient(circle at 100% 50%, rgba(0, 179, 159, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Careers banner gets a soft, contained glow centered under the ring
+   composition (kept tight so it reads as a highlight, not a wash over the
+   whole card). Scoped to this page only so the shared .dgs-aeo-navy-banner
+   on industries pages is untouched. */
+#careers-talent-community .dgs-aeo-navy-banner::before {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at var(--ring-cx, 50%) var(--ring-cy, 82%), rgba(0, 179, 159, 0.34) 0%, rgba(0, 179, 159, 0.14) 28%, transparent 55%),
+    radial-gradient(circle at calc(var(--ring-cx, 50%) - 12%) calc(var(--ring-cy, 82%) - 38%), rgba(45, 127, 249, 0.14) 0%, transparent 50%);
+  animation: dgsGlowPulse 6s ease-in-out infinite;
+}
+
+@keyframes dgsGlowPulse {
+
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #careers-talent-community .dgs-aeo-navy-banner::before {
+    animation: none;
+  }
+}
+
+.dgs-aeo-banner-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.dgs-aeo-text-side {
+  max-width: 640px;
+}
+
+/* Careers "Talent Community" banner: the ring visual's shared circle center
+   lives here as custom properties (--ring-cx/--ring-cy) so the glow
+   pseudo-elements above and the ring/badges below all stay in sync off one
+   source of truth. Mobile stacks text above, ring below, in normal flow;
+   from 1200px up the ring becomes an absolutely-positioned overlay bleeding
+   into the bottom-right corner and the banner grows tall enough to give it
+   room to be a real circle. */
+#careers-talent-community .dgs-aeo-navy-banner {
+  --ring-cx: 50%;
+  --ring-cy: 82%;
+}
+
+@media (min-width: 1200px) {
+  #careers-talent-community .dgs-aeo-navy-banner {
+    --ring-cx: 83%;
+    --ring-cy: 88%;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+#careers-talent-community .dgs-aeo-banner-inner {
+  width: 100%;
+}
+
+/* Scoped under .dgs-aeo-navy-banner (not bare .dgs-aeo-q/.dgs-aeo-a) so
+   these beat the sitewide .dgs-section--light h2/p/span rule in
+   dgs-common.css, which otherwise wins on specificity and forces
+   dark-on-dark navy text here, effectively hiding the heading/paragraph. */
+.dgs-aeo-navy-banner .dgs-aeo-q {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 0 0 1.25rem;
+}
+
+.dgs-aeo-navy-banner .dgs-text-teal {
+  color: var(--action-teal, #00b39f);
+}
+
+.dgs-aeo-navy-banner .dgs-aeo-a {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 0 1.75rem;
+}
+
+.dgs-aeo-navy-banner .dgs-promise-link {
+  color: var(--action-teal, #00b39f);
+}
+
+/* Link Actions */
+.dgs-promise-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--action-teal, #00b39f);
+  text-decoration: none;
+  transition: color 0.3s, gap 0.3s;
+}
+
+.dgs-promise-link:hover {
+  color: #008f7f;
+  gap: 0.65rem;
+}
+
+.dgs-promise-link .dgs-btn-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ─── TALENT COMMUNITY RING VISUAL (responsive) ───
+   Two concentric circles whose shared center (--ring-cx/--ring-cy, set on
+   .dgs-aeo-navy-banner above) sits inside the card — so only the upper-left
+   sweep of each circle arcs across the visible area, like the reference
+   composition. Each ring carries a rotating conic-gradient "comet" masked
+   to just the stroke, giving the line itself a running, cycling motion
+   (the photo badges stay static — only the ring line moves). Badges are
+   positioned from the same shared center via translate() offsets (own
+   --dx/--dy custom properties) computed so their centers land exactly on
+   the outer or inner circumference: 1, 2, 3 = outer; 4, 5 = inner.
+
+   Below 1200px the whole thing sits in NORMAL FLOW, below the text, at a
+   scaled-down size (smaller radii + a recentered --ring-cx/--ring-cy).
+   From 1200px up it switches to an absolute overlay bleeding into the
+   card's bottom-right corner at full size. */
+.dgs-talent-ring {
+  display: block;
+  position: relative;
+  height: 260px;
+  margin-top: 2.5rem;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (min-width: 1200px) {
+  .dgs-talent-ring {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    margin-top: 0;
+  }
+}
+
+.dgs-talent-ring-circle {
+  position: absolute;
+  top: var(--ring-cy);
+  left: var(--ring-cx);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dgs-talent-ring-circle--outer {
+  width: 284px;
+  height: 284px;
+  border: 1.5px solid rgba(0, 179, 159, 0.45);
+}
+
+.dgs-talent-ring-circle--inner {
+  width: 118px;
+  height: 118px;
+  border: 1.5px solid rgba(45, 127, 249, 0.4);
+}
+
+@media (min-width: 1200px) {
+  .dgs-talent-ring-circle--outer {
+    width: 490px;
+    height: 490px;
+  }
+
+  .dgs-talent-ring-circle--inner {
+    width: 204px;
+    height: 204px;
+  }
+}
+
+.dgs-talent-ring-circle::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      transparent 300deg,
+      rgba(0, 179, 159, 0.9) 335deg,
+      #5be8d3 350deg,
+      rgba(0, 179, 159, 0.9) 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.dgs-talent-ring-circle--outer::after {
+  animation: dgsRingSpin 7s linear infinite;
+}
+
+.dgs-talent-ring-circle--inner::after {
+  animation: dgsRingSpin 4.5s linear infinite reverse;
+}
+
+@keyframes dgsRingSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-talent-ring-circle::after {
+    animation: none;
+  }
+}
+
+.dgs-talent-ring-icon {
+  --dx: 0px;
+  --dy: 0px;
+  position: absolute;
+  top: var(--ring-cy);
+  left: var(--ring-cx);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(0, 179, 159, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 28px rgba(4, 10, 20, 0.4);
+  transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy)));
+}
+
+@media (min-width: 1200px) {
+  .dgs-talent-ring-icon {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.dgs-talent-ring-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dgs-talent-ring-icon--1 {
+  --dx: -109px;
+  --dy: -92px;
+}
+
+.dgs-talent-ring-icon--2 {
+  --dx: -12px;
+  --dy: -142px;
+}
+
+.dgs-talent-ring-icon--3 {
+  --dx: 100px;
+  --dy: -100px;
+}
+
+.dgs-talent-ring-icon--4 {
+  --dx: -53px;
+  --dy: -25px;
+}
+
+.dgs-talent-ring-icon--5 {
+  --dx: 49px;
+  --dy: -34px;
+}
+
+@media (min-width: 1200px) {
+  .dgs-talent-ring-icon--1 {
+    --dx: -188px;
+    --dy: -158px;
+  }
+
+  .dgs-talent-ring-icon--2 {
+    --dx: -21px;
+    --dy: -244px;
+  }
+
+  .dgs-talent-ring-icon--3 {
+    --dx: 173px;
+    --dy: -173px;
+  }
+
+  .dgs-talent-ring-icon--4 {
+    --dx: -92px;
+    --dy: -43px;
+  }
+
+  .dgs-talent-ring-icon--5 {
+    --dx: 84px;
+    --dy: -59px;
+  }
+}
+
+/* ─── CAREERS IFRAME CONTAINER ─── */
+.careers-iframe-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg, 6px);
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  background: transparent;
+}
+
+.careers-iframe-container iframe {
+  width: 100%;
+  border: none;
+  min-height: 800px;
+  display: block;
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .careers-iframe-container iframe {
+    min-height: 900px;
+  }
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-1d067c7072 {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a8426db9f720b54ef09adaa.png') !important;
+}
+
+.dgs-il-f706e30f50 {
+  margin: 0.5rem 0 1.5rem !important;
+}
+
+.dgs-il-1c21f7a172 {
+  color: rgba(255, 255, 255, 0.88) !important;
+  line-height: 1.7 !important;
+  font-size: 1.05rem !important;
+  margin: 0 !important;
+}
+
+.dgs-il-4435ae4781 {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a841d7e45dbba232f6ab7a4.png') !important;
+}
+

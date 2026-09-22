@@ -1,0 +1,544 @@
+/* ============================================================
+   DGS EVENTS & MOMENTS GALLERY
+   Shared horizontal-scroll carousel used in two places:
+     - Growth Hub → Connect ("Recent Events & Moments", full cards)
+     - About → "Where We Show Up" (compact photographic strip)
+   ~2 cards in view plus a peek of the next, paged with prev/next
+   arrows (same mechanic as the Core Differentiators carousel). Cards
+   keep their photo's natural aspect ratio, so nothing is force-cropped.
+   ============================================================ */
+
+.dgs-events-gallery-wrap {
+  position: relative;
+}
+
+/* ─── Empty state: shown until there's a real event to post (see
+   EVENTS_ARE_LIVE in js/dgs-events-gallery.js) — an honest placeholder
+   instead of fabricated event photos. ─── */
+.dgs-events-empty {
+  text-align: center;
+  max-width: 26rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem;
+}
+
+.dgs-events-empty-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(10, 31, 51, 0.14);
+  color: rgba(10, 31, 51, 0.45);
+  margin-bottom: 1.25rem;
+}
+
+.dgs-events-empty-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* h3 + class beats the global `.dgs-page h3` rule (class+element outranks
+   a bare class), which was blowing this up to full heading size. */
+h3.dgs-events-empty-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0A1F33;
+  margin: 0 0 0.5rem 0;
+}
+
+.dgs-events-empty-text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0;
+}
+
+.dgs-section--dark .dgs-events-empty-icon,
+.dgs-section--darker .dgs-events-empty-icon {
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.dgs-section--dark .dgs-events-empty-title,
+.dgs-section--darker .dgs-events-empty-title {
+  color: #ffffff;
+}
+
+.dgs-section--dark .dgs-events-empty-text,
+.dgs-section--darker .dgs-events-empty-text {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ─── Year divider: archives the board like a real event gallery, one
+   group per year (newest first). A single group today, more as events
+   from future years get added. "2026" is the only large heading on the
+   board — the month lives on each photo instead (see
+   .dgs-event-caption-month), not as its own divider. ─── */
+.dgs-events-year-group + .dgs-events-year-group {
+  margin-top: 3rem;
+}
+
+.dgs-events-year-label {
+  display: flex;
+  align-items: baseline;
+  gap: 1.1rem;
+  margin-bottom: 1.75rem;
+}
+
+.dgs-events-year-num {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--bg-deep-navy, #0A1F33);
+  white-space: nowrap;
+}
+
+.dgs-events-year-line {
+  flex: 1 1 auto;
+  height: 1px;
+  background: rgba(10, 31, 51, 0.14);
+}
+
+/* Month sub-group: no divider of its own — just a gap between clusters,
+   matching .dgs-events-track's own 1rem gap between photos so the board
+   reads as one consistent grid rather than the rows looking like
+   separate sections. */
+.dgs-events-month-group + .dgs-events-month-group {
+  margin-top: 1rem;
+}
+
+/* Horizontal carousel: ~2 cards in view plus a peek of the next one, no
+   prev/next buttons — swipe/drag only. Touch scrolls natively (overflow-x:
+   auto + -webkit-overflow-scrolling:touch below); mouse-drag is handled in
+   JS (enableDragScroll in dgs-events-gallery.js), which needs
+   scroll-behavior switched to auto while dragging or each scrollLeft write
+   would animate instead of tracking the pointer 1:1. Cards keep their own
+   photo aspect ratio (no forced height), so the track's items line up at
+   the top but can vary in height, same "real photography" variety the old
+   masonry layout had. */
+.dgs-events-track {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+}
+
+.dgs-events-track::-webkit-scrollbar {
+  display: none;
+}
+
+.dgs-events-track.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+/* Prev/next sit directly on the row — absolutely positioned over the
+   track's own left/right edge, so the left arrow reads as "on" the
+   leftmost photo and the right arrow "on" the rightmost one, rather than
+   in a separate control row below the gallery. A dark translucent circle
+   works over any photo/section regardless of light or dark background. */
+.dgs-events-track-wrap {
+  position: relative;
+}
+
+.dgs-events-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(10, 31, 51, 0.55);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background-color 0.25s ease, opacity 0.25s ease;
+}
+
+.dgs-events-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.dgs-events-arrow--prev {
+  left: 0.75rem;
+}
+
+.dgs-events-arrow--next {
+  right: 0.75rem;
+}
+
+.dgs-events-arrow:hover:not(:disabled) {
+  background: var(--action-teal, #00B39F);
+}
+
+.dgs-events-arrow:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dgs-event-card {
+  /* Narrower than the container so the next card visibly peeks in on
+     mobile — 78vw/340px left almost no sliver on some phone widths. */
+  flex: 0 0 72vw;
+  max-width: 300px;
+  scroll-snap-align: start;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .dgs-event-card {
+    flex-basis: 45%;
+    max-width: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-event-card {
+    flex-basis: 42%;
+  }
+}
+
+/* Entrance animation for a Load More batch (see cardHTML's `enter` param
+   and animateRowIn in dgs-events-gallery.js). Cards render already in
+   this opacity:0 state; JS adds .is-in one frame later to trigger the
+   transition. transition-delay is set per-card inline (stagger), so the
+   row fades in card-by-card rather than all five at once. */
+.dgs-event-card--enter {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-event-card--enter.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-event-card--enter {
+    transition: none;
+    transition-delay: 0s !important;
+  }
+}
+
+/* ─── Load More (progressive loading, "full" variant only) ───
+   Sits in the normal gap below the last year-group. */
+.dgs-events-loadmore-wrap {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.dgs-events-loadmore-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.9rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid rgba(10, 31, 51, 0.18);
+  background: #ffffff;
+  color: #0A1F33;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(10, 31, 51, 0.1);
+}
+
+/* The label text is a bare, unclassed <span> — dgs-common.css's sitewide
+   `.dgs-section--light span { color: ... }` rule sets color DIRECTLY on
+   it, which wins over any color set on the button (an ancestor can only
+   ever supply an inherited value, and a direct rule on the element itself
+   always beats that regardless of the ancestor rule's specificity). This
+   was the actual cause of the button showing dark text no matter what
+   color the button itself was told to use. */
+.dgs-events-loadmore-btn span {
+  color: inherit;
+}
+
+.dgs-events-loadmore-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.dgs-section--dark .dgs-events-loadmore-btn,
+.dgs-section--darker .dgs-events-loadmore-btn {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.dgs-event-card:focus-visible {
+  outline: 2px solid var(--action-teal, #00B39F);
+  outline-offset: 3px;
+  border-radius: var(--radius-lg, 14px);
+}
+
+.dgs-event-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg, 14px);
+  overflow: hidden;
+  background: rgba(10, 31, 51, 0.04);
+  border: 1px solid rgba(10, 31, 51, 0.08);
+  isolation: isolate;
+}
+
+.dgs-section--dark .dgs-event-media,
+.dgs-section--darker .dgs-event-media {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dgs-event-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+              filter 0.5s var(--ease-out, ease);
+}
+
+.dgs-event-card:hover .dgs-event-media img {
+  transform: scale(1.06);
+  filter: grayscale(1) contrast(1.15) brightness(0.7);
+}
+
+/* Navy duotone tint, feathered at the edges — same recipe as the site's
+   hero duotone treatment, just triggered on hover. Shared by both cards. */
+.dgs-event-duotone {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(135deg, #0A1F33 0%, #0d5f70 55%, #00B39F 100%);
+  mix-blend-mode: color;
+  mask-image: radial-gradient(ellipse 120% 100% at 50% 50%, black 45%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 120% 100% at 50% 50%, black 45%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out, ease);
+}
+
+.dgs-event-card:hover .dgs-event-duotone {
+  opacity: 1;
+}
+
+/* Caption sits directly on the photo, revealed on hover — pure photography
+   at rest, same on every tile for a consistent board. */
+.dgs-event-caption {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.1rem;
+  background: linear-gradient(to top, rgba(10, 31, 51, 0.95) 0%, rgba(10, 31, 51, 0.4) 60%, rgba(10, 31, 51, 0) 100%);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.dgs-event-card:hover .dgs-event-caption,
+.dgs-event-card:focus-within .dgs-event-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Month, low-opacity, sitting above the title — the only place the month
+   now appears (no separate divider/watermark on the board itself). */
+.dgs-event-caption-month {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.3rem, 2vw, 1.85rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28) !important;
+  margin-bottom: 0.4rem;
+}
+
+.dgs-event-caption-tag {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--action-teal, #00B39F) !important;
+  margin-bottom: 0.3rem;
+}
+
+/* Double-scoped: the title is an <h3> for semantics, but .dgs-page h3 in
+   dgs-common.css (class + element = higher specificity than a single class)
+   was winning the font-size cascade and blowing it up to full heading
+   size. Scoping under the parent beats that without needing !important. */
+.dgs-event-caption .dgs-event-caption-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #ffffff !important;
+  font-size: 1rem;
+  line-height: 1.35;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dgs-event-caption-meta {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dgs-event-card,
+  .dgs-event-media img,
+  .dgs-event-duotone,
+  .dgs-event-caption,
+  .dgs-events-arrow {
+    transition: none !important;
+  }
+
+  .dgs-events-track {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Lightbox: fullscreen photo popup, one singleton per page ─── */
+body.dgs-lightbox-lock {
+  overflow: hidden;
+}
+
+.dgs-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6.5vh 4vw 4vh;
+  background: rgba(6, 14, 24, 0.92);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s var(--ease-out, ease), visibility 0s linear 0.3s;
+}
+
+.dgs-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s var(--ease-out, ease);
+}
+
+.dgs-lightbox-inner {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.96);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-lightbox.is-open .dgs-lightbox-inner {
+  transform: scale(1);
+}
+
+.dgs-lightbox-img {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-lg, 10px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* Sits inside the photo's own top-right corner (the inner wrapper is
+   exactly as wide/tall as the image, so top:0/right:0 line up with the
+   image's actual edges) rather than floating above the picture. A solid
+   dark chip keeps it readable over any photo. */
+.dgs-lightbox-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 14, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.dgs-lightbox-close:hover {
+  background: var(--action-teal, #00B39F);
+  border-color: var(--action-teal, #00B39F);
+  transform: scale(1.06);
+}
+
+.dgs-lightbox-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 640px) {
+  .dgs-lightbox {
+    padding: 5.5vh 4vw 3vh;
+  }
+
+  .dgs-lightbox-img {
+    max-height: 74vh;
+  }
+
+  .dgs-lightbox-close {
+    top: 0.6rem;
+    right: 0.6rem;
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-lightbox,
+  .dgs-lightbox-inner,
+  .dgs-lightbox-close {
+    transition: none !important;
+  }
+}

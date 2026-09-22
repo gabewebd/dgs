@@ -1,0 +1,751 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — EVENT DETAIL PAGE (reusable template)
+   Load order: dgs-common.css THEN this file. Self-contained: pages
+   under growth-hub/connect/ load ONLY dgs-common.css + this sheet,
+   nothing else. Every event-specific rule is namespaced .dgs-event-*
+   so this sheet can be shared by every future event without
+   per-event overrides.
+   ============================================================ */
+
+/* ─── 0. SHARED FOUNDATION (inlined from dgs-growth-article.css) ───
+   The generic article-hero/TOC/layout/back-to-top system every Growth
+   Hub content page shares (.dgs-ga-*), inlined here verbatim instead
+   of linking dgs-growth-article.css, so this template has zero
+   external stylesheet dependency beyond dgs-common.css. Only the
+   subset this page actually uses is included (no .dgs-ga-cover, no
+   .dgs-ga-body prose/callout/CTA styles, no related-card grid — this
+   page doesn't use any of those). Keep in sync with
+   dgs-growth-article.css and dgs-playbook-detail.css's own copy if
+   this shared system ever changes. */
+
+.dgs-ga {
+  --ga-navy: #0A1F33;
+  --ga-teal: #00B39F;
+  --ga-blue: #2D7FF9;
+  --ga-amber: #F5A623;
+  --ga-ink: #0A1F33;
+  --ga-muted: #5B6B7C;
+  --ga-hairline: rgba(10, 31, 51, 0.1);
+  --ga-surface: #F7F9FA;
+  --ga-cat: var(--ga-teal);
+}
+
+.dgs-ga-hero {
+  background: var(--ga-navy);
+  padding: 8.5rem 0 5.5rem;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.dgs-ga-hero::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -18%;
+  width: 56vw;
+  height: 22rem;
+  min-width: 26rem;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(0, 179, 159, 0.18) 0%, rgba(45, 127, 249, 0.08) 45%, transparent 75%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dgs-ga-hero-inner {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .dgs-ga-hero-inner {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-ga-hero-inner {
+    padding: 0 3.5rem;
+  }
+}
+
+.dgs-ga-back {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.25s ease;
+}
+
+.dgs-ga-back svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-ga-back:hover {
+  color: var(--ga-teal);
+}
+
+.dgs-ga-cat {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ga-cat);
+  margin-bottom: 1.1rem;
+}
+
+.dgs-ga-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.2vw, 3.1rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 1.75rem !important;
+}
+
+.dgs-ga-dek {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 62ch;
+  margin: 0 0 2rem !important;
+}
+
+.dgs-ga-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.62);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dgs-ga-meta strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.dgs-ga-meta span:not(:last-child)::after {
+  content: '\00b7';
+  margin-left: 0.55rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.dgs-ga-layout {
+  position: relative;
+  z-index: 0;
+  background: #ffffff;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 4.5rem 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .dgs-ga-layout {
+    padding: 4.5rem 2rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-ga-layout {
+    padding: 4.5rem 3.5rem 2rem;
+  }
+}
+
+.dgs-ga-layout::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: #ffffff;
+}
+
+@media (min-width: 960px) {
+  .dgs-ga-layout {
+    grid-template-columns: 240px 1fr;
+    gap: 4.5rem;
+    align-items: start;
+  }
+}
+
+.dgs-ga-toc {
+  order: -1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (min-width: 960px) {
+  .dgs-ga-toc {
+    position: sticky;
+    top: 7.5rem;
+    order: 0;
+    max-width: 240px;
+  }
+}
+
+.dgs-ga-toc-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ga-muted);
+  margin-bottom: 0.9rem;
+}
+
+@media (max-width: 959px) {
+  .dgs-ga-toc-label {
+    display: none;
+  }
+}
+
+.dgs-ga-toc-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--ga-surface);
+  border: 1px solid var(--ga-hairline);
+  border-radius: var(--radius-md, 10px);
+  padding: 0.85rem 1.1rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ga-ink);
+}
+
+@media (min-width: 960px) {
+  .dgs-ga-toc-toggle {
+    display: none;
+  }
+}
+
+.dgs-ga-toc-toggle svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.dgs-ga-toc[data-open="true"] .dgs-ga-toc-toggle svg {
+  transform: rotate(180deg);
+}
+
+.dgs-ga-toc-list {
+  list-style: none;
+  margin: 0.9rem 0 0 !important;
+  padding: 0.25rem 0 0 1.4rem !important;
+  border-left: 2px solid var(--ga-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-width: 100%;
+}
+
+@media (max-width: 959px) {
+  .dgs-ga-toc-list {
+    display: none;
+    margin-top: 1rem !important;
+  }
+  .dgs-ga-toc[data-open="true"] .dgs-ga-toc-list {
+    display: flex;
+  }
+}
+
+.dgs-ga-toc-list a {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--ga-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.dgs-ga-toc-list a:hover,
+.dgs-ga-toc-list a.is-active {
+  color: var(--ga-navy);
+  font-weight: 600;
+}
+
+.dgs-ga-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--action-teal, #00B39F);
+  color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.25s ease;
+  z-index: 500;
+  box-shadow: 0 10px 24px rgba(0, 179, 159, 0.32);
+}
+
+.dgs-ga-top:hover {
+  background: var(--action-mint-hover, #1ac9b0);
+}
+
+.dgs-ga-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.dgs-ga-top svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-ga-top {
+    transition: none;
+  }
+}
+
+/* ─── 1. HERO ───
+   Event pages reuse the site's article hero text system (.dgs-ga-cat /
+   .dgs-ga-title / .dgs-ga-dek / .dgs-ga-meta, inlined in section 0
+   above) so the copy looks like the same family as a Growth Hub
+   article, but the layout is bespoke: text left, cover photo right,
+   instead of the article's full-bleed cover-below-hero. */
+
+.dgs-event-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+@media (min-width: 960px) {
+  .dgs-event-hero-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 4rem;
+  }
+}
+
+/* Grid items default to min-width:auto, which sizes to intrinsic content
+   (the image's natural width) and can blow the column out past its fr
+   share. min-width:0 lets both columns actually respect the grid track. */
+.dgs-event-hero-grid > * {
+  min-width: 0;
+}
+
+/* .dgs-ga-hero-inner normally supplies its own container gutters (it's
+   used full-bleed in articles); here .dgs-container already provides
+   those, so strip its padding/max-width to avoid doubling up. */
+.dgs-event-hero-split .dgs-ga-hero-inner {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dgs-event-hero-cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.dgs-event-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+@media (max-width: 640px) {
+  .dgs-event-hero-actions .dgs-btn-saas {
+    width: 100%;
+  }
+}
+
+/* ─── 2. BODY LAYOUT ───
+   Same sticky-sidebar + content-column grid as an article
+   (.dgs-ga-layout, .dgs-ga-toc: defined in dgs-growth-article.css).
+   .dgs-event-content replaces .dgs-ga-body: it holds the same section
+   rhythm/heading style as article prose, but its children are our own
+   structured blocks (row lists, a detail list) instead of paragraphs. */
+
+.dgs-event-content {
+  max-width: 76ch;
+}
+
+.dgs-event-content > * + * {
+  margin-top: 3.5rem;
+}
+
+/* No font-size here: dgs-common.css's global
+   `.dgs-page h2 { font-size: ...!important }` (Framework 3.0 default)
+   always wins over any same-specificity descendant selector regardless
+   of stylesheet load order, so fighting it just risks these headings
+   drifting out of sync with every other h2 on the site. Inheriting it
+   instead guarantees this page's section headings always match
+   sitewide (including the playbook template's). */
+.dgs-event-content h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--ga-navy, #0A1F33);
+  margin: 0 0 1.5rem;
+  scroll-margin-top: 6.5rem;
+}
+
+.dgs-event-lead-copy p {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: #2A3B4D;
+  margin: 0;
+}
+
+/* Not this / this comparison */
+.dgs-event-compare {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  border-top: 1px solid var(--surface-border-neutral);
+  padding-top: 2rem;
+}
+
+@media (min-width: 560px) {
+  .dgs-event-compare {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.dgs-event-compare-block {
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--surface-border-neutral);
+}
+
+.dgs-event-compare-block--is {
+  border-left-color: var(--dgs-teal);
+}
+
+.dgs-event-compare-label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.55rem;
+}
+
+.dgs-event-compare-block--is .dgs-event-compare-label {
+  color: var(--dgs-teal-deep);
+}
+
+.dgs-event-compare-block p {
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-dark-primary);
+  margin: 0;
+}
+
+/* ─── 3. NUMBERED ROW LIST ───
+   Shared component reused by "What You'll Leave With", "Who It's For"
+   and "The Experience" — one clean pattern instead of three bespoke
+   grids/tracks. */
+
+.dgs-event-row-list {
+  border-top: 1px solid var(--surface-border-neutral);
+}
+
+.dgs-event-row {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--surface-border-neutral);
+}
+
+.dgs-event-row-icon {
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--surface-border-neutral);
+  border-radius: var(--radius-sm);
+  color: var(--dgs-teal-deep);
+}
+
+.dgs-event-row-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.dgs-event-row-body {
+  min-width: 0;
+}
+
+.dgs-event-row-body h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.35;
+  color: var(--ga-navy, #0A1F33);
+  margin: 0;
+}
+
+.dgs-event-row-body p {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #4a5568;
+  margin: 0.5rem 0 0;
+}
+
+/* ─── 4. THE DETAILS (label / value list) ─── */
+
+.dgs-event-detail-list {
+  margin: 0;
+  border-top: 1px solid var(--surface-border-neutral);
+}
+
+.dgs-event-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--surface-border-neutral);
+}
+
+.dgs-event-detail-row dt {
+  flex: none;
+  width: 9.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dgs-teal-deep);
+}
+
+.dgs-event-detail-row dt svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-event-detail-row dd {
+  margin: 0;
+  flex: 1 1 auto;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 650;
+  color: var(--ga-navy, #0A1F33);
+}
+
+@media (max-width: 480px) {
+  .dgs-event-detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+  .dgs-event-detail-row dd {
+    text-align: left;
+  }
+}
+
+/* ─── 5. FINAL CTA / REGISTRATION CARD ───
+   Gradient navy card floating on a white section, same recipe as the
+   careers page's "No open role that fits?" module (.dgs-aeo-navy-banner
+   in dgs-industries-detail.css / dgs-careers.css), minus its photo-ring
+   graphic — replaced here with the actual registration form. */
+
+.dgs-event-register-card {
+  position: relative;
+  overflow: hidden;
+  max-width: 90rem;
+  margin: 0 auto;
+  background: #0A1F33;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 50px rgba(10, 31, 51, 0.35);
+  padding: clamp(2.25rem, 4vw, 3.5rem);
+}
+
+/* Fixed-size corner glow (not height:100%): on mobile the card grows tall
+   because the two columns stack, and a full-height gradient rectangle put
+   its radial center mid-card, showing as a hard seam right behind the
+   form. Anchoring a fixed-height blob to the top-right corner instead
+   keeps it a subtle, consistent accent at any card height. */
+.dgs-event-register-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 450px;
+  max-width: 70%;
+  height: 28rem;
+  max-height: 70%;
+  background: radial-gradient(circle at 100% 0%, rgba(0, 179, 159, 0.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.dgs-event-register-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.dgs-event-register-text {
+  width: 100%;
+  max-width: 40rem;
+}
+
+.dgs-event-register-formcol {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The registration form used to fill this column (iframe); now it's just
+   the highlighted "Register Here" link, sized/centered to still read as a
+   deliberate focal point rather than a stray button in empty space. */
+.dgs-event-register-cta {
+  width: 100%;
+  max-width: 20rem;
+  justify-content: center;
+}
+
+/* Compound selectors (.dgs-event-register-card ...) are deliberate here,
+   not just namespacing: this card sits inside a .dgs-section--light
+   section, whose sitewide `p`/`span`/`h2` color rules (dgs-common.css)
+   match at equal-or-higher specificity than a single class. Without the
+   extra .dgs-event-register-card ancestor, those rules would win and
+   flip this card's white/amber text back to dark-on-dark-navy. */
+.dgs-event-register-card .dgs-event-register-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dgs-teal);
+  margin-bottom: 0.9rem;
+}
+
+.dgs-event-register-card .dgs-event-register-text h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 0.85rem;
+}
+
+.dgs-event-register-card .dgs-event-register-sub {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 0 1.5rem;
+}
+
+.dgs-event-register-card .dgs-event-register-meta {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dgs-event-register-form {
+  width: 100%;
+}
+
+.dgs-event-register-form iframe {
+  width: 100%;
+  border: none;
+  border-radius: var(--radius-lg);
+  display: block;
+}
+
+.dgs-event-register-card .dgs-event-register-alt {
+  text-align: center;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 1rem 0 0;
+}
+
+.dgs-event-register-card .dgs-event-register-alt a {
+  color: var(--dgs-teal);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.dgs-event-register-card .dgs-event-register-alt a:hover {
+  color: #1affeb;
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-07e6d16ec2 {
+  --ga-cat: var(--ga-teal) !important;
+}
+
+.dgs-il-e6cd4d6a90 {
+  width:100% !important;
+  border:none !important;
+  border-radius:8px !important;
+  display:block !important;
+}
+

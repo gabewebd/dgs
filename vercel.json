@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/resources", "destination": "/growth-hub", "permanent": true },
+    { "source": "/services", "destination": "/solutions", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/social-hub", "destination": "/hub.html" },
+    { "source": "/social-hub/", "destination": "/hub.html" },
+    { "source": "/careers-embed", "destination": "/careers-source.html" }
+  ]
+}

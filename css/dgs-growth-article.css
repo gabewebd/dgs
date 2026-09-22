@@ -1,0 +1,1820 @@
+/* ============================================================
+   GROWTH HUB — ARTICLE TEMPLATE
+   Reusable editorial article system: hero, sticky on-page nav, body
+   typography, callouts, pull quotes, related content, CTA. Independent
+   stylesheet — does not touch or depend on the Careers page CSS.
+   Reused as-is for Insights, Guides, Playbooks, Case Studies, Events;
+   only the eyebrow label and category color change per content type.
+   ============================================================ */
+
+/* :root (not just .dgs-ga) so every --ga-* token still resolves when a
+   .dgs-ga-* component is pasted into GHL as an independent custom-code
+   section with no shared .dgs-ga ancestor (confirmed live: "More
+   Perspectives" on the real GHL page has no .dgs-ga wrapper anywhere
+   above it, so var(--ga-surface)/var(--ga-navy) silently failed and the
+   section rendered with no background/wrong text color at all instead
+   of the intended light-gray card). .dgs-ga is kept alongside :root
+   purely so a future more-specific override on .dgs-ga still works. */
+:root,
+.dgs-ga {
+  --ga-navy: #0A1F33;
+  --ga-teal: #00B39F;
+  --ga-blue: #2D7FF9;
+  --ga-amber: #F5A623;
+  --ga-ink: #0A1F33;
+  --ga-muted: #5B6B7C;
+  --ga-hairline: rgba(10, 31, 51, 0.1);
+  --ga-surface: #F7F9FA;
+  --ga-cat: var(--ga-teal);
+}
+
+/* ─── Reading progress bar ─── */
+.dgs-ga-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--ga-teal);
+  z-index: 999;
+  transition: width 0.1s linear;
+}
+
+/* ─── Hero ─── */
+.dgs-ga-hero {
+  background: var(--ga-navy);
+  padding: 8.5rem 0 5.5rem;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Soft radial glow, matching the legal/service hero treatment site-wide */
+.dgs-ga-hero::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -18%;
+  width: 56vw;
+  height: 22rem;
+  min-width: 26rem;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(0, 179, 159, 0.18) 0%, rgba(45, 127, 249, 0.08) 45%, transparent 75%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Matches the global .dgs-container gutters (nav-aligned), not the old
+   fixed 7rem/1.25rem pair — article pages should share the site grid. */
+.dgs-ga-hero-inner {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .dgs-ga-hero-inner {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-ga-hero-inner {
+    padding: 0 3.5rem;
+  }
+}
+
+.dgs-ga-back {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.25s ease;
+}
+
+.dgs-ga-back svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-ga-back:hover {
+  color: var(--ga-teal);
+}
+
+.dgs-ga-cat {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ga-cat);
+  margin-bottom: 1.1rem;
+}
+
+.dgs-ga-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.2vw, 3.1rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 1.75rem !important;
+}
+
+.dgs-ga-dek {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 62ch;
+  margin: 0 0 2rem !important;
+}
+
+.dgs-ga-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.62);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dgs-ga-meta strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.dgs-ga-meta span:not(:last-child)::after {
+  content: '\00b7';
+  margin-left: 0.55rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ─── Hero image ─── */
+.dgs-ga-cover {
+  max-width: 100%;
+  margin: -2rem auto 0;
+  padding: 0 1rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .dgs-ga-cover {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-ga-cover {
+    padding: 0 3.5rem;
+  }
+}
+
+.dgs-ga-cover img {
+  width: 100%;
+  aspect-ratio: 16 / 8.5;
+  object-fit: cover;
+  border-radius: var(--radius-lg, 14px);
+  display: block;
+  box-shadow: 0 24px 60px rgba(10, 31, 51, 0.18);
+}
+
+/* ─── Layout: article body + sticky sidebar ─── */
+.dgs-ga-layout {
+  position: relative;
+  z-index: 0;
+  background: #ffffff;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 4.5rem 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .dgs-ga-layout {
+    padding: 4.5rem 2rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-ga-layout {
+    padding: 4.5rem 3.5rem 2rem;
+  }
+}
+
+/* Full-bleed white background behind the article body, independent of
+   the sitewide dark `body { background: navy }` rule. */
+.dgs-ga-layout::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: #ffffff;
+}
+
+@media (min-width: 960px) {
+  .dgs-ga-layout {
+    grid-template-columns: 260px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+/* ─── On-page nav / TOC ─── */
+.dgs-ga-toc {
+  order: -1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (min-width: 960px) {
+  .dgs-ga-toc {
+    position: sticky;
+    top: 7.5rem;
+    order: 0;
+    max-width: 260px;
+  }
+}
+
+.dgs-ga-toc-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ga-muted);
+  margin-bottom: 0.9rem;
+}
+
+/* Mobile disclosure toggle removed (user request) — the "On This Page"
+   list is now always visible at every width, so .dgs-ga-toc-label (this
+   rule) is the ONLY place the "On This Page" heading text renders now.
+   .dgs-ga-toc-toggle below is unconditionally display:none instead of
+   deleted from the DOM: buildToc() (js/dgs-growth-article.js) still
+   creates it as part of the aside's innerHTML on native GHL posts, and
+   leaving that JS untouched (rather than special-casing its markup) is
+   the smaller change — hiding it in CSS alone is enough for it to have
+   no visible or interactive effect anywhere. */
+.dgs-ga-toc-toggle {
+  display: none;
+}
+
+.dgs-ga-toc-list {
+  list-style: none;
+  margin: 0.9rem 0 0 !important;
+  padding: 0.25rem 0 0 1.4rem !important;
+  border-left: 2px solid var(--ga-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  max-width: 100%;
+}
+
+.dgs-ga-toc-list a {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--ga-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.dgs-ga-toc-list a:hover,
+.dgs-ga-toc-list a.is-active {
+  color: var(--ga-navy);
+  font-weight: 600;
+}
+
+/* ─── Article body typography ─── */
+.dgs-ga-body {
+  font-family: var(--font-body);
+  color: var(--ga-ink);
+  max-width: 76ch;
+}
+
+.dgs-ga-body > p {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: #2A3B4D;
+  margin: 0 0 1.6rem;
+}
+
+.dgs-ga-body h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ga-navy);
+  margin: 3.5rem 0 1.25rem;
+  scroll-margin-top: 6.5rem;
+}
+
+.dgs-ga-body h2:first-child {
+  margin-top: 0;
+}
+
+.dgs-ga-body h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.3;
+  color: var(--ga-navy);
+  margin: 2.4rem 0 0.9rem;
+  scroll-margin-top: 6.5rem;
+}
+
+.dgs-ga-body ul,
+.dgs-ga-body ol {
+  margin: 0 0 1.5rem;
+  padding-left: 1.35rem;
+  color: #2A3B4D;
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+
+.dgs-ga-body li {
+  margin-bottom: 0.5rem;
+}
+
+.dgs-ga-body li:last-child {
+  margin-bottom: 0;
+}
+
+.dgs-ga-body strong {
+  color: var(--ga-navy);
+  font-weight: 700;
+}
+
+.dgs-ga-body a {
+  color: var(--ga-teal);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 179, 159, 0.35);
+  text-underline-offset: 2px;
+}
+
+/* ─── Callout: "DGS PERSPECTIVE" ─── */
+.dgs-ga-callout {
+  background: var(--ga-navy);
+  border-radius: var(--radius-md, 10px);
+  padding: 1.9rem 2rem;
+  margin: 2.25rem 0;
+  border-left: 4px solid var(--ga-teal);
+}
+
+.dgs-ga-callout-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ga-teal);
+  margin-bottom: 0.65rem;
+}
+
+.dgs-ga-callout p {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* ─── Pull quote ─── */
+.dgs-ga-pullquote {
+  border-left: 3px solid var(--ga-hairline);
+  padding-left: 1.5rem;
+  margin: 2.25rem 0;
+}
+
+.dgs-ga-pullquote p {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.45;
+  color: var(--ga-navy);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Key takeaway box ─── */
+.dgs-ga-takeaway {
+  background: var(--ga-surface);
+  border: 1px solid var(--ga-hairline);
+  border-radius: var(--radius-md, 10px);
+  padding: 1.75rem 2rem;
+  margin: 2.5rem 0 0;
+}
+
+.dgs-ga-takeaway-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ga-teal);
+  margin-bottom: 0.6rem;
+}
+
+.dgs-ga-takeaway p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #2A3B4D;
+  margin: 0;
+}
+
+/* ─── Author strip ─── */
+.dgs-ga-author {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 3rem 0 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ga-hairline);
+}
+
+/* .dgs-ga-author-mark (the "DGS" avatar circle) removed from every
+   article's byline; rule intentionally left out. */
+.dgs-ga-author-name {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--ga-navy);
+}
+
+.dgs-ga-author-role {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--ga-muted);
+}
+
+/* ─── Keep Reading / related articles ─── */
+.dgs-ga-related {
+  background: var(--ga-surface);
+  padding: 5rem 0;
+}
+
+.dgs-ga-related-inner {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .dgs-ga-related-inner {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-ga-related-inner {
+    padding: 0 3.5rem;
+  }
+}
+
+.dgs-ga-related-label {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ga-teal);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.dgs-ga-related-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  color: var(--ga-navy);
+  margin: 0 !important;
+}
+
+/* Article pages: heading + a single "View all" link, no card grid (that
+   grid markup/CSS below is still shared with — and stays live for —
+   Growth Hub's own "Thought Leadership" section). */
+.dgs-ga-related-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* The link itself is the actual .dgs-promise-link class (dgs-common.css) —
+   same component as "Read More" / "Apply for Position" on careers.html —
+   so its color, underline and hover behavior come from there. This rule
+   only supplies the one thing that component doesn't set: keeping the
+   link from shrinking inside the .dgs-ga-related-head flex row. */
+.dgs-ga-related-viewall {
+  flex-shrink: 0;
+}
+
+.dgs-ga-related-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.25rem 1.75rem;
+}
+
+@media (min-width: 640px) {
+  .dgs-ga-related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 980px) {
+  .dgs-ga-related-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-ga-related-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dgs-ga-related-media {
+  position: relative;
+  aspect-ratio: 16 / 8.5;
+  border-radius: var(--radius-md, 10px);
+  overflow: hidden;
+  margin-bottom: 1.1rem;
+  background: var(--ga-navy);
+}
+
+.dgs-ga-related-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-ga-related-card:hover .dgs-ga-related-media img {
+  transform: scale(1.045);
+}
+
+.dgs-ga-related-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.dgs-ga-related-cat {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ga-teal, #00B39F) !important;
+  margin-bottom: 0.5rem;
+}
+
+.dgs-ga-related-card-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  color: var(--ga-navy);
+  margin: 0 0 0.75rem !important;
+}
+
+.dgs-ga-related-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ga-ink, #0A1F33);
+  margin: 0 0 1rem !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dgs-ga-related-foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.dgs-ga-related-meta {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--ga-muted);
+}
+
+.dgs-ga-related-read {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ga-navy);
+  flex-shrink: 0;
+  transition: gap 0.25s ease, color 0.25s ease;
+}
+
+.dgs-ga-related-card:hover .dgs-ga-related-read {
+  gap: 0.6rem;
+  color: var(--ga-cat, var(--ga-teal));
+}
+
+.dgs-ga-related-read svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ─── Final CTA ───────────────────────────────────────────────
+   Scoped copy of the Growth Hub final CTA (.dgs-sol-final-cta, itself a
+   copy of the solutions/about final CTA — see css/dgs-growth-hub.css).
+   Article pages don't load dgs-growth-hub.css, so the rules have to live
+   here too. Keep in sync with that file if the reference CTA changes.
+   2026-08-19: replaced the old amber-pill .dgs-ga-cta with this so every
+   individual article's closing CTA matches the Growth Hub CTA exactly.
+   ------------------------------------------------------------- */
+.dgs-sol-final-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg-navy-darkest, #0A1F33) !important;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+/* faded photo background */
+.dgs-sol-final-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  pointer-events: none;
+}
+
+.dgs-sol-final-cta::before {
+  content: none;
+}
+
+/* breathing teal/blue aurora */
+.dgs-sol-final-cta::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70vw;
+  height: 50vh;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 50%,
+      rgba(0, 179, 159, 0.12) 0%,
+      rgba(45, 127, 249, 0.12) 40%,
+      transparent 70%);
+  animation: dgs-sol-cta-breathe 8s ease-in-out infinite alternate;
+}
+
+@keyframes dgs-sol-cta-breathe {
+  0%   { transform: translate(-50%, -50%) scale(1);    opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; }
+}
+
+/* lift real content above the decorative layers */
+.dgs-sol-final-cta > *:not(.dgs-sol-final-bg) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Heading: two clean lines + white gradient text-glow */
+.dgs-sol-final-cta h2 {
+  max-width: 66rem;
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem) !important;
+  line-height: 1.22;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.12));
+}
+
+.dgs-sol-final-cta h2 .dgs-text-accent {
+  -webkit-text-fill-color: var(--action-teal);
+  filter: none;
+}
+
+.dgs-sol-final-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-sol-final-cta::after {
+    animation: none;
+    opacity: 0.65;
+  }
+}
+
+/* ─── Back to top ───
+   Solid teal circle (site's standard "solid teal badge" treatment, e.g.
+   .dgs-timeline-badge), not the page's dark navy — a navy fill nearly
+   disappeared against dark sections; teal reads clearly on both light
+   and dark backgrounds. */
+.dgs-ga-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--action-teal, #00B39F);
+  color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.25s ease;
+  z-index: 500;
+  box-shadow: 0 10px 24px rgba(0, 179, 159, 0.32);
+}
+
+.dgs-ga-top:hover {
+  background: var(--action-mint-hover, #1ac9b0);
+}
+
+.dgs-ga-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.dgs-ga-top svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-ga-top,
+  .dgs-ga-progress {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   MYTH/REALITY LIST (migrated from why-ai-why-now.html inline <style>)
+   ============================================================ */
+.dgs-ga-myth-list {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dgs-ga-myth-item {
+  border: 1px solid rgba(10, 31, 51, 0.1);
+  border-radius: var(--radius-md, 10px);
+  padding: 1.25rem 1.5rem;
+  background: #F7F9FA;
+}
+
+.dgs-ga-myth-item .dgs-ga-myth {
+  display: block;
+  font-weight: 700;
+  color: #0A1F33;
+  margin-bottom: 0.4rem;
+}
+
+.dgs-ga-myth-item .dgs-ga-myth::before {
+  content: '\2715\0020';
+  color: #c0392b;
+  font-weight: 700;
+}
+
+.dgs-ga-myth-item .dgs-ga-reality {
+  display: block;
+  color: #5B6B7C;
+  line-height: 1.7;
+}
+
+.dgs-ga-myth-item .dgs-ga-reality::before {
+  content: '\2713\0020Reality: ';
+  color: #00B39F;
+  font-weight: 700;
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-07e6d16ec2 {
+  --ga-cat: var(--ga-teal) !important;
+}
+
+.dgs-il-4858a4af7d {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a8578d8a3ca30469695eacd.png') !important;
+}
+
+.dgs-il-f1ce35e630 {
+  --ga-cat: var(--ga-blue) !important;
+}
+
+/* ============================================================
+   DGS BLOG POST TEMPLATE
+   Native GHL Integration
+
+   Makes the native GHL "Blog Content" widget (the dynamic post
+   detail element that outputs .blog-content-title / .blog-category /
+   .blog-date / .blog-cover-image-container / .blog-html) visually match
+   the site's existing "text left, cover photo right, inside the navy
+   hero" event-page pattern (growth-hub/connect/*, see
+   .dgs-event-hero-grid / .dgs-event-hero-cover in
+   css/dgs-event-detail.css) rather than the image-less static article
+   hero. Every selector below is a stable GHL blog-theme class — never
+   the per-widget random-hash id (e.g. #blog-content-fBpiT2lwHw) — so
+   this ships once here and applies to every post automatically, no
+   per-post GHL config needed. One piece of the hero doesn't exist as a
+   real element GHL renders — the description paragraph — so
+   js/dgs-growth-article.js creates a real `.dgs-ga-dek` element
+   (reusing that exact class from the static template) from the post's
+   own `<meta name="description">` and inserts it as a further direct
+   child here, for `order`/grid placement to pick up like any other
+   real hero element. */
+
+/* `::before` below breaks out to `width: 100vw` for a full-bleed navy
+   band on every post automatically, no per-post dependency on GHL's
+   "Section Width: Full Width" toggle. `100vw` includes the browser's
+   vertical scrollbar gutter, so without this it creates a page-level
+   horizontal scrollbar on any OS/browser with a reserved (non-overlay)
+   scrollbar. `.blog-html-container-single` itself must stay
+   `overflow: visible` (below) or the breakout gets clipped right back
+   — so the overflow has to be caught here, at the actual viewport
+   scroll container. One deliberate exception to this file's own
+   bare-tag scoping: unavoidable because `html`/`body` is the only
+   element that can mask `100vw` overflow without clipping the
+   breakout that depends on it.
+
+   `overflow-x: clip`, not `hidden` — this file is shared sitewide
+   (growth-hub.html loads it too, for the .dgs-ga token scope), and
+   `hidden` on one axis forces the OTHER axis's computed value to
+   `auto` per the CSS Overflow spec, turning `body` into a scroll
+   container. That broke growth-hub.html's `.dgs-hub-jumpnav`
+   `position: sticky` (its nearest scrolling ancestor became `body`
+   instead of the viewport). Same fix already established elsewhere in
+   this codebase for the same failure mode (see `#approach` in
+   dgs-about.css): `clip` suppresses the overflow without creating a
+   scroll container, so `overflow-y` can stay `visible` and sticky
+   descendants keep the viewport as their scrolling ancestor. */
+html,
+body {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+/* ---------------------------------------------------------
+   0. Loading state
+   GHL's Blog Content widget (a Nuxt/Vue component, see the hydration
+   notes on insertDek() in js/dgs-growth-article.js) fetches/renders
+   its post AFTER this page's own HTML/CSS has already painted —
+   .dgs-ghl-native-blog-slot is empty at that first paint. Left alone,
+   the sections below it (More Perspectives / CTA / footer) render
+   right under the navbar for a moment, then the whole page reflows
+   and jumps down once the real post lands. Hidden here via
+   opacity/visibility (NOT display:none, so the space stays reserved
+   and nothing below shifts while it's invisible) until
+   js/dgs-growth-article.js's revealArticle() adds .is-ready — the
+   same moment it confirms the real title, body, and (if present)
+   fully-loaded cover image all exist. Scoped to this one slot only;
+   the navbar/hero chrome around it is untouched.
+--------------------------------------------------------- */
+.dgs-ghl-native-blog-slot {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dgs-ghl-native-blog-slot:not(.is-ready) {
+  /* Approximates "at least one screen of the real post" (hero +
+     opening paragraphs) rather than guessing a tall arbitrary number
+     — real posts are always longer than this once revealed, so it
+     never leaves a visible gap. */
+  min-height: 100vh;
+}
+
+.dgs-ghl-native-blog-slot.is-ready {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-ghl-native-blog-slot.is-ready {
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------
+   1. Template scope
+   Every rule below is scoped under .blog-html-container-single, the
+   stable wrapper GHL's blog-theme always renders around a Blog Content
+   widget's output. Nothing here touches a bare tag/id or any selector
+   that could match outside that widget.
+--------------------------------------------------------- */
+.blog-html-container-single {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  background: #ffffff !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  /* GHL's OWN default theme CSS (not ours) ships
+     `.blog-html-container-single { margin: 0 auto; max-width: 800px;
+     overflow: hidden }`. Left alone, that squeezes the whole widget
+     into an 800px centered column AND clips the hero's `::before`
+     full-bleed backdrop below, since an ancestor with
+     `overflow: hidden` clips escaping descendants regardless of their
+     own position/transform. All three must be beaten here, not just
+     the child rules. (GHL also exposes a `.blog-content-fluid-width`
+     class that sets max-width:100% on this same selector — an
+     equivalent native "Fluid Width" widget toggle, if one exists in
+     the page builder, is a fine alternative to this.) */
+  max-width: 100% !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+/* ---------------------------------------------------------
+   2. Native GHL Blog Hero
+   Native render order is: image, title, category, date, content.
+   Target order: back-link, category, title, date, description stacked
+   in a left column, with the featured image as a large column on the
+   right — one navy hero band shared by both. Mobile stays a single
+   stacked column, text first then image (same order the 2-column grid
+   reduces to). `order` moves the real elements (image included) with
+   zero DOM changes.
+
+   The navy hero background is a single `::before` grid item (below)
+   rather than a background on each element: with two columns, each
+   element breaking out to its own `width:100vw` would bleed every text
+   row across the image column too. A `::before` placed as a grid item
+   spans exactly the hero's rows (auto-sized to content, no guessed
+   number) while only its own width bleeds to the viewport edge via the
+   standard `calc(50% - 50vw)` margin technique — the real content
+   elements stay normal, non-breakout grid items sized to their track. */
+.blog-html-container-single::before {
+  content: '';
+  grid-column: 1 / -1;
+  grid-row: 1 / 7;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+  /* Same glow as .dgs-ga-hero::before — same teal/blue stops and
+     position (50% / -18%), same fixed (viewport-independent) ellipse
+     technique rather than a bare `circle` whose implicit
+     (farthest-corner) size stretches to fit THIS hero's own
+     auto-height box. Sized bigger than the static template's own
+     56vw x 22rem (84vw x 34rem, ~1.5x): this hero's box is usually
+     much taller (it includes the featured image, unlike .dgs-ga-hero
+     which is text-only), so a same-size blob reads proportionally
+     smaller/more washed out here than it does on the shorter static
+     hero — enlarging it is what actually keeps its VISUAL prominence
+     comparable, not just its absolute stats. Layered on top of the
+     solid navy in this one background instead of a second
+     pseudo-element, since ::after would paint above the real hero
+     content instead of behind it. */
+  background:
+    radial-gradient(ellipse 84vw 34rem at 50% -18%, rgba(0, 179, 159, 0.18) 0%, rgba(45, 127, 249, 0.08) 45%, transparent 75%),
+    var(--ga-navy, #0A1F33);
+}
+
+@media (min-width: 960px) {
+  .blog-html-container-single::before {
+    grid-row: 1 / 6;
+  }
+}
+
+.blog-html-container-single > .blog-back-button,
+.blog-html-container-single > .meta-section-1:has(.blog-category),
+.blog-html-container-single > .blog-content-title,
+.blog-html-container-single > .meta-section-1:has(.blog-date),
+.blog-html-container-single > .dgs-ga-dek {
+  box-sizing: border-box;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .blog-html-container-single > .blog-back-button,
+  .blog-html-container-single > .meta-section-1:has(.blog-category),
+  .blog-html-container-single > .blog-content-title,
+  .blog-html-container-single > .meta-section-1:has(.blog-date),
+  .blog-html-container-single > .dgs-ga-dek {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-html-container-single > .blog-back-button,
+  .blog-html-container-single > .meta-section-1:has(.blog-category),
+  .blog-html-container-single > .blog-content-title,
+  .blog-html-container-single > .meta-section-1:has(.blog-date),
+  .blog-html-container-single > .dgs-ga-dek {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+}
+
+/* Desktop 2-column hero, matching .dgs-event-hero-grid: text in
+   column 1 (rows 1-5, one row per real element including the
+   description), image in column 2 spanning the same 5 rows
+   (grid-row set on .blog-cover-image-container below), vertically
+   centered against the text. column-gap replaces these elements' own
+   right-hand gutter so it isn't doubled at the seam between columns. */
+@media (min-width: 960px) {
+  .blog-html-container-single {
+    grid-template-columns: 1.05fr 0.95fr;
+    column-gap: 4rem;
+  }
+
+  .blog-html-container-single > .blog-back-button,
+  .blog-html-container-single > .meta-section-1:has(.blog-category),
+  .blog-html-container-single > .blog-content-title,
+  .blog-html-container-single > .meta-section-1:has(.blog-date),
+  .blog-html-container-single > .dgs-ga-dek {
+    grid-column: 1;
+    padding-right: 0;
+  }
+
+  .blog-html-container-single > .blog-back-button { grid-row: 1; }
+  .blog-html-container-single > .meta-section-1:has(.blog-category) { grid-row: 2; }
+  .blog-html-container-single > .blog-content-title { grid-row: 3; }
+  .blog-html-container-single > .meta-section-1:has(.blog-date) { grid-row: 4; }
+  .blog-html-container-single > .dgs-ga-dek { grid-row: 5; }
+
+  .blog-html-container-single > .blog-html,
+  .blog-html-container-single > .blog-tags,
+  .blog-html-container-single > .hl-blog-content-back-to-top-container {
+    grid-column: 1 / -1;
+  }
+}
+
+/* padding-top clears the fixed top nav (.dgs-header) so the hero never
+   starts underneath it — 8.5rem desktop / 6.5rem mobile (see "9.
+   Responsive" below), well past the header's own ~1.15rem/1rem
+   vertical padding + logo height.
+
+   grid-row is set explicitly here (mirroring the desktop-only block
+   above, now applied unconditionally) because mixing an auto-placed
+   item with `.blog-html-container-single::before`'s own EXPLICIT
+   `grid-row: 1 / 7` breaks on mobile: per the CSS Grid spec,
+   explicitly-placed items are positioned before any auto-placed
+   sibling, and auto-placement then skips cells they already occupy.
+   ::before has the lowest `order` (the property's initial value, 0,
+   vs. 1-9 on every real element here) so it's positioned first and
+   claims rows 1-6 outright; every real element in this hero, having
+   only `order` and no explicit `grid-row`, then gets auto-placed
+   AFTER that reserved block, starting at row 7 — not inside it. Since
+   ::before itself has no intrinsic size, rows 1-6 collapse to 0
+   height with nothing "auto" to size them, so the navy backdrop
+   effectively vanishes instead of just sitting empty, while the real
+   text (title, date, description — all styled for white-on-navy)
+   renders on the plain white page background beneath it: invisible,
+   but still taking up its own layout height (confirmed live: category
+   is teal so it stays visible either way, immediately under the
+   header with no gap in front of it, then a "blank" gap exactly the
+   height of the now-invisible white title/date/dek text, then the
+   featured image, which stays visible because pixel content isn't
+   subject to `color`). Desktop never hit this because the min-width:
+   960px block below already gives every element here an explicit
+   `grid-row` of its own — this makes mobile do the same instead of
+   relying on auto-placement at all. */
+.blog-html-container-single > .blog-back-button {
+  order: 1;
+  grid-row: 1;
+  /* grid-column pinned alongside grid-row: ::before is explicitly
+     `grid-column: 1 / -1`, so it already occupies column 1 at every
+     row it spans. Left on `auto`, this item's column has to be
+     auto-placed, and auto-placement treats that cell as taken (it
+     never overlaps an explicitly-placed sibling) and pushes the item
+     into a brand-new implicit column 2 instead — exactly what was
+     shifting the whole mobile hero (text + image) into a ~50%-width
+     right-hand column with a blank column 1 gap. Explicit `column: 1`
+     is placement, not auto-placement, so it's allowed to sit in the
+     same cell as ::before (which is just a painted background, not a
+     layout obstacle) — matching what the desktop 2-column block below
+     already does for the very same reason. */
+  grid-column: 1;
+  display: flex !important;
+  align-items: center;
+  gap: 0.4rem;
+  padding-top: 8.5rem !important;
+  padding-bottom: 2rem !important;
+  font-family: var(--font-body) !important;
+  /* Slightly reduced from 0.88rem (matches the same modest trim applied
+     to the rest of the hero's type — see .blog-content-title below). */
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  text-decoration: none !important;
+  margin-top: 0 !important;
+  cursor: pointer;
+}
+
+.blog-html-container-single > .blog-back-button:hover {
+  color: var(--ga-teal, #00B39F) !important;
+}
+
+/* GHL's default back-arrow renders blank without Font Awesome loaded;
+   swap it for a plain arrow glyph instead of pulling in an icon font. */
+.blog-html-container-single > .blog-back-button .blog-left-arrow {
+  margin-right: 0.3rem !important;
+}
+
+.blog-html-container-single > .blog-back-button .blog-left-arrow::before {
+  content: "\2190" !important;
+  font-family: var(--font-body) !important;
+}
+
+.blog-html-container-single > .blog-content-title {
+  order: 3;
+  grid-row: 3;
+  grid-column: 1;
+  padding-top: 0 !important;
+  padding-bottom: 1.75rem !important;
+  margin: 0 !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  /* Was var(--fs-h1) == clamp(2.8rem, 6vw, 4.8rem) — matched the static
+     template's own ACTUAL rendered size (`.dgs-page h1` outranks
+     `.dgs-ga-title`'s own smaller clamp there by specificity, so
+     --fs-h1 is what really wins on every article page). Trimmed ~15%
+     off each number, then trimmed again (~10% further, user feedback
+     after seeing it live) since even the first pass still read large
+     for this specific hero. */
+  font-size: clamp(2.1rem, 4.6vw, 3.7rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+  color: #ffffff !important;
+}
+
+.blog-html-container-single > .meta-section-1:has(.blog-date) {
+  order: 4;
+  grid-row: 4;
+  grid-column: 1;
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.1rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.blog-html-container-single .blog-date {
+  font-family: var(--font-body) !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+
+/* Description: a real element js/dgs-growth-article.js inserts as a
+   further direct child (see the header comment above) — reusing
+   .dgs-ga-dek as-is from the static template system. order:5 puts it
+   last in the mobile text stack, right after the date; padding-bottom
+   stands in for .dgs-ga-hero's own padding-bottom (this hero has none)
+   to close the hero out before the image (mobile) / white body
+   (desktop). */
+.blog-html-container-single > .dgs-ga-dek {
+  order: 5;
+  grid-row: 5;
+  grid-column: 1;
+  padding-bottom: 2.75rem !important;
+  /* Scoped override, not a change to .dgs-ga-dek itself: that shared
+     rule (font-size: 1.1rem) is reused as-is on every other Growth Hub
+     page via the same class, so trimming it there would shrink the
+     dek everywhere, not just this hero. This knocks it down slightly
+     (~9%) for the native blog hero specifically. */
+  font-size: 1rem !important;
+}
+
+/* Featured image: order:6 on mobile (after the text stack, matching
+   the static reference's own text-before-image reading order), grid
+   column 2 / rows 1-5 on desktop (see the 2-column block above) —
+   a real GHL element, not JS-moved. grid-row:6 (not just order) for
+   the same reason every other hero element above now sets grid-row:
+   without it, the image is auto-placed and gets skipped past the
+   block .blog-html-container-single::before already claims via its
+   own explicit `grid-row: 1 / 7`, landing outside the navy backdrop
+   entirely instead of as its last row. */
+.blog-html-container-single > .blog-cover-image-container {
+  order: 6;
+  grid-row: 6;
+  grid-column: 1;
+  max-width: 100%;
+  margin: 0 auto 3rem !important;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .blog-html-container-single > .blog-cover-image-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .blog-html-container-single > .blog-cover-image-container {
+    grid-column: 2;
+    grid-row: 1 / 6;
+    /* align-self: start (not center) + real top/bottom padding, rather
+       than trusting the grid to center it: the row span's height comes
+       from column 1's text stack, so centering alone put the image
+       flush against the nav whenever that text stack was short. The
+       padding here is now itself the tallest thing in rows 1-5, so it
+       sets the hero's height (grid tracks size to fit their content) —
+       this is what actually "grows" the hero, not a height/min-height
+       on the hero itself. (Tried `center` on user request, then asked
+       to revert back to this.) */
+    align-self: start;
+    margin: 0;
+    padding: 7.5rem 3.5rem 5rem 0;
+  }
+}
+
+/* ---------------------------------------------------------
+   3. Native GHL Metadata
+--------------------------------------------------------- */
+.blog-html-container-single > .meta-section-1:has(.blog-category) {
+  order: 2;
+  /* Explicit row, matching every other real hero element (see the
+     mobile-stacking comment above .blog-back-button): .before's
+     `grid-row: 1 / 7` occupies rows 1-7 outright, so without this an
+     auto-placed category gets skipped past that whole reserved block
+     and lands in a new implicit row after the image instead of between
+     the back-link and the title. grid-column:1 pinned for the same
+     reason every sibling hero element now pins it too: ::before's
+     `grid-column: 1 / -1` already occupies column 1 at this row, so
+     auto-placement (triggered by leaving grid-column on `auto`) can't
+     use that cell and creates an implicit column 2 instead, shifting
+     the WHOLE hero (every explicitly-rowed item, plus the image) into
+     a ~50%-width right column. Explicit placement doesn't avoid
+     ::before the way auto-placement does, so this can safely share
+     the cell with it. */
+  grid-row: 2;
+  grid-column: 1;
+  padding-top: 0 !important;
+  padding-bottom: 1.1rem !important;
+}
+
+.blog-html-container-single .blog-category,
+.blog-html-container-single .blog-category a {
+  display: inline-block;
+  font-family: var(--font-body) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--ga-teal, #00B39F) !important;
+  text-decoration: none !important;
+}
+
+/* ---------------------------------------------------------
+   4. Featured image
+--------------------------------------------------------- */
+.blog-html-container-single .hl-image-picture {
+  display: block !important;
+}
+
+.blog-html-container-single .blog-content-blog-image {
+  width: 100% !important;
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: cover !important;
+  border-radius: var(--radius-lg, 14px) !important;
+  display: block;
+  box-shadow: 0 24px 60px rgba(10, 31, 51, 0.18);
+}
+
+/* Desktop: translucent white border instead of a shadow, since the
+   image now sits directly on the navy hero rather than overlapping
+   onto white (matches .dgs-event-hero-cover img). Natural aspect ratio
+   applies at every size now (see the base rule above) so the image is
+   never force-cropped into a short banner on mobile. */
+@media (min-width: 960px) {
+  .blog-html-container-single .blog-content-blog-image {
+    border-radius: var(--radius-xl, 10px) !important;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+}
+
+/* ---------------------------------------------------------
+   5. Article content
+   #blogPostContent is a fixed GHL id (not a per-widget random hash),
+   safe to use directly per GHL's own docs.
+--------------------------------------------------------- */
+.blog-html-container-single > .blog-html {
+  order: 7;
+  background: #ffffff !important;
+  max-width: 100%;
+  margin: 0 auto !important;
+  padding: 4.5rem 1rem 2rem !important;
+}
+
+@media (min-width: 768px) {
+  .blog-html-container-single > .blog-html {
+    padding: 4.5rem 2rem 2rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-html-container-single > .blog-html {
+    padding: 4.5rem 3.5rem 2rem !important;
+  }
+}
+
+/* Safety default for images inside the post BODY (not the hero cover
+   image above, which is a fixed, known element already handled by
+   revealArticle()'s load-gating in js/dgs-growth-article.js). Body
+   images are authored per-post as arbitrary "Custom Code" HTML with
+   no fixed dimensions this stylesheet can know ahead of time, so
+   there's no real aspect-ratio to reserve here — this only stops an
+   inline image from overflowing its column or rendering at its raw
+   (possibly huge) intrinsic size before it loads, which is the part
+   this stylesheet CAN control. Low specificity (no !important) on
+   purpose: any per-post pasted <style> block that sizes its own
+   images still wins over this fallback. */
+.blog-html-container-single .blog-html img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* js/dgs-growth-article.js scans .dgs-blog-render's h2 headings on load
+   and, when there are any, inserts a .dgs-ga-toc sidebar (the same
+   component the static article template hand-authors) as a sibling
+   right before .dgs-blog-render — via `.dgs-blog-render.parentNode`,
+   whatever that actually is. On a real GHL post that is NOT
+   `#blogPostContent`/`.blog-html` itself: a post's rich body is
+   authored as a "Custom Code" element inside the blog editor, so GHL
+   renders one more real wrapper in between — a `div` carrying the
+   stable attribute `data-code-embed-container` (confirmed live; its
+   own id is a random per-widget hash, same caveat as
+   `#blog-content-fBpiT2lwHw` elsewhere in this file, so it's never
+   targeted directly). Grid-ing `.blog-html` itself (an earlier version
+   of this rule) left the TOC and `.dgs-blog-render` stacked in normal
+   flow inside that untouched wrapper div instead of side-by-side,
+   since neither was actually a direct grid child of `.blog-html`.
+   `:has(> .dgs-ga-toc)` sidesteps needing to name that wrapper at all:
+   it matches whichever element is the TOC's real direct parent, one
+   level up or ten, so this also still works unchanged if GHL ever
+   renders the body with no extra wrapper. Scoped under
+   `.blog-html-container-single` only to keep it from ever matching
+   `.dgs-ga-toc`'s OTHER parent, the static template's own
+   `.dgs-ga-layout` (which already grids itself independently above). */
+.blog-html-container-single :has(> .dgs-ga-toc) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 960px) {
+  .blog-html-container-single :has(> .dgs-ga-toc) {
+    grid-template-columns: 260px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+/* Fallback typography for article HTML pasted WITHOUT its own known
+   content wrapper/styles. #blogPostContent is an ID, which would
+   outrank any of these wrappers' own (non-!important) max-width/margin,
+   so the :not(:has(...)) guard is required, not decorative: it keeps
+   this fallback OFF entirely on any post that already ships one of
+   them, so existing per-post styling is never touched. Checked against
+   all six known per-post wrapper classes (js/dgs-growth-article.js
+   getGhlRender() reads the same list) — Learn posts use
+   .dgs-blog-render, Connect posts .dgs-event-template-page, and within
+   Implement every post so far has used its own class:
+   .dgs-checklist-template-page, .dgs-playbook-template-page,
+   .dgs-compliance-template-page, .dgs-sop-template-page (confirmed live
+   on speedtoleadcode.html, compliancecalendar.html, and sop.html — same
+   double-constraining bug every time a class was missing here: this
+   fallback's max-width:76ch/margin:0 auto fired on top of the post's
+   own per-post max-width and squeezed the TOC+article grid below,
+   since it doesn't ship .dgs-blog-render either). */
+#blogPostContent:not(:has(.dgs-blog-render, .dgs-checklist-template-page, .dgs-event-template-page, .dgs-playbook-template-page, .dgs-compliance-template-page, .dgs-sop-template-page)) {
+  font-family: var(--font-body);
+  color: var(--ga-ink, #0A1F33);
+  max-width: 76ch;
+  margin: 0 auto;
+}
+
+#blogPostContent:not(:has(.dgs-blog-render, .dgs-checklist-template-page, .dgs-event-template-page, .dgs-playbook-template-page, .dgs-compliance-template-page, .dgs-sop-template-page)) > p {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: #2A3B4D;
+}
+
+#blogPostContent:not(:has(.dgs-blog-render, .dgs-checklist-template-page, .dgs-event-template-page, .dgs-playbook-template-page, .dgs-compliance-template-page, .dgs-sop-template-page)) > h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  color: var(--ga-navy, #0A1F33);
+}
+
+/* ---------------------------------------------------------
+   6. Native GHL overrides
+--------------------------------------------------------- */
+.blog-html-container-single > .blog-tags {
+  order: 8;
+  max-width: 860px;
+  margin: 0 auto !important;
+  padding: 0 1rem 1rem !important;
+}
+
+.blog-html-container-single > .blog-tags:empty {
+  display: none !important;
+}
+
+.blog-html-container-single > .hl-blog-content-back-to-top-container {
+  order: 9;
+  max-width: 860px;
+  margin: 0 auto 3rem !important;
+  padding: 0 1rem !important;
+  text-align: center;
+  background: transparent !important;
+}
+
+.blog-html-container-single > .hl-blog-content-back-to-top-container .back-to-top {
+  background: transparent !important;
+  color: var(--ga-teal, #00B39F) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  border: none !important;
+  border-radius: 0 !important;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------
+   7. More Perspectives
+   Reuses .dgs-ga-related as-is (see section 509+ above) from the
+   Custom Code section placed directly after the Blog Content widget
+   in the page builder — nothing to add here.
+--------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+   8. Final CTA
+   Reuses .dgs-sol-final-cta as-is (see section 694+ above) from the
+   Custom Code section placed after "More Perspectives" in the page
+   builder — nothing to add here.
+--------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+   9. Responsive
+--------------------------------------------------------- */
+@media (max-width: 767px) {
+  .blog-html-container-single > .blog-back-button {
+    padding-top: 6.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .blog-html-container-single .blog-content-blog-image {
+    border-radius: var(--radius-md, 10px) !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   11. Social share (.dgs-blog-share)
+   Static sibling of .dgs-ghl-blog-content (see ghl-blog.html) — same
+   "always in the DOM, never GHL-injected" category as the static
+   More Perspectives/CTA/footer sections, so every rule here is
+   scoped strictly under .dgs-blog-share and never touches a bare tag
+   (h1/h2/p/a/button/img/div) that could leak into the native widget,
+   navbar, or footer. Uses the same --ga-navy/--ga-teal/--ga-hairline/
+   --ga-surface tokens as the rest of this file (defined on .dgs-ga,
+   which wraps this section too) rather than inventing new colors.
+   Visible keyboard focus is inherited for free from the sitewide
+   ".dgs-page a/button:focus-visible" rule in dgs-common.css —
+   nothing extra needed here. */
+.dgs-blog-share {
+  padding: 0 1rem 2.5rem;
+  /* Explicit, not incidental: <main> carries a global navy
+     background-color (dgs-common.css's loading-state fallback), and
+     background-color is never inherited, so without its own opaque
+     background this section would let that navy show through behind
+     it — confirmed live, it rendered as an unwanted dark band between
+     the white article and "More Perspectives". White keeps this
+     reading as a continuation of the article, per spec (no new
+     colored section). */
+  background: var(--bg-white, #ffffff);
+}
+
+.dgs-blog-share-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ga-hairline, rgba(10, 31, 51, 0.1));
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.dgs-blog-share-label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ga-navy, #0A1F33);
+  letter-spacing: 0.01em;
+  flex-shrink: 0;
+}
+
+.dgs-blog-share-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.dgs-blog-share-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  border-radius: var(--radius-full, 999px);
+  border: 1px solid var(--ga-hairline, rgba(10, 31, 51, 0.1));
+  background: var(--ga-surface, #F7F9FA);
+  color: var(--ga-navy, #0A1F33);
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: border-color var(--duration-fast, 0.15s) ease, color var(--duration-fast, 0.15s) ease, background var(--duration-fast, 0.15s) ease;
+}
+
+/* "Copy Link" carries a visible label next to its icon (there is no
+   universally recognizable "copy" glyph the way there is for the
+   Facebook/LinkedIn/Instagram marks), so it alone gets auto width. */
+.dgs-blog-share-btn--copy {
+  width: auto;
+  padding: 0 0.9rem 0 0.75rem;
+}
+
+.dgs-blog-share-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+@media (hover: hover) {
+  .dgs-blog-share-btn:hover {
+    border-color: var(--ga-teal, #00B39F);
+    color: var(--ga-teal, #00B39F);
+    background: rgba(0, 179, 159, 0.06);
+  }
+}
+
+.dgs-blog-share-btn.is-copied {
+  border-color: var(--ga-teal, #00B39F);
+  color: var(--ga-teal, #00B39F);
+}
+
+/* Small feedback tooltip, used only by the Instagram button (its
+   feedback has nowhere else to live, since — unlike Copy Link — it
+   has no visible text label of its own to swap). Positioned via CSS
+   only; JS just swaps its text and toggles .is-tooltip-visible. */
+.dgs-blog-share-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--ga-navy, #0A1F33);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  padding: 0.4rem 0.65rem;
+  border-radius: var(--radius-sm, 6px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 2;
+}
+
+.dgs-blog-share-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--ga-navy, #0A1F33);
+}
+
+.dgs-blog-share-btn.is-tooltip-visible .dgs-blog-share-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-blog-share-btn,
+  .dgs-blog-share-tooltip {
+    transition: none;
+  }
+}
+
+/* Mobile: tighten gaps slightly (all four actions still fit on one
+   line at 320px — 40px x3 icons + one text button + gaps — this is
+   just extra headroom, not a layout change) and keep the tooltip from
+   ever pushing past the viewport's left edge on the first icon. */
+@media (max-width: 420px) {
+  .dgs-blog-share-inner {
+    gap: 0.6rem;
+  }
+
+  .dgs-blog-share-actions {
+    gap: 0.45rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   12. Previous / Next article (.dgs-blog-prev-next)
+   Sits inside .dgs-ga-related-inner, after .dgs-ga-related-head — see
+   ghl-blog.html for exactly where. Same scoping discipline as the
+   share component in section 11: every selector is namespaced under
+   .dgs-blog-prev-next, no bare tags, same --ga-* tokens (this lives
+   under .dgs-ga too). Starts [hidden] in the markup; JS only clears
+   that (and each individual .dgs-blog-prev-next__item's own [hidden])
+   once it has confirmed real data — see the matching comment block in
+   js/dgs-growth-article.js for how "confirmed real" is determined. */
+.dgs-blog-prev-next {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--ga-hairline, rgba(10, 31, 51, 0.1));
+}
+
+.dgs-blog-prev-next[hidden] {
+  display: none;
+}
+
+.dgs-blog-prev-next__item {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.dgs-blog-prev-next__item[hidden] {
+  display: none;
+}
+
+.dgs-blog-prev-next__item--prev {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.dgs-blog-prev-next__item--next {
+  align-items: flex-end;
+  text-align: right;
+  margin-left: auto;
+}
+
+.dgs-blog-prev-next__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ga-muted, #5B6B7C);
+  transition: color var(--duration-fast, 0.15s) ease;
+}
+
+.dgs-blog-prev-next__label svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform var(--duration-fast, 0.15s) ease;
+}
+
+.dgs-blog-prev-next__title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ga-navy, #0A1F33);
+  transition: color var(--duration-fast, 0.15s) ease;
+  /* Long titles wrap onto a second line instead of overflowing the
+     50%-ish column width each item gets from flex-basis above. */
+  overflow-wrap: anywhere;
+}
+
+@media (hover: hover) {
+  .dgs-blog-prev-next__item:hover .dgs-blog-prev-next__label,
+  .dgs-blog-prev-next__item:hover .dgs-blog-prev-next__title {
+    color: var(--ga-teal, #00B39F);
+  }
+
+  .dgs-blog-prev-next__item--prev:hover .dgs-blog-prev-next__label svg {
+    transform: translateX(-3px);
+  }
+
+  .dgs-blog-prev-next__item--next:hover .dgs-blog-prev-next__label svg {
+    transform: translateX(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-blog-prev-next__label,
+  .dgs-blog-prev-next__label svg,
+  .dgs-blog-prev-next__title {
+    transition: none;
+  }
+}
+
+/* Below ~500px a 260px flex-basis on both items no longer fits side by
+   side — stack them, each left-aligned, rather than letting them
+   crush down to an unreadable width. */
+@media (max-width: 500px) {
+  .dgs-blog-prev-next {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* flex/flex-basis on .dgs-blog-prev-next__item above sizes WIDTH in
+     the default row layout — once flex-direction flips to column here,
+     that same "1 1 260px" would size HEIGHT instead (flex-basis always
+     tracks the main axis), stretching each item to ~260px tall and
+     opening a large gap between them. Reset to natural content height. */
+  .dgs-blog-prev-next__item {
+    flex: none;
+  }
+
+  .dgs-blog-prev-next__item--next {
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,67 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — THANK-YOU PAGE-SPECIFIC STYLES
+   Base hero look (duotone photo, badge, h1, sub, actions) comes
+   from .dgs-service-hero in dgs-solution-detail.css / dgs-common.css.
+   Load order: dgs-common.css, dgs-solution-detail.css, then this file.
+   ============================================================ */
+
+.dgs-thankyou-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.dgs-thankyou-hero .dgs-hero-content {
+  padding-bottom: 0;
+}
+
+.dgs-thankyou-hero h1 {
+  margin-bottom: 1.25rem;
+}
+
+.dgs-thankyou-ai-note {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 34rem;
+  margin: 2.5rem auto 0;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 2px solid var(--action-teal);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.dgs-thankyou-ai-note span {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  max-width: none;
+}
+
+@media (max-width: 768px) {
+  .dgs-thankyou-hero {
+    min-height: 100vh;
+  }
+
+  .dgs-thankyou-ai-note {
+    max-width: none;
+  }
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-17f9252389 {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a86adefb3a1bcf4faf40067.png') !important;
+}
+
+.dgs-il-427a5607c1 {
+  width:14px !important;
+  height:14px !important;
+}
+

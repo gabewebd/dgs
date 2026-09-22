@@ -1,0 +1,298 @@
+/* ============================================================
+   GROWTH HUB — INSIGHTS SYSTEM
+   Editorial content hub layer for the Learn section of growth-hub.html.
+   Independent of the Careers page styling; built on the same DGS tokens
+   (navy / teal / blue / amber) as the rest of the site. Loaded alongside
+   css/dgs-growth-hub.css, not a replacement for it.
+   ============================================================ */
+
+.dgs-ghi {
+  --ghi-navy: #0A1F33;
+  --ghi-teal: #00B39F;
+  --ghi-blue: #2D7FF9;
+  --ghi-amber: #F5A623;
+  --ghi-ink: #0A1F33;
+  --ghi-muted: #5B6B7C;
+  --ghi-hairline: rgba(10, 31, 51, 0.1);
+  --ghi-surface: #F7F9FA;
+}
+
+/* ─── Category color mapping (teal / blue alternating; amber reserved
+   for CTAs only, per brand direction). Lives on whichever element
+   carries data-cat — the featured card link — and cascades down to its
+   .dgs-ghi-cat / .dgs-ghi-read descendants via the custom property. ─── */
+.dgs-ghi-featured[data-cat="ai-strategy"],
+.dgs-ghi-featured[data-cat="leadership"],
+.dgs-ghi-featured[data-cat="automation"],
+.dgs-ghi-featured[data-cat="business-systems"] { --ghi-cat: var(--ghi-teal); }
+
+.dgs-ghi-featured[data-cat="ai-ethics"],
+.dgs-ghi-featured[data-cat="operations"],
+.dgs-ghi-featured[data-cat="workforce"],
+.dgs-ghi-featured[data-cat="growth"] { --ghi-cat: var(--ghi-blue); }
+
+/* ─── Intro / eyebrow row ─── */
+.dgs-ghi-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ghi-teal);
+  margin-bottom: 0.9rem;
+}
+
+/* ─── Featured article ─── */
+.dgs-ghi-featured {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  border: 1px solid var(--ghi-hairline);
+  border-radius: var(--radius-lg, 14px);
+  overflow: hidden;
+  background: #ffffff;
+}
+
+@media (min-width: 860px) {
+  .dgs-ghi-featured {
+    grid-template-columns: 1.15fr 1fr;
+    gap: 0;
+  }
+}
+
+.dgs-ghi-featured-media {
+  position: relative;
+  aspect-ratio: 16 / 8.5;
+  overflow: hidden;
+  background: var(--ghi-navy);
+}
+
+@media (min-width: 860px) {
+  .dgs-ghi-featured-media {
+    align-self: center;
+  }
+}
+
+.dgs-ghi-featured-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-ghi-featured:hover .dgs-ghi-featured-media img {
+  transform: scale(1.03);
+}
+
+.dgs-ghi-featured-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem;
+  gap: 1rem;
+}
+
+@media (min-width: 860px) {
+  .dgs-ghi-featured-body {
+    padding: 3.25rem 3rem;
+  }
+}
+
+.dgs-ghi-cat {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ghi-cat, var(--ghi-teal)) !important;
+}
+
+.dgs-ghi-featured-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.55rem, 2.6vw, 2.05rem);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: var(--ghi-navy);
+  margin: 0;
+}
+
+.dgs-ghi-featured-excerpt {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ghi-muted);
+  margin: 0;
+  max-width: 46ch;
+}
+
+.dgs-ghi-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--ghi-muted);
+}
+
+.dgs-ghi-meta span:not(:last-child)::after {
+  content: '\00b7';
+  margin-left: 0.5rem;
+  color: var(--ghi-hairline);
+}
+
+.dgs-ghi-read {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ghi-navy);
+  text-decoration: none;
+  margin-top: 0.35rem;
+}
+
+.dgs-ghi-read svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.dgs-ghi-read:hover {
+  color: var(--ghi-teal);
+}
+
+.dgs-ghi-read:hover svg {
+  transform: translateX(4px);
+}
+
+/* ─── Section label row (e.g. "Thought Leadership") ─── */
+.dgs-ghi-section-label {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  /* !important needed: .dgs-page h3 (class+element = higher specificity
+     than this bare class alone) would otherwise silently win and shrink
+     this back down, regardless of stylesheet load order. */
+  font-size: var(--fs-h2, clamp(2.2rem, 4.5vw, 3.2rem)) !important;
+  line-height: 1.15 !important;
+  color: var(--ghi-navy);
+  letter-spacing: -0.02em;
+  margin: 6rem 0 1rem !important;
+  text-align: center;
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .dgs-ghi-section-label {
+    margin: 4rem 0 1rem !important;
+  }
+}
+
+.dgs-ghi-section-label::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--action-teal);
+  border-radius: 2px;
+  margin: 0 auto 1.25rem;
+}
+
+/* Compound selector is deliberate, not just namespacing: .dgs-page p
+   (dgs-common.css) is a class+element pair — more specific than
+   .dgs-ghi-section-intro alone — and sets margin:0, which was silently
+   cancelling this rule's `margin: 0 auto` centering. The box stayed
+   left-anchored at full/near-full measure width while text-align:center
+   only centered the text INSIDE that mispositioned box, which is why a
+   short second line looked centered but the long first line read as
+   flush-left. */
+.dgs-ghi .dgs-ghi-section-intro {
+  max-width: 42rem;
+  margin: 0 auto 4.5rem;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-dark-muted, #5a6e85);
+}
+
+/* #learn's GHL Blog Posts widget (category: Learn / Thought Leadership) is
+   placed directly in the GHL editor right after this copy - no
+   .dgs-ghl-blog-placeholder wrapper div (matches #implement/#connect in
+   dgs-growth-hub.css). The sitewide 4.5rem margin-bottom above used to have
+   that wrapper to land on; with nothing in between now, it reads as a much
+   bigger gap before the widget starts. (1,1,0) specificity beats both the
+   .dgs-ghi .dgs-ghi-section-intro rule above and .dgs-page p, no !important
+   needed. */
+#learn .dgs-ghi-section-intro {
+  margin-bottom: 1.5rem;
+}
+
+/* ─── DGS Perspective callout (dark navy statement block) ─── */
+.dgs-ghi-perspective {
+  margin-top: 4.5rem;
+  background: var(--ghi-navy);
+  border-radius: var(--radius-lg, 14px);
+  padding: 2.75rem 2rem;
+  text-align: center;
+}
+
+@media (min-width: 760px) {
+  .dgs-ghi-perspective {
+    padding: 3.5rem 4rem;
+  }
+}
+
+.dgs-ghi-perspective-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ghi-teal);
+  margin-bottom: 1rem;
+}
+
+.dgs-ghi-perspective-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  line-height: 1.4;
+  color: #ffffff;
+  max-width: 46ch;
+  margin: 0 auto;
+}
+
+/* ─── Reveal-on-scroll (progressive enhancement, matches site convention) ───
+   Visible by default, same as the sitewide .dgs-reveal in dgs-common.css:
+   the hidden-until-scrolled-into-view state only activates once
+   html.dgs-js confirms JS actually ran, so this never gets stuck invisible
+   waiting on dgs-growth-insights.js if it's blocked, delayed, or never
+   loads on a page that includes this stylesheet. */
+html.dgs-js .dgs-ghi-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.dgs-js .dgs-ghi-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.dgs-js .dgs-ghi-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

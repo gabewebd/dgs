@@ -1,0 +1,921 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — CLIENT SUCCESS INTERACTIVE VISUALS
+   Slate UI Backgrounds, Matching Rounded Corners (16px), 
+   Spacious Enterprise SaaS Layout (No duplicate stats inside)
+   ============================================================ */
+
+/* Base Media Container matching outer card radius (16px) and slate theme */
+.dgs-insp-media {
+  height: 240px !important;
+  background: #F8FAFC !important; /* Premium Slate-50 background */
+  border: 1px solid #E2E8F0 !important;
+  border-radius: var(--radius-lg, 16px) !important; /* Exact match to white card */
+  overflow: hidden;
+  position: relative;
+}
+
+.dgs-visual-container {
+  width: 100%;
+  height: 100%;
+  background: #F8FAFC;
+  padding: 1.25rem 1.5rem;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  user-select: none;
+}
+
+/* Micro Cards inside the Slate Dashboard preview */
+.dgs-ui-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  padding: 0.65rem 0.85rem;
+  font-size: 0.78rem;
+  color: #0F172A;
+}
+
+.dgs-ui-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.dgs-ui-badge--pending {
+  background: #FEF3C7;
+  color: #D97706;
+  border: 1px solid #FDE68A;
+}
+
+.dgs-ui-badge--success {
+  background: #D1FAE5;
+  color: #059669;
+  border: 1px solid #A7F3D0;
+}
+
+.dgs-ui-badge--neutral {
+  background: #F1F5F9;
+  color: #475569;
+  border: 1px solid #E2E8F0;
+}
+
+.dgs-ui-badge--ai {
+  background: rgba(0, 168, 150, 0.1);
+  color: var(--action-teal, #00A896);
+  border: 1px solid rgba(0, 168, 150, 0.2);
+}
+
+.dgs-ui-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #475569;
+  border: 1px solid #ffffff;
+}
+
+/* ==========================================
+   CARD 1: Professional Services (Proposal)
+   ========================================== */
+.dgs-visual-ps-flow-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.dgs-visual-ps-flow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.dgs-visual-ps-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  z-index: 2;
+}
+
+.dgs-visual-ps-node {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #E2E8F0;
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 0 0 1px #CBD5E1;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dgs-visual-ps-step.active .dgs-visual-ps-node {
+  background: var(--action-teal, #00A896);
+  box-shadow: 0 0 0 1px var(--action-teal, #00A896), 0 0 10px rgba(0, 168, 150, 0.4);
+}
+
+.dgs-visual-ps-line-bg {
+  position: absolute;
+  top: 6px;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: #E2E8F0;
+  z-index: 1;
+}
+
+.dgs-visual-ps-line-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--action-teal, #00A896);
+  transition: width 1.2s ease-in-out;
+}
+
+.play-animation .dgs-visual-ps-line-fill {
+  width: 100%;
+}
+
+.dgs-visual-ps-step-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748B;
+}
+
+.dgs-visual-ps-step.active .dgs-visual-ps-step-label {
+  color: #0F172A;
+}
+
+.dgs-visual-ps-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+/* Animations entrance */
+.dgs-visual-ps-flow-card,
+.dgs-visual-ps-bottom .dgs-ui-card {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.play-animation .dgs-visual-ps-flow-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.play-animation .dgs-visual-ps-bottom .dgs-ui-card:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.play-animation .dgs-visual-ps-bottom .dgs-ui-card:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}
+
+/* ==========================================
+   CARD 2: Recruitment (Candidate CRM)
+   ========================================== */
+.dgs-visual-rec-pipeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.dgs-visual-rec-col {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 0.5rem;
+  min-height: 105px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
+}
+
+.dgs-visual-rec-col-title {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-left: 0.2rem;
+}
+
+.dgs-visual-rec-item {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  padding: 0.4rem 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.play-animation .dgs-visual-rec-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.play-animation .dgs-visual-rec-col:nth-child(1) .dgs-visual-rec-item { transition-delay: 0.15s; }
+.play-animation .dgs-visual-rec-col:nth-child(2) .dgs-visual-rec-item { transition-delay: 0.4s; }
+.play-animation .dgs-visual-rec-col:nth-child(3) .dgs-visual-rec-item { transition-delay: 0.65s; }
+.play-animation .dgs-visual-rec-col:nth-child(4) .dgs-visual-rec-item { transition-delay: 0.9s; }
+
+.dgs-visual-rec-bottom {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 0.6rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
+}
+
+.dgs-visual-rec-speed-track {
+  width: 100px;
+  height: 6px;
+  background: #E2E8F0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.dgs-visual-rec-speed-bar {
+  width: 0%;
+  height: 100%;
+  background: var(--action-teal, #00A896);
+  border-radius: 3px;
+  transition: width 1.2s ease-in-out;
+}
+
+.play-animation .dgs-visual-rec-speed-bar {
+  width: 85%;
+}
+
+/* ==========================================
+   CARD 3: Healthcare (Clinic Dashboard)
+   ========================================== */
+.dgs-visual-hc-dashboard {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.dgs-visual-hc-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.dgs-visual-hc-reminder,
+.dgs-visual-hc-billing {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.75rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.play-animation .dgs-visual-hc-reminder {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.play-animation .dgs-visual-hc-billing {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.6s;
+}
+
+.dgs-visual-hc-right {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.play-animation .dgs-visual-hc-right {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.4s;
+}
+
+.dgs-hc-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.dgs-hc-cal-day {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: #F1F5F9;
+}
+
+.dgs-hc-cal-day.booked {
+  background: var(--action-teal, #00A896);
+}
+
+/* ==========================================
+   CARD 4: Construction (Permit Timeline)
+   ========================================== */
+.dgs-visual-const-timeline-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+}
+
+.dgs-visual-const-progress-track {
+  width: 100%;
+  height: 6px;
+  background: #E2E8F0;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dgs-visual-const-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: var(--action-teal, #00A896);
+  border-radius: 3px;
+  transition: width 1.3s ease-in-out;
+}
+
+.play-animation .dgs-visual-const-progress-bar {
+  width: 100%;
+}
+
+.dgs-visual-const-steps {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dgs-visual-const-step {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748B;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.play-animation .dgs-visual-const-step {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.play-animation .dgs-visual-const-step:nth-child(1) { transition-delay: 0.2s; }
+.play-animation .dgs-visual-const-step:nth-child(2) { transition-delay: 0.45s; }
+.play-animation .dgs-visual-const-step:nth-child(3) { transition-delay: 0.7s; }
+.play-animation .dgs-visual-const-step:nth-child(4) { transition-delay: 0.95s; }
+
+.dgs-visual-const-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.dgs-visual-const-timeline-card,
+.dgs-visual-const-bottom .dgs-ui-card {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.play-animation .dgs-visual-const-timeline-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.play-animation .dgs-visual-const-bottom .dgs-ui-card:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.play-animation .dgs-visual-const-bottom .dgs-ui-card:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}
+
+/* ==========================================
+   CARD 5: Retail (Inventory Sync Network)
+   ========================================== */
+.dgs-visual-ret-sync-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1rem;
+  position: relative;
+  height: 110px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+}
+
+.dgs-visual-ret-channel {
+  position: absolute;
+  top: 50%;
+  background: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  padding: 0.45rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0F172A;
+  z-index: 3;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+}
+
+.dgs-visual-ret-channel.pos-pos {
+  left: 6%;
+  transform: translateY(-50%) translateX(-6px);
+}
+
+.dgs-visual-ret-channel.pos-web {
+  right: 6%;
+  transform: translateY(-50%) translateX(6px);
+}
+
+.play-animation .dgs-visual-ret-channel.pos-pos {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  transition-delay: 0.15s;
+}
+
+.play-animation .dgs-visual-ret-channel.pos-web {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  transition-delay: 0.45s;
+}
+
+.dgs-visual-ret-core {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #0F172A;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dgs-visual-ret-core svg {
+  width: 20px;
+  height: 20px;
+}
+
+.dgs-visual-ret-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.dgs-visual-ret-line {
+  stroke: #CBD5E1;
+  stroke-width: 2;
+  stroke-dasharray: 5;
+  fill: none;
+}
+
+.play-animation .dgs-visual-ret-line {
+  stroke: var(--action-teal, #00A896);
+  animation: dgs-dash 2s linear infinite;
+}
+
+.dgs-visual-ret-bottom-row {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.play-animation .dgs-visual-ret-bottom-row {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}
+    stroke-dashoffset: -20;
+  }
+}
+
+.dgs-visual-ret-status-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 0.45rem 0.75rem;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
+}
+
+/* ==========================================
+   CARD 6: Financial Services (Onboarding)
+   ========================================== */
+.dgs-visual-fs-dashboard {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.dgs-visual-fs-list {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+}
+
+.dgs-visual-fs-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #334155;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.play-animation .dgs-visual-fs-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.play-animation .dgs-visual-fs-item:nth-child(1) { transition-delay: 0.15s; }
+.play-animation .dgs-visual-fs-item:nth-child(2) { transition-delay: 0.4s; }
+.play-animation .dgs-visual-fs-item:nth-child(3) { transition-delay: 0.65s; }
+
+.dgs-fs-check {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid #CBD5E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.dgs-fs-check svg {
+  width: 11px;
+  height: 11px;
+}
+
+.play-animation .dgs-visual-fs-item.checked .dgs-fs-check {
+  background: var(--action-teal, #00A896);
+  border-color: var(--action-teal, #00A896);
+  color: #ffffff;
+}
+
+.dgs-visual-fs-chart {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+}
+
+.dgs-fs-circle-svg {
+  transform: rotate(-90deg);
+  width: 72px;
+  height: 72px;
+}
+
+.dgs-fs-circle-bg {
+  fill: none;
+  stroke: #F1F5F9;
+  stroke-width: 7;
+}
+
+.dgs-fs-circle-val {
+  fill: none;
+  stroke: var(--action-teal, #00A896);
+  stroke-width: 7;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  transition: stroke-dashoffset 1.4s ease-in-out;
+}
+
+.play-animation .dgs-fs-circle-val {
+  stroke-dashoffset: 0;
+}
+
+.dgs-fs-chart-text {
+  position: absolute;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVENESS OVERRIDES FOR INTERACTIVE CARDS
+   ============================================================ */
+@media (max-width: 576px) {
+  .dgs-insp-media {
+    height: auto !important;
+    min-height: 180px !important;
+    padding: 1rem 0 !important;
+  }
+  .dgs-visual-container {
+    height: auto !important;
+    padding: 0.75rem 0.9rem !important;
+    gap: 0.65rem !important;
+  }
+
+  /* PS Flow Card */
+  .dgs-visual-ps-flow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .dgs-visual-ps-step-label {
+    font-size: 0.56rem !important;
+  }
+  .dgs-visual-ps-node {
+    width: 10px !important;
+    height: 10px !important;
+  }
+  .dgs-visual-ps-line-bg {
+    display: none;
+  }
+  .dgs-visual-ps-bottom {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+  .dgs-visual-ps-bottom .dgs-ui-card {
+    min-width: 0 !important;
+    padding: 0.5rem 0.6rem !important;
+  }
+
+  /* Recruitment Pipeline CRM */
+  .dgs-visual-rec-pipeline {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+  .dgs-visual-rec-col {
+    min-width: 0 !important;
+    min-height: 80px !important;
+    padding: 0.35rem !important;
+  }
+  .dgs-visual-rec-item {
+    padding: 0.3rem 0.35rem !important;
+    font-size: 0.66rem !important;
+    gap: 0.25rem !important;
+  }
+  .dgs-visual-rec-col-title {
+    font-size: 0.56rem !important;
+  }
+  .dgs-visual-rec-bottom {
+    margin-top: 0.5rem !important;
+    padding: 0.5rem 0.7rem !important;
+  }
+  .dgs-visual-rec-speed-track {
+    width: 70px !important;
+    height: 5px !important;
+  }
+
+  /* Shared micro-UI pieces */
+  .dgs-ui-card {
+    font-size: 0.7rem !important;
+    padding: 0.5rem 0.6rem !important;
+  }
+  .dgs-ui-avatar {
+    width: 18px !important;
+    height: 18px !important;
+    font-size: 0.55rem !important;
+  }
+  .dgs-ui-badge {
+    font-size: 0.55rem !important;
+    padding: 0.18rem 0.4rem !important;
+  }
+
+  /* Healthcare Dashboard */
+  .dgs-visual-hc-dashboard {
+    grid-template-columns: 1fr !important;
+    gap: 0.6rem !important;
+  }
+  .dgs-visual-hc-left {
+    gap: 0.5rem !important;
+  }
+  .dgs-visual-hc-right {
+    padding: 0.65rem !important;
+  }
+  .dgs-hc-calendar-grid {
+    gap: 2px !important;
+  }
+  .dgs-hc-cal-day {
+    border-radius: 2px !important;
+  }
+
+  /* Construction Timeline */
+  .dgs-visual-const-timeline-card {
+    padding: 0.75rem 0.9rem !important;
+  }
+  .dgs-visual-const-progress-track {
+    height: 5px !important;
+  }
+  .dgs-visual-const-steps {
+    flex-wrap: wrap !important;
+    gap: 0.4rem !important;
+    justify-content: center !important;
+  }
+  .dgs-visual-const-step {
+    flex: 1 1 45% !important;
+    justify-content: center !important;
+    font-size: 0.64rem !important;
+    gap: 0.25rem !important;
+  }
+  .dgs-visual-const-bottom {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+  .dgs-visual-const-bottom .dgs-ui-card {
+    min-width: 0 !important;
+    padding: 0.5rem 0.6rem !important;
+  }
+
+  /* Financial Services */
+  .dgs-visual-fs-dashboard {
+    grid-template-columns: 1fr !important;
+    gap: 0.65rem !important;
+  }
+  .dgs-visual-fs-list,
+  .dgs-visual-fs-chart {
+    min-width: 0 !important;
+  }
+  .dgs-visual-fs-list {
+    padding: 0.6rem 0.75rem !important;
+  }
+  .dgs-visual-fs-item {
+    font-size: 0.68rem !important;
+    gap: 0.4rem !important;
+  }
+  .dgs-fs-check {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  .dgs-fs-check svg {
+    width: 9px !important;
+    height: 9px !important;
+  }
+  .dgs-fs-circle-svg {
+    width: 56px !important;
+    height: 56px !important;
+  }
+  .dgs-fs-chart-text {
+    font-size: 0.75rem !important;
+  }
+  .dgs-visual-fs-chart {
+    padding: 0.75rem !important;
+  }
+
+  /* Retail sync card */
+  .dgs-visual-ret-sync-card {
+    height: auto !important;
+    min-height: 160px !important;
+    padding: 0.85rem !important;
+  }
+  .dgs-visual-ret-core {
+    width: 34px !important;
+    height: 34px !important;
+  }
+  .dgs-visual-ret-core svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .dgs-visual-ret-channel {
+    font-size: 0.62rem !important;
+    padding: 0.3rem 0.5rem !important;
+  }
+  .dgs-visual-ret-channel.pos-pos { left: 1% !important; }
+  .dgs-visual-ret-channel.pos-web { right: 1% !important; }
+  .dgs-visual-ret-status-card {
+    font-size: 0.66rem !important;
+    padding: 0.4rem 0.6rem !important;
+  }
+  .dgs-visual-ret-bottom-row {
+    margin-top: 0.5rem !important;
+  }
+
+  /* Reminder / billing rows */
+  .dgs-visual-hc-reminder,
+  .dgs-visual-hc-billing {
+    font-size: 0.68rem !important;
+    padding: 0.55rem 0.7rem !important;
+    flex-wrap: wrap !important;
+    gap: 0.4rem !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .dgs-insp-media {
+    min-height: 150px !important;
+  }
+  .dgs-visual-container {
+    padding: 0.65rem 0.75rem !important;
+    gap: 0.55rem !important;
+  }
+  .dgs-visual-rec-pipeline {
+    grid-template-columns: 1fr !important;
+    gap: 0.4rem !important;
+  }
+  .dgs-visual-ret-sync-card {
+    min-height: 140px !important;
+  }
+  .dgs-visual-ret-core {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .dgs-visual-ret-core svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}

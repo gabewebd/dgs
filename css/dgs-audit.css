@@ -1,0 +1,972 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — AUDIT PAGE-SPECIFIC STYLES
+   Split from dgs-styles.css for per-page editing in GHL.
+   Load order: dgs-common.css FIRST, then this file.
+   ============================================================ */
+
+/* --- HERO SECTION --- */
+.dgs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.dgs-hero-grid {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .dgs-hero-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+.dgs-hero-features {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
+  padding: var(--space-md);
+}
+
+.dgs-hero-features h3 {
+  font-size: 1.15rem;
+  margin-bottom: var(--space-sm);
+  color: var(--text-white);
+}
+
+.dgs-hero-features p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  margin-bottom: var(--space-xs);
+}
+
+.dgs-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  list-style: none;
+  padding: 0;
+}
+
+.dgs-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  color: var(--text-light);
+}
+
+.dgs-checklist-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--action-teal);
+  flex-shrink: 0;
+}
+
+/* --- PROBLEM CARDS --- */
+.dgs-problem-cards-wrap {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 1fr;
+  margin-top: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .dgs-problem-cards-wrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.dgs-problem-card {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+}
+
+.dgs-problem-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-teal-soft);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+  pointer-events: none;
+}
+
+.dgs-problem-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--action-teal);
+  box-shadow: var(--shadow-teal-glow);
+}
+
+.dgs-problem-card:hover::before {
+  opacity: 1;
+}
+
+@media (min-width: 480px) {
+  .dgs-problem-card {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.dgs-problem-card-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(0, 179, 159, 0.12);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--action-teal);
+  position: relative;
+  z-index: 1;
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out);
+}
+
+.dgs-problem-card:hover .dgs-problem-card-icon {
+  transform: scale(1.06);
+  border-color: rgba(0, 179, 159, 0.4);
+}
+
+/* Target SVGs directly to prevent infinite expansion */
+.dgs-problem-card-icon svg {
+  width: 30px;
+  height: 30px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.dgs-problem-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.dgs-problem-card-content h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.35rem;
+  color: var(--text-white);
+}
+
+.dgs-problem-card-content p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+}
+
+/* --- AUDIT GRID & DELIVERABLES --- */
+.dgs-audit-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 1024px) {
+  .dgs-audit-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+.dgs-audit-card-badge {
+  display: inline-block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--action-teal);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-audit-lead {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+  line-height: 1.6;
+}
+
+.dgs-audit-deliverables {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.dgs-audit-deliverables li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.dgs-deliverable-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 179, 159, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--action-teal);
+}
+
+.dgs-deliverable-icon svg {
+  width: 26px;
+  height: 26px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.dgs-audit-deliverables strong {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--text-white);
+  margin-bottom: 0.25rem;
+}
+
+.dgs-section--light .dgs-audit-deliverables strong {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-audit-deliverables p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
+}
+
+.dgs-section--light .dgs-audit-deliverables p {
+  color: var(--text-dark-muted);
+}
+
+/* --- TIMELINE --- */
+.dgs-timeline {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .dgs-timeline {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
+
+.dgs-timeline-step {
+  position: relative;
+  text-align: center;
+  padding: var(--space-lg) var(--space-sm) var(--space-md);
+}
+
+.dgs-timeline-number {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gradient-teal);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 0 auto var(--space-md);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 18px rgba(0, 179, 159, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-timeline-step:hover .dgs-timeline-number {
+  transform: scale(1.08);
+}
+
+.dgs-timeline-step h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-white);
+}
+
+.dgs-section--light .dgs-timeline-step h3 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-timeline-step p {
+  color: var(--text-dark-muted);
+}
+
+.dgs-timeline-step p {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .dgs-timeline-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--space-lg) + 22px);
+    left: calc(50% + 22px);
+    /* Was using `right: calc(-50% + 22px)`, which stops at the next
+       column's own edge and ignores the grid `gap` between columns —
+       so the line was always short by exactly one gap width and never
+       reached the next circle. Using left + width (instead of left +
+       right) lets us add the gap back in explicitly. */
+    width: calc(100% + var(--space-md) - 44px);
+    height: 0;
+    border-top: 2px solid rgba(0, 179, 159, 0.4);
+    z-index: 1;
+  }
+}
+
+/* --- STATS --- */
+.dgs-stats {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  .dgs-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-stat {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.dgs-stat-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--action-mint-hover);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.dgs-stat-label {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* --- PREMIUM RESULTS + TESTIMONIALS LAYOUT (sticky left rail) --- */
+.dgs-premium-results-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .dgs-premium-results-layout {
+    grid-template-columns: 4fr 6fr;
+    gap: 6rem;
+  }
+
+  .dgs-results-sticky {
+    /* Sticky position disabled */
+  }
+}
+
+.dgs-advantage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+}
+
+.dgs-advantage-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.dgs-advantage-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 179, 159, 0.12);
+  border: 1px solid rgba(0, 179, 159, 0.3);
+  color: var(--action-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dgs-advantage-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.dgs-advantage-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-white);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.dgs-advantage-desc {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dgs-testimonial-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--action-teal);
+}
+
+.dgs-testimonial-eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--action-teal);
+}
+
+/* --- Column wrapper: stretches to match the left results rail exactly --- */
+.dgs-testimonial-col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.dgs-testimonial-carousel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.dgs-testimonial-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.dgs-testimonial-counter {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.dgs-testimonial-counter #dgsTestimonialCurrent {
+  color: var(--text-white);
+  font-weight: 600;
+}
+
+.dgs-testimonial-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--surface-border-light);
+  background: transparent;
+  color: var(--text-secondary);
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out);
+}
+
+.dgs-testimonial-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-testimonial-arrow:hover {
+  border-color: var(--action-teal);
+  color: var(--action-teal);
+  background: rgba(0, 179, 159, 0.1);
+}
+
+/* --- Carousel viewport + track --- */
+.dgs-testimonial-carousel {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.dgs-testimonial-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+  width: 100%;
+}
+
+.dgs-testimonial-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+/* --- The card itself --- */
+.dgs-testimonial-card {
+  position: relative;
+  width: 100%;
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
+  padding: 2.75rem;
+  margin: 0;
+  overflow: hidden;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.dgs-testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--action-teal) 0%, transparent 75%);
+  z-index: 2;
+}
+
+.dgs-testimonial-featured-badge {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  align-self: flex-start;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--action-mint-hover);
+  background: rgba(0, 179, 159, 0.12);
+  border: 1px solid rgba(0, 179, 159, 0.3);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.85rem;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+}
+
+.dgs-testimonial-quote-mark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 6rem;
+  color: var(--action-teal);
+  opacity: 0.16;
+  line-height: 1;
+  position: absolute;
+  top: 1.25rem;
+  right: 1.75rem;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dgs-testimonial-card blockquote {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Quote copy: Manrope, regular weight only, per brand direction */
+.dgs-testimonial-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: var(--text-white);
+  margin-bottom: 2.25rem !important;
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
+}
+
+.dgs-testimonial-footer {
+  display: block;
+  position: relative;
+  z-index: 1;
+  padding-top: 2rem !important;
+  border-top: 1px solid var(--surface-border) !important;
+  margin-top: 0 !important;
+}
+
+.dgs-testimonial-name {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-white);
+  display: inline;
+}
+
+.dgs-testimonial-role {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  display: inline;
+}
+
+/* --- Dot pagination --- */
+.dgs-testimonial-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.dgs-testimonial-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.dgs-testimonial-dot:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.dgs-testimonial-dot.is-active {
+  width: 22px;
+  background: var(--action-teal);
+}
+
+/* --- AUDIT CARDS (GENERAL) --- */
+.dgs-audit-cards {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-audit-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-audit-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-audit-card {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
+  padding: var(--space-md);
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-audit-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.dgs-audit-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 179, 159, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+  color: var(--action-teal);
+}
+
+.dgs-audit-card-icon svg {
+  width: 28px;
+  height: 28px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.dgs-audit-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-white);
+}
+
+.dgs-audit-card p {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+}
+
+.dgs-section--light .dgs-audit-card {
+  background: var(--bg-white);
+  border-color: #E4E8EA;
+}
+
+.dgs-section--light .dgs-audit-card:hover {
+  border-color: #C0C8CE;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.dgs-section--light .dgs-audit-card h3 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-audit-card p {
+  color: var(--text-dark-muted);
+}
+/* --- CTA BANNER --- */
+.dgs-cta-banner {
+  text-align: center;
+  padding: var(--space-xl) 1.5rem;
+  background:
+    radial-gradient(circle at 8% 30%, rgba(0, 179, 159, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 92% 70%, rgba(245, 166, 35, 0.12) 0%, transparent 45%),
+    var(--bg-deep-navy);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .dgs-cta-banner {
+    padding: var(--space-xl) 3.5rem;
+  }
+}
+
+.dgs-cta-card {
+  max-width: 50rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.dgs-cta-card h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--text-white);
+}
+
+.dgs-cta-card p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.dgs-cta-note {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
+}
+
+/* Fluid layout — relative units for zoom resilience */
+#dgs-audit-hero .dgs-hero-content {
+  max-width: 75rem;
+}
+
+#dgs-audit-hero .dgs-hero-sub {
+  max-width: 55rem;
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-d36cdee1b1 {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83f059255b571c8ef45a19.png') !important;
+}
+
+.dgs-il-5e630261d4 {
+  color: var(--action-teal) !important;
+  margin-bottom: 1rem !important;
+  display: inline-block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+.dgs-il-096e75ec37 {
+  color: var(--text-white) !important;
+  font-size: clamp(2.2rem, 5.5vw, 4rem) !important;
+  line-height: 1.12 !important;
+  margin-bottom: 1.75rem !important;
+  text-align: center !important;
+  max-width: 100% !important;
+  letter-spacing: -0.02em !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  font-weight: 800 !important;
+}
+
+.dgs-il-048b9a2b26 {
+  display: block !important;
+}
+
+.dgs-il-c278cc0384 {
+  display: block !important;
+  margin-top: 0.25em !important;
+  color: var(--action-teal) !important;
+  -webkit-text-fill-color: var(--action-teal) !important;
+}
+
+.dgs-il-55d1ef1c2a {
+  color: var(--text-secondary) !important;
+  font-size: 1.08rem !important;
+  line-height: 1.75 !important;
+  max-width: 900px !important;
+  margin: 0 auto var(--space-xl) !important;
+  text-align: center !important;
+}
+
+.dgs-il-229869bfa8 {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  gap: 1rem !important;
+  margin: 0 auto !important;
+}
+
+.dgs-il-ce8ec9897e {
+  margin: 0 auto !important;
+}
+
+.dgs-il-78c360413a {
+  color: var(--action-teal) !important;
+}
+
+.dgs-il-3e883113cf {
+  margin-top: var(--space-xl) !important;
+}
+
+.dgs-il-b760de5621 {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  color: var(--action-teal) !important;
+}
+
+.dgs-il-5bc6667d8b {
+  padding-top: 8rem !important;
+  padding-bottom: 8rem !important;
+}
+
+.dgs-il-cd1280b97c {
+  font-size: clamp(2.2rem, 4vw, 3.2rem) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 1.25rem !important;
+  color: var(--text-white) !important;
+  letter-spacing: -0.02em !important;
+}
+
+.dgs-il-e712dfd93c {
+  color: var(--text-secondary) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.7 !important;
+}
+
+.dgs-il-ff227d0632 {
+  margin: 0 !important;
+}
+
+.dgs-il-595bac90a5 {
+  font-family: var(--font-body) !important;
+  font-size: 0.98rem !important;
+  font-weight: 400 !important;
+  line-height: 1.75 !important;
+}
+
+.dgs-il-40aef0b69f {
+  color: var(--action-teal) !important;
+  margin-bottom: 0.75rem !important;
+  display: inline-block !important;
+}
+
+.dgs-il-555b20047d {
+  color: var(--bg-deep-navy) !important;
+  font-size: clamp(2.2rem, 4vw, 3.2rem) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 1.25rem !important;
+  letter-spacing: -0.02em !important;
+}
+
+.dgs-il-30e4c778ba {
+  color: var(--text-dark-muted) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.7 !important;
+  margin: 0 !important;
+}
+
+.dgs-il-2cfbdbb9ba {
+  width: 60px !important;
+  height: 3px !important;
+  background: var(--accent-yellow) !important;
+  margin-top: 2rem !important;
+}
+
+.dgs-il-d5ab445043 {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.dgs-il-246346408f {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  opacity: 0.16 !important;
+  pointer-events: none !important;
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a857bcca3ca3046969bedef.png') !important;
+  -webkit-mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%) !important;
+  mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%) !important;
+}
+

@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "build:includes": "node scripts/build-includes.js",
+    "build": "node scripts/build-includes.js"
+  }
+}

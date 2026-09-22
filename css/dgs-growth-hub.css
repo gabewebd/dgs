@@ -1,0 +1,1720 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — GROWTH HUB SPECIFIC STYLES
+   Inspired by premium consulting networks (Accenture/Rippling level)
+   ============================================================ */
+
+/* ─── GENERAL LAYOUT & VARIABLES ─── */
+:root {
+  --hub-card-bg: rgba(255, 255, 255, 0.02);
+  --hub-card-border: rgba(255, 255, 255, 0.06);
+  --hub-card-hover-border: rgba(0, 179, 159, 0.3);
+}
+
+.dgs-hub-section {
+  padding: 7rem 0;
+  position: relative;
+}
+
+/* ─── ALTERNATING SECTION RHYTHM ───────────────────────────────
+   Growth Hub sections alternate between White (#ffffff) and Navy (#0A1F33).
+   Section order:
+   - Hero: Navy (#0A1F33)
+   - Learn (#learn): White (#ffffff)
+   - Implement (#implement): Navy (#0A1F33)
+   - Inspire (#inspire): White (#ffffff)
+   - Connect (#connect): Navy (#0A1F33)
+   - FAQs (#faqs): White (#ffffff)
+   - Final CTA (#dgs-final-cta): Navy (#0A1F33)
+   ------------------------------------------------------------- */
+.dgs-hub-section.dgs-section--darker {
+  background: var(--dgs-navy-950, #061524) !important;
+}
+.dgs-hub-section.dgs-section--dark {
+  background: var(--bg-dark-navy, #0A1F33) !important;
+}
+.dgs-hub-section.dgs-section--light {
+  background: #ffffff !important;
+  color: var(--text-dark-primary, #0f172a);
+}
+/* Headings & copy on light background sections */
+.dgs-hub-section.dgs-section--light .dgs-hub-head h2 {
+  color: #0A1F33 !important;
+}
+
+.dgs-hub-section.dgs-section--light .dgs-hub-head p {
+  color: var(--text-dark-muted, #334155) !important;
+  text-align: center;
+}
+
+/* Supporting copy on dark sections should be darker for readability */
+.dgs-hub-section.dgs-section--dark .dgs-hub-head p {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+/* Learn Section Cards: photo backdrop cards must always keep bright white/teal text */
+.dgs-learn-card {
+  border: 1px solid rgba(10, 31, 51, 0.12);
+  box-shadow: 0 4px 20px rgba(10, 31, 51, 0.06);
+}
+.dgs-learn-card .dgs-learn-title {
+  color: #ffffff !important;
+}
+.dgs-learn-card .dgs-learn-pill {
+  color: var(--action-teal, #00B39F) !important;
+}
+.dgs-learn-card .dgs-learn-link {
+  color: var(--action-teal, #00B39F) !important;
+}
+.dgs-learn-card:hover .dgs-learn-link {
+  color: #ffffff !important;
+}
+.dgs-learn-overlay {
+  background: linear-gradient(to bottom, rgba(10, 31, 51, 0.15) 0%, rgba(10, 31, 51, 0.65) 45%, rgba(10, 31, 51, 0.96) 100%) !important;
+}
+
+/* Inspire Section Cards on light background */
+.dgs-hub-section.dgs-section--light .dgs-insp-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(10, 31, 51, 0.12) !important;
+  box-shadow: none !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-card:hover {
+  border-color: var(--action-teal, #00B39F) !important;
+  background: #ffffff !important;
+  box-shadow: none !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-meta {
+  color: #00B39F !important;
+  font-weight: 700 !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-headline {
+  color: #0A1F33 !important;
+  font-weight: 800 !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-val {
+  color: #334155 !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-metric {
+  border-top: 1px solid rgba(10, 31, 51, 0.12) !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-figure {
+  color: #0A1F33 !important;
+  font-weight: 800 !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-unit {
+  color: #00B39F !important;
+}
+.dgs-hub-section.dgs-section--light .dgs-insp-caption {
+  color: #475569 !important;
+  font-weight: 500 !important;
+}
+
+
+/* ─── HERO (scoped copy of the shared service-hero treatment) ─── */
+.dgs-service-hero {
+  padding: 8rem 0 5rem;
+  background-color: #0A1F33 !important;
+  color: var(--text-white);
+  position: relative;
+  overflow: visible;
+  text-align: center;
+  border-bottom: none;
+}
+
+@media (min-width: 1024px) {
+  .dgs-service-hero {
+    padding: 10.5rem 0 6.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dgs-service-hero {
+    padding: 8.5rem 0 4.5rem;
+  }
+}
+
+/* Photo bed, matching the solutions / industries / about hero pattern.
+   `.dgs-hero-photo-bg` appears in the markup on those pages but was never
+   defined in any stylesheet, so the rule lives here. Sits below the mesh and
+   spotlight, masked toward the bottom so the copy stays legible. */
+.dgs-service-hero .dgs-hero-photo-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+}
+
+/* Duotone backdrop. The base layer is desaturated, then a navy/teal gradient
+   is composited with mix-blend-mode: color, which keeps the photo's luminance
+   and takes hue and saturation from the gradient. */
+.dgs-hero-duotone {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  mask-image: radial-gradient(ellipse 90% 100% at 50% 0%, black 55%, transparent 92%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 100% at 50% 0%, black 55%, transparent 92%);
+}
+
+.dgs-hero-duotone::before,
+.dgs-hero-duotone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.dgs-hero-duotone::before {
+  background-image: var(--dgs-duotone-img);
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(1) contrast(1.15) brightness(0.72);
+  opacity: 0.5;
+}
+
+.dgs-hero-duotone::after {
+  background: linear-gradient(135deg, #0A1F33 0%, #0d5f70 55%, #00B39F 100%);
+  mix-blend-mode: color;
+}
+
+/* Legibility scrim over the duotone so hero copy keeps its contrast */
+.dgs-hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(10, 31, 51, 0.72) 0%, rgba(10, 31, 51, 0.55) 45%, rgba(10, 31, 51, 0.92) 100%);
+}
+
+.dgs-service-hero .dgs-hero-mesh-overlay {
+  display: none !important;
+}
+
+.dgs-service-hero .dgs-hero-spotlight {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 80vw;
+  height: 60vh;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 179, 159, 0.14) 0%, rgba(45, 127, 249, 0.06) 50%, transparent 80%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -20%);
+}
+
+.dgs-service-hero > .dgs-container {
+  position: relative;
+  z-index: 5;
+}
+
+.dgs-svc-hero-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.dgs-service-hero .dgs-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1140px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 3.5rem;
+}
+
+.dgs-service-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0 auto 1.5rem;
+  max-width: 1140px;
+  text-align: center;
+}
+
+.dgs-service-hero h1 .dgs-hero-title-main {
+  background: linear-gradient(to bottom, #ffffff 55%, #cfd8e3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.dgs-service-hero .dgs-hero-sub {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 720px;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dgs-service-hero .dgs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.dgs-service-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1affeb; /* brighter teal for dark mode contrast, matches .dgs-pill--teal */
+  background: rgba(0, 179, 159, 0.15);
+  border: 1px solid rgba(0, 179, 159, 0.4);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ─── JUMP NAV (Growth Hub Section Navigation) ─── */
+/* position:sticky is the correct DEFAULT behavior (2026-09-19,
+   corrected after the fixed-from-load attempt above pinned it to the
+   viewport from page load, which is wrong — it needs to start in its
+   normal place and only stick once scroll reaches it). The bug this
+   was chasing is real, but the actual fix now lives in JS, not CSS:
+   GHL splits our authored <main> at the first native blog widget it
+   renders as its own top-level Section (confirmed sitewide — Career
+   Detail's own <main> renders completely empty for the identical
+   reason), so <main>'s real box — the containing block sticky is
+   constrained by — ends right around the Learn widget even though
+   there is much more page below. CSS position:sticky has no way to
+   see past that boundary. A small inline <script> at the bottom of
+   growth-hub.html measures this nav's natural (in-flow) offset once,
+   then past that point adds .dgs-hub-jumpnav--pinned
+   (position:fixed, which IS anchored to the viewport and immune to
+   the containing-block truncation) instead of relying on sticky for
+   that part — see that script's own comment for the full mechanism.
+   z-index stays BELOW the main site header's (100, css/dgs-common.css)
+   so the header is never covered, matching the explicit requirement
+   that it must always render on top of this nav. */
+.dgs-hub-jumpnav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  background: #0A1F33;
+  border-bottom: 1px solid var(--hub-card-border, rgba(255, 255, 255, 0.08));
+}
+
+.dgs-hub-jumpnav--pinned {
+  position: fixed !important;
+}
+
+/* Dedicated spacer the script creates right after the nav — reserves
+   its exact rendered height (measured live, never a guessed px value)
+   only while pinned, so nothing jumps up underneath it. */
+.dgs-hub-jumpnav-spacer {
+  width: 100%;
+  height: 0;
+}
+
+.dgs-hub-jumpnav-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 1rem 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dgs-hub-jumpnav-row::-webkit-scrollbar {
+  display: none;
+}
+
+.dgs-hub-jumpnav-row a {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none;
+  position: relative;
+  padding: 0.25rem 0;
+  flex-shrink: 0;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.dgs-hub-jumpnav-row a:hover {
+  color: var(--action-teal, #00B39F) !important;
+}
+
+.dgs-hub-jumpnav-row a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--action-teal, #00B39F);
+  transition: width 0.25s ease;
+  transform: translateX(-50%);
+}
+
+.dgs-hub-jumpnav-row a:hover::after {
+  width: 100%;
+}
+
+/* Mobile Layout (< 768px) */
+@media (max-width: 768px) {
+  .dgs-hub-jumpnav {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    background: #0A1F33;
+  }
+
+  .dgs-hub-jumpnav-row {
+    justify-content: flex-start;
+    gap: 1.25rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .dgs-hub-jumpnav-row a {
+    font-size: 0.82rem;
+    padding: 0.2rem 0;
+  }
+
+  #learn,
+  #implement,
+  #inspire,
+  #connect,
+  #faqs {
+    scroll-margin-top: 4rem;
+  }
+}
+
+@media (min-width: 769px) {
+  #learn,
+  #implement,
+  #inspire,
+  #connect,
+  #faqs {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/* ─── SECTION HEADS ─── */
+.dgs-hub-head {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4.5rem;
+}
+.dgs-hub-head h2 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+.dgs-hub-head p {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: center;
+  /* The sitewide readability cap (.dgs-page :where(p) { max-inline-size:
+     var(--measure-max) } in dgs-common.css) shrinks this paragraph to
+     ~68ch inside the 800px .dgs-hub-head, but .dgs-hub-head isn't in that
+     rule's auto-centering exemption list, so the shrunk box was left-
+     anchored and only the text inside it was centered — the box's own
+     position wasn't. Recentering the box here fixes it for every section
+     (Proof, Community, Recent Events, etc.) instead of one at a time. */
+  margin-inline: auto;
+}
+
+/* ─── LEARN SECTION (Accenture/Rippling-level visual grid) ─── */
+.dgs-learn-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.2rem;
+}
+@media (min-width: 768px) {
+  .dgs-learn-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.dgs-learn-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #0A1F33;
+  border: 1px solid var(--hub-card-border);
+  transition: all 0.4s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+  justify-content: flex-end;
+}
+.dgs-learn-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--hub-card-hover-border);
+  box-shadow: 0 20px 40px rgba(0, 179, 159, 0.12);
+}
+
+.dgs-learn-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s var(--ease-out);
+  z-index: 1;
+}
+.dgs-learn-card:hover .dgs-learn-img {
+  transform: scale(1.05);
+}
+
+.dgs-learn-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10, 31, 51, 0.1) 0%, rgba(10, 31, 51, 0.5) 40%, rgba(10, 31, 51, 0.95) 100%);
+  z-index: 2;
+}
+
+.dgs-learn-content {
+  position: relative;
+  z-index: 3;
+  padding: 2.5rem;
+}
+
+.dgs-learn-pill {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--action-teal);
+  margin-bottom: 0.8rem;
+}
+
+.dgs-learn-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #ffffff;
+  margin: 0 0 1.2rem 0;
+}
+
+.dgs-learn-link {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--action-teal);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+.dgs-learn-card:hover .dgs-learn-link {
+  color: #ffffff;
+}
+.dgs-learn-link svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s;
+}
+.dgs-learn-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* ─── IMPLEMENT SECTION (resource library, three cards, own gate each) ─── */
+.dgs-resource-section {
+  background: #F8FAFC;
+}
+
+.dgs-resource-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.25rem;
+}
+@media (min-width: 640px) {
+  .dgs-resource-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 980px) {
+  .dgs-resource-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Same flat card format as the Latest Insights grid (.dgs-ga-related-*):
+   no bordered box, a rounded image, and a plain arrow link as the CTA.
+   The whole card is the tap/click target (role="button"), not just the
+   small "Get Resource" text, so it's actually hittable on mobile. */
+.dgs-resource-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  cursor: pointer;
+  text-decoration: none;
+}
+.dgs-resource-card:focus-visible {
+  outline: 2px solid var(--action-teal);
+  outline-offset: 4px;
+  border-radius: var(--radius-md, 10px);
+}
+
+.dgs-resource-media {
+  position: relative;
+  aspect-ratio: 16 / 8.5;
+  border-radius: var(--radius-md, 10px);
+  overflow: hidden;
+  margin-bottom: 1.1rem;
+  background: var(--ga-navy, #0A1F33);
+}
+.dgs-resource-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dgs-resource-card:hover .dgs-resource-media img {
+  transform: scale(1.045);
+}
+
+/* Icon placeholder for resource cards that don't have a custom cover
+   graphic yet — .dgs-resource-media already falls back to a navy
+   background when there's no <img>, so this just centers a teal glyph
+   on it instead of leaving it blank. Swap in a real <img> and delete
+   this modifier once cover art exists. */
+.dgs-resource-media--icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dgs-resource-media-icon {
+  width: 56px;
+  height: 56px;
+  color: var(--action-teal);
+  opacity: 0.85;
+}
+
+.dgs-resource-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.dgs-resource-type {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ga-teal, var(--action-teal)) !important;
+  margin-bottom: 0.5rem;
+}
+
+.dgs-resource-body .dgs-resource-title {
+  font-family: var(--font-heading);
+  /* Same weight + scale the blog/article body text uses for h3 headings
+     (dgs-common.css .dgs-page h3 is 800 / --fs-h3), not a one-off guess. */
+  font-weight: 800;
+  font-size: var(--fs-h3, 1.5rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ga-navy, #0A1F33);
+  margin: 0 0 0.75rem !important;
+}
+
+.dgs-resource-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ga-ink, #0A1F33);
+  margin: 0 0 1rem !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dgs-resource-foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Plain arrow-link CTA, no button box/pill — matches .dgs-ga-related-read
+   on the Latest Insights cards exactly. The whole card is still the real
+   click target (role="button" on .dgs-resource-card), this is just label. */
+.dgs-resource-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ga-navy, #0A1F33);
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+.dgs-resource-btn svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.3s ease;
+}
+.dgs-resource-card:hover .dgs-resource-btn {
+  color: var(--ga-cat, var(--ga-teal, var(--action-teal)));
+}
+.dgs-resource-card:hover .dgs-resource-btn svg {
+  transform: translateX(3px);
+}
+
+/* ─── INSPIRE SECTION (proof, outcome-led) ─── */
+/* One featured case spanning the row, two standard cases below.
+   Three cells for three stories, no empty tile. */
+.dgs-insp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+}
+@media (min-width: 992px) {
+  .dgs-insp-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* Featured spans the row: copy and metrics sit side by side since there's
+     no photo column to anchor anymore. */
+  .dgs-insp-grid .dgs-insp-card--featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: center;
+    column-gap: 3rem;
+  }
+  .dgs-insp-card--featured .dgs-insp-metrics {
+    margin-top: 0;
+  }
+}
+
+.dgs-insp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--hub-card-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  transition: border-color 0.4s var(--ease-out), background 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+.dgs-insp-card:hover {
+  border-color: var(--hub-card-hover-border);
+  background: rgba(255, 255, 255, 0.035);
+  transform: translateY(-5px);
+}
+
+.dgs-insp-meta {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 1rem;
+}
+
+.dgs-insp-card .dgs-insp-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin: 0 0 1.25rem 0;
+  max-width: 34ch;
+}
+
+.dgs-insp-val {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 1.6rem 0;
+  max-width: 52ch;
+}
+
+/* The outcome is the visual anchor, not a paragraph buried at the bottom.
+   Figures are sized to be the loudest thing in the card (2026-08-19 request:
+   metrics as primary focal point), so the metric block gets extra gap to
+   keep the huge numbers from feeling cramped against the card edge/caption. */
+.dgs-insp-metrics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-content: end;
+  margin-top: auto;
+}
+@media (min-width: 560px) {
+  .dgs-insp-card--featured .dgs-insp-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.dgs-insp-metric {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 179, 159, 0.28);
+}
+
+.dgs-insp-figure {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(3.4rem, 6vw, 5.75rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  margin-bottom: 0.9rem;
+}
+
+.dgs-insp-unit {
+  font-size: 0.36em;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--action-teal);
+  margin-left: 0.2em;
+}
+
+.dgs-insp-caption {
+  display: block;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 26ch;
+}
+
+/* ─── CONNECT SECTION (community events) ───────────────────────
+   Full-bleed photo card — same visual language as the Events & Moments
+   gallery (.dgs-event-card / .dgs-event-duotone in dgs-events-gallery.css):
+   the photo fills the whole card, a navy-teal duotone tint fades in on
+   hover, and the image itself is scaled/darkened under it. Unlike the
+   gallery, whose caption only appears on hover, this card promotes a
+   specific live event, so its title/description sit on an ALWAYS-ON
+   navy feather at the base of the photo, not gated behind hover.
+   ------------------------------------------------------------- */
+.dgs-conn-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+}
+@media (min-width: 900px) {
+  .dgs-conn-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.dgs-conn-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--hub-card-border);
+  isolation: isolate;
+  transition: border-color 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.dgs-conn-card:hover {
+  border-color: var(--hub-card-hover-border);
+  transform: translateY(-4px);
+}
+
+.dgs-conn-media {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 31, 51, 0.06);
+}
+
+.dgs-conn-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out), filter 0.5s var(--ease-out);
+}
+
+.dgs-conn-card:hover .dgs-conn-media img {
+  transform: scale(1.06);
+  filter: grayscale(1) contrast(1.15) brightness(0.7);
+}
+
+/* Navy-teal duotone tint, same recipe as the events gallery, triggered
+   on hover only. */
+.dgs-conn-duotone {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(135deg, #0A1F33 0%, #0d5f70 55%, #00B39F 100%);
+  mix-blend-mode: color;
+  mask-image: radial-gradient(ellipse 120% 100% at 50% 50%, black 45%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 120% 100% at 50% 50%, black 45%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
+}
+
+.dgs-conn-card:hover .dgs-conn-duotone {
+  opacity: 1;
+}
+
+/* Always-on navy feather (no opacity transition, no hover-gating) so the
+   title/description stay legible against any photo at rest. */
+.dgs-conn-caption {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(10, 31, 51, 0.96) 0%, rgba(10, 31, 51, 0.72) 42%, rgba(10, 31, 51, 0.05) 82%, transparent 100%);
+}
+
+/* Format meta as discrete chips rather than a dot-separated string */
+.dgs-conn-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.dgs-conn-format,
+.dgs-conn-detail {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.8rem;
+  line-height: 1;
+}
+
+/* Compound .dgs-conn-card selectors below are deliberate, not just
+   namespacing: this caption sits inside a .dgs-section--light section,
+   whose sitewide `p`/`span`/`h3` color rules (dgs-common.css) are a
+   class + element pair — MORE specific than a single class like
+   `.dgs-conn-desc` alone — so without the extra ancestor class they'd
+   win and flip this white overlay text back to dark-on-dark-photo. */
+.dgs-conn-card .dgs-conn-format {
+  color: #ffffff;
+  background: rgba(0, 179, 159, 0.38);
+  border: 1px solid rgba(0, 179, 159, 0.55);
+}
+
+.dgs-conn-card .dgs-conn-detail {
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.dgs-conn-card .dgs-conn-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2.2vw, 1.65rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.6rem 0;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.dgs-conn-card .dgs-conn-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 1.25rem 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.dgs-conn-card .dgs-conn-date {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ─── FAQS SECTION ─── */
+.dgs-faq-category {
+  margin-bottom: 5rem;
+}
+.dgs-faq-category:last-child {
+  margin-bottom: 0;
+}
+
+.dgs-faq-category-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--bg-deep-navy);
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(10, 31, 51, 0.08);
+  padding-bottom: 0.8rem;
+}
+
+/* Accordion */
+.dgs-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dgs-faq-item {
+  border-bottom: 1px solid rgba(10, 31, 51, 0.08);
+}
+
+.dgs-faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 1.5rem 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--bg-deep-navy);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+.dgs-faq-question:hover {
+  color: var(--action-teal);
+}
+
+.dgs-faq-number {
+  color: var(--action-teal);
+  margin-right: 1.25rem;
+  font-weight: 700;
+}
+
+.dgs-faq-question-text {
+  flex: 1;
+}
+
+/* Toggle: draw a crisp + with two bars instead of the literal "+" glyph,
+   which renders as a thin, lopsided mark once rotated. Closed = +,
+   open = a clean × (whole control rotated 45deg). */
+.dgs-faq-toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-left: 1.5rem;
+  font-size: 0;            /* hides the literal "+" in the markup */
+  color: transparent;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dgs-faq-toggle::before,
+.dgs-faq-toggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 2.5px;
+  border-radius: 2px;
+  background: var(--action-teal);
+  transform: translate(-50%, -50%);
+}
+.dgs-faq-toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.dgs-faq-item.is-open .dgs-faq-toggle {
+  transform: rotate(45deg);
+}
+
+/* Collapsed by default; js/main.js opens an item by setting the answer's
+   inline max-height to its scrollHeight. Using max-height (not display:none)
+   keeps that mechanism working and gives a smooth expand/collapse. */
+.dgs-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  color: var(--text-dark-muted);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dgs-faq-answer p {
+  margin: 0;
+  padding-bottom: 1.8rem;
+}
+
+/* ─── FINAL CTA ───────────────────────────────────────────────
+   Scoped copy of the solutions / about final CTA (.dgs-sol-final-cta). This
+   page does not load dgs-about.css, so the rules have to live here.
+   ------------------------------------------------------------- */
+.dgs-sol-final-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg-navy-darkest, #0A1F33) !important;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+/* faded photo background */
+.dgs-sol-final-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  pointer-events: none;
+}
+
+/* SCALE watermark removed from growth hub page */
+.dgs-sol-final-cta::before {
+  content: none;
+}
+
+/* breathing teal/blue aurora */
+.dgs-sol-final-cta::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70vw;
+  height: 50vh;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 50%,
+      rgba(0, 179, 159, 0.12) 0%,
+      rgba(45, 127, 249, 0.12) 40%,
+      transparent 70%);
+  animation: dgs-sol-cta-breathe 8s ease-in-out infinite alternate;
+}
+
+@keyframes dgs-sol-cta-breathe {
+  0%   { transform: translate(-50%, -50%) scale(1);    opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; }
+}
+
+/* lift real content above the decorative layers */
+.dgs-sol-final-cta > *:not(.dgs-sol-final-bg) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Heading: two clean lines + white gradient text-glow */
+.dgs-sol-final-cta h2 {
+  max-width: 66rem;
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem) !important;
+  line-height: 1.22;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.12));
+}
+
+/* keep the teal accent line solid (don't let the gradient clip swallow it) */
+.dgs-sol-final-cta h2 .dgs-text-accent {
+  -webkit-text-fill-color: var(--action-teal);
+  filter: none;
+}
+
+.dgs-sol-final-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVENESS OVERRIDES (Growth Hub)
+   Card padding across Proof, Community, and the Implement gate was tuned
+   for desktop (2.2-2.5rem); on a 375-428px phone that eats ~20-25% of the
+   card's width before any copy starts. Ease it down without touching the
+   desktop-first base rules above.
+   ============================================================ */
+@media (max-width: 640px) {
+  .dgs-insp-card {
+    padding: 1.5rem;
+  }
+
+  .dgs-conn-caption {
+    padding: 1.5rem;
+  }
+}
+
+/* ─── REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  .dgs-sol-final-cta::after {
+    animation: none;
+    opacity: 0.65;
+  }
+  .dgs-conn-media img,
+  .dgs-conn-duotone,
+  .dgs-resource-media img,
+  .dgs-resource-card,
+  .dgs-learn-card,
+  .dgs-learn-img,
+  .dgs-insp-card,
+  .dgs-conn-card {
+    transition: none;
+  }
+  .dgs-learn-card:hover,
+  .dgs-insp-card:hover {
+    transform: none;
+  }
+  .dgs-learn-card:hover .dgs-learn-img,
+  .dgs-conn-card:hover .dgs-conn-media img {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   COMING-SOON MODAL (migrated from growth-hub.html inline <style>)
+   ============================================================ */
+.dgs-comingsoon-backdrop {
+  position: fixed;
+  inset: 0;
+  background: color-mix(in srgb, var(--dgs-navy-950, #0A1F33) 70%, transparent);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 10000;
+}
+
+.dgs-comingsoon-backdrop.is-visible {
+  opacity: 1;
+}
+
+.dgs-comingsoon-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.94);
+  width: min(360px, calc(100vw - 2.5rem));
+  background: var(--dgs-navy-900, #0A1F33);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10001;
+}
+
+.dgs-comingsoon-modal.is-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.dgs-comingsoon-icon {
+  display: block;
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.dgs-comingsoon-modal h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.6rem;
+}
+
+.dgs-comingsoon-modal p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+  margin: 0;
+  line-height: 1.6;
+}
+
+.dgs-comingsoon-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dgs-comingsoon-close:hover {
+  background: var(--action-teal);
+  color: #0A1F33;
+}
+
+.dgs-comingsoon-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-d9cdb6dd0a {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a8578d7a3ca30469695ea89.png') !important;
+}
+
+.dgs-il-5b71234e2c {
+  justify-content: flex-end !important;
+}
+
+.dgs-il-8351944d2b {
+  margin-bottom: 2.5rem !important;
+}
+
+.dgs-il-45ca2677dd {
+  color: var(--bg-deep-navy) !important;
+  font-size: clamp(1.4rem, 2.5vw, 1.75rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.dgs-il-36a3405745 {
+  color: var(--text-dark-muted) !important;
+  font-size: 0.95rem !important;
+}
+
+.dgs-il-18317876ab {
+  color: var(--bg-deep-navy) !important;
+}
+
+.dgs-il-0300ead363 {
+  color: var(--text-dark-muted) !important;
+}
+
+.dgs-il-4858a4af7d {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a8578d8a3ca30469695eacd.png') !important;
+}
+
+/* ============================================================
+   GROWTH HUB FIX 1: NEUTRALIZE .dgs-reveal INSIDE THE GHL WIDGET ZONES
+   main.js's IntersectionObserver drives .dgs-reveal -> .dgs-reveal.is-visible
+   (dgs-common.css: base rule sets opacity:0/visibility:hidden with no
+   !important; is-visible flips it back with !important). That observer only
+   ever sees nodes that exist at its initial querySelectorAll pass, so cards
+   the GHL widget injects into #learn/#implement/#connect AFTER that pass are
+   never observed and never get .is-visible: they paint at opacity:0 (a brief
+   flash of the pre-hydration frame) and then stay invisible for good. Rather
+   than race the widget's own AJAX timing, these three zones are hard-forced
+   visible from frame 1, so .dgs-reveal is fully inert here regardless of
+   whether main.js ever reaches them. Scoped strictly to #learn/#implement/
+   #connect (id selectors, so specificity + !important both beat the base
+   dgs-common.css rule) - no other .dgs-reveal usage on this page or any
+   other page is touched.
+
+   Also covers .dgs-ghl-blog-placeholder itself (with or without a
+   .dgs-reveal class): GHL's Blog Posts element is placed INSIDE that div
+   inside the GHL editor, not as a sibling, so it is the one ancestor a
+   future edit could plausibly tag .dgs-reveal (directly, or by nesting it
+   deeper than the current #learn/#implement/#connect > .dgs-container >
+   .dgs-ghl-blog-placeholder structure). A child widget that finishes
+   rendering later can never make an already-hidden ANCESTOR visible again
+   (opacity:0/visibility:hidden on a parent hides everything inside it
+   regardless of the child's own opacity), so the placeholder is locked
+   visible unconditionally, the same as the reveal elements around it. */
+#learn .dgs-reveal,
+#implement .dgs-reveal,
+#connect .dgs-reveal,
+#learn.dgs-reveal,
+#implement.dgs-reveal,
+#connect.dgs-reveal,
+.dgs-ghl-blog-placeholder,
+.dgs-ghl-blog-placeholder.dgs-reveal,
+.dgs-ghl-blog-placeholder .dgs-reveal {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+  transition: none !important;
+}
+
+/* ============================================================
+   GROWTH HUB FIX 2: LOCK CARD-LEVEL TITLES INSIDE THE GHL WIDGET ZONES
+   dgs-common.css's .dgs-page h2/h3 clamp rules (~35-51px / ~24-30px, both
+   !important) are meant for section-title-scale headings. GHL's native
+   Blog Posts element renders its own per-card title as a bare h2/h3 (exact
+   class naming varies by widget version/theme, hence the generic
+   [class*="title"] + "h2, h3" catch-alls below), so those inherit the
+   section-title clamp unless something more specific overrides them first.
+   This locks every card-level title inside #learn/#implement/#connect
+   (our own .dgs-ga-related-card-title / .dgs-resource-title included, so
+   they read identically to whatever the GHL cards render) to the 20-22px
+   card-title band, and leaves EVERY OTHER heading in these sections alone
+   - most importantly .dgs-hub-head h2 ("Practical Resources", "Community"),
+   which keeps its full section-title size since it is never matched by
+   [class*="title"] or a .blog-card/.dgs-ghl-blog-placeholder ancestor.
+   Zero bare "#implement h2"-style selectors are used anywhere in this
+   block for that exact reason.
+
+   .dgs-conn-title is deliberately EXCLUDED (#connect [class*="title"]:not
+   (.dgs-conn-title)): unlike the GHL card titles this block targets, which
+   sit on plain white cards, .dgs-conn-title sits on a dark photo (see
+   .dgs-conn-card .dgs-conn-title in this file, color: #ffffff). This
+   block's forced color: var(--ga-navy) !important was overriding that
+   white and making the event card's own title unreadable against its
+   photo background - confirmed live on the "From Operator to Orchestrator"
+   card. .dgs-conn-title already sets its own comparable size/weight, so
+   excluding it here only drops the color override, not the sizing.
+
+   [class*="heading"] / [class*="headline"] added alongside [class*="title"]:
+   the exact class GHL's Blog Posts widget uses is not something this repo
+   can inspect ahead of time (theme/version-dependent, could change on a GHL
+   update), so the catch-all leans on the handful of substrings blog/CMS
+   widgets actually use for a post title in practice, rather than one exact
+   guess. Still scoped to h1-h6 (any class) + these three substrings only,
+   under #learn/#implement/#connect or .dgs-ghl-blog-placeholder - never a
+   bare "#implement h2"/"#implement div" catch-all, so .dgs-hub-head h2 and
+   any unrelated GHL-injected copy stay untouched. If GHL's actual title
+   element uses none of these three words, this rule set will not reach it;
+   that specific case can only be confirmed and fixed by inspecting the
+   generated DOM in an actual GHL preview (see PR/task notes).
+   ============================================================ */
+#learn .dgs-ga-related-card-title,
+#implement .dgs-resource-title,
+#learn .blog-card h2,
+#learn .blog-card h3,
+#implement .blog-card h2,
+#implement .blog-card h3,
+#connect .blog-card h2,
+#connect .blog-card h3,
+#learn [class*="title"]:not(.dgs-ghi-featured-title),
+#implement [class*="title"],
+#connect [class*="title"]:not(.dgs-conn-title),
+#learn [class*="heading"],
+#implement [class*="heading"],
+#connect [class*="heading"],
+#learn [class*="headline"],
+#implement [class*="headline"],
+#connect [class*="headline"],
+.dgs-ghl-blog-placeholder h1,
+.dgs-ghl-blog-placeholder h2,
+.dgs-ghl-blog-placeholder h3,
+.dgs-ghl-blog-placeholder h4,
+.dgs-ghl-blog-placeholder h5,
+.dgs-ghl-blog-placeholder h6,
+.dgs-ghl-blog-placeholder [class*="title"],
+.dgs-ghl-blog-placeholder [class*="heading"],
+.dgs-ghl-blog-placeholder [class*="headline"] {
+  font-family: var(--font-heading) !important;
+  font-size: clamp(20px, 1.6vw, 22px) !important;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  letter-spacing: -0.01em !important;
+  margin: 0 0 0.75rem !important;
+  color: var(--ga-navy, #0A1F33) !important;
+}
+
+/* Explicitly re-assert the section headings this page relies on, in case a
+   future GHL theme update ever makes its card wrapper class loose enough to
+   collide with these (defensive; matches current markup either way). */
+#learn > .dgs-container > h2,
+#implement > .dgs-container > h2,
+#connect > .dgs-container > h2,
+.dgs-hub-head h2 {
+  font-size: var(--fs-h2) !important;
+  line-height: var(--line-heading, 1.2) !important;
+}
+
+.dgs-ghl-blog-placeholder p {
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+  color: var(--ga-ink, #0A1F33) !important;
+}
+
+/* opacity:1 here is not cosmetic - it's the actual fix for GHL blog card
+   images "disappearing". dgs-common.css's sitewide "IMAGE LOAD FADE-IN"
+   starts every <img> at opacity:0 and only reveals it once main.js's ONE-TIME
+   querySelectorAll('img:not(.dgs-no-fade)') pass (run once, at page load)
+   attaches a load-listener to it and that listener fires. GHL's Blog Posts
+   widget injects its own <img> tags asynchronously, after that pass already
+   ran, so they never get a listener, never get .dgs-img-loaded, and sit at
+   opacity:0 forever under html.dgs-js img:not(.dgs-img-loaded){opacity:0}
+   (see dgs-common.css). This !important override bypasses that gate
+   entirely for every image inside the placeholder, independent of when GHL
+   inserts it or whether any of our JS runs in time - no MutationObserver
+   race to get right. Trade-off: these images pop in instantly instead of
+   sitewide's soft fade, which is the same trade-off GROWTH HUB FIX 1 above
+   already makes for .dgs-reveal in these same zones, for the same reason. */
+.dgs-ghl-blog-placeholder img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+.dgs-ghl-blog-placeholder a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Collapse the placeholder to zero height whenever GHL hasn't put anything
+   into it - this local/static preview (GHL never processes the page), or a
+   live category with zero posts. Without this, the section's own 7rem
+   top+bottom padding (.dgs-hub-section) stacks against the next section's
+   matching padding around a fully empty box, reading as a huge blank gap
+   (e.g. #learn/#implement's placeholder into whatever section follows).
+   :empty only matches when the element truly has no child nodes, so the
+   placeholder markup must not contain whitespace/comments inside it for
+   this to take effect - see the HTML comment on each placeholder <div>.
+   #connect no longer has this wrapper div at all (GHL's Blog Posts widget
+   is placed directly, no placeholder to nest it in), so this rule is now
+   only relevant to #learn/#implement. */
+.dgs-ghl-blog-placeholder:empty {
+  display: none;
+}
+
+/* #connect/#implement's copy used to sit above a .dgs-ghl-blog-placeholder
+   wrapper that absorbed some of .dgs-hub-head's sitewide 4.5rem
+   margin-bottom visually (the wrapper, empty or not, still gave the eye
+   something to land on). Now that GHL's widget is placed directly with
+   nothing in between (no wrapper div for either section), that margin
+   reads as a much bigger gap before the widget starts. Scoped to these two
+   only - #inspire/#faqs keep the sitewide .dgs-hub-head spacing untouched.
+   #learn's equivalent copy uses a different class (.dgs-ghi-section-intro,
+   not .dgs-hub-head) - see its own override in dgs-growth-insights.css. */
+#connect .dgs-hub-head,
+#implement .dgs-hub-head {
+  margin-bottom: 1.5rem;
+}
+
+/* GROWTH HUB FIX 3: REAL GHL BLOG POST TITLE CLASS
+   Confirmed via live DOM inspection (published page, DevTools computed
+   styles): GHL's Blog Posts widget does NOT render inside
+   .dgs-ghl-blog-placeholder / #learn / #implement / #connect at all - GHL
+   replaces the placeholder with its own top-level page section (a sibling
+   of our <main>, not a descendant), so every rule above this line never
+   matches it. Its title is a real, stable class: <h2 class="blog-title
+   text-xl font-bold text-black font-sans">. Because that <h2> still lives
+   inside <body class="dgs-page">, it inherits dgs-common.css's sitewide
+   .dgs-page h2 page-heading scale (clamp(2.2rem,4.5vw,3.2rem) !important)
+   instead of GHL's own 20px card-title style - that's the actual cause of
+   the title rendering oversized on the published page (confirmed: 35.2px
+   computed, matching that clamp's floor). Fix targets .blog-title directly
+   (specificity (0,2,0), beats .dgs-page h2's (0,1,1)) so the sitewide H2
+   rule itself stays untouched. */
+.dgs-page .blog-title {
+  font-size: clamp(20px, 1.6vw, 22px) !important;
+  /* Full title treatment, copied from the Careers listing widget's
+     own h2.blog-title fix (css/dgs-careers.css — same native GHL blog
+     widget family, confirmed: both render <h2 class="blog-title ...">
+     via the same Compact List widget). Font-size above is unchanged
+     (this page's own confirmed live value); everything else brings
+     the DGS heading treatment (Sora, weight, navy, tight tracking)
+     to a title that otherwise only had GHL's bare Tailwind defaults. */
+  font-family: var(--font-heading, 'Sora', sans-serif) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em !important;
+  text-transform: none !important;
+  line-height: 1.25 !important;
+  color: var(--bg-deep-navy, #0A1F33) !important;
+}
+
+.dgs-page .blog-title a {
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease;
+}
+
+.dgs-page .blog-post-wrapper-compact:hover .blog-title a {
+  color: var(--action-teal, #00b39f) !important;
+}
+
+/* GROWTH HUB FIX 4: PAGINATION — copied from the Careers listing
+   widget (css/dgs-careers.css .pagination-container/.pagination-button
+   — same native GHL Previous/1/2/3/Next widget). GHL drives the
+   disabled/active state itself; this only restyles it. */
+.dgs-page .pagination-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+}
+
+.dgs-page .pagination-button {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark-muted, #5a6e85);
+  background: transparent;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-md, 6px);
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dgs-page .pagination-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.dgs-page .pagination-button.active {
+  color: #ffffff;
+  background: var(--action-teal, #00b39f);
+  border-color: var(--action-teal, #00b39f);
+}
+
+.dgs-page .pagination-button:not(:disabled):hover {
+  border-color: var(--action-teal, #00b39f);
+  color: var(--action-teal, #00b39f);
+}
+
+/* GROWTH HUB FIX 5: "READ MORE" — right-aligned, teal only on hover
+   (deliberately different from the Careers version this is copied
+   from: Careers keeps its Read More teal at rest, this one stays the
+   body-copy ink color at rest and only switches to teal on hover).
+   :has() scoped to the specific wrapping .flex div the button sits
+   alone in (confirmed live) so this can't catch any other "flex"
+   utility div GHL's widget uses elsewhere on the same card. */
+.dgs-page .content-width-compact > .flex:has(> .readme-btn) {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.dgs-page a.blog-button.readme-btn {
+  font-family: var(--font-body, 'Inter', sans-serif) !important;
+  font-size: 0.95rem !important;
+  font-weight: 650 !important;
+  color: var(--bg-deep-navy, #0A1F33) !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  margin-top: 0.5rem !important;
+  transition: color 0.25s ease;
+}
+
+.dgs-page a.blog-button.readme-btn:hover {
+  color: var(--action-teal, #00b39f) !important;
+}
+
+.dgs-page a.blog-button.readme-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: currentColor !important;
+  transition: transform 0.25s ease;
+}
+
+.dgs-page a.blog-button.readme-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* GROWTH HUB FIX 6: NAVY GAP AFTER THE WIDGET, MOBILE ONLY
+   Same root cause already confirmed and fixed on the Careers listing
+   widget (css/dgs-careers.css) — this file's own FIX 3 comment above
+   already established the mechanism: GHL renders its Blog Posts
+   widget as its own top-level page Section, a sibling of <main>, not
+   nested inside #learn/#implement/#connect at all. That Section's own
+   GHL-generated style leaves its background transparent, so whatever
+   the page's default canvas color is behind it shows through — on
+   Careers that was a full navy bleed; here on Growth Hub it only
+   showed as a thin navy strip in the gap after the widget on mobile
+   (the exact "empty space + navy bar" reported), because at wider
+   widths something else in the layout happens to cover the same
+   ancestor area, and only mobile's collapsed layout exposes it.
+   Same fix: force white/full-width/zero spacing up the real, stable
+   ancestor chain (never the random per-element ID classes GHL
+   regenerates on every edit), scoped narrowly with
+   :has(.hl-blog-post-home) so it can never touch any other
+   custom-code Section on the page (Careers' own listing, the footer's
+   custom-code paste, etc.). */
+.fullSection:has(.hl-blog-post-home),
+.c-row:has(.hl-blog-post-home),
+.c-column:has(.hl-blog-post-home),
+.c-custom-code:has(.hl-blog-post-home),
+.custom-code-container:has(.hl-blog-post-home),
+.vertical.inner:has(.hl-blog-post-home) {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.hl-blog-post-home {
+  background-color: #ffffff !important;
+}
+
+/* Growth Hub posts can carry many SEO/keyword tags in GHL (confirmed
+   live: some posts have 10+), but the card itself should only ever
+   show one — the primary tag, i.e. whichever one GHL renders first,
+   never a random pick. `.blog-tag` is a bare GHL theme class this
+   exact widget also reuses elsewhere on the site (Careers' own job
+   listing, styled separately and exclusively in css/dgs-careers.css,
+   which this page never loads) — scoped under `.hl-blog-post-home`
+   (this file's own established ancestor for the Growth Hub blog grid
+   specifically, matching every other rule above) so this can never
+   reach that other listing, or the individual post page (its tag
+   list is a completely different element, `.blog-tags` > `.tag`
+   singular — confirmed live — never `.blog-tag`).
+   The general sibling selector (not :nth-child) hides every tag that
+   has a PRECEDING .blog-tag sibling, i.e. every tag except the
+   first, regardless of how many exist. This is presentation-only:
+   the hidden tags are still real DOM nodes GHL rendered from the
+   post's actual, untouched tag data — nothing is deleted, and the
+   individual post page's own full tag list (see above) is never
+   touched by this selector at all. */
+.hl-blog-post-home .standard-blog-content > .flex.flex-wrap > .blog-tag ~ .blog-tag {
+  display: none !important;
+}
+
+/* Defensive parity with the identical rule already established for
+   this same widget in css/dgs-careers.css: a post with zero tags
+   renders this wrapper with no children at all, so this collapses it
+   outright rather than leaving an empty, potentially spaced box. */
+.hl-blog-post-home .standard-blog-content > .flex.flex-wrap:empty {
+  display: none;
+}
+

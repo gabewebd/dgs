@@ -1,0 +1,884 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — CONTACT PAGE-SPECIFIC STYLES
+   Split from dgs-styles.css for per-page editing in GHL.
+   Load order: dgs-common.css FIRST, then this file.
+   ============================================================ */
+
+.dgs-pill {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--surface-border-light);
+  color: var(--text-light);
+  background: transparent;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.dgs-pill--teal {
+  color: #1affeb;
+  border-color: rgba(0, 179, 159, 0.4);
+  background: rgba(0, 179, 159, 0.15);
+}
+
+.dgs-section--light .dgs-pill {
+  border-color: #D7DEE0;
+  color: var(--bg-deep-navy);
+}
+
+.dgs-split {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+@media (min-width: 860px) {
+  .dgs-split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+.dgs-form {
+  background: var(--text-white);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
+  padding: var(--space-lg);
+  color: var(--bg-deep-navy);
+}
+
+.dgs-form-row {
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-form-row--split {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-form-row--split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+.dgs-form-row label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--bg-deep-navy);
+}
+
+.dgs-form-row input,
+.dgs-form-row textarea,
+.dgs-form-row select {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1.5px solid #DCE1E4;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--bg-deep-navy);
+  background: var(--text-white);
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+
+.dgs-form-row input::placeholder,
+.dgs-form-row textarea::placeholder {
+  color: #A0A8B2;
+}
+
+.dgs-form-row input:focus,
+.dgs-form-row textarea:focus,
+.dgs-form-row select:focus {
+  border-color: var(--action-teal);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 179, 159, 0.1);
+}
+
+.dgs-form-row textarea {
+  min-height: 8.125rem;
+  resize: vertical;
+}
+
+.dgs-form-consent {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+}
+
+.dgs-form-consent a {
+  color: var(--action-teal);
+  text-decoration: underline;
+}
+
+.dgs-next-steps {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
+  padding: var(--space-md);
+}
+
+.dgs-next-steps-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--action-teal);
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-next-step {
+  display: flex;
+  gap: var(--space-sm);
+  padding: 0.75rem 0;
+}
+
+.dgs-next-step:not(:last-child) {
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.dgs-next-step-num {
+  background: none;
+  border-radius: 0;
+  width: auto;
+  height: auto;
+  color: var(--action-teal);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  display: block;
+}
+
+.dgs-next-step h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+  color: var(--text-white);
+}
+
+.dgs-next-step p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.dgs-contact-direct {
+  margin-top: 0;
+}
+
+.dgs-contact-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem !important;
+  color: var(--text-white);
+  margin-top: 0;
+}
+
+.dgs-contact-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.65rem 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+  width: fit-content; /* Hug itself */
+}
+
+.dgs-contact-link:hover {
+  color: var(--text-white);
+}
+
+.dgs-contact-link-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--action-teal);
+  flex-shrink: 0;
+}
+
+.dgs-contact-link-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dgs-contact-link small {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.dgs-value-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--space-md);
+}
+
+.dgs-value-pills .dgs-pill {
+  background: rgba(0, 179, 159, 0.15);
+  border-color: rgba(0, 179, 159, 0.4);
+  color: #1affeb;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.dgs-hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+.dgs-section--light .dgs-next-steps {
+  background: var(--bg-white);
+  border-color: #E4E8EA;
+}
+
+.dgs-section--light .dgs-next-step {
+  border-color: #E4E8EA;
+}
+
+.dgs-section--light .dgs-next-step h4 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-next-step p {
+  color: var(--text-dark-muted);
+}
+
+.dgs-section--light .dgs-contact-section-title {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-contact-link {
+  color: var(--text-dark-muted);
+}
+
+.dgs-section--light .dgs-contact-link:hover {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-section--light .dgs-contact-link-icon {
+  background: var(--bg-white);
+  border-color: #E4E8EA;
+}
+
+.form-container {
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* --- INTERACTIVE LOCATION LIST --- */
+.dgs-location-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: var(--space-md);
+}
+
+.dgs-location-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.dgs-location-pin {
+  color: var(--action-teal) !important;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dgs-location-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.dgs-location-link {
+  display: inline;
+  color: #000000 !important;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Hover effects for location items and links */
+.dgs-location-item:hover .dgs-location-link,
+.dgs-location-link:hover {
+  color: var(--action-teal) !important;
+}
+
+/* Make contact details and social links teal on hover */
+.dgs-contact-link {
+  transition: color var(--duration-fast) var(--ease-out) !important;
+}
+
+.dgs-contact-link:hover {
+  color: var(--action-teal) !important;
+}
+
+.dgs-contact-link:hover .dgs-contact-link-icon {
+  border-color: var(--action-teal) !important;
+  color: var(--action-teal) !important;
+  background: rgba(0, 179, 159, 0.08) !important;
+}
+
+.dgs-section--light .dgs-contact-link:hover {
+  color: var(--action-teal) !important;
+}
+
+/* Hero content in split layout — uses full column width */
+@media (max-width: 860px) {
+  .dgs-contact-direct {
+    margin-top: var(--space-lg);
+  }
+}
+
+/* --- CONTACT PAGE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  #dgs-contact-hero {
+    /* extra space above the hero for small screens */
+    padding: 7.3rem 0 4rem !important;
+  }
+  .dgs-form-tabs {
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .dgs-form-tab {
+    min-width: 100%;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+/* --- IFRAME AND CONTACT LINK MOBILE OPTIMIZATIONS --- */
+.dgs-form-iframe iframe {
+  width: 100%;
+  min-height: 900px;
+  border: none;
+  border-radius: var(--radius-md);
+  scroll-margin-top: 120px;
+}
+
+.dgs-contact-link span {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  .dgs-form-iframe iframe {
+    min-height: 1250px;
+  }
+
+  /* Fields were rendering cramped/tiny on mobile because the GHL widget
+     (a fluid, percentage-width form) was being squeezed inside the
+     .dgs-container's 1.5rem side padding. Since it's a cross-origin
+     iframe, we can't reach in and resize its inputs/fonts directly —
+     but we CAN give it more width to expand into. Breaking the wrap out
+     to full-bleed lets GHL's own fluid layout render fields at a larger,
+     more comfortable size. */
+  .dgs-form-iframe-wrap {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+  }
+
+  .dgs-form-iframe-wrap .dgs-form-iframe {
+    padding: 0 0.75rem;
+  }
+}
+
+/* --- HERO SECTION STYLING (Inherits from dgs-service-detail.css) --- */
+#dgs-contact-hero .dgs-hero-content {
+  padding-bottom: 0;
+}
+
+#dgs-contact-hero .dgs-pill--teal {
+  color: #1affeb !important;
+  border-color: rgba(0, 179, 159, 0.4) !important;
+  background: rgba(0, 179, 159, 0.15) !important;
+}
+
+/* Single column contact form & process grid */
+.dgs-contact-form-single {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.dgs-next-steps-section {
+  margin-top: 4.5rem;
+  padding-top: 3.5rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid rgba(10, 31, 51, 0.08);
+}
+
+.dgs-next-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .dgs-next-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-next-steps-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-next-step-card {
+  background: var(--surface-navy-card, rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+
+.dgs-next-step-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 179, 159, 0.35);
+}
+
+/* --- GHL FORM TABS & PLACEHOLDERS --- */
+.dgs-inquiry-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dgs-inquiry-tab {
+  background: var(--bg-white);
+  border: 1px solid #DCE1E4;
+  border-radius: var(--radius-full);
+  padding: 0.55rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--bg-deep-navy);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.dgs-inquiry-tab:hover {
+  border-color: var(--action-teal);
+  color: var(--action-teal);
+}
+
+.dgs-inquiry-tab.is-active {
+  background: var(--bg-deep-navy);
+  color: var(--text-white);
+  border-color: var(--bg-deep-navy);
+  box-shadow: 0 4px 12px rgba(10, 31, 51, 0.15);
+}
+
+.dgs-ghl-panel {
+  display: none;
+}
+
+.dgs-ghl-panel.is-active {
+  display: block;
+}
+
+.dgs-ghl-placeholder-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(0, 179, 159, 0.4);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.dgs-ghl-placeholder-box:hover {
+  border-color: var(--action-teal);
+}
+
+.dgs-ghl-placeholder-badge {
+  display: inline-block;
+  background: rgba(0, 179, 159, 0.12);
+  color: var(--action-teal);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.75rem;
+}
+
+.dgs-ghl-placeholder-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+.dgs-ghl-placeholder-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.dgs-waiver-banner {
+  background: rgba(0, 179, 159, 0.06);
+  border: 1px solid rgba(0, 179, 159, 0.25);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.dgs-waiver-banner h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--bg-deep-navy);
+  margin-bottom: 0.5rem;
+}
+
+.dgs-waiver-banner ol {
+  margin: 0.5rem 0 1rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--slate-text, #64748B);
+  line-height: 1.6;
+}
+
+.dgs-waiver-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--action-teal);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.dgs-waiver-download-btn:hover {
+  opacity: 0.9;
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-7363a05057 {
+  background: var(--bg-deep-navy) !important;
+  padding: 9rem 0 6rem !important;
+  text-align: center !important;
+  position: relative !important;
+}
+
+.dgs-il-438c81e189 {
+  position: absolute !important;
+  inset: 0 !important;
+  background: radial-gradient(circle at 50% 30%, rgba(8, 157, 135, 0.15) 0%, transparent 60%) !important;
+  pointer-events: none !important;
+}
+
+.dgs-il-7e62f46c6d {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.dgs-il-6acc717522 {
+  max-width: 960px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.dgs-il-0d8facbb21 {
+  color: var(--action-teal) !important;
+  margin-bottom: 0.5rem !important;
+  display: inline-block !important;
+}
+
+.dgs-il-1e6deaee4b {
+  max-width: 100% !important;
+  margin-bottom: var(--space-md) !important;
+  color: var(--text-white) !important;
+}
+
+.dgs-il-9f84c66f98 {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: var(--space-md) !important;
+  color: var(--text-secondary) !important;
+}
+
+.dgs-il-1b81d27830 {
+  padding-top: 4rem !important;
+}
+
+.dgs-il-ca5dea0f97 {
+  max-width: 900px !important;
+}
+
+.dgs-il-38e8be416e {
+  width: 100% !important;
+  border:none !important;
+  overflow: hidden !important;
+}
+
+.dgs-il-40a3710da6 {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a86ad57b3a1bcf4faf3d2d2.png') !important;
+}
+
+.dgs-il-fc1acb5626 {
+  color: var(--action-teal) !important;
+  -webkit-text-fill-color: var(--action-teal) !important;
+}
+
+.dgs-il-78c360413a {
+  color: var(--action-teal) !important;
+}
+
+.dgs-il-3a2164d3de {
+  background: #ffffff !important;
+  padding: 5.5rem 0 6rem 0 !important;
+  width: 100% !important;
+}
+
+.dgs-il-31fb13f854 {
+  max-width: 860px !important;
+  margin: 0 auto !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  padding: 1.25rem !important;
+  box-shadow: 0 4px 20px rgba(10, 31, 51, 0.03) !important;
+}
+
+.dgs-il-6fa029b200 {
+  width:100% !important;
+  height:100% !important;
+  border:none !important;
+  border-radius:8px !important;
+}
+
+.dgs-il-ca6e82709e {
+  text-align: center !important;
+  margin-bottom: 2.5rem !important;
+}
+
+.dgs-il-250cb51cad {
+  font-family: var(--font-heading) !important;
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: #0A1F33 !important;
+  margin: 0 !important;
+}
+
+.dgs-il-52b372f63a {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 10px !important;
+  padding: 1.75rem !important;
+}
+
+.dgs-il-cf34923ccc {
+  margin-bottom: 1rem !important;
+  color: var(--action-teal) !important;
+  font-weight: 800 !important;
+  font-size: 1.5rem !important;
+}
+
+.dgs-il-400c32a529 {
+  font-family: var(--font-heading) !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  color: #0A1F33 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.dgs-il-93e5249d36 {
+  font-size: 0.88rem !important;
+  color: #475569 !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+.dgs-il-09ffe6f85e {
+  margin-top: 3.5rem !important;
+  text-align: center !important;
+}
+
+/* Matches "What Happens Next" (.dgs-il-250cb51cad) exactly: same
+   font-size/weight/color, so the two section headings read as one
+   consistent style. */
+.dgs-il-7cf0ac032b {
+  margin-bottom: 0.75rem !important;
+  font-family: var(--font-heading) !important;
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: #0A1F33 !important;
+}
+
+/* ---------------------------------------------------------
+   PREFER A DIRECT APPROACH: phone/email/LinkedIn + map
+   --------------------------------------------------------- */
+.dgs-contact-direct-sub {
+  font-size: 0.95rem;
+  color: #64748B;
+  /* `width: 100%` is required for `margin: 0 auto` to actually center this:
+     with `width` left at its default `auto`, the browser resolves the auto
+     margins to 0 first and lets `max-width` merely cap the right edge,
+     which pins the box to the left instead of centering it. Giving it an
+     explicit (non-auto) width lets max-width shrink THAT box symmetrically
+     via the auto margins.
+     `!important` on the margin is required too: the sitewide reset
+     ".dgs-page p { margin: 0 }" (class+element, dgs-common.css) has higher
+     specificity than this single class and would otherwise win, zeroing
+     the auto margins back out and pinning this paragraph to the left —
+     same collision class as the icon-color fix above .dgs-contact-info-icon. */
+  width: 100%;
+  max-width: 46ch;
+  margin: 0 auto 2.5rem !important;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.dgs-contact-direct-panel {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) 1fr;
+  background: var(--bg-white);
+  border: 1px solid #E4E8EA;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(10, 31, 51, 0.06);
+}
+
+.dgs-contact-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.75rem;
+}
+
+.dgs-contact-info-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background: #F3F6FB;
+  border: 1px solid #E4E8EA;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
+}
+
+.dgs-contact-info-row:hover {
+  border-color: var(--action-teal);
+  background: rgba(0, 179, 159, 0.06);
+}
+
+.dgs-contact-info-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-white);
+  border: 1px solid #E4E8EA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* !important required: this is a <span>, and the sitewide
+   ".dgs-section--light span" rule (class+element, dgs-common.css) has
+   higher specificity than a single class selector and would otherwise
+   win, forcing the icon to the light section's dark navy text color
+   instead of teal. Same known collision documented in dgs-careers.css
+   and dgs-methodology.css. */
+.dgs-contact-info-icon {
+  color: var(--action-teal) !important;
+}
+
+.dgs-contact-info-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.dgs-contact-info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+  /* Explicit, not incidental: this inherits text-align from the section's
+     centered heading wrapper (.dgs-il-09ffe6f85e) otherwise, and since
+     flex-direction:column stretches PHONE/EMAIL/LINKEDIN's label+value
+     to a shared width, an inherited "center" would center each line
+     within that shared width instead of keeping both flush left. */
+  text-align: left !important;
+}
+
+.dgs-contact-info-text small {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748B;
+}
+
+.dgs-contact-info-text span {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #0A1F33;
+  word-break: break-word;
+}
+
+.dgs-contact-map {
+  min-height: 320px;
+}
+
+.dgs-contact-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+}
+
+@media (max-width: 860px) {
+  .dgs-contact-direct-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .dgs-contact-map,
+  .dgs-contact-map iframe {
+    min-height: 280px;
+  }
+}
+

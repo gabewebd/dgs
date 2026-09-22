@@ -1,0 +1,1310 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — PLAYBOOK / RESOURCE DETAIL PAGE
+   (reusable template for the "Practical Resources" library)
+   Load order: dgs-common.css THEN this file. Self-contained: pages
+   under growth-hub/implement/ load ONLY dgs-common.css + this sheet,
+   nothing else. Same hero/TOC/layout system as an event detail page
+   (dgs-event-detail.css), but namespaced .dgs-pb-* and built around a
+   downloadable resource instead of a scheduled event: a numbered
+   "What's Inside" section (rather than an icon row list) mirrors the
+   numbered section badges already used in the source PDF, and the
+   final CTA gates the resource behind the same GHL form used by the
+   growth-hub.html resource modal, embedded inline instead of a popup.
+   ============================================================ */
+
+/* ─── 0. SHARED FOUNDATION (inlined from dgs-growth-article.css) ───
+   The generic article-hero/TOC/layout/cover/back-to-top/"keep reading"
+   system every Growth Hub content page shares (.dgs-ga-*), inlined
+   here verbatim instead of linking dgs-growth-article.css, so this
+   template has zero external stylesheet dependency beyond
+   dgs-common.css. Only the subset this page actually uses is included
+   (no .dgs-ga-body prose/callout/CTA styles, no related-card grid —
+   this page's "Keep Reading" is the heading+link variant only, no
+   card grid). Keep in sync with dgs-growth-article.css and
+   dgs-event-detail.css's own copy if this shared system ever
+   changes. */
+
+/* :root (not just .dgs-ga) so every --ga-* token still resolves when a
+   .dgs-ga-* component (e.g. this page's "Keep Reading" section) is
+   pasted into GHL as an independent custom-code section with no shared
+   .dgs-ga ancestor — confirmed live on the article template's equal
+   case: with no wrapper, var(--ga-surface)/var(--ga-navy) silently
+   fail and the section loses its background/text color entirely
+   instead of falling back to anything. .dgs-ga is kept alongside :root
+   purely so a future more-specific override on .dgs-ga still works. */
+:root,
+.dgs-ga {
+  --ga-navy: #0A1F33;
+  --ga-teal: #00B39F;
+  --ga-blue: #2D7FF9;
+  --ga-amber: #F5A623;
+  --ga-ink: #0A1F33;
+  --ga-muted: #5B6B7C;
+  --ga-hairline: rgba(10, 31, 51, 0.1);
+  --ga-surface: #F7F9FA;
+  --ga-cat: var(--ga-teal);
+}
+
+.dgs-ga-hero {
+  background: var(--ga-navy);
+  padding: 8.5rem 0 5.5rem;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.dgs-ga-hero::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -18%;
+  width: 56vw;
+  height: 22rem;
+  min-width: 26rem;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(0, 179, 159, 0.18) 0%, rgba(45, 127, 249, 0.08) 45%, transparent 75%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dgs-ga-hero-inner {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .dgs-ga-hero-inner {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-ga-hero-inner {
+    padding: 0 3.5rem;
+  }
+}
+
+.dgs-ga-back {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.25s ease;
+}
+
+.dgs-ga-back svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-ga-back:hover {
+  color: var(--ga-teal);
+}
+
+.dgs-ga-cat {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ga-cat);
+  margin-bottom: 1.1rem;
+}
+
+.dgs-ga-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.2vw, 3.1rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 1.75rem !important;
+}
+
+.dgs-ga-dek {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 62ch;
+  margin: 0 0 2rem !important;
+}
+
+.dgs-ga-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.62);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dgs-ga-meta strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.dgs-ga-meta span:not(:last-child)::after {
+  content: '\00b7';
+  margin-left: 0.55rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ─── Hero image ─── */
+.dgs-ga-cover {
+  max-width: 100%;
+  margin: -2rem auto 0;
+  padding: 0 1rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .dgs-ga-cover {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-ga-cover {
+    padding: 0 3.5rem;
+  }
+}
+
+.dgs-ga-cover img {
+  width: 100%;
+  aspect-ratio: 16 / 8.5;
+  object-fit: cover;
+  border-radius: var(--radius-lg, 14px);
+  display: block;
+  box-shadow: 0 24px 60px rgba(10, 31, 51, 0.18);
+}
+
+.dgs-ga-layout {
+  position: relative;
+  z-index: 0;
+  background: #ffffff;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 4.5rem 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .dgs-ga-layout {
+    padding: 4.5rem 2rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-ga-layout {
+    padding: 4.5rem 3.5rem 2rem;
+  }
+}
+
+.dgs-ga-layout::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: #ffffff;
+}
+
+@media (min-width: 960px) {
+  .dgs-ga-layout {
+    grid-template-columns: 240px 1fr;
+    gap: 4.5rem;
+    align-items: start;
+  }
+}
+
+.dgs-ga-toc {
+  order: -1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (min-width: 960px) {
+  .dgs-ga-toc {
+    position: sticky;
+    top: 7.5rem;
+    order: 0;
+    max-width: 240px;
+  }
+}
+
+.dgs-ga-toc-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ga-muted);
+  margin-bottom: 0.9rem;
+}
+
+@media (max-width: 959px) {
+  .dgs-ga-toc-label {
+    display: none;
+  }
+}
+
+.dgs-ga-toc-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--ga-surface);
+  border: 1px solid var(--ga-hairline);
+  border-radius: var(--radius-md, 10px);
+  padding: 0.85rem 1.1rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ga-ink);
+}
+
+@media (min-width: 960px) {
+  .dgs-ga-toc-toggle {
+    display: none;
+  }
+}
+
+.dgs-ga-toc-toggle svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.dgs-ga-toc[data-open="true"] .dgs-ga-toc-toggle svg {
+  transform: rotate(180deg);
+}
+
+.dgs-ga-toc-list {
+  list-style: none;
+  margin: 0.9rem 0 0 !important;
+  padding: 0.25rem 0 0 1.4rem !important;
+  border-left: 2px solid var(--ga-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-width: 100%;
+}
+
+@media (max-width: 959px) {
+  .dgs-ga-toc-list {
+    display: none;
+    margin-top: 1rem !important;
+  }
+  .dgs-ga-toc[data-open="true"] .dgs-ga-toc-list {
+    display: flex;
+  }
+}
+
+.dgs-ga-toc-list a {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--ga-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.dgs-ga-toc-list a:hover,
+.dgs-ga-toc-list a.is-active {
+  color: var(--ga-navy);
+  font-weight: 600;
+}
+
+.dgs-ga-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--action-teal, #00B39F);
+  color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.25s ease;
+  z-index: 500;
+  box-shadow: 0 10px 24px rgba(0, 179, 159, 0.32);
+}
+
+.dgs-ga-top:hover {
+  background: var(--action-mint-hover, #1ac9b0);
+}
+
+.dgs-ga-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.dgs-ga-top svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-ga-top {
+    transition: none;
+  }
+}
+
+/* ─── Keep Reading (heading + single link, no card grid — this page
+   doesn't use the related-card grid variant) ─── */
+.dgs-ga-related {
+  background: var(--ga-surface);
+  padding: 5rem 0;
+}
+
+.dgs-ga-related-inner {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .dgs-ga-related-inner {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-ga-related-inner {
+    padding: 0 3.5rem;
+  }
+}
+
+.dgs-ga-related-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  color: var(--ga-navy);
+  margin: 0 !important;
+}
+
+.dgs-ga-related-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* The link itself is the actual .dgs-promise-link class (dgs-common.css) —
+   same component as "Read More" / "Apply for Position" on careers.html —
+   so its color, underline and hover behavior come from there. This rule
+   only supplies the one thing that component doesn't set: keeping the
+   link from shrinking inside the .dgs-ga-related-head flex row. */
+.dgs-ga-related-viewall {
+  flex-shrink: 0;
+}
+
+/* ─── 1. HERO ───
+   The plain shared article hero (.dgs-ga-hero / .dgs-ga-hero-inner /
+   .dgs-ga-cover, all inlined in section 0 above) reused as-is,
+   exactly as its own header comment says to for "Insights, Guides,
+   Playbooks, Case Studies, Events." The one bespoke addition is a CTA
+   row after .dgs-ga-meta, the same pattern the event template uses
+   for its own hero action button. */
+
+.dgs-pb-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+@media (max-width: 640px) {
+  .dgs-pb-hero-actions .dgs-btn-saas {
+    width: 100%;
+  }
+}
+
+/* ─── 2. BODY LAYOUT ───
+   Same sticky-sidebar + content-column grid as an article
+   (.dgs-ga-layout / .dgs-ga-toc, defined in dgs-growth-article.css). */
+
+.dgs-pb-content {
+  max-width: 76ch;
+}
+
+.dgs-pb-content > * + * {
+  margin-top: 3.5rem;
+}
+
+/* No font-size here: dgs-common.css's global
+   `.dgs-page h2 { font-size: ...!important }` (Framework 3.0 default)
+   always wins over any same-specificity descendant selector regardless
+   of stylesheet load order, so fighting it just risks these headings
+   drifting out of sync with every other h2 on the site (including the
+   event template's). Inheriting it instead guarantees this page's
+   section headings always match sitewide. */
+.dgs-pb-content h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--ga-navy, #0A1F33);
+  margin: 0 0 1.5rem;
+  scroll-margin-top: 6.5rem;
+}
+
+.dgs-pb-lead-copy p {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: #2A3B4D;
+  margin: 0;
+}
+
+/* Not this / this comparison */
+.dgs-pb-compare {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  border-top: 1px solid var(--surface-border-neutral);
+  padding-top: 2rem;
+}
+
+@media (min-width: 560px) {
+  .dgs-pb-compare {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.dgs-pb-compare-block {
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--surface-border-neutral);
+}
+
+.dgs-pb-compare-block--is {
+  border-left-color: var(--dgs-teal);
+}
+
+.dgs-pb-compare-label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.55rem;
+}
+
+.dgs-pb-compare-block--is .dgs-pb-compare-label {
+  color: var(--dgs-teal-deep);
+}
+
+.dgs-pb-compare-block p {
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-dark-primary);
+  margin: 0;
+}
+
+/* ─── 3. NUMBERED SECTION LIST ("What's Inside") ───
+   Echoes the source PDF's own numbered-square section badges (01, 02,
+   03...) rather than the event template's icon rows — a small,
+   deliberate visual nod that this list maps 1:1 onto the document a
+   visitor is about to receive. */
+
+.dgs-pb-sections {
+  border-top: 1px solid var(--surface-border-neutral);
+}
+
+.dgs-pb-section-row {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--surface-border-neutral);
+}
+
+.dgs-pb-section-num {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--dgs-teal);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--dgs-teal-deep);
+}
+
+.dgs-pb-section-body {
+  min-width: 0;
+}
+
+.dgs-pb-section-body h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.35;
+  color: var(--ga-navy, #0A1F33);
+  margin: 0;
+}
+
+.dgs-pb-section-body p {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #4a5568;
+  margin: 0.4rem 0 0;
+}
+
+/* ─── 4. ROW LIST ("Who It's For") ─── */
+
+.dgs-pb-row-list {
+  border-top: 1px solid var(--surface-border-neutral);
+}
+
+.dgs-pb-row {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--surface-border-neutral);
+}
+
+.dgs-pb-row-icon {
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--surface-border-neutral);
+  border-radius: var(--radius-sm);
+  color: var(--dgs-teal-deep);
+}
+
+.dgs-pb-row-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.dgs-pb-row-body {
+  min-width: 0;
+}
+
+.dgs-pb-row-body h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.35;
+  color: var(--ga-navy, #0A1F33);
+  margin: 0;
+}
+
+.dgs-pb-row-body p {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #4a5568;
+  margin: 0.5rem 0 0;
+}
+
+/* ─── 5. THE DETAILS (label / value list) ─── */
+
+.dgs-pb-detail-list {
+  margin: 0;
+  border-top: 1px solid var(--surface-border-neutral);
+}
+
+.dgs-pb-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--surface-border-neutral);
+}
+
+.dgs-pb-detail-row dt {
+  flex: none;
+  width: 9.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dgs-teal-deep);
+}
+
+.dgs-pb-detail-row dt svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-pb-detail-row dd {
+  margin: 0;
+  flex: 1 1 auto;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 650;
+  color: var(--ga-navy, #0A1F33);
+}
+
+@media (max-width: 480px) {
+  .dgs-pb-detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+  .dgs-pb-detail-row dd {
+    text-align: left;
+  }
+}
+
+/* Reads as its own supporting-information block: comfortable internal
+   padding (not just the left accent), 32px above separating it from
+   The Details list, and 0 of its own margin-bottom below — the gap
+   down to "How It Works" is owned entirely by the explicit
+   #details + #how-it-works rule below so it can't be shortened by
+   margin collapsing through the section boundary. */
+.dgs-pb-disclaimer {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-tertiary);
+  border-left: 2px solid var(--surface-border-neutral);
+  padding: 1rem 0 1rem 1rem;
+  margin: 2rem 0 0;
+}
+
+/* Section-to-section transition gets its own explicit, larger gap
+   (64px desktop / 48px mobile below) instead of the generic 3.5rem
+   .dgs-pb-content > * + * spacing every other top-level block uses,
+   so the disclaimer reads as closed-off supporting info before "How
+   It Works" opens as a clearly new section. */
+#details + #how-it-works {
+  margin-top: 4rem;
+}
+
+/* ─── 6. HOW IT WORKS ───
+   DIAGNOSIS (why the previous version still looked stuck together):
+   the intro paragraph carried margin:0 and the gap below it was
+   delegated entirely to the NEXT element's padding-top. That's a
+   correct, non-collapsing technique, but it makes the gap's owner
+   non-obvious — split across two unrelated rules instead of living on
+   one dedicated class — so it's easy to lose track of, exactly the
+   fragility being flagged here. This rebuild uses dedicated
+   .dgs-pb-hiw-* classes (scoped to this section only, no shared
+   .dgs-pb-content > * + * / .dgs-pb-content h2 reliance) with every
+   gap owned by exactly one rule:
+     title -> intro:      margin-bottom on the title (dedicated class)
+     intro -> steps:      margin-bottom on the intro (dedicated class)
+     step -> step:        flex `gap` on the steps container (not a
+                           margin, so it structurally cannot collapse)
+     step title -> desc:  margin on the step title (dedicated class)
+   A connected vertical timeline still runs through the number badges
+   (unchanged from before), now bridging the flex gap via a negative
+   `bottom` offset on the connector instead of padding-bottom on each
+   step; see the comment on .dgs-pb-hiw-step::before below. */
+
+/* Written as h2.dgs-pb-hiw-title (element + class) purely so this
+   margin reliably beats the shared `.dgs-pb-content h2` rule, which
+   is also element+class specificity (0,1,1) and would otherwise win
+   on source order alone. No !important needed: this is a genuine,
+   confirmed specificity tie, resolved by raising this selector to
+   match it rather than by force. Font-family/weight/color/size are
+   deliberately NOT redeclared here — those still come from the
+   shared rule (and, through it, the sitewide h2 default), so this
+   heading stays visually identical to every other section heading
+   on the page; only its margin is dedicated to this section. */
+h2.dgs-pb-hiw-title {
+  margin: 0 0 1.25rem;
+}
+
+.dgs-pb-hiw-intro {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #4a5568;
+  max-width: 47.5rem;
+  margin: 0 0 2.5rem;
+}
+
+.dgs-pb-hiw-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.dgs-pb-hiw-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  column-gap: 1.75rem;
+  align-items: start;
+}
+
+.dgs-pb-hiw-number {
+  justify-self: start;
+  position: relative;
+  z-index: 1;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--dgs-teal);
+  border-radius: 50%;
+  background: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--dgs-teal-deep);
+}
+
+.dgs-pb-hiw-content {
+  min-width: 0;
+}
+
+.dgs-pb-hiw-content h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  color: var(--ga-navy, #0A1F33);
+  margin: 0.25rem 0 0.75rem;
+}
+
+.dgs-pb-hiw-content p {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #4a5568;
+  margin: 0;
+}
+
+/* Connecting line: starts at the bottom of this step's own badge and
+   ends at `bottom: -2rem`, i.e. exactly minus the steps container's
+   `gap` value, so it extends past this step's own box into the gap
+   and reaches the next step's badge. The gap itself is never owned by
+   either step (it's real space the flex container inserts between
+   them), which is what makes it collapse-proof; this negative offset
+   is just how the line visually bridges that space. Suppressed on the
+   last step since there's nothing after it to connect to. */
+.dgs-pb-hiw-step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 1.375rem;
+  top: 2.75rem;
+  bottom: -2rem;
+  width: 1px;
+  background: var(--surface-border-neutral);
+}
+
+@media (max-width: 640px) {
+  #details + #how-it-works {
+    margin-top: 3rem;
+  }
+
+  .dgs-pb-hiw-intro {
+    margin-bottom: 1.75rem;
+  }
+
+  .dgs-pb-hiw-step {
+    grid-template-columns: 3rem 1fr;
+    column-gap: 1rem;
+  }
+}
+
+/* ─── 7. FINAL CTA / GET-THE-RESOURCE CARD ───
+   Same gradient navy card recipe as the event registration card
+   (.dgs-event-register-card in dgs-event-detail.css), with the GHL
+   resource-request form (see growth-hub.html's requested_resource
+   modal) embedded inline instead of behind a popup. */
+
+.dgs-pb-cta-card {
+  position: relative;
+  overflow: hidden;
+  max-width: 90rem;
+  margin: 0 auto;
+  background: #0A1F33;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 50px rgba(10, 31, 51, 0.35);
+  padding: clamp(2.25rem, 4vw, 3.5rem);
+}
+
+.dgs-pb-cta-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 450px;
+  max-width: 70%;
+  height: 28rem;
+  max-height: 70%;
+  background: radial-gradient(circle at 100% 0%, rgba(0, 179, 159, 0.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.dgs-pb-cta-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.dgs-pb-cta-text {
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+
+.dgs-pb-cta-formcol {
+  flex: 1 1 20rem;
+  min-width: 0;
+}
+
+/* Compound selectors (.dgs-pb-cta-card ...) are deliberate: this card
+   sits inside a .dgs-section--light section, whose sitewide
+   p/span/h2 color rules (dgs-common.css) match at equal-or-higher
+   specificity than a single class and would otherwise flip this
+   card's white/teal text back to dark-on-dark-navy. */
+.dgs-pb-cta-card .dgs-pb-cta-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dgs-teal);
+  margin-bottom: 0.9rem;
+}
+
+.dgs-pb-cta-card .dgs-pb-cta-text h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 0.85rem;
+}
+
+.dgs-pb-cta-card .dgs-pb-cta-sub {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 0 1.5rem;
+}
+
+.dgs-pb-cta-card .dgs-pb-cta-meta {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dgs-pb-cta-form {
+  width: 100%;
+}
+
+.dgs-pb-cta-form iframe {
+  width: 100%;
+  border: none;
+  border-radius: var(--radius-lg);
+  display: block;
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-07e6d16ec2 {
+  --ga-cat: var(--ga-teal) !important;
+}
+
+.dgs-il-e6cd4d6a90 {
+  width:100% !important;
+  border:none !important;
+  border-radius:8px !important;
+  display:block !important;
+}
+
+/* ============================================================
+   DGS BLOG POST TEMPLATE
+   Native GHL Integration
+
+   Duplicated verbatim from css/dgs-growth-article.css (same file
+   section 0 above duplicates that file's .dgs-ga-* foundation, for
+   the same reason: this template is self-contained, no external
+   stylesheet dependency beyond dgs-common.css). The native GHL Blog
+   Content widget is shared across Learn (articles), Implement
+   (playbooks/resources), and Inspire (insights) — same widget, same
+   .blog-html-container-single DOM, same selectors below — so this
+   integration has to live in every stylesheet a GHL blog-theme
+   template can load, not just dgs-growth-article.css.
+
+   Keep this block byte-for-byte in sync with the one in
+   css/dgs-growth-article.css if the native GHL integration ever
+   changes; sections 7/8 below are the only two lines that
+   legitimately differ, since this template's "Keep Reading" and
+   Final CTA markup differ from the article template's.
+========================================================= */
+
+/* ---------------------------------------------------------
+   1. Template scope
+   Every rule below is scoped under .blog-html-container-single,
+   the stable wrapper GHL's blog-theme always renders around a Blog
+   Content widget's output. Nothing here touches a bare tag/id or any
+   selector that could match outside that widget.
+--------------------------------------------------------- */
+.blog-html-container-single {
+  display: flex !important;
+  flex-direction: column;
+  background: #ffffff !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  /* GHL's OWN default theme CSS (not ours) ships
+     `.blog-html-container-single { margin: 0 auto; max-width: 800px;
+     overflow: hidden }`. Left alone, that squeezes the whole widget
+     into an 800px centered column (exposing the sitewide navy
+     `body.dgs-page` background on both sides for the widget's full
+     height — the "navy page / white body" split) AND clips every
+     child's `width: 100vw` full-bleed hero breakout below, since an
+     ancestor with `overflow: hidden` clips escaping descendants
+     regardless of their own position/transform. All three must be
+     beaten here, not just the child rules. (GHL also exposes a
+     `.blog-content-fluid-width` class that sets max-width:100% on this
+     same selector — an equivalent native "Fluid Width" widget toggle,
+     if one exists in the page builder, is a fine alternative to this.) */
+  max-width: 100% !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+/* ---------------------------------------------------------
+   2. Native GHL Blog Hero
+   Native render order is: image, title, category, date, content.
+   Target order is: back-link, category, title, date, image, content.
+   `order` moves the real elements (image included) with zero DOM
+   changes; the back-link, category, title and date rows additionally
+   share one navy, full-bleed background so the four separate elements
+   read as a single hero block, matching .dgs-ga-hero.
+--------------------------------------------------------- */
+.blog-html-container-single > .blog-back-button,
+.blog-html-container-single > .meta-section-1:has(.blog-category),
+.blog-html-container-single > .blog-content-title,
+.blog-html-container-single > .meta-section-1:has(.blog-date) {
+  background: var(--ga-navy, #0A1F33) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: 50% !important;
+  margin-right: 0 !important;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .blog-html-container-single > .blog-back-button,
+  .blog-html-container-single > .meta-section-1:has(.blog-category),
+  .blog-html-container-single > .blog-content-title,
+  .blog-html-container-single > .meta-section-1:has(.blog-date) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-html-container-single > .blog-back-button,
+  .blog-html-container-single > .meta-section-1:has(.blog-category),
+  .blog-html-container-single > .blog-content-title,
+  .blog-html-container-single > .meta-section-1:has(.blog-date) {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+}
+
+.blog-html-container-single > .blog-back-button {
+  order: 1;
+  display: flex !important;
+  align-items: center;
+  gap: 0.4rem;
+  padding-top: 8.5rem !important;
+  padding-bottom: 2rem !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  text-decoration: none !important;
+  margin-top: 0 !important;
+  cursor: pointer;
+}
+
+.blog-html-container-single > .blog-back-button:hover {
+  color: var(--ga-teal, #00B39F) !important;
+}
+
+/* GHL's default back-arrow renders blank without Font Awesome loaded;
+   swap it for a plain arrow glyph instead of pulling in an icon font. */
+.blog-html-container-single > .blog-back-button .blog-left-arrow {
+  margin-right: 0.3rem !important;
+}
+
+.blog-html-container-single > .blog-back-button .blog-left-arrow::before {
+  content: "\2190" !important;
+  font-family: var(--font-body) !important;
+}
+
+.blog-html-container-single > .blog-content-title {
+  order: 3;
+  padding-top: 0 !important;
+  padding-bottom: 1.75rem !important;
+  margin: 0 !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  font-size: clamp(2rem, 4.2vw, 3.1rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+  color: #ffffff !important;
+}
+
+.blog-html-container-single > .blog-cover-image-container {
+  order: 5;
+  max-width: 100%;
+  margin: -2rem auto 0 !important;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .blog-html-container-single > .blog-cover-image-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-html-container-single > .blog-cover-image-container {
+    padding: 0 3.5rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   3. Native GHL Metadata
+--------------------------------------------------------- */
+.blog-html-container-single > .meta-section-1:has(.blog-category) {
+  order: 2;
+  padding-top: 0 !important;
+  padding-bottom: 1.1rem !important;
+}
+
+.blog-html-container-single .blog-category,
+.blog-html-container-single .blog-category a {
+  display: inline-block;
+  font-family: var(--font-body) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--ga-teal, #00B39F) !important;
+  text-decoration: none !important;
+}
+
+.blog-html-container-single > .meta-section-1:has(.blog-date) {
+  order: 4;
+  display: flex;
+  align-items: center;
+  padding-top: 1.5rem !important;
+  padding-bottom: 2.75rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.blog-html-container-single .blog-date {
+  font-family: var(--font-body) !important;
+  font-size: 0.88rem !important;
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+
+/* ---------------------------------------------------------
+   4. Featured image
+--------------------------------------------------------- */
+.blog-html-container-single .hl-image-picture {
+  display: block !important;
+}
+
+.blog-html-container-single .blog-content-blog-image {
+  width: 100% !important;
+  aspect-ratio: 16 / 8.5;
+  object-fit: cover !important;
+  border-radius: var(--radius-lg, 14px) !important;
+  display: block;
+  box-shadow: 0 24px 60px rgba(10, 31, 51, 0.18);
+}
+
+/* ---------------------------------------------------------
+   5. Article content
+   #blogPostContent is a fixed GHL id (not a per-widget random hash),
+   safe to use directly per GHL's own docs.
+--------------------------------------------------------- */
+.blog-html-container-single > .blog-html {
+  order: 6;
+  background: #ffffff !important;
+  max-width: 100%;
+  margin: 0 auto !important;
+  padding: 4.5rem 1rem 2rem !important;
+}
+
+@media (min-width: 768px) {
+  .blog-html-container-single > .blog-html {
+    padding: 4.5rem 2rem 2rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-html-container-single > .blog-html {
+    padding: 4.5rem 3.5rem 2rem !important;
+  }
+}
+
+/* Fallback typography for article HTML pasted WITHOUT its own
+   .dgs-blog-render wrapper/styles. #blogPostContent is an ID, which
+   would outrank .dgs-blog-render's own (non-!important) max-width/
+   margin, so the :not(:has(...)) guard is required, not decorative:
+   it keeps this fallback OFF entirely on any post that already ships
+   .dgs-blog-render, so existing per-post styling is never touched. */
+#blogPostContent:not(:has(.dgs-blog-render)) {
+  font-family: var(--font-body);
+  color: var(--ga-ink, #0A1F33);
+  max-width: 76ch;
+  margin: 0 auto;
+}
+
+#blogPostContent:not(:has(.dgs-blog-render)) > p {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: #2A3B4D;
+}
+
+#blogPostContent:not(:has(.dgs-blog-render)) > h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  color: var(--ga-navy, #0A1F33);
+}
+
+/* ---------------------------------------------------------
+   6. Native GHL overrides
+--------------------------------------------------------- */
+.blog-html-container-single > .blog-tags {
+  order: 7;
+  max-width: 860px;
+  margin: 0 auto !important;
+  padding: 0 1rem 1rem !important;
+}
+
+.blog-html-container-single > .blog-tags:empty {
+  display: none !important;
+}
+
+.blog-html-container-single > .hl-blog-content-back-to-top-container {
+  order: 8;
+  max-width: 860px;
+  margin: 0 auto 3rem !important;
+  padding: 0 1rem !important;
+  text-align: center;
+  background: transparent !important;
+}
+
+.blog-html-container-single > .hl-blog-content-back-to-top-container .back-to-top {
+  background: transparent !important;
+  color: var(--ga-teal, #00B39F) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  border: none !important;
+  border-radius: 0 !important;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------
+   7. More Perspectives ("Keep Reading")
+   Reuses the .dgs-ga-related heading+link variant already inlined in
+   section 0 above (no card grid on this template) — nothing to add
+   here. Lives in its own Custom Code section placed directly after
+   the Blog Content widget in the page builder.
+--------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+   8. Final CTA
+   This template's Final CTA is the bespoke .dgs-pb-cta-card
+   gated-resource form (section 7 above), not .dgs-sol-final-cta —
+   reused as-is, nothing to add here.
+--------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+   9. Responsive
+--------------------------------------------------------- */
+@media (max-width: 767px) {
+  .blog-html-container-single > .blog-back-button {
+    padding-top: 6.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .blog-html-container-single > .meta-section-1:has(.blog-date) {
+    flex-wrap: wrap;
+    padding-bottom: 2rem !important;
+  }
+
+  .blog-html-container-single > .blog-cover-image-container {
+    margin-top: -1.25rem !important;
+  }
+
+  .blog-html-container-single .blog-content-blog-image {
+    border-radius: var(--radius-md, 10px) !important;
+  }
+}
+

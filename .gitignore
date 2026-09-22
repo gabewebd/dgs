@@ -1,0 +1,13 @@
+# Local Netlify folder
+.netlify
+
+# Local dependencies (not tracked in Git)
+node_modules/
+skills-lock.json
+
+# IDE & Agent workspace folders
+.agents/
+.claude/
+.gemini/
+.mcp.json
+scratch/

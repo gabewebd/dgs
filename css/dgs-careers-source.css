@@ -1,0 +1,127 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — GHL CAREERS IFRAME SOURCE STYLES
+   (migrated from careers-source.html inline <style>)
+   ============================================================ */
+
+/* ============================================================================
+   DIGITAL GROWTHSCALE — GHL CAREERS IFRAME SOURCE STYLES
+   ============================================================================ */
+:root {
+  --dgs-navy:        #0A1F33;
+  --dgs-surface:     #0E2742;
+  --dgs-teal:        #00B39F;
+  --dgs-amber:       #F5A623;
+  --dgs-text:        #FFFFFF;
+  --dgs-text-muted:  #A7B2C4;
+  --dgs-line:        rgba(255, 255, 255, 0.10);
+  --dgs-radius:      6px;
+  --font-heading:    'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: transparent;
+  font-family: var(--font-body);
+  color: var(--dgs-text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hl-blog {
+  width: 100%;
+  padding: 0;
+}
+
+.hl-blog .blog-items {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+/* Role Card Styling matching main site */
+.dgs-role-card-premium {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--dgs-line);
+  border-radius: var(--dgs-radius);
+  padding: 1.5rem;
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  position: relative;
+}
+
+.dgs-role-card-premium:hover {
+  border-color: var(--dgs-teal);
+  transform: translateY(-2px);
+  background: rgba(0, 179, 159, 0.04);
+}
+
+.dgs-role-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.dgs-role-dept-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dgs-teal);
+  background: rgba(0, 179, 159, 0.12);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+}
+
+.dgs-role-meta-badge {
+  font-size: 0.82rem;
+  color: var(--dgs-text-muted);
+}
+
+.dgs-role-body h4 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--dgs-text);
+}
+
+.dgs-role-body p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--dgs-text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.dgs-promise-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--dgs-amber);
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.dgs-promise-link:hover {
+  color: var(--dgs-teal);
+  gap: 0.75rem;
+}
+
+.dgs-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dgs-btn-icon svg {
+  width: 14px;
+  height: 14px;
+}

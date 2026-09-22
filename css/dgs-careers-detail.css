@@ -1,0 +1,691 @@
+  /* ============================================================
+    STATIC CAREERS DETAIL PAGES (careers/*.html)
+    ------------------------------------------------------------
+    These rules style the 3 existing static per-job pages
+    (careers/ai-systems-engineer.html, careers/operations-associate.html,
+    careers/crm-automation-developer.html) — migrated from inline
+    style="" attributes on those pages, hence the .dgs-il-* (inline)
+    naming. Do NOT remove these: all 3 static pages load this file
+    directly and depend on these exact class names. Everything below
+    this block, under "DGS CAREERS — DETAIL TEMPLATE", is a separate,
+    additive section for career-blog.html's GHL-native template and
+    does not replace or touch these.
+    ============================================================ */
+  .dgs-il-642ac55600 {
+    padding: 9rem 0 3.5rem !important;
+    background: #0A1F33 !important;
+    color: #ffffff !important;
+  }
+
+  .dgs-il-d260492821 {
+    display: block !important;
+    color: var(--action-teal) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  .dgs-il-7e617631ae {
+    margin-top: 0.75rem !important;
+    color: #ffffff !important;
+    font-size: clamp(2.2rem, 4vw, 3.4rem) !important;
+  }
+
+  .dgs-il-621408cb65 {
+    margin-top: 1.25rem !important;
+    font-size: 1.05rem !important;
+    color: rgba(255, 255, 255, 0.78) !important;
+  }
+
+  .dgs-il-a747c5ebad {
+    padding: 4rem 0 6rem !important;
+    background: #ffffff !important;
+    color: #0A1F33 !important;
+  }
+
+  .dgs-il-444c6cf9a2 {
+    font-size: 1.4rem !important;
+  }
+
+  .dgs-il-fdf48aefcd {
+    margin-top: 1rem !important;
+    padding-left: 1.25rem !important;
+    color: var(--text-dark-muted) !important;
+    line-height: 1.9 !important;
+  }
+
+  .dgs-il-7572487128 {
+    margin-top: 3rem !important;
+    font-size: 1.4rem !important;
+  }
+
+  .dgs-il-c4773bee52 {
+    margin-top: 3rem !important;
+    font-size: 1.05rem !important;
+  }
+
+  .dgs-il-270edf33ee {
+    color: var(--action-teal) !important;
+    font-weight: 700 !important;
+  }
+
+  /* ============================================================
+    DGS CAREERS — DETAIL TEMPLATE (career-blog.html)
+    ------------------------------------------------------------
+    Styles the NATIVE GHL Blog Post widget (Careers jobs are a GHL
+    blog channel — confirmed live, 2026-09-16 saved copy of a
+    published job posting: the widget renders
+    .blog-html-container-single > .blog-back-button /
+    .meta-section-1(.blog-category) / .blog-content-title /
+    .meta-section-1(.blog-date) / .blog-cover-image-container /
+    .blog-html#blogPostContent / .blog-tags /
+    .hl-blog-content-back-to-top-container) to look like the DGS
+    Careers Detail design instead of GHL's default blog-post look.
+    No DOM is rebuilt — every selector below targets a real,
+    confirmed class or id. Same technique family as
+    css/dgs-growth-article.css (native-slot restyling, `order` for
+    visual reordering, JS-inserted real content for fields GHL has
+    no native slot for), kept in its own file per project convention
+    (isolated to Careers, dgs-growth-article.css untouched).
+
+    IMPORTANT — Careers detail hero is SINGLE COLUMN, NO IMAGE:
+    .blog-cover-image-container is always empty on a career posting
+    (confirmed live) and is hidden outright below, unlike the Growth
+    Hub article hero's 2-column grid+image. This is deliberate, not
+    an oversight — see the project brief's explicit "no featured
+    image, no fake image column" requirement.
+    ============================================================ */
+
+  /* :root (not just a scoped class) so --car-* resolves even before
+    js/dgs-careers.js has a chance to add class="dgs-car" to <main> — same
+    reasoning already documented for --ga-* in dgs-growth-article.css:
+    a var() that fails to resolve on an inherited property like `color`
+    falls back to the inherited value, not an error, so it silently
+    renders invisible text if this were scoped and the ancestor class
+    were ever missing. */
+  :root {
+    --car-navy: #0A1F33;
+    --car-teal: #00B39F;
+    --car-ink: #0A1F33;
+    --car-muted: #5B6B7C;
+    --car-hairline: rgba(10, 31, 51, 0.1);
+    --car-surface: #F7F9FA;
+  }
+
+  /* ---------------------------------------------------------
+    1. Reading progress bar (reused pattern from Growth Hub,
+    own markup/class so dgs-growth-article.css is never touched)
+  --------------------------------------------------------- */
+  .dgs-car-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    z-index: 1001;
+    background: var(--car-teal);
+    transition: width 0.1s linear;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dgs-car-progress {
+      transition: none;
+    }
+  }
+
+  /* ---------------------------------------------------------
+    2. Layout containment — GHL's blog-content section wrapper can
+    carry its own max-width/margin/padding that fights a full-width
+    hero; reset the real ancestor chain (never the random per-element
+    ID classes GHL regenerates on every edit).
+  --------------------------------------------------------- */
+  .dgs-ghl-blog-content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .fullSection:has(.blog-html-container-single),
+  .c-row:has(.blog-html-container-single),
+  .c-column:has(.blog-html-container-single),
+  .c-custom-code:has(.blog-html-container-single),
+  .custom-code-container:has(.blog-html-container-single),
+  .vertical.inner:has(.blog-html-container-single),
+  .blog-html-container-single {
+    width: 100% !important;
+    max-width: 100% !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* ---------------------------------------------------------
+    2b. Loading state
+    Reverted from a staged (hero-first, then body, then footer)
+    reveal back to a single gate: splitting it into independent
+    checkpoints kept causing its own regressions (a footer that could
+    stay invisible if a posting's body didn't match expectations, a
+    hero/body split that was easy to get out of sync with the
+    min-height reservation below). Simpler and more reliable: the
+    whole .dgs-ghl-native-blog-slot stays hidden via opacity/visibility
+    (NOT display:none, so the reserved space below still holds and
+    nothing shifts while it's invisible) until js/dgs-careers.js's
+    revealCareer() confirms the real hero AND the real job body are
+    BOTH ready, then reveals the entire posting in one go. The footer
+    is never gated on JS at all — see the removed rule that used to
+    sit near the end of this file; it's static and always visible
+    now.
+
+    GHL's Blog Content widget fetches/renders the posting AFTER this
+    page's HTML/CSS has already painted, so .dgs-ghl-native-blog-slot
+    is empty at first paint. `<html>` already has a navy background
+    sitewide (css/dgs-common.css), so this empty reserved space reads
+    as the intended "navy loading state", not a broken blank screen —
+    kept modest (20rem, not a full viewport) so it never reads as its
+    own empty "section" even on a slow load.
+  --------------------------------------------------------- */
+  .dgs-ghl-native-blog-slot {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .dgs-ghl-native-blog-slot:not(.is-ready) {
+    min-height: 20rem;
+  }
+
+  .dgs-ghl-native-blog-slot.is-ready {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.25s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dgs-ghl-native-blog-slot.is-ready {
+      transition: none;
+    }
+  }
+
+  /* ---------------------------------------------------------
+    3. Hero
+    No date, no image, no metadata line in the hero — Work Setup/Work
+    Shift-style facts the job author writes belong in the article body
+    (see .dgs-career-post .dgs-career-meta near the bottom of this
+    file), and .blog-cover-image-container is never part of the hero's
+    content structure at all (a career posting never has one; it stays
+    hidden as a bare sibling, not moved into the wrapper below).
+
+    ARCHITECTURE — read this before changing anything here:
+    .blog-html-container-single is ONLY responsible for the navy
+    background (`!important` because GHL ships its own
+    `#blog-content-<id> .blog-html-container-single{background-color:
+    #fff}` rule on every posting, confirmed live, which otherwise wins
+    on specificity and erases the navy) and the decorative glow.
+    js/dgs-careers.js's buildHeroInner() creates ONE real wrapper,
+    .dgs-car-hero-inner, and moves the real back-link/category/title
+    nodes into it, then insertDek() appends the description as its
+    last child — so back-link, category, title and description are
+    ACTUAL SIBLINGS inside one element, not four independent hero
+    children each computing their own width.
+
+    LEFT EDGE = THE ARTICLE BODY'S OWN CONTENT WIDTH, reused exactly
+    (2026-09-19 correction — previously centered at a different, hero-
+    only measure). .dgs-career-post (the white article body's content
+    wrapper, below) is `max-width: 840px; margin: 0 auto`. .dgs-car-
+    hero-inner uses that identical max-width + the identical 0/1rem
+    horizontal padding .blog-html applies around it, so both boxes
+    resolve to the exact same left edge at every viewport width — not
+    two independent measurements that happen to agree. Do NOT give the
+    four hero children their own separate width/padding/margin system:
+    that's the exact design (tried and abandoned) that let them drift
+    out of sync under different GHL page-builder states. One wrapper,
+    one width formula, reused from the one source of truth. */
+  .blog-html-container-single {
+    position: relative;
+    background-color: var(--car-navy) !important;
+  }
+
+  /* Decorative glow — a separate absolute layer, not a background on
+    any text element (a background can never paint past its own box,
+    so a glow meant to visually span several lines has to be its own
+    layer). Low-alpha, so text stays readable through it. */
+  .blog-html-container-single::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    z-index: 0;
+    height: 24rem;
+    background: radial-gradient(ellipse 56vw 22rem at 50% -18%, rgba(0, 179, 159, 0.18) 0%, rgba(45, 127, 249, 0.08) 45%, transparent 75%);
+    pointer-events: none;
+  }
+
+  .dgs-car-hero-inner {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 8.5rem 1rem 2.75rem;
+    text-align: left;
+  }
+
+  /* Same breakpoint .blog-html below drops its own horizontal padding
+    at — .dgs-career-post is only ever constrained by its own
+    max-width past this point, never by a parent's padding, so this
+    has to match exactly for the two left edges to stay identical. */
+  @media (min-width: 768px) {
+    .dgs-car-hero-inner {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .dgs-car-hero-inner > .blog-back-button {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    width: 100% !important;
+    gap: 0.4rem;
+    /* Explicit 0 on every side, not just the shorthand's implicit
+      left/right — GHL's own per-template stylesheet can carry its own
+      padding on this exact class (confirmed elsewhere in this file for
+      .blog-content-title), so this has to actively zero it rather than
+      rely on never having set it. Matches .dgs-car-dek's box exactly
+      (that element has zero competing native styles, which is why its
+      alignment is correct — bringing back-link/category/title to the
+      same zero-padding box is what puts all four on one axis). */
+    padding: 0 !important;
+    margin: 0 0 1.75rem !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.65) !important;
+    text-decoration: none !important;
+    cursor: pointer;
+  }
+
+  .dgs-car-hero-inner > .blog-back-button:hover {
+    color: var(--car-teal) !important;
+  }
+
+  /* GHL's default back-arrow renders blank without Font Awesome loaded
+    — swap for a plain glyph. */
+  .dgs-car-hero-inner > .blog-back-button .blog-left-arrow {
+    margin-right: 0.3rem !important;
+  }
+
+  .dgs-car-hero-inner > .blog-back-button .blog-left-arrow::before {
+    content: "\2190" !important;
+    font-family: var(--font-body) !important;
+  }
+
+  .dgs-car-hero-inner > .meta-section-1:has(.blog-category) {
+    box-sizing: border-box;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0 !important;
+    margin: 0 0 1rem !important;
+  }
+
+  .dgs-car-hero-inner .blog-category,
+  .dgs-car-hero-inner .blog-category a {
+    display: inline-block;
+    font-family: var(--font-body) !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: var(--car-teal) !important;
+    text-decoration: none !important;
+  }
+
+  .dgs-car-hero-inner > .blog-content-title {
+    box-sizing: border-box;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0 !important;
+    margin: 0 0 1.25rem !important;
+    font-family: var(--font-heading) !important;
+    font-weight: 800 !important;
+    font-size: clamp(2.1rem, 4.6vw, 3.7rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+    text-transform: none !important;
+    color: #ffffff !important;
+  }
+
+  /* Description: js/dgs-careers.js's insertDek() appends this as the
+    LAST child of .dgs-car-hero-inner — real per-posting SEO data from
+    the post's own <meta name="description">, confirmed identical to
+    that job's listing-card excerpt text. Optional: simply absent if
+    the posting has no meta description. */
+  .dgs-car-hero-inner > .dgs-car-dek {
+    box-sizing: border-box;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: var(--font-body) !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.78) !important;
+  }
+
+  .dgs-car-hero-inner > .dgs-car-dek::before {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 2px;
+    margin: 0 0 1.5rem;
+    background: var(--car-teal);
+  }
+
+  /* Publish date + featured image: no static-design counterpart for a
+    job posting — native elements kept in the DOM, not surfaced, never
+    moved into .dgs-car-hero-inner. */
+  .blog-html-container-single > .meta-section-1:has(.blog-date),
+  .blog-html-container-single > .blog-cover-image-container {
+    display: none !important;
+  }
+
+  /* ---------------------------------------------------------
+    4. Job content (#blogPostContent) — semantic HTML the job author
+    pastes per posting: .dgs-career-post wrapping a lead paragraph,
+    H2 section headings (About the Role / Key Responsibilities /
+    Qualifications / Nice to Have / Benefits — whichever the author
+    actually included, never all of them by default), and
+    .dgs-career-list bullet lists. Real content, styled here instead
+    of via a per-post pasted <style> block (the previous live
+    pattern) so every future posting only needs to paste clean HTML.
+  --------------------------------------------------------- */
+  .blog-html-container-single > .blog-html {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 3rem 1rem 1rem;
+    margin: 0 !important;
+    text-align: left;
+    /* Opaque white "turns off" the container's own navy background for
+      this region — a normal-flow child's own background always paints
+      over its parent's, so this needs nothing fancier than a plain
+      background-color. !important + explicit border-radius/border/
+      box-shadow resets (real bug, found live, 2026-09-19): without
+      them, a navy sliver showed between this and the Back to Top
+      container right after it, and the latter rendered as a separate
+      rounded "pill" instead of a continuous white area — GHL's own
+      per-template styles carry properties on these exact classes that
+      nothing here had zeroed yet. */
+    background-color: #ffffff !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  @media (min-width: 768px) {
+    .blog-html-container-single > .blog-html {
+      padding: 3.5rem 0 1rem;
+    }
+  }
+
+  .dgs-career-post {
+    /* max-width/margin made authoritative here (2026-09-19) — every
+      live posting checked so far (AI Systems Engineer, Account
+      Manager, BIM Modeler) pastes this exact same 840px/auto pair in
+      its own per-post <style> block, so this isn't a new value, just
+      centralizing the existing convention. This is also now the
+      single source of truth .dgs-car-hero-inner's own max-width reuses
+      to keep the hero's left edge identical to the article's — future
+      postings should stop pasting their own copy of this rule (paste
+      clean HTML only, per the file header), but a posting that still
+      does is harmless as long as it keeps using the same value. */
+    max-width: 840px;
+    margin: 0 auto;
+    text-align: left;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    color: var(--car-ink);
+    line-height: 1.65;
+  }
+
+  /* Safety default for any image a posting's body happens to include.
+    No fixed dimensions to reserve ahead of time (per-post pasted HTML,
+    same caveat as css/dgs-growth-article.css's identical rule) — this
+    only stops one from overflowing its column or showing at a huge
+    raw intrinsic size before it loads. No !important, so a posting's
+    own pasted styles still win. */
+  .dgs-career-post img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Visible in the article body, exactly where the author writes it
+    (explicit correction, 2026-09-19 — this used to be relocated into
+    the hero via JS; it isn't anymore). Confirmed live (Account Manager
+    posting) as a <div> with one <span> per fact ("Work Set up: ..." /
+    "Work Shift: ..."), matching the author's own already-established
+    convention — styled here to match that exact treatment so future
+    postings don't need to paste their own <style> block for it. */
+  .dgs-career-post .dgs-career-meta {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--car-teal);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    margin: 0 0 1.5rem;
+  }
+
+  .dgs-career-post .dgs-career-meta span {
+    display: block;
+  }
+
+  .dgs-career-post .dgs-career-lead {
+    font-size: 1.1rem;
+    color: var(--car-ink);
+    line-height: 1.7;
+    margin: 0 0 2.5rem;
+  }
+
+  .dgs-career-post h2 {
+    font-family: var(--font-heading, 'Sora', sans-serif);
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--car-navy);
+    letter-spacing: -0.01em;
+    margin: 2.75rem 0 1rem;
+    scroll-margin-top: 6.5rem;
+  }
+
+  .dgs-career-post h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .dgs-career-post p {
+    font-size: 1rem;
+    color: var(--car-muted);
+    line-height: 1.7;
+    margin: 0 0 1.25rem;
+  }
+
+  .dgs-career-list {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .dgs-career-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--car-muted);
+    line-height: 1.6;
+  }
+
+  .dgs-career-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--car-teal);
+  }
+
+  /* Apply CTA: styled by class only — the author sets the real
+    destination (a GHL calendar/form link, /contact, etc.) per
+    posting. Never hardcoded here; see career-blog.html. */
+  .dgs-career-apply-wrap {
+    margin: 2.75rem 0 0.5rem;
+  }
+
+  .dgs-career-apply-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    background: var(--car-teal);
+    padding: 0.85rem 1.75rem;
+    border-radius: 9999px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .dgs-career-apply-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 179, 159, 0.28);
+  }
+
+  /* .dgs-career-cta: the REAL class confirmed in live use (Account
+    Manager posting, 2026-09-18) — "Interested? Apply for this role →
+    or email talent@...", authored as a plain <p> with two <a> links
+    and no styling of its own, so it rendered as unstyled default
+    browser link text. Not invented; this is the actual apply-CTA
+    convention already adopted for real postings, styled here to match
+    the rest of .dgs-career-post instead of introducing a second,
+    competing "official" apply component. */
+  .dgs-career-cta {
+    margin: 2.75rem 0 0 !important;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--car-hairline);
+    font-size: 1rem !important;
+    color: var(--car-muted) !important;
+  }
+
+  .dgs-career-cta a {
+    color: var(--car-teal) !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+  }
+
+  .dgs-career-cta a:hover {
+    text-decoration: underline !important;
+  }
+
+  /* ---------------------------------------------------------
+    5. (removed) On This Page (TOC) — Career Detail pages deliberately
+    never show a table of contents (explicit project decision,
+    2026-09-17): unlike Growth Hub articles, a job posting's short
+    "About the job / Qualifications" structure doesn't warrant sidebar
+    nav, and it visually competed with the single-column hero. TOC
+    generation is fully disabled in js/dgs-careers.js (buildToc()/
+    wireToc() removed); no CSS is needed for a feature that no longer
+    runs.
+  --------------------------------------------------------- */
+
+  /* ---------------------------------------------------------
+    6. Tags / Back to Top
+  --------------------------------------------------------- */
+  .blog-html-container-single > .blog-tags {
+    width: 100%;
+    background-color: #ffffff !important;
+    margin: 0 !important;
+    border: none !important;
+  }
+
+  .blog-html-container-single > .blog-tags:empty {
+    display: none;
+  }
+
+  /* Stays in its REAL native position — a sibling of .blog-html, direct
+    child of .blog-html-container-single (never reparented into
+    #blogPostContent; see js/dgs-careers.js's header comment for why
+    that broke it). Position/styling matched exactly to the Growth
+    Hub article template's own back-to-top
+    (css/dgs-growth-article.css, section 6): a plain, centered,
+    transparent teal text link with no top divider/hairline and no
+    hover state — not the earlier full-width "card footer with a
+    border-top" treatment this used to have. */
+  .blog-html-container-single > .hl-blog-content-back-to-top-container {
+    max-width: 860px;
+    margin: 0 auto 3rem !important;
+    padding: 0 1rem !important;
+    text-align: center;
+    background: transparent !important;
+  }
+
+  .blog-html-container-single > .hl-blog-content-back-to-top-container .back-to-top {
+    background: transparent !important;
+    color: var(--car-teal) !important;
+    font-family: var(--font-body) !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    border: none !important;
+    border-radius: 0 !important;
+    cursor: pointer;
+  }
+
+  /* ---------------------------------------------------------
+    7. Responsive — 480px / 390px hero type trim
+
+    BUG FIXED HERE: both selectors below used to target
+    `.blog-html-container-single > .blog-back-button` / `>
+    .blog-content-title` directly — but js/dgs-careers.js's
+    buildHeroInner() MOVES those real nodes into .dgs-car-hero-inner
+    (see section 3 above), so neither one has been a direct child of
+    .blog-html-container-single since that wrapper was introduced.
+    The `>` made both rules permanently unreachable: the mobile
+    title-size trim never applied, and — more visibly — the
+    intended MOBILE top-clearance reduction never took over from
+    .dgs-car-hero-inner's own unconditional `padding: 8.5rem 1rem
+    2.75rem` (see section 3), so small phones kept the DESKTOP
+    8.5rem top padding instead of dropping to 6.5rem. That extra
+    ~35px of navy padding sitting above the title, on the narrowest
+    phones specifically, is the "hero looks off on mobile" part of
+    the reported regression.
+  --------------------------------------------------------- */
+  @media (max-width: 480px) {
+    .dgs-car-hero-inner {
+      padding-top: 6.5rem;
+    }
+
+    .dgs-car-hero-inner > .blog-content-title {
+      font-size: clamp(1.7rem, 8vw, 2.2rem) !important;
+    }
+  }
+
+  /* ---------------------------------------------------------
+    8. Footer
+    REGRESSION FIXED HERE: this used to gate the footer's opacity on
+    document.body.classList.contains('dgs-car-content-in'), set by
+    js/dgs-careers.js's revealBody() — which only fires once
+    getCareerPost() finds a REAL .dgs-career-post element inside that
+    specific posting's own pasted HTML. Any posting missing that
+    exact class (a recruiter typo, a differently-structured paste —
+    outside this repo's control, see career-blog.html's own notes on
+    per-posting authored content) left the footer at opacity:0
+    PERMANENTLY: a static, always-present element with zero GHL
+    content-readiness risk of its own had its visibility tied to a
+    third-party content author's HTML being exactly right. The
+    6-second failsafe in that same file still eventually added the
+    class, but that's still up to 6s of a genuinely MISSING footer,
+    not a cosmetic delay. The footer is unconditionally visible now —
+    normal document flow, no reveal gating, matching "must remain
+    part of the normal document flow" / "never permanently hide the
+    footer".
+  --------------------------------------------------------- */

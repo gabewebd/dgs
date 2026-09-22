@@ -1,0 +1,6127 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — INDEX PAGE-SPECIFIC STYLES
+   Split from dgs-styles.css for per-page editing in GHL.
+   Load order: dgs-common.css FIRST, then this file.
+   ============================================================ */
+
+.dgs-section--dark {
+  background: #0A1F33 !important;
+  color: var(--text-light-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.dgs-strike-text {
+  text-decoration: line-through;
+  opacity: 0.65;
+}
+
+.dgs-section--dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-mesh-dark);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dgs-section--dark>.dgs-container {
+  position: relative;
+  z-index: 1;
+}
+
+.dgs-section--card {
+  background: var(--surface-navy-card);
+  color: var(--text-light-primary);
+}
+
+.dgs-btn--outline {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-light-primary);
+}
+
+.dgs-btn--outline:hover {
+  background: var(--surface-hover);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.dgs-btn--outline-dark {
+  background: transparent;
+  border-color: var(--bg-deep-navy);
+  color: var(--bg-deep-navy);
+}
+
+.dgs-btn--outline-dark:hover {
+  background: var(--bg-deep-navy);
+  color: var(--bg-white);
+}
+
+.dgs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.dgs-hero-grid {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .dgs-hero-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+/* ─── HERO: decorative glass panel (purely visual, no content) ─── */
+.dgs-hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 27.5rem;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(0, 179, 159, 0.20) 0%, rgba(46, 193, 176, 0.08) 40%, rgba(10, 31, 51, 0.65) 100%);
+  border: 1px solid var(--surface-border-light);
+  box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  backdrop-filter: var(--glass-blur);
+}
+
+.dgs-hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 90%);
+}
+
+.dgs-hero-visual::after {
+  content: '';
+  position: absolute;
+  width: 55%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  top: -10%;
+  right: -10%;
+  background: radial-gradient(circle at 30% 30%, rgba(46, 193, 176, 0.35), transparent 70%);
+  filter: blur(2px);
+}
+
+.dgs-hero-visual-orb {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(6px);
+}
+
+.dgs-hero-visual-orb--1 {
+  width: 96px;
+  height: 96px;
+  bottom: 14%;
+  left: 12%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.dgs-hero-visual-orb--2 {
+  width: 56px;
+  height: 56px;
+  bottom: 32%;
+  left: 34%;
+  background: rgba(0, 179, 159, 0.18);
+  border-color: rgba(0, 179, 159, 0.35);
+}
+
+.dgs-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.dgs-pill {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--surface-border-light);
+  color: var(--text-light);
+  background: transparent;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.dgs-pill--active,
+.dgs-pill--accent {
+  background: var(--action-teal);
+  border-color: var(--action-teal);
+  color: var(--text-white);
+}
+
+.dgs-pill--connector {
+  border: none;
+  padding: 0 0.2rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.dgs-section--light .dgs-pill {
+  border-color: var(--surface-border-neutral);
+  color: var(--bg-deep-navy);
+}
+
+/* ─── INDUSTRIES: DUAL-ROW MARQUEE TICKER (replaces card grid) ─── */
+.dgs-industry-marquee {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-sm) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+}
+
+.dgs-industry-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  will-change: transform;
+}
+
+.dgs-industry-track--row1 {
+  animation: dgs-marquee-left 34s linear infinite;
+}
+
+.dgs-industry-track--row2 {
+  animation: dgs-marquee-right 30s linear infinite;
+}
+
+.dgs-industry-marquee:hover .dgs-industry-track {
+  animation-play-state: paused;
+}
+
+@keyframes dgs-marquee-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes dgs-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.dgs-industry-tag {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 0.95rem 1.85rem;
+  border: 1.5px solid var(--surface-border-neutral);
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--bg-deep-navy);
+  background: var(--text-white);
+  box-shadow: none;
+  transition:
+    color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.dgs-industry-tag:hover {
+  color: var(--action-teal);
+  border-color: var(--action-teal);
+  background: rgba(0, 179, 159, 0.07);
+  transform: translateY(-3px);
+  box-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .dgs-industry-tag {
+    padding: 0.8rem 1.4rem;
+    font-size: 0.9rem;
+  }
+}
+
+.dgs-timeline {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .dgs-timeline {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-timeline-step {
+  position: relative;
+  text-align: center;
+  padding: var(--space-lg) var(--space-sm) var(--space-md);
+}
+
+.dgs-timeline-number {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gradient-teal);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 0 auto var(--space-md);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 18px rgba(0, 179, 159, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-timeline-step:hover .dgs-timeline-number {
+  transform: scale(1.08);
+}
+
+.dgs-timeline-step h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-white);
+}
+
+.dgs-section--light .dgs-timeline-step h3 {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-timeline-step p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .dgs-timeline-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--space-lg) + 22px);
+    left: calc(50% + 22px);
+    width: calc(100% + var(--space-md) - 44px);
+    height: 0;
+    border-top: 2px solid rgba(0, 179, 159, 0.4);
+    z-index: 1;
+  }
+}
+
+.dgs-split {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+@media (min-width: 860px) {
+  .dgs-split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.dgs-split--center {
+  align-items: center;
+}
+
+.dgs-founder {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .dgs-founder {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 5.5rem;
+  }
+}
+
+.dgs-founder-portrait {
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
+  overflow: hidden;
+  background: transparent;
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  border: none;
+  position: relative;
+}
+
+.dgs-founder-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 860px) {
+  .dgs-founder-portrait {
+    margin: 0;
+  }
+}
+
+.dgs-founder-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: var(--space-xs);
+}
+
+/* ─── FOUNDER MESSAGE: quoted headline, plain roomy body copy ─── */
+.dgs-founder-headline {
+  margin-bottom: var(--space-lg);
+}
+
+.dgs-founder-quote {
+  margin: 0;
+  padding: 0;
+}
+
+.dgs-founder-quote p {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: var(--text-dark-muted);
+  margin: 0 0 1.25rem 0;
+}
+
+.dgs-founder-quote p:last-of-type {
+  margin-bottom: var(--space-lg);
+}
+
+.dgs-founder-attribution {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-top: var(--space-md);
+}
+
+.dgs-founder-attribution-bar {
+  width: 30px;
+  height: 2px;
+  background: var(--action-teal);
+  flex-shrink: 0;
+  margin-top: 0.65rem;
+}
+
+#dgs-audit-cta {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(0, 179, 159, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(0, 179, 159, 0.12) 0%, transparent 40%),
+    var(--bg-deep-navy) !important;
+}
+
+#dgs-differentiator {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(0, 179, 159, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(245, 166, 35, 0.08) 0%, transparent 40%),
+    var(--bg-deep-navy) !important;
+  padding: 0 !important;
+}
+
+#dgs-differentiator .dgs-container {
+  padding-right: 0;
+  max-width: none;
+}
+
+#dgs-differentiator .dgs-split {
+  gap: 0 !important;
+  align-items: stretch;
+}
+
+@media (min-width: 860px) {
+  #dgs-differentiator .dgs-split {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+#dgs-differentiator .dgs-split>div:first-child {
+  position: relative;
+  z-index: 2;
+  padding: 7.5rem 2rem 7.5rem 3.5rem;
+}
+
+#dgs-differentiator .dgs-split>div:last-child {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+#dgs-differentiator .dgs-split>div:last-child>div {
+  max-width: none !important;
+  min-height: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex;
+  width: 100%;
+}
+
+#dgs-differentiator .dgs-split>div:last-child>div>img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  filter: brightness(0.7) contrast(1.2);
+  flex-shrink: 0;
+}
+
+#dgs-differentiator .dgs-split>div:last-child::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(to right, var(--bg-deep-navy) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+#dgs-differentiator .dgs-split>div:last-child>div>div:last-child {
+  display: none;
+}
+
+/* ============================================================
+   BUSINESS CHALLENGES — white section, sticky intro + chip grid
+   ============================================================ */
+.dgs-challenges-section {
+  background: var(--bg-white, #ffffff);
+  color: var(--bg-deep-navy);
+}
+
+/* ── Section header — centered column (heading + intro + dispersing cloud) ── */
+.dgs-challenges-head {
+  position: relative;
+  max-width: 72rem;
+  margin: 0 auto 3.75rem;
+  text-align: center;
+}
+
+.dgs-challenges-intro {
+  position: relative;
+  z-index: 2;
+}
+
+.dgs-challenges-intro .dgs-eyebrow {
+  color: var(--action-teal);
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.dgs-challenges-intro h2 {
+  color: var(--bg-deep-navy);
+  font-family: var(--font-heading);
+  /* !important to beat the global `.dgs-page h2` clamp (also !important).
+     Matches the other index.html section headings' size (e.g. "Real
+     results from real businesses." in .dgs-success-header-row) -- this
+     one was noticeably smaller (1.55rem/2.85rem vs 2rem/2.8rem min/max
+     elsewhere) and read as inconsistent against the rest of the page. */
+  font-size: clamp(2rem, 3.2vw, 2.8rem) !important;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0 0 1.25rem;
+}
+
+/* one line on wider screens; wraps naturally on small screens */
+@media (min-width: 1000px) {
+  .dgs-challenges-intro h2 {
+    white-space: nowrap;
+  }
+}
+
+.dgs-challenges-intro p {
+  color: var(--text-dark-muted, #334155);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+/* ── Dispersing word-cloud (decorative, GSAP-driven) — centered above heading ── */
+.dgs-challenge-cloud {
+  position: absolute;
+  top: -2.5rem; /* Lowered to prevent overlap with the navy section above */
+  left: -10vw; /* Expanded to stretch closer to the screen edges */
+  right: -10vw; /* Expanded to stretch closer to the screen edges */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.95;
+  overflow: hidden;
+}
+
+.dgs-cloud-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem; /* Gap between the stacked rows */
+  width: 45%;
+  will-change: transform, opacity;
+}
+
+.dgs-cloud-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Feather/Fade out left column marquee towards the center title (right edge) */
+.dgs-cloud-column--left .dgs-cloud-group {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 45%, transparent 95%);
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 45%, transparent 95%);
+}
+
+/* Feather/Fade out right column marquee towards the center title (left edge) */
+.dgs-cloud-column--right .dgs-cloud-group {
+  -webkit-mask-image: linear-gradient(to left, transparent 0%, black 15%, black 45%, transparent 95%);
+  mask-image: linear-gradient(to left, transparent 0%, black 15%, black 45%, transparent 95%);
+}
+
+/* Infinite Marquee Track */
+.dgs-marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  white-space: nowrap;
+  width: max-content;
+  will-change: transform;
+}
+
+.dgs-marquee-track--left {
+  animation: dgs-marquee-left 35s linear infinite;
+}
+
+.dgs-marquee-track--right {
+  animation: dgs-marquee-right 35s linear infinite;
+}
+
+@keyframes dgs-marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Translate exactly half of the duplicated track */
+    transform: translateX(calc(-50% - 0.75rem));
+  }
+}
+
+@keyframes dgs-marquee-right {
+  0% {
+    transform: translateX(calc(-50% - 0.75rem));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.dgs-cloud-tag {
+  font-family: var(--font-body);
+  font-size: 1.35rem; /* Larger pills */
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.75rem 1.6rem; /* Bigger padding */
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(10, 31, 51, 0.08);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(10, 31, 51, 0.03);
+  color: var(--text-dark-muted, #334155);
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/* ============================================================
+   INTERACTIVE EXPLORER — accordion (expand to reveal photo + detail)
+   ============================================================ */
+.dgs-challenges-explorer {
+  margin-top: 0.5rem;
+}
+
+.dgs-accordion {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(10, 31, 51, 0.1);
+}
+
+.dgs-accord-item {
+  position: relative;
+  border-bottom: 1px solid rgba(10, 31, 51, 0.1);
+  transition: background-color 0.4s var(--ease-out);
+}
+
+/* Left accent bar grows on hover / open */
+.dgs-accord-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--action-teal);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.dgs-accord-item:hover::before,
+.dgs-accord-item.is-open::before {
+  transform: scaleY(1);
+}
+
+.dgs-accord-item.is-open {
+  background: linear-gradient(180deg, rgba(0, 179, 159, 0.04), rgba(45, 127, 249, 0.02));
+}
+
+/* Header row (always visible) */
+.dgs-accord-header {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: clamp(1.15rem, 2.4vw, 1.7rem) clamp(0.6rem, 2vw, 1.5rem);
+  transition: padding-left 0.4s var(--ease-out);
+}
+
+.dgs-accord-item:hover .dgs-accord-header,
+.dgs-accord-item.is-open .dgs-accord-header {
+  padding-left: clamp(1.15rem, 2.6vw, 2.2rem);
+}
+
+.dgs-accord-header:focus-visible {
+  outline: 2px solid var(--action-teal);
+  outline-offset: -2px;
+  border-radius: var(--radius-lg);
+}
+
+.dgs-accord-num {
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(10, 31, 51, 0.3);
+  transition: color 0.3s var(--ease-out);
+}
+
+.dgs-accord-item:hover .dgs-accord-num,
+.dgs-accord-item.is-open .dgs-accord-num {
+  color: var(--action-teal);
+}
+
+.dgs-accord-title {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: rgba(10, 31, 51, 0.5);
+  transition: color 0.3s var(--ease-out);
+}
+
+.dgs-accord-item:hover .dgs-accord-title,
+.dgs-accord-item.is-open .dgs-accord-title {
+  color: var(--bg-deep-navy);
+}
+
+/* Round +/× toggle */
+.dgs-accord-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(10, 31, 51, 0.18);
+  transition: border-color 0.3s var(--ease-out), background-color 0.3s var(--ease-out), transform 0.45s var(--ease-out);
+}
+
+.dgs-accord-icon::before,
+.dgs-accord-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  border-radius: var(--radius-xs);
+  background: rgba(10, 31, 51, 0.5);
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s var(--ease-out);
+}
+
+.dgs-accord-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.dgs-accord-item:hover .dgs-accord-icon {
+  border-color: var(--action-teal);
+}
+
+.dgs-accord-item.is-open .dgs-accord-icon {
+  background: var(--action-teal);
+  border-color: var(--action-teal);
+  transform: rotate(135deg);
+}
+
+.dgs-accord-item.is-open .dgs-accord-icon::before,
+.dgs-accord-item.is-open .dgs-accord-icon::after {
+  background: #ffffff;
+}
+
+/* Collapsible body — animates via grid-template-rows 0fr -> 1fr */
+.dgs-accord-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--ease-out);
+}
+
+.dgs-accord-item.is-open .dgs-accord-body {
+  grid-template-rows: 1fr;
+}
+
+.dgs-accord-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.dgs-accord-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  align-items: center;
+  padding: 0.25rem clamp(0.6rem, 2vw, 1.5rem) clamp(1.6rem, 3vw, 2.25rem);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s var(--ease-out) 0.08s, transform 0.45s var(--ease-out) 0.08s;
+}
+
+.dgs-accord-item.is-open .dgs-accord-grid {
+  opacity: 1;
+  transform: none;
+}
+
+@media (min-width: 760px) {
+  .dgs-accord-grid {
+    /* Images removed — panel is text-only, so it spans a single column. */
+    padding-left: clamp(1.15rem, 2.6vw, 2.2rem);
+  }
+}
+
+.dgs-accord-media {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16 / 11;
+  background:
+    linear-gradient(135deg, rgba(45, 127, 249, 0.14), rgba(0, 179, 159, 0.16)),
+    #dfe7ef;
+  box-shadow: 0 16px 36px rgba(10, 31, 51, 0.14);
+}
+
+.dgs-accord-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-accord-item:hover .dgs-accord-media img {
+  transform: scale(1.05);
+}
+
+.dgs-accord-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.dgs-panel-text p {
+  margin: 0 0 0.75rem;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #33475b;
+}
+
+.dgs-panel-text p:last-child {
+  margin-bottom: 0;
+}
+
+.dgs-panel-solution-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+/* Recommended solution link styled as a minimal text link with underline hover */
+.dgs-panel-solution-link {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--action-teal) !important;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+  transition: color var(--duration-base) var(--ease-out);
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.dgs-panel-solution-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--action-teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-panel-solution-link:hover::after {
+  transform: scaleX(1);
+}
+
+.dgs-panel-solution-link .dgs-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+  transition: transform var(--duration-base) var(--ease-out);
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
+.dgs-panel-solution-link .dgs-btn-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5px;
+}
+
+.dgs-panel-solution-link:hover .dgs-btn-icon {
+  transform: translateX(4px);
+}
+
+/* layer badge (reused — now sits in the panel solution row) */
+.dgs-challenge-layer {
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.dgs-layer--enable {
+  color: var(--action-teal);
+  background: rgba(0, 179, 159, 0.04);
+  border-color: rgba(0, 179, 159, 0.2);
+}
+
+.dgs-layer--enable:hover {
+  background: rgba(0, 179, 159, 0.1);
+  border-color: rgba(0, 179, 159, 0.4);
+}
+
+.dgs-layer--transform {
+  color: var(--dgs-blue);
+  background: rgba(45, 127, 249, 0.04);
+  border-color: rgba(45, 127, 249, 0.2);
+}
+
+.dgs-layer--transform:hover {
+  background: rgba(45, 127, 249, 0.1);
+  border-color: rgba(45, 127, 249, 0.4);
+}
+
+.dgs-layer--elevate {
+  color: var(--dgs-steel);
+  background: rgba(91, 102, 112, 0.04);
+  border-color: rgba(91, 102, 112, 0.2);
+}
+
+.dgs-layer--elevate:hover {
+  background: rgba(91, 102, 112, 0.1);
+  border-color: rgba(91, 102, 112, 0.4);
+}
+
+.dgs-layer--dual {
+  color: var(--dgs-blue);
+  background: linear-gradient(90deg, rgba(45, 127, 249, 0.04), rgba(91, 102, 112, 0.04));
+  border-color: rgba(45, 127, 249, 0.2);
+}
+
+.dgs-layer--dual:hover {
+  background: linear-gradient(90deg, rgba(45, 127, 249, 0.08), rgba(91, 102, 112, 0.08));
+  border-color: rgba(45, 127, 249, 0.4);
+}
+
+/* ─── SERVICES: PREMIUM ANIMATED CLICKABLE ROW LIST (replaces plain text grid) ─── */
+.dgs-services-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  border-top: none;
+}
+
+@media (min-width: 768px) {
+  .dgs-services-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-services-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-service-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 2.25rem 2rem;
+  border: 1px solid var(--surface-border-neutral);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg-white);
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-row:hover {
+  transform: translateY(-5px);
+  border-color: var(--bg-deep-navy);
+  box-shadow: 0 16px 36px rgba(11, 19, 62, 0.08);
+}
+
+/* Sweep background on hover */
+.dgs-service-row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-deep-navy);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s var(--ease-out);
+  z-index: 0;
+}
+
+.dgs-service-row:hover::before,
+.dgs-service-row:focus-visible::before {
+  transform: scaleY(1);
+}
+
+.dgs-service-row-icon {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 2.75rem;
+  display: flex;
+  align-items: center;
+  color: var(--action-teal);
+  transition: color var(--duration-base) var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.dgs-service-row-icon svg {
+  stroke: var(--action-teal);
+  transition: stroke var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-row:hover .dgs-service-row-icon,
+.dgs-service-row:focus-visible .dgs-service-row-icon {
+  color: var(--action-mint-hover);
+  transform: scale(1.08);
+}
+
+.dgs-service-row:hover .dgs-service-row-icon svg,
+.dgs-service-row:focus-visible .dgs-service-row-icon svg {
+  stroke: var(--action-mint-hover);
+}
+
+.dgs-service-row-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dgs-service-row-title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.3;
+  color: var(--bg-deep-navy);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-row:hover .dgs-service-row-title,
+.dgs-service-row:focus-visible .dgs-service-row-title {
+  color: var(--text-white);
+}
+
+.dgs-service-row-benefit {
+  font-size: 0.9rem;
+  color: var(--text-dark-muted);
+  line-height: 1.45;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-row:hover .dgs-service-row-benefit,
+.dgs-service-row:focus-visible .dgs-service-row-benefit {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.dgs-service-row-arrow {
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--surface-border-neutral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--action-teal);
+  margin-top: 0.5rem;
+  transition: all 0.4s var(--ease-out);
+}
+
+.dgs-service-row-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-service-row:hover .dgs-service-row-arrow,
+.dgs-service-row:focus-visible .dgs-service-row-arrow {
+  border-color: var(--accent-yellow);
+  background: var(--accent-yellow);
+  color: var(--bg-deep-navy);
+  transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+  .dgs-service-row {
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+/* ─── SYSTEMS AUDIT SECTION LAYOUT IMPROVEMENTS ─── */
+.dgs-audit-grid {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .dgs-audit-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--space-xl);
+  }
+}
+
+.dgs-audit-info h2 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  margin-bottom: var(--space-md);
+  line-height: 1.15;
+  color: var(--text-white);
+}
+
+.dgs-audit-lead {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.7;
+}
+
+.dgs-audit-card {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border-light);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
+  padding: 2.5rem;
+  box-shadow: none;
+  position: relative;
+}
+
+.dgs-audit-card-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--action-mint-hover);
+  background: rgba(0, 179, 159, 0.1);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-md);
+  border: 1px solid rgba(0, 179, 159, 0.25);
+}
+
+.dgs-audit-card h3 {
+  font-size: 1.4rem;
+  color: var(--text-white);
+  margin: 0 0 1.75rem 0;
+  font-weight: 700;
+}
+
+.dgs-audit-deliverables {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.dgs-audit-deliverables li {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.dgs-deliverable-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 179, 159, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--action-mint-hover);
+  margin-top: 0.15rem;
+  box-shadow: 0 0 10px rgba(0, 179, 159, 0.1);
+}
+
+.dgs-deliverable-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.dgs-audit-deliverables strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-white);
+  margin-bottom: 0.3rem;
+}
+
+.dgs-audit-deliverables p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Homepage service grid shows names only — full definitions live on /services */
+.dgs-service-card--name-only {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dgs-service-card--name-only h3 {
+  margin: 0;
+}
+
+.dgs-service-card--name-only .dgs-service-card-icon {
+  flex-shrink: 0;
+}
+
+#dgs-hero {
+  padding-top: 4rem;
+  padding-bottom: 4.5rem;
+}
+
+#dgs-hero .dgs-eyebrow {
+  color: var(--action-teal);
+}
+
+#dgs-hero h1 {
+  color: #ffffff;
+}
+
+#dgs-hero .dgs-hero-sub {
+  color: var(--text-dark-muted);
+}
+
+@media (min-width: 768px) {
+  #dgs-hero {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+/* ============================================================
+   MOBILE & TABLET RESPONSIVE OVERRIDES
+   Reins in section padding, gaps, and image heights that were
+   sized for desktop (many set inline in the HTML), so tablets
+   and phones don't get excessive whitespace or squeeze.
+   ============================================================ */
+@media (max-width: 1024px) {
+  #dgs-hero .dgs-split {
+    gap: 2.75rem !important;
+  }
+
+  #dgs-differentiator {
+    padding: 4.5rem 0 !important;
+  }
+
+  #dgs-differentiator .dgs-split {
+    gap: 3rem !important;
+  }
+
+  #dgs-industries .dgs-split {
+    gap: 2.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #dgs-pain-and-vision {
+    padding-bottom: var(--space-xl) !important;
+  }
+
+  #dgs-founder {
+    padding: var(--space-lg) 0 !important;
+  }
+
+  #dgs-industries {
+    padding: var(--space-lg) 0 !important;
+  }
+
+  #dgs-audit-cta .dgs-reveal {
+    padding: 3rem 2.25rem !important;
+  }
+
+  #dgs-audit-cta .dgs-split {
+    gap: 2rem !important;
+  }
+
+  #dgs-audit-cta .dgs-split>div:last-child {
+    align-items: center !important;
+  }
+
+  #dgs-hero .dgs-split img {
+    height: 21.25rem !important;
+  }
+
+  .dgs-hero-actions {
+    gap: 0.75rem !important;
+  }
+
+  .dgs-hero-actions .dgs-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   FLUID LAYOUT — Relative units for zoom resilience
+   ============================================================ */
+#dgs-hero .dgs-hero-content {
+  max-width: 45rem;
+}
+
+@media (min-width: 1025px) {
+  #dgs-hero .dgs-split {
+    gap: 3rem !important;
+  }
+}
+
+#dgs-hero .dgs-hero-sub {
+  max-width: 36.25rem;
+}
+
+#dgs-hero .dgs-split>.dgs-reveal {
+  min-width: 18rem;
+}
+
+#dgs-hero .dgs-split img {
+  height: 36rem !important;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--surface-border-neutral);
+}
+
+#dgs-pain-and-vision .dgs-section-head p {
+  max-width: 42.5rem;
+}
+
+#dgs-pain-and-vision .dgs-text-center p {
+  max-width: 40rem;
+}
+
+#dgs-modules .dgs-section-head h2 {
+  max-width: 60rem;
+}
+
+#dgs-modules .dgs-section-head p {
+  max-width: 42.5rem;
+}
+
+#dgs-industries .dgs-split>div {
+  min-width: 17.5rem;
+}
+
+#dgs-differentiator .dgs-split>div:first-child>div:last-child {
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr)) !important;
+}
+
+@media (max-width: 480px) {
+  #dgs-audit-cta .dgs-reveal {
+    padding: 2.5rem 1.75rem !important;
+  }
+
+  #dgs-hero .dgs-split img {
+    height: 15rem !important;
+  }
+
+  .dgs-founder-headline {
+    font-size: 1.05rem !important;
+    margin: 1.25rem 0 !important;
+  }
+}
+
+@media (max-width: 859px) {
+  #dgs-differentiator {
+    padding-bottom: 0 !important;
+  }
+
+  #dgs-differentiator .dgs-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #dgs-differentiator .dgs-split>div:first-child {
+    padding: 3rem 1.5rem !important;
+  }
+
+  #dgs-differentiator .dgs-split>div:last-child {
+    height: 300px !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  #dgs-differentiator .dgs-split>div:last-child::before {
+    background: linear-gradient(to bottom, var(--bg-deep-navy) 0%, transparent 60%) !important;
+  }
+
+  #dgs-industries .dgs-split>div:first-child {
+    order: 2;
+  }
+
+  #dgs-industries .dgs-split>div:last-child {
+    order: 1;
+  }
+}
+
+/* ============================================================
+   PREMIUM CENTERED HERO SECTION (RIPPLING STYLE)
+   ============================================================ */
+
+#dgs-hero,
+.dgs-hero--premium-split {
+  background-color: #0A1F33 !important;
+  background-image: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a6195492d3c3208084f92d0.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  color: var(--text-white);
+  padding: 8rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .dgs-hero--premium-split {
+    padding: 10rem 0 5rem;
+  }
+}
+
+/* Subtle background overlay mesh for depth */
+.dgs-hero-mesh-overlay {
+  display: none !important;
+}
+
+/* Video sits full-bleed behind the hero on every breakpoint, graded and
+   feathered on all sides so it dissolves into the navy hero background
+   (#0A1F33, set on .dgs-hero--premium-split) instead of reading as a
+   hard-edged clip or box. */
+.dgs-hero-bg-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  opacity: 0.6;
+  filter: grayscale(0.25) contrast(1.1) brightness(0.8) saturate(1.15);
+  mask-image: radial-gradient(ellipse 80% 75% at 50% 38%, black 45%, transparent 92%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 38%, black 45%, transparent 92%);
+}
+
+/* Color-matches the video to the brand navy/teal duotone so its hue
+   reads as one surface with the rest of the hero, not a separate photo. */
+.dgs-hero-video-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, #0A1F33 0%, #0d5f70 55%, #00B39F 100%);
+  mix-blend-mode: color;
+  mask-image: radial-gradient(ellipse 80% 75% at 50% 38%, black 45%, transparent 92%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 38%, black 45%, transparent 92%);
+}
+
+@media (max-width: 768px) {
+  .dgs-hero-bg-video,
+  .dgs-hero-video-tint {
+    mask-image: radial-gradient(ellipse 95% 60% at 50% 32%, black 40%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 95% 60% at 50% 32%, black 40%, transparent 90%);
+  }
+
+  .dgs-hero-bg-video {
+    opacity: 0.5;
+  }
+}
+
+/* Soft top spotlight */
+.dgs-hero-spotlight {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 70vw;
+  height: 45vh;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 0%, 
+    rgba(0, 179, 159, 0.1) 0%, 
+    rgba(45, 127, 249, 0.05) 50%, 
+    transparent 80%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -15%);
+}
+
+/* Animated network globe — decorative, sits above the photo/scrim/
+   spotlight background layers but below the hero copy (z-index: 5). */
+#dgs-hero-globe-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: auto;
+}
+#dgs-hero-globe-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: pan-y; /* mouse-drag still rotates; vertical page scroll still works on touch */
+}
+
+.dgs-hero-globe-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #EAFFFC;
+  background: rgba(6, 26, 43, 0.5);
+  border: 1px solid rgba(16, 207, 201, 0.32);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  white-space: nowrap;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition: opacity 0.2s linear;
+}
+.dgs-hero-globe-label-dot {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--action-teal, #10CFC9);
+  box-shadow: 0 0 8px 2px rgba(82, 255, 241, 0.75);
+}
+
+@media (max-width: 768px) {
+  #dgs-hero-globe-stage {
+    opacity: 0.6;
+  }
+  .dgs-hero-globe-label {
+    display: none;
+  }
+}
+
+/* Container content layout */
+.dgs-hero-content-container {
+  position: relative;
+  z-index: 5;
+  display: block;
+  width: 100%;
+}
+
+.dgs-hero-main-content {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Tagline styled above header */
+.dgs-hero-tagline {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--action-teal);
+  margin-bottom: 1.25rem;
+}
+
+/* Massive Display Heading */
+.dgs-hero--premium-split h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5.2vw, 4.5rem);
+  /* 72px on desktop */
+  font-weight: 800;
+  /* Sora ExtraBold */
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  /* Tight -2.5% tracking for giant headers */
+  color: #ffffff !important;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  max-width: 100% !important; /* Let text stretch fully on wide viewports */
+}
+
+.dgs-hero-title-main {
+  background: linear-gradient(to bottom, #ffffff 60%, #e2e8f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  display: inline;
+}
+
+.dgs-hero-dot {
+  color: #F5A623;
+}
+
+/* Linear-style copy */
+.dgs-hero-linear-sub {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9) !important; /* Brighter grey style */
+  margin-top: 1.5rem;
+  margin-bottom: 2.25rem;
+  max-width: 48rem;
+  text-align: left;
+}
+
+/* Left-aligned hero actions directly below body text */
+.dgs-hero-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .dgs-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+  .dgs-hero-actions .dgs-btn-saas {
+    width: 100%;
+  }
+}
+
+.dgs-btn--structured {
+  border-radius: var(--radius-xl) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  /* Non-bold, clean medium weight */
+  text-transform: none;
+  letter-spacing: -0.01em;
+  padding: 0.9rem 1.8rem;
+  font-size: 0.95rem;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.dgs-hero-btn-audit {
+  background-color: var(--dgs-amber) !important;
+  /* Signal Amber */
+  color: #0A1F33 !important;
+  border: 1px solid var(--dgs-amber) !important;
+}
+
+.dgs-hero-btn-audit:hover {
+  background-color: var(--dgs-amber-hover) !important;
+  border-color: var(--dgs-amber-hover) !important;
+  color: #0A1F33 !important;
+  transform: translateY(-1px);
+}
+
+.dgs-hero-btn-consultation {
+  background-color: transparent !important;
+  color: var(--text-white) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+.dgs-hero-btn-consultation:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.8) !important;
+  transform: translateY(-1px);
+}
+
+/* SaaS Button System */
+.dgs-btn-saas {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-xl);
+  font-family: var(--font-body);
+  font-weight: 650;
+  font-size: 0.95rem;
+  letter-spacing: 0.005em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+  box-sizing: border-box;
+}
+
+/* ── Stopwatch / slot-machine label flip on hover ──────────
+   Two identical lines are stacked in a track clipped to one
+   line tall; on hover the track slides up so the second line
+   (and its icon) rolls into view. */
+.dgs-btn-flip {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start; /* let the track keep its full 2-line height */
+  overflow: hidden;
+  height: 1.4em;
+  line-height: 1.4em;
+}
+
+.dgs-btn-flip-track {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.42s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.dgs-btn-flip-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 1.4em;
+  white-space: nowrap;
+}
+
+.dgs-btn-saas:hover .dgs-btn-flip-track,
+.dgs-btn-saas:focus-visible .dgs-btn-flip-track {
+  transform: translateY(-50%);
+}
+
+/* Icon nudges forward as it rolls up, like an arrow taking off */
+.dgs-btn-saas:hover .dgs-btn-flip-line .dgs-btn-icon svg {
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-btn-flip-track {
+    transition: none;
+  }
+  .dgs-btn-saas:hover .dgs-btn-flip-track,
+  .dgs-btn-saas:focus-visible .dgs-btn-flip-track {
+    transform: none;
+  }
+}
+
+.dgs-btn-saas--primary {
+  background-color: var(--dgs-amber) !important; /* Signal Amber #F5A623 */
+  color: #0A1F33 !important;
+  border: 1px solid var(--dgs-amber) !important;
+}
+
+.dgs-btn-saas--primary:hover {
+  background-color: #e0961f !important;
+  border-color: #e0961f !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(245, 166, 35, 0.28);
+}
+
+.dgs-btn-saas--secondary {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+.dgs-btn-saas--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.dgs-hero-teal-text {
+  color: #00B39F !important;
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  display: inline;
+}
+
+/* Bottom elements layout */
+.dgs-hero-bottom-row {
+  display: block;
+  margin-top: 3.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Trust strip — number-forward, blended seamlessly into the dark hero.
+   A single hairline at the top carries a short brand-gradient accent; the
+   panel background is a whisper of light that fades out, so it reads as part
+   of the section rather than a bordered card. */
+.dgs-hero-stats-panel {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0) 100%) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.09) !important;
+  padding: 2.75rem 0 0.75rem !important;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.75rem;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Gradient glow riding the top hairline. Rests centered; when the cursor
+   moves near the top edge, JS drives --accent-x and the glow eases toward
+   it with a magnetic trailing motion (see transition below). */
+.dgs-hero-stats-panel::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 2px;
+  width: var(--accent-w, 240px);
+  border-radius: var(--radius-xs);
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(45, 127, 249, 0.9) 30%,
+      rgba(0, 179, 159, 0.95) 60%,
+      transparent 100%);
+  box-shadow: 0 0 12px rgba(0, 179, 159, 0.45);
+  transform: translateX(var(--accent-x, 0px));
+  /* magnetic ease — soft catch-up toward the cursor / back to center */
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+@media (min-width: 600px) {
+  .dgs-hero-stats-panel {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-hero-stats-panel {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    align-items: stretch;
+    padding-top: 3.25rem !important;
+  }
+}
+
+.dgs-hero-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  gap: 0;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+@media (min-width: 1024px) {
+  .dgs-hero-stat-item {
+    padding: 0 2rem;
+  }
+
+  /* faint vertical separators keep the four reading as one strip */
+  .dgs-hero-stat-item:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.07) !important;
+  }
+}
+
+/* Icons dropped for the clean, number-led reference look (markup kept) */
+.stat-icon-wrapper,
+.dgs-hero-stat-item .stat-icon {
+  display: none !important;
+}
+
+.stat-meta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* reserve the kicker band on every column so the big numbers all
+     sit on one line, whether or not an item has a "Close to" lead */
+  padding-top: 1.15rem;
+}
+
+.stat-sub {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.stat-val {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 3.4vw, 3.1rem);
+  font-weight: 600;
+  /* Sora SemiBold — matches the hero title weight */
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6rem;
+  background: linear-gradient(180deg, #ffffff 55%, #b9c5d6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #ffffff;
+}
+
+.stat-lbl {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.4;
+  max-width: 18ch;
+}
+
+/* ============================================================
+   APPLE-STYLE SYSTEMS NODE NETWORK ANIMATION
+   ============================================================ */
+
+.dgs-hero-systems-network-centered {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 650px;
+  margin: 0;
+  overflow: visible;
+  z-index: 2;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .dgs-hero-systems-network-centered {
+    top: 50%;
+    left: auto;
+    right: -2rem;
+    transform: translateY(-50%);
+    width: 48%;
+    max-width: 820px;
+    opacity: 0.85;
+    pointer-events: auto;
+  }
+}
+
+/* Floating Tooltip for Interactive SVG Nodes */
+.dgs-network-tooltip {
+  position: absolute;
+  background: rgba(10, 31, 51, 0.95);
+  border: 1px solid rgba(0, 179, 159, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 0.6rem 1rem;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -100%) translateY(-10px);
+  transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+  z-index: 100;
+  white-space: nowrap;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.dgs-network-tooltip.is-active {
+  opacity: 1;
+  transform: translate(-50%, -100%) translateY(-18px);
+}
+
+.dgs-network-tooltip-val {
+  color: #00ffd5;
+  font-weight: 700;
+  margin-left: 0.25rem;
+}
+
+.dgs-network-bg-image {
+  position: absolute;
+  inset: 0;
+  top: 45%;
+  /* Very much lower down behind the systems network and stats */
+  width: 100%;
+  height: 55%;
+  background-image: url('../images/digital-growthscale-team-data-analysis.webp');
+  background-size: cover;
+  background-position: center top;
+  z-index: 2;
+  /* behind text/SVG nodes but covers bottom part */
+  opacity: 0.12;
+  /* Subtle background atmosphere */
+  mask-image: radial-gradient(ellipse 80% 50% at 50% 60%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 60%, black 20%, transparent 80%);
+}
+
+.dgs-network-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Main background line path */
+.dgs-network-line-bg {
+  opacity: 0.35;
+}
+
+/* Centered moving pulse stream path */
+.dgs-network-line-pulse-centered {
+  stroke-dasharray: 140 600;
+  stroke-dashoffset: 740;
+  animation: dgsFlowStreamCentered 8s linear infinite;
+  filter: drop-shadow(0 0 5px rgba(0, 179, 159, 0.8));
+}
+
+@keyframes dgsFlowStreamCentered {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Nodes styling */
+.network-node {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.node-dot {
+  transition: r var(--duration-base) var(--ease-out), filter var(--duration-base) var(--ease-out);
+}
+
+.network-node:hover .node-dot {
+  r: 9px;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* Pulsing rings around nodes */
+.node-pulse {
+  transform-origin: center;
+  animation: dgsNodePulse 3s ease-out infinite;
+}
+
+/* Staggered pulse delays */
+.pulse-ai {
+  animation-delay: 0s;
+}
+
+.pulse-crm {
+  animation-delay: 0.6s;
+}
+
+.pulse-ops {
+  animation-delay: 1.2s;
+}
+
+.pulse-talent {
+  animation-delay: 1.8s;
+}
+
+.pulse-data {
+  animation-delay: 2.4s;
+}
+
+@keyframes dgsNodePulse {
+  0% {
+    r: 8px;
+    opacity: 0.6;
+  }
+
+  100% {
+    r: 24px;
+    opacity: 0;
+  }
+}
+
+/* Node labels (text below nodes) */
+.node-label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  fill: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.05em;
+  transition: fill var(--duration-base) var(--ease-out), font-size var(--duration-base) var(--ease-out);
+}
+
+.network-node:hover .node-label {
+  fill: var(--text-white);
+  font-size: 0.82rem;
+}
+
+.dgs-hero-bottom-row-centered {
+  width: 100%;
+  margin-top: 4rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 1024px) {
+  .dgs-hero-bottom-row-centered {
+    margin-top: 5.5rem;
+  }
+}
+
+/* ============================================================
+   2.3 BRAND PROMISE SECTION
+   ============================================================ */
+#dgs-brand-promise,
+#dgs-industries-picker,
+#dgs-growth-hub {
+  background-color: #0A1F33 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Bluish navy center background glow aura */
+#dgs-brand-promise::before,
+#dgs-industries-picker::before,
+#dgs-growth-hub::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 85%;
+  background: radial-gradient(ellipse at center, rgba(20, 65, 145, 0.42) 0%, rgba(12, 40, 95, 0.22) 45%, rgba(10, 31, 51, 0) 75%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Mobile: these sections stack into a single tall column (a 3x4 icon
+   list, a multi-line heading, etc.), so their own height can run past
+   1400px. The desktop rule above sizes the glow at 85% of THAT height,
+   which stretches it into a thin, mostly-invisible vertical band that
+   only shows near the section's exact vertical midpoint (wherever that
+   happens to land in the middle of the list) instead of the soft round
+   glow it's meant to be. Below 768px, decouple the glow's size from the
+   section's variable content height entirely: a viewport-width-relative
+   square glow, anchored near the top of the section (roughly behind its
+   heading) rather than centered in a column several screens tall. */
+@media (max-width: 767px) {
+  #dgs-brand-promise::before,
+  #dgs-industries-picker::before,
+  #dgs-growth-hub::before {
+    top: 300px;
+    width: 130vw;
+    height: 62vh;
+    max-width: 640px;
+    max-height: 560px;
+  }
+}
+
+#dgs-brand-promise .dgs-container,
+#dgs-industries-picker .dgs-container,
+#dgs-growth-hub .dgs-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure the visual frame stays solid dark navy so the background glow stays behind it */
+#dgs-brand-promise .dgs-promise-visual-frame {
+  background-color: #0A1F33 !important;
+}
+
+/* Decorative Background SVGs Container */
+.dgs-promise-bg-decors {
+  display: none !important;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.dgs-promise-decor {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+.dgs-promise-decor.decor-top-left {
+  top: 0;
+  left: 0;
+  width: min(280px, 28vw);
+}
+
+.dgs-promise-decor.decor-top-right {
+  top: 0;
+  right: 0;
+  width: min(280px, 28vw);
+}
+
+.dgs-promise-decor.decor-bottom-left {
+  bottom: 0;
+  left: 0;
+  width: min(280px, 28vw);
+}
+
+.dgs-promise-decor.decor-bottom-right {
+  bottom: 0;
+  right: 0;
+  width: min(340px, 34vw);
+}
+
+@media (max-width: 768px) {
+  .dgs-promise-decor.decor-top-left,
+  .dgs-promise-decor.decor-top-right,
+  .dgs-promise-decor.decor-bottom-left {
+    width: min(160px, 40vw);
+  }
+  .dgs-promise-decor.decor-bottom-right {
+    width: min(190px, 46vw);
+  }
+}
+
+/* Two-column editorial composition: interactive list (left) + one
+   crossfading visual (right). Stacks on mobile: list, then image. */
+.dgs-promise-story {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  width: 100%;
+  margin-top: 3.5rem;
+}
+
+@media (min-width: 900px) {
+  .dgs-promise-story {
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(3rem, 6vw, 5.5rem);
+  }
+}
+
+.dgs-promise-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0 0 0;
+  width: 100%;
+}
+
+.dgs-promise-row {
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dgs-promise-row:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Active indicator: a thin teal line that grows on the active/hovered row */
+.dgs-promise-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 2px;
+  height: 0%;
+  background: var(--action-teal);
+  transform: translateY(-50%);
+  transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-promise-row.is-active::before {
+  height: 72%;
+}
+
+.dgs-promise-item {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  width: 100%;
+  margin: 0;
+  padding: clamp(1.15rem, 2vw, 1.65rem) 0 clamp(1.15rem, 2vw, 1.65rem) 1.5rem;
+  background: none;
+  border: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dgs-promise-item:focus-visible {
+  outline: 2px solid var(--action-teal);
+  outline-offset: 4px;
+}
+
+.dgs-promise-item-num {
+  flex-shrink: 0;
+  width: 2.5rem;
+  padding-top: 0.2em;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.4s ease;
+}
+
+.dgs-promise-row.is-active .dgs-promise-item-num {
+  color: var(--action-teal);
+}
+
+.dgs-promise-item-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dgs-promise-item-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  transition: color 0.4s ease;
+}
+
+.dgs-promise-row.is-active .dgs-promise-item-title {
+  color: #ffffff;
+}
+
+.dgs-promise-item-subtitle {
+  display: block;
+  max-width: 42ch;
+  margin-top: 0.4rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.92rem, 1.1vw, 1rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.68);
+  transition: color 0.4s ease;
+}
+
+.dgs-promise-row.is-active .dgs-promise-item-subtitle {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Smooth reveal: animate grid-template-rows 0fr -> 1fr (buttery height, no
+   max-height jank). The inner wrapper clips content while collapsed. */
+.dgs-promise-item-reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-left: 4rem;
+  padding-left: clamp(1rem, 2.5vw, 1.75rem);
+  opacity: 0;
+  transition: grid-template-rows 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s ease;
+}
+
+.dgs-promise-row.is-active .dgs-promise-item-reveal {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.dgs-promise-item-reveal-in {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  overflow: hidden;
+  min-height: 0;
+  padding-top: 0.75rem;
+  padding-bottom: 1.5rem;
+}
+
+.dgs-promise-item-desc {
+  max-width: 42ch;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.dgs-promise-visual-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: box-shadow 0.4s ease;
+}
+
+/* Feathered edge: the photo itself fades to transparent (not just a color
+   wash), so the navy section background shows through and the image
+   dissolves into it instead of sitting in a hard-edged box. Weighted
+   toward the top-left, the side that faces the text column, and left
+   strongest/sharpest on the bottom-right where the photo needs to read. */
+.dgs-promise-visual-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  filter: grayscale(0.15) contrast(1.05);
+  -webkit-mask-image: radial-gradient(ellipse 92% 88% at 68% 55%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 92% 88% at 68% 55%, #000 55%, transparent 100%);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+}
+
+/* Same emphasis treatment as the founder's active portrait card on the
+   About page (#leadership .dgs-portrait-card): a teal glow border, no
+   color wash over the photo itself. */
+@media (hover: hover) {
+  html:not(.dgs-is-touch) #dgs-brand-promise .dgs-promise-visual-frame:hover {
+    border-color: var(--action-teal) !important;
+    box-shadow: 0 20px 50px -10px rgba(0, 179, 159, 0.4), 0 0 30px rgba(0, 179, 159, 0.25);
+  }
+}
+
+.dgs-promise-visual-img.is-active {
+  opacity: 1;
+  animation: dgsPromiseDrift 9s ease-out forwards;
+}
+
+@keyframes dgsPromiseDrift {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+.dgs-promise-visual-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  /* Only the bottom scrim remains, to keep the index label legible; the
+     left/top blend into navy is now handled by the image's own mask. */
+  background: linear-gradient(180deg, rgba(10, 31, 51, 0) 45%, rgba(10, 31, 51, 0.7) 100%);
+}
+
+.dgs-promise-visual-index {
+  position: absolute;
+  left: clamp(1.25rem, 2.5vw, 2rem);
+  bottom: clamp(1.25rem, 2.5vw, 2rem);
+  z-index: 3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-promise-visual-index-num {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.dgs-promise-visual-index-label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Autoplay removed (2026-08-24 user request) — the dwell-timer progress
+   line no longer has anything to represent, so it's hidden outright. */
+.dgs-promise-visual-progress {
+  display: none;
+}
+
+.dgs-promise-visual-progress-fill {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--action-teal);
+  border-radius: inherit;
+}
+
+.dgs-promise-visual-progress-fill.is-animating {
+  animation-name: dgsPromiseProgress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes dgsPromiseProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-promise-row::before,
+  .dgs-promise-item-num,
+  .dgs-promise-item-title,
+  .dgs-promise-item-subtitle,
+  .dgs-promise-item-reveal,
+  .dgs-promise-visual-img,
+  .dgs-promise-visual-index {
+    transition-duration: 0.01ms !important;
+  }
+  .dgs-promise-visual-img.is-active {
+    animation: none !important;
+  }
+  .dgs-promise-visual-progress {
+    display: none;
+  }
+}
+
+/* Mobile: image moves above the list (was below it) and the feather flips
+   to a top-solid / bottom-fade, so the photo dissolves down into the list
+   content that follows it, matching the stacked reference layout. */
+@media (max-width: 899px) {
+  .dgs-promise-visual {
+    order: -1;
+    margin-bottom: 0.5rem;
+  }
+
+  .dgs-promise-visual-img {
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 96%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 96%);
+  }
+}
+
+.dgs-promise-link {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--action-teal) !important;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+  align-self: flex-start;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.dgs-promise-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--action-teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-promise-link:hover::after {
+  transform: scaleX(1);
+}
+
+.dgs-promise-link .dgs-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+  transition: transform var(--duration-base) var(--ease-out);
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
+.dgs-promise-link .dgs-btn-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5px;
+}
+
+.dgs-promise-link:hover .dgs-btn-icon {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   2.4 FEATURED SOLUTIONS — three feathered dark cards
+   Background image fades into the card, like the "People first.
+   Automation led." section. Light section, dark cards.
+   ============================================================ */
+#dgs-featured-solutions {
+  background: var(--bg-white, #ffffff);
+  color: var(--bg-deep-navy);
+}
+
+/* Header row: title + intro on the left, "Explore All Solutions" on the right */
+.dgs-fsol-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 2.5rem;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-lg);
+}
+
+.dgs-fsol-head-text {
+  max-width: 680px;
+}
+
+.dgs-fsol-head-text h2 {
+  color: var(--bg-deep-navy);
+  margin: 0 0 0.6rem 0;
+}
+
+.dgs-fsol-head-text p {
+  color: var(--text-dark-muted, #334155);
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.dgs-fsol-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--action-teal);
+  font-family: var(--font-body);
+  font-weight: 650;
+  font-size: 0.95rem;
+  text-decoration: none;
+  white-space: nowrap;
+  padding-bottom: 0.3rem;
+}
+
+.dgs-fsol-layout-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.dgs-fsol-copy-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 1040px;
+}
+
+.dgs-fsol-copy-col h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--bg-deep-navy);
+  margin: 0 0 1.2rem 0;
+}
+
+.dgs-fsol-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--text-dark-muted, #334155);
+  margin: 0;
+}
+
+/* Intro lede — replaces the boxed callout */
+.dgs-fsol-lede {
+  font-family: var(--font-body);
+  font-size: clamp(1.02rem, 1.35vw, 1.16rem);
+  line-height: 1.72;
+  color: var(--text-dark-muted, #334155);
+  max-width: 76ch;
+  margin: 1.5rem auto 0;
+}
+
+.dgs-fsol-lede strong {
+  color: var(--bg-deep-navy);
+  font-weight: 700;
+}
+
+/* CSR methodology — same dark icon-strip graphic used on the solution
+   detail pages (dark navy card, teal corner glow, gradient icons). */
+.dgs-method {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.dgs-method-label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--bg-deep-navy);
+}
+
+/* ─── CSR graphic (ported from css/dgs-solution-detail.css) ───
+   No supporting copy under the label here (icon + short title only), so
+   steps stay pinned to the icon's own width (84px) instead of equal-fill
+   — the connecting lines space evenly off the icon box, never off how
+   wide a stage's label happens to be. ─── */
+.dgs-csr-graphic {
+  position: relative;
+  z-index: 1;
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.75rem);
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(0, 179, 159, 0.16) 0%, transparent 42%),
+    radial-gradient(circle at 100% 100%, rgba(0, 179, 159, 0.22) 0%, transparent 48%),
+    #0A1F33;
+}
+
+.dgs-csr-graphic-step {
+  --csr-accent: var(--dgs-teal);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  flex: 0 0 84px;
+  width: 84px;
+  max-width: 84px;
+}
+
+.dgs-csr-graphic-step--blue {
+  --csr-accent: var(--dgs-blue);
+}
+
+.dgs-csr-graphic-icon {
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: 1.5px solid color-mix(in srgb, var(--csr-accent) 40%, transparent);
+  background: color-mix(in srgb, var(--csr-accent) 8%, #0A1F33);
+  transition: border-color var(--duration-base) var(--ease-out), background-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-csr-graphic-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.dgs-csr-graphic-step:hover .dgs-csr-graphic-icon {
+  border-color: var(--csr-accent);
+  background: color-mix(in srgb, var(--csr-accent) 16%, #0A1F33);
+  transform: translateY(-3px);
+}
+
+.dgs-csr-graphic-label {
+  margin-top: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.dgs-csr-graphic-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-white);
+}
+
+.dgs-csr-graphic-connector {
+  display: flex;
+  align-items: center;
+  flex: 1 1 40px;
+  min-width: 24px;
+  height: 84px;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.dgs-csr-graphic-line {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.dgs-csr-graphic-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dgs-teal);
+}
+
+.dgs-csr-graphic-arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-left: 0.4rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 760px) {
+  .dgs-csr-graphic {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.5rem;
+    padding: 1.75rem 1.25rem;
+    justify-items: center;
+  }
+
+  .dgs-csr-graphic-step {
+    flex: none;
+    width: 100%;
+    max-width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.85rem;
+  }
+
+  .dgs-csr-graphic-connector {
+    display: none;
+  }
+
+  .dgs-csr-graphic-icon {
+    width: 68px;
+    height: 68px;
+  }
+
+  .dgs-csr-graphic-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .dgs-csr-graphic-label {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .dgs-csr-graphic-text {
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  .dgs-csr-graphic-num {
+    font-size: 0.75rem;
+    padding-right: 0.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .dgs-csr-graphic {
+    gap: 1.5rem 1rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .dgs-csr-graphic-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .dgs-csr-graphic-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .dgs-csr-graphic-text {
+    font-size: 0.72rem;
+  }
+
+  .dgs-csr-graphic-num {
+    font-size: 0.68rem;
+  }
+}
+
+/* ---- Growth-hub-style expanding accordion (light / white theme) ---- */
+.dgs-fsol-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (max-width: 899px) {
+  .dgs-fsol-grid {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .dgs-fsol-grid {
+    flex-direction: row;
+    height: 600px;
+    gap: 1.5rem;
+  }
+}
+
+/* Panel — dark navy card, image washed with navy gradient, content anchored to the bottom */
+.dgs-fsol-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: #0A1F33;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.4);
+  padding: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 440px;
+  transform: translateZ(0);
+  will-change: flex-grow;
+  transition: flex-grow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+  z-index: 1;
+}
+
+/* This card also carries the shared ".dgs-reveal" scroll-reveal class
+   (dgs-common.css), which sets its OWN `transition` shorthand for
+   opacity/transform. `transition` is exclusive per element — whichever
+   single rule wins the specificity fight supplies the ENTIRE property
+   list, it does not merge with this rule's flex-grow/border-color/
+   box-shadow above. Since that shared rule is now "html.dgs-js
+   .dgs-reveal" (raised in specificity to fix a GHL-safety issue), it
+   ties this file's own selector on specificity, and wins on source
+   order alone — which silently dropped this card's hover transition
+   entirely (confirmed live: flex-grow/border-color/box-shadow snapped
+   instantly with zero animation). Fixed by giving THIS selector every
+   property it actually needs, via the longhand `transition-*`
+   properties (not the shorthand) so each keeps its own correct
+   duration/easing/delay instead of one blunt shared value — in
+   particular, hover must stay at 0s delay while the scroll-reveal
+   keeps its intentional per-card stagger (--dgs-reveal-i). `html
+   .dgs-fsol-card.dgs-reveal` matches the shared rule's specificity
+   exactly and lives in this file (loaded after dgs-common.css), so it
+   wins the tie by source order. */
+html .dgs-fsol-card.dgs-reveal {
+  transition-property: opacity, transform, flex-grow, border-color, box-shadow;
+  transition-duration: 0.7s, 0.7s, 0.6s, 0.4s, 0.4s;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.16, 1, 0.3, 1), ease, ease;
+  transition-delay: calc(var(--dgs-reveal-i, 0) * 0.08s), calc(var(--dgs-reveal-i, 0) * 0.08s), 0s, 0s, 0s;
+}
+
+/* Decorative top accent line that grows on hover */
+.dgs-fsol-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+.dgs-fsol-card[data-accent="teal"]::before { background: var(--action-teal); }
+.dgs-fsol-card[data-accent="blue"]::before { background: var(--dgs-blue); }
+.dgs-fsol-card[data-accent="amber"]::before { background: var(--dgs-amber); }
+
+@media (min-width: 900px) {
+  .dgs-fsol-card {
+    flex: 1;
+    min-height: auto;
+  }
+}
+
+/* Expanding accordion (desktop) — mirrors the Growth Hub panels: the
+   hovered card grows, its siblings compress and drop their secondary text. */
+@media (min-width: 900px) {
+  .dgs-fsol-grid:has(.dgs-fsol-card:hover) .dgs-fsol-card:hover {
+    flex: 2.3;
+  }
+  .dgs-fsol-grid:has(.dgs-fsol-card:hover) .dgs-fsol-card:not(:hover) {
+    flex: 0.65;
+  }
+  .dgs-fsol-grid:has(.dgs-fsol-card:hover) .dgs-fsol-card:not(:hover) .dgs-fsol-title,
+  .dgs-fsol-grid:has(.dgs-fsol-card:hover) .dgs-fsol-card:not(:hover) .dgs-fsol-desc {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    pointer-events: none;
+  }
+}
+
+/* Compact padding at tablet/narrow desktop widths to prevent text wrap issues */
+@media (min-width: 900px) and (max-width: 1099px) {
+  .dgs-fsol-card {
+    padding: 1.8rem 1.4rem;
+  }
+}
+
+/* Hover styles for non-touch pointer devices */
+@media (hover: hover) {
+  html:not(.dgs-is-touch) .dgs-fsol-card:hover {
+    border-color: var(--action-teal);
+    box-shadow: 0 24px 48px -20px rgba(0, 179, 159, 0.28);
+  }
+  html:not(.dgs-is-touch) .dgs-fsol-card[data-accent="blue"]:hover {
+    border-color: var(--dgs-blue);
+    box-shadow: 0 24px 48px -20px rgba(45, 127, 249, 0.28);
+  }
+  html:not(.dgs-is-touch) .dgs-fsol-card[data-accent="amber"]:hover {
+    border-color: var(--dgs-amber);
+    box-shadow: 0 24px 48px -20px rgba(245, 166, 35, 0.28);
+  }
+  html:not(.dgs-is-touch) .dgs-fsol-card:hover::before {
+    width: 100%;
+  }
+}
+
+/* Full-bleed image behind the content, washed dark navy so the image fades gracefully into dark navy */
+.dgs-fsol-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.dgs-fsol-card-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0 !important;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 0.65s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-fsol-card-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(10, 31, 51, 0.25) 0%,
+    rgba(10, 31, 51, 0.75) 40%,
+    rgba(10, 31, 51, 0.95) 75%,
+    #0A1F33 100%);
+}
+
+/* Duotone wash, tinted per pillar accent — teal for Transform, blue for
+   Enable, amber for Elevate — fades in over the whole photo on hover,
+   underneath the navy legibility gradient above. */
+.dgs-fsol-duotone {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: color;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.dgs-fsol-card[data-accent="teal"] .dgs-fsol-duotone {
+  background: linear-gradient(135deg, #0A1F33 0%, #0d5f70 55%, #00B39F 100%);
+}
+
+.dgs-fsol-card[data-accent="blue"] .dgs-fsol-duotone {
+  background: linear-gradient(135deg, #0A1F33 0%, #17408c 55%, #2D7FF9 100%);
+}
+
+.dgs-fsol-card[data-accent="amber"] .dgs-fsol-duotone {
+  background: linear-gradient(135deg, #0A1F33 0%, #7a4f14 55%, #F5A623 100%);
+}
+
+@media (hover: hover) {
+  html:not(.dgs-is-touch) .dgs-fsol-card:hover .dgs-fsol-card-bg img {
+    filter: grayscale(0) contrast(1.02);
+    transform: scale(1.04) translate(-4px, -4px);
+  }
+
+  html:not(.dgs-is-touch) .dgs-fsol-card:hover .dgs-fsol-duotone {
+    opacity: 1;
+  }
+}
+
+/* On touch devices, keep images colored and static */
+html.dgs-is-touch .dgs-fsol-card-bg img {
+  filter: grayscale(0) contrast(1.02);
+}
+
+/* ============================================================
+   RIPPLING-STYLE 3-COLUMN MINIMAL LIST GRID (INDUSTRIES)
+   ============================================================ */
+.dgs-industry-list-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 4rem;
+}
+
+@media (min-width: 768px) {
+  .dgs-industry-list-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-industry-list-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-industry-list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.35rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  transition: all 0.3s var(--ease-out);
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.dgs-industry-list-row:hover {
+  border-bottom-color: var(--action-teal);
+  padding-left: 0.85rem;
+}
+
+.dgs-ind-row-left {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.dgs-ind-row-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-xl);
+  background: rgba(0, 179, 159, 0.1);
+  border: 1px solid rgba(0, 179, 159, 0.2);
+  color: var(--action-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.dgs-ind-row-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.dgs-industry-list-row:hover .dgs-ind-row-icon {
+  background: var(--action-teal);
+  color: var(--bg-deep-navy);
+  border-color: var(--action-teal);
+}
+
+.dgs-ind-row-title {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.dgs-industry-list-row:hover .dgs-ind-row-title {
+  color: var(--action-teal);
+}
+
+.dgs-ind-row-arrow {
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.dgs-industry-list-row:hover .dgs-ind-row-arrow {
+  color: var(--action-teal);
+  transform: translateX(4px);
+}
+
+/* Card body — anchored to the bottom of the panel, above the image wash */
+.dgs-fsol-card-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  width: 100%;
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+  html:not(.dgs-is-touch) .dgs-fsol-card:hover .dgs-fsol-card-inner {
+    transform: translateY(-4px);
+  }
+}
+
+/* Collapsed detail (desc + solution list + CTA) — revealed on hover, like the
+   Growth Hub panels. Grid-rows 0fr -> 1fr gives a smooth eased reveal. */
+.dgs-fsol-reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  width: 100%;
+  transform: translateY(10px);
+  transition: grid-template-rows 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+}
+
+.dgs-fsol-reveal-in {
+  overflow: hidden;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-top: 0.9rem;
+}
+
+@media (hover: hover) {
+  html:not(.dgs-is-touch) .dgs-fsol-card:hover .dgs-fsol-reveal {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Slide explore arrow to the right on card hover */
+  html:not(.dgs-is-touch) .dgs-fsol-card:hover .dgs-promise-link .dgs-btn-icon {
+    transform: translateX(6px);
+  }
+}
+
+/* Keep detail always visible on touch-only devices */
+html.dgs-is-touch .dgs-fsol-reveal {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: none;
+}
+
+/* Keep active/manual class triggers */
+.dgs-fsol-card.active .dgs-fsol-reveal {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile: stacked cards, detail always visible (no hover to trigger reveal) */
+@media (max-width: 899px) {
+  .dgs-fsol-card {
+    min-height: 420px;
+    padding-top: 14rem;
+  }
+  .dgs-fsol-reveal {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Eyebrow — accent per pillar */
+.dgs-pillar-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--action-teal);
+  margin-bottom: 0.1rem;
+}
+
+.dgs-fsol-card[data-accent="blue"] .dgs-pillar-eyebrow { color: var(--dgs-blue); }
+.dgs-fsol-card[data-accent="amber"] .dgs-pillar-eyebrow { color: var(--dgs-amber); }
+
+.dgs-fsol-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+  /* Prevent mid-word breaks for capability development title */
+  word-break: keep-all;
+  overflow-wrap: normal;
+  hyphens: none;
+  overflow: hidden;
+  max-height: 4.5rem;
+  opacity: 1;
+  transition: opacity 0.25s ease, max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.3s ease;
+}
+
+.dgs-fsol-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+  max-width: 38ch;
+  overflow: hidden;
+  max-height: 4.5rem;
+  opacity: 1;
+  transition: opacity 0.25s ease, max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.3s ease;
+}
+
+/* Pillar icon — same accent-boxed treatment as the CSR methodology icons above */
+.dgs-fsol-icon {
+  --fsol-icon-accent: var(--action-teal);
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: 1.5px solid color-mix(in srgb, var(--fsol-icon-accent) 40%, transparent);
+  background: color-mix(in srgb, var(--fsol-icon-accent) 10%, transparent);
+  color: var(--fsol-icon-accent);
+  transition: border-color 0.4s ease, background-color 0.4s ease, transform 0.4s ease;
+}
+
+.dgs-fsol-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dgs-fsol-card[data-accent="blue"] .dgs-fsol-icon { --fsol-icon-accent: var(--dgs-blue); }
+.dgs-fsol-card[data-accent="amber"] .dgs-fsol-icon { --fsol-icon-accent: var(--dgs-amber); }
+
+@media (hover: hover) {
+  html:not(.dgs-is-touch) .dgs-fsol-card:hover .dgs-fsol-icon {
+    border-color: var(--fsol-icon-accent);
+    background: color-mix(in srgb, var(--fsol-icon-accent) 18%, transparent);
+    transform: translateY(-3px);
+  }
+}
+
+/* Solution list — compact clickable rows, light on dark */
+.dgs-pillar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.dgs-pillar-list li {
+  display: block;
+}
+
+.dgs-pillar-list li a {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.3rem 0;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 550;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color 0.25s var(--ease-out),
+    gap 0.25s var(--ease-out);
+}
+
+/* Chevron marker, no container */
+.dgs-pillar-list li a::before {
+  content: '';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background-size: 14px 14px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.25s var(--ease-out);
+}
+
+/* Chevron color per card accent */
+.dgs-fsol-card[data-accent="teal"] .dgs-pillar-list li a::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300b39f' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 6 15 12 9 18'/%3E%3C/svg%3E");
+}
+
+.dgs-fsol-card[data-accent="blue"] .dgs-pillar-list li a::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232d7ff9' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 6 15 12 9 18'/%3E%3C/svg%3E");
+}
+
+.dgs-fsol-card[data-accent="amber"] .dgs-pillar-list li a::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5a623' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 6 15 12 9 18'/%3E%3C/svg%3E");
+}
+
+/* Hover — chevron nudges forward */
+.dgs-fsol-card[data-accent="teal"] .dgs-pillar-list li a:hover::before,
+.dgs-fsol-card[data-accent="blue"] .dgs-pillar-list li a:hover::before,
+.dgs-fsol-card[data-accent="amber"] .dgs-pillar-list li a:hover::before {
+  transform: translateX(3px);
+}
+
+/* Hover — plain list rows, accent text + slight shift (no container box) */
+.dgs-fsol-card[data-accent="teal"] .dgs-pillar-list li a:hover {
+  color: var(--action-teal);
+  gap: 1rem;
+}
+
+.dgs-fsol-card[data-accent="blue"] .dgs-pillar-list li a:hover {
+  color: var(--dgs-blue);
+  gap: 1rem;
+}
+
+.dgs-fsol-card[data-accent="amber"] .dgs-pillar-list li a:hover {
+  color: var(--dgs-amber);
+  gap: 1rem;
+}
+
+/* Explore link pinned to the bottom, accent per pillar */
+.dgs-fsol-card-inner .dgs-promise-link {
+  align-self: flex-start;
+}
+
+.dgs-fsol-card[data-accent="blue"] .dgs-promise-link { color: var(--dgs-blue) !important; }
+.dgs-fsol-card[data-accent="blue"] .dgs-promise-link::after { background-color: var(--dgs-blue); }
+.dgs-fsol-card[data-accent="amber"] .dgs-promise-link { color: var(--dgs-amber) !important; }
+.dgs-fsol-card[data-accent="amber"] .dgs-promise-link::after { background-color: var(--dgs-amber); }
+
+/* ============================================================
+   2.5 INDUSTRIES — pick-your-industry grid
+   ============================================================ */
+.dgs-industry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  margin-top: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  .dgs-industry-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .dgs-industry-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-industry-tile {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--surface-border);
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.96rem;
+  line-height: 1.3;
+  transition: background-color 0.25s var(--ease-out),
+    border-color 0.25s var(--ease-out),
+    transform 0.25s var(--ease-out);
+}
+
+.dgs-industry-tile:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--action-teal);
+  transform: translateY(-2px);
+}
+
+.dgs-industry-ico {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 179, 159, 0.13);
+  color: var(--action-teal);
+  transition: background-color 0.25s var(--ease-out);
+}
+
+.dgs-industry-ico svg {
+  width: 19px;
+  height: 19px;
+}
+
+.dgs-industry-tile:hover .dgs-industry-ico {
+  background: rgba(0, 179, 159, 0.22);
+}
+
+.dgs-industry-label {
+  flex: 1;
+  min-width: 0;
+}
+
+.dgs-industry-arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--action-teal);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+}
+
+.dgs-industry-tile:hover .dgs-industry-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.dgs-industry-cta {
+  margin-top: var(--space-lg);
+}
+
+/* Teal accent link (amber stays reserved for conversion CTAs) */
+#dgs-industries-picker .dgs-launch-link {
+  color: var(--action-teal);
+}
+
+#dgs-industries-picker .dgs-launch-link:hover {
+  color: var(--dgs-teal-hover, #00c9b3);
+}
+
+/* ============================================================
+   2.6 OUR TRANSFORMATION FRAMEWORK (CSR Framework)
+   ============================================================ */
+.dgs-timeline-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+/* Vertical Timeline Track Line */
+.dgs-timeline-track {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(10, 31, 51, 0.08); /* Faint dark track line */
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Dynamic Scroll-Following Progress Line */
+.dgs-timeline-progress-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Full height, revealed by scaleY(0..1) from the JS scroll handler.
+     Transform is GPU-composited, so the progress sweep never triggers
+     layout the way animating height did. */
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: top center;
+  will-change: transform;
+  background: var(--action-teal);
+  transition: transform 0.1s ease-out;
+}
+
+/* Row Layout */
+.dgs-timeline-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  position: relative;
+  margin-bottom: 3rem;
+  z-index: 2;
+}
+
+.dgs-timeline-row--reverse {
+  /* Default reverse order for desktop, overridden on mobile */
+}
+
+@media (min-width: 900px) {
+  .dgs-timeline-row {
+    grid-template-columns: 1fr 100px 1fr;
+    align-items: center;
+    margin-bottom: 4.5rem;
+  }
+  
+  /* Explicitly define ordering for both columns on desktop to prevent default-order collapse */
+  .dgs-timeline-row .dgs-timeline-media {
+    order: 1;
+  }
+  .dgs-timeline-row .dgs-timeline-dot-container {
+    order: 2;
+  }
+  .dgs-timeline-row .dgs-timeline-content {
+    order: 3;
+  }
+  
+  .dgs-timeline-row--reverse .dgs-timeline-content {
+    order: 1;
+    text-align: left;
+  }
+  .dgs-timeline-row--reverse .dgs-timeline-dot-container {
+    order: 2;
+  }
+  .dgs-timeline-row--reverse .dgs-timeline-media {
+    order: 3;
+  }
+}
+
+/* Content Column (Raw Text, No Boxes) */
+.dgs-timeline-content {
+  padding: 0.5rem 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: transform 0.4s ease;
+}
+
+.dgs-timeline-row:hover .dgs-timeline-content {
+  transform: translateX(5px);
+}
+
+.dgs-timeline-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--action-teal); /* Solid teal badge */
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0, 179, 159, 0.2);
+}
+
+.dgs-timeline-content .dgs-step-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.5vw, 2.15rem);
+  font-weight: 700;
+  color: var(--bg-deep-navy, #0A1F33);
+  margin: 0 0 0.8rem 0;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.dgs-timeline-content .dgs-step-desc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-dark-muted, #334155);
+  margin: 0;
+}
+
+/* Media Column */
+.dgs-timeline-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.5 / 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(10, 31, 51, 0.07);
+  box-shadow: 0 8px 24px rgba(10, 31, 51, 0.05);
+}
+
+.dgs-timeline-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-timeline-row:hover .dgs-timeline-media img {
+  transform: scale(1.04);
+}
+
+/* Floating CSR Icon Badge Overlay on Timeline Photos */
+.dgs-timeline-media .dgs-csr-icon-overlay {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md, 8px);
+  background: rgba(10, 31, 51, 0.85); /* dark backing matching navy */
+  border: 1.5px solid color-mix(in srgb, var(--csr-accent, var(--dgs-teal)) 40%, transparent);
+  color: var(--csr-accent, var(--dgs-teal));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 10px;
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out);
+}
+
+.dgs-timeline-media .dgs-csr-icon-overlay svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dgs-timeline-row:hover .dgs-timeline-media .dgs-csr-icon-overlay {
+  transform: scale(1.05);
+  border-color: var(--csr-accent, var(--dgs-teal));
+}
+
+/* Center Dot Container */
+.dgs-timeline-dot-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+}
+
+.dgs-timeline-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 4px solid rgba(10, 31, 51, 0.15);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.dgs-timeline-dot::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  transition: all 0.4s ease;
+}
+
+/* Active Dot State when progress line reaches it */
+.dgs-timeline-dot.active {
+  background: var(--action-teal);
+  border-color: var(--action-teal);
+  box-shadow: 0 0 15px rgba(0, 179, 159, 0.8);
+}
+
+.dgs-timeline-dot.active::after {
+  border-color: rgba(0, 179, 159, 0.4);
+  transform: scale(1.15);
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 899px) {
+  .dgs-timeline-track {
+    left: 20px;
+    transform: none;
+  }
+  
+  .dgs-timeline-dot-container {
+    position: absolute;
+    left: 10px;
+    top: 1.4rem;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .dgs-timeline-row {
+    padding-left: 3rem;
+    margin-bottom: 3.5rem;
+    gap: 1.25rem;
+  }
+  
+  .dgs-timeline-media {
+    order: 2;
+    aspect-ratio: 16 / 9;
+  }
+
+  .dgs-timeline-media .dgs-csr-icon-overlay {
+    top: 10px;
+    left: 10px;
+    width: 36px;
+    height: 36px;
+    padding: 7px;
+  }
+
+  .dgs-timeline-media .dgs-csr-icon-overlay svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  #dgs-framework .dgs-timeline-content {
+    order: 1;
+    padding: 0.5rem 0;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  #dgs-framework .dgs-timeline-content .dgs-step-title {
+    color: var(--bg-deep-navy, #0A1F33) !important;
+  }
+
+  #dgs-framework .dgs-timeline-content .dgs-step-desc {
+    color: var(--text-dark-muted, #334155) !important;
+  }
+}
+
+/* ============================================================
+   2.7 WHY DIGITAL GROWTHSCALE SECTION
+   ============================================================ */
+#dgs-why-us {
+  position: relative;
+  background: var(--bg-deep-navy);
+}
+
+.dgs-why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .dgs-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-why-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-why-card {
+  position: relative;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0.5rem;
+  transition: transform 0.4s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: auto;
+}
+
+.dgs-why-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Icon Container Box — matches solution-detail challenge-card icon */
+.dgs-why-icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(150deg, rgba(0, 179, 159, 0.16) 0%, rgba(45, 127, 249, 0.1) 100%);
+  border: 1px solid rgba(0, 179, 159, 0.22);
+  color: var(--action-teal);
+  margin-bottom: 1.15rem;
+  transition: all 0.35s var(--ease-out);
+}
+
+.dgs-why-icon-box svg {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.35s ease;
+}
+
+.dgs-why-card:hover .dgs-why-icon-box {
+  border-color: rgba(0, 179, 159, 0.5);
+  box-shadow: 0 0 18px rgba(0, 179, 159, 0.22);
+}
+
+.dgs-why-card:hover .dgs-why-icon-box svg {
+  transform: scale(1.08);
+}
+
+.dgs-why-card h3.dgs-why-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.dgs-why-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-light-muted);
+  margin: 0;
+}
+
+/* ============================================================
+   2.8 CLIENT SUCCESS PREVIEW (Case Studies)
+   ============================================================ */
+#dgs-client-success {
+  position: relative;
+  background: #0A1F33;
+}
+
+.dgs-success-header-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .dgs-success-header-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+/* Carousel / Viewport / Controls Deleted - Replaced with Stripe-Style Tab Swapper */
+.dgs-success-tabs-container {
+  border-bottom: 1px solid rgba(10, 31, 51, 0.08);
+  margin-bottom: 3rem;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar for clean top options row */
+}
+.dgs-success-tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+.dgs-success-tabs {
+  display: flex;
+  gap: 3rem;
+  position: relative;
+}
+
+.dgs-success-tab {
+  background: transparent;
+  border: none;
+  padding: 1.2rem 0;
+  color: var(--text-dark-muted, #334155);
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+  margin-bottom: -1px;
+  position: relative;
+}
+
+.dgs-success-tab:hover {
+  color: var(--bg-deep-navy, #0A1F33);
+}
+
+.dgs-success-tab.active {
+  color: var(--bg-deep-navy, #0A1F33);
+}
+
+/* Glowing blue-to-teal gradient underline bar */
+.dgs-success-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #0056b3 0%, #00b39f 50%, #00d2ff 100%);
+  box-shadow: 0 0 10px rgba(0, 179, 159, 0.6), 0 0 4px rgba(0, 86, 179, 0.3);
+  border-radius: var(--radius-sm);
+}
+
+/* Panels */
+.dgs-success-panels {
+  position: relative;
+  min-height: 420px;
+}
+
+.dgs-success-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.dgs-success-panel.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dgs-success-panel-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .dgs-success-panel-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center; /* Vertically center left and right columns */
+  }
+}
+
+.dgs-success-panel-media-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10; /* Mobile fallback aspect ratio */
+  min-height: 320px;
+}
+
+@media (min-width: 900px) {
+  .dgs-success-panel-media-wrapper {
+    aspect-ratio: auto; /* Remove aspect limit on desktop */
+    height: 100%;       /* Match grid cell height exactly */
+    min-height: 100%;
+  }
+}
+
+.dgs-success-panel-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid rgba(10, 31, 51, 0.06);
+  box-shadow: 0 16px 48px rgba(10, 31, 51, 0.05);
+}
+
+@media (min-width: 900px) {
+  .dgs-success-panel-media {
+    position: absolute;
+    inset: 0; /* Stretches absolute elements to fill the wrapper height completely */
+  }
+}
+
+/* Mobile fix: the media-wrapper's `aspect-ratio: 16/10` + `min-height: 320px`
+   gave its grid track a ~512px implied minimum width (320 * 16/10), which blew
+   the whole case-study card wider than the phone viewport and got cropped by
+   the section's overflow:hidden. Let the grid + its items shrink to the column
+   and drop the min-height so the image sizes purely from the aspect ratio. */
+@media (max-width: 899px) {
+  .dgs-success-panel-grid,
+  .dgs-success-panel-grid > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .dgs-success-panel-media-wrapper {
+    aspect-ratio: auto !important;
+    height: 480px !important;
+    min-height: 480px !important;
+  }
+}
+
+.dgs-success-panel-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.dgs-success-panel:hover .dgs-success-panel-media img {
+  transform: scale(1.02);
+}
+
+.dgs-success-panel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  align-items: flex-start;
+  justify-content: center; /* Center items vertically */
+  padding: 0.5rem 0;
+}
+
+.dgs-success-meta-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--action-teal);
+  background: rgba(0, 179, 159, 0.05);
+  border: 1px solid rgba(0, 179, 159, 0.22);
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-xl); /* Clean modern pill shape */
+  margin-bottom: 0.1rem;
+}
+
+/* Challenge -> Solution as a connected timeline */
+.dgs-success-narrative {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  padding-left: 1.9rem;
+}
+
+.dgs-success-narrative::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(0, 179, 159, 0.45), rgba(45, 127, 249, 0.25));
+}
+
+.dgs-success-story-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+}
+
+.dgs-success-narrative .dgs-success-story-field::before {
+  content: '';
+  position: absolute;
+  left: -1.9rem;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-white, #ffffff);
+  border: 2px solid var(--action-teal);
+  box-shadow: 0 0 0 4px rgba(0, 179, 159, 0.08);
+}
+
+.dgs-story-label {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--action-teal);
+}
+
+.dgs-story-text {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: #33475b;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Outcome as a featured result card */
+.dgs-success-outcome {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(0, 179, 159, 0.07), rgba(45, 127, 249, 0.05));
+  border: 1px solid rgba(0, 179, 159, 0.18);
+}
+
+.dgs-story-highlight {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bg-deep-navy, #0A1F33);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.dgs-story-sub-highlight {
+  display: flex;
+  align-items: flex-start;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4a5b6b;
+  margin: 0.15rem 0 0 0;
+}
+
+/* ============================================================
+   2.9 GROWTH HUB PREVIEW SECTION
+   ============================================================ */
+#dgs-growth-hub {
+  position: relative;
+  background: var(--bg-deep-navy);
+}
+
+.dgs-hub-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .dgs-hub-accordion {
+    flex-direction: row;
+    height: 520px;
+    gap: 1.5rem;
+  }
+}
+
+.dgs-hub-panel {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2.25rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 300px;
+  transform: translateZ(0);
+  will-change: flex;
+  transition: flex 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .dgs-hub-panel {
+    flex: 1;
+    min-height: auto;
+  }
+}
+
+/* Panel Background Image Overlay - GPU-optimized transform/opacity transitions (no costly blend-mode or filter re-rasterization) */
+.dgs-hub-panel-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  transform: scale(1) translateZ(0);
+  will-change: opacity, transform;
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.dgs-hub-panel-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10, 31, 51, 0.4) 0%, rgba(10, 31, 51, 0.95) 100%);
+  opacity: 0.85;
+  transition: opacity 0.5s ease;
+  z-index: 2;
+}
+
+/* Active and Hover States (Desktop Grid Accordion) */
+@media (min-width: 900px) {
+  /* Default inactive layout when not hovering (all panels are collapsed equally) */
+  .dgs-hub-accordion:not(:hover) .dgs-hub-panel {
+    flex: 1;
+  }
+  
+  /* Hover interactions using :has() */
+  .dgs-hub-accordion:has(.dgs-hub-panel:hover) .dgs-hub-panel:hover {
+    flex: 2.3;
+    border-color: var(--action-teal);
+    box-shadow: 0 20px 48px rgba(0, 179, 159, 0.12);
+  }
+  .dgs-hub-accordion:has(.dgs-hub-panel:hover) .dgs-hub-panel:not(:hover) {
+    flex: 0.65;
+  }
+  /* Inactive cards fade out and collapse title text so all numbers (01, 02, 03, 04) sit on the exact same baseline */
+  .dgs-hub-accordion:has(.dgs-hub-panel:hover) .dgs-hub-panel:not(:hover) .dgs-hub-title {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    pointer-events: none;
+  }
+  .dgs-hub-accordion:has(.dgs-hub-panel:hover) .dgs-hub-panel:hover .dgs-hub-title {
+    opacity: 1;
+    max-height: 2.5rem;
+    margin-top: 0.6rem;
+  }
+}
+
+/* Mobile tap active trigger */
+.dgs-hub-panel.active,
+.dgs-hub-panel:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.dgs-hub-panel.active .dgs-hub-panel-bg,
+.dgs-hub-panel:hover .dgs-hub-panel-bg {
+  opacity: 0.9;
+  transform: scale(1.04) translateZ(0);
+}
+
+.dgs-hub-panel.active .dgs-hub-panel-bg::after,
+.dgs-hub-panel:hover .dgs-hub-panel-bg::after {
+  opacity: 0.35;
+}
+
+/* Panel Content Layout */
+.dgs-hub-panel-content {
+  position: relative;
+  z-index: 2; /* Sits above the background layer */
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.dgs-hub-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.15);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  transition: color 0.4s ease;
+}
+
+.dgs-hub-panel.active .dgs-hub-num,
+.dgs-hub-panel:hover .dgs-hub-num {
+  color: var(--action-teal);
+}
+
+.dgs-hub-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2vw, 1.45rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0.6rem 0 0 0;
+  letter-spacing: 0.02em;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+  overflow: hidden;
+  max-height: 2.5rem;
+  opacity: 1;
+  transition: opacity 0.25s ease, max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.3s ease;
+}
+
+/* Smooth reveal: animate grid-template-rows 0fr -> 1fr (buttery height, no
+   max-height jank). The inner wrapper clips content while collapsed. */
+@media (min-width: 900px) {
+  .dgs-hub-reveal {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    width: 100%;
+    transform: translateY(10px);
+    transition: grid-template-rows 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+  }
+}
+
+@media (max-width: 899px) {
+  .dgs-hub-reveal {
+    display: block;
+    opacity: 1;
+    width: 100%;
+    transform: none;
+  }
+}
+
+.dgs-hub-reveal-in {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.dgs-hub-desc {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text-light-muted);
+  margin: 0.4rem 0 0 0;
+  max-width: 38ch;
+}
+
+.dgs-hub-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--action-teal);
+  margin-top: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.dgs-hub-action-link svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.3s ease;
+}
+
+.dgs-hub-action-link:hover {
+  color: #ffffff;
+}
+
+.dgs-hub-action-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* Expand content when active/hovered — smooth grid-rows reveal */
+.dgs-hub-panel.active .dgs-hub-reveal,
+.dgs-hub-panel:hover .dgs-hub-reveal {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   2.10 CINEMATIC FINAL CTA SECTION
+   ============================================================ */
+.cinematic-cta-wrapper {
+  position: relative;
+  overflow: hidden;
+  --pill-bg-1: rgba(255, 255, 255, 0.03);
+  --pill-bg-2: rgba(255, 255, 255, 0.01);
+  --pill-shadow: rgba(0, 0, 0, 0.4);
+  --pill-highlight: rgba(255, 255, 255, 0.06);
+  --pill-border: rgba(255, 255, 255, 0.08);
+  
+  --pill-bg-1-hover: rgba(255, 255, 255, 0.08);
+  --pill-bg-2-hover: rgba(255, 255, 255, 0.03);
+  --pill-border-hover: rgba(255, 255, 255, 0.2);
+  --pill-shadow-hover: rgba(0, 0, 0, 0.6);
+  --pill-highlight-hover: rgba(255, 255, 255, 0.15);
+}
+
+/* Kill the off-brand purple .dgs-section--darker::after glow on the cinematic CTA
+   (the aurora div provides the on-brand teal/blue glow instead). */
+.cinematic-cta-wrapper::after {
+  display: none !important;
+}
+
+/* Faded photo background (mirrors the solution-page final CTA) */
+.final-cta-photo-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+}
+
+.final-cta-bg-grid {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+@keyframes final-cta-breathe {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; }
+}
+
+.final-cta-aurora {
+  background: radial-gradient(
+    circle at 50% 50%, 
+    rgba(0, 179, 159, 0.12) 0%, 
+    rgba(45, 127, 249, 0.12) 40%, 
+    transparent 70%
+  );
+  animation: final-cta-breathe 8s ease-in-out infinite alternate;
+}
+
+.final-cta-text-glow {
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 0.12));
+}
+
+@keyframes final-cta-scroll-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.final-cta-scroll-marquee {
+  animation: final-cta-scroll-marquee 30s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.final-cta-glass-pill {
+  background: linear-gradient(145deg, var(--pill-bg-1) 0%, var(--pill-bg-2) 100%) !important;
+  box-shadow: 
+      0 10px 30px -10px var(--pill-shadow), 
+      inset 0 1px 1px var(--pill-highlight), 
+      inset 0 -1px 2px rgba(0, 0, 0, 0.8) !important;
+  border: 1px solid var(--pill-border) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.final-cta-glass-pill:hover {
+  background: linear-gradient(145deg, var(--pill-bg-1-hover) 0%, var(--pill-bg-2-hover) 100%) !important;
+  border-color: var(--pill-border-hover) !important;
+  box-shadow: 
+      0 20px 40px -10px var(--pill-shadow-hover), 
+      inset 0 1px 1px var(--pill-highlight-hover) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   MOBILE RESPONSIVENESS OVERRIDES (Homepage)
+   ============================================================ */
+@media (max-width: 1023px) {
+  .dgs-hero--premium-split {
+    padding: 7rem 0 3rem !important;
+  }
+
+  .dgs-hero-content-container {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  /* Shrink ALL title pieces together — the white spans, the teal word, and
+     the dot — so "Confidence." matches the rest of the headline on mobile
+     instead of inheriting the larger base h1 size and looking oversized. */
+  .dgs-hero--premium-split h1,
+  .dgs-hero-title-main,
+  .dgs-hero-teal-text,
+  .dgs-hero-dot {
+    font-size: clamp(1.85rem, 5.5vw, 2.75rem) !important;
+  }
+
+  .dgs-hero-linear-sub {
+    font-size: 1rem !important;
+  }
+
+  #dgs-featured-solutions .dgs-services-grid,
+  #dgs-industries-picker .dgs-industries-grid,
+  #dgs-growth-hub .dgs-resources-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .dgs-section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  .dgs-hero-bottom-row-centered {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .dgs-hero-stats-panel {
+    padding: 1.75rem 0 0.5rem !important;
+    gap: 1.75rem !important;
+  }
+
+  .dgs-challenges-head {
+    margin-bottom: 2rem !important;
+  }
+
+  /* Growth Hub heading: the inline `white-space:nowrap` on the first line runs
+     wider than the phone viewport and the section's overflow:hidden crops it.
+     Let it wrap (!important beats the inline style) and ease the size down. */
+  #dgs-growth-hub .dgs-success-header-row h2 {
+    font-size: clamp(1.5rem, 6.4vw, 2rem) !important;
+  }
+
+  #dgs-growth-hub .dgs-success-header-row h2 span {
+    white-space: normal !important;
+  }
+
+  /* Marquee removed on mobile per request (was reformatted into stacked
+     scrolling rows before; now just hidden outright). The descendant
+     rules below (.dgs-cloud-column, .dgs-marquee-track, etc.) are dead
+     under this display:none but left in place -- harmless, and restores
+     the desktop-matching stacked layout for free if this is ever
+     un-hidden at a narrower breakpoint later. */
+  .dgs-challenge-cloud {
+    display: none !important;
+  }
+
+  .dgs-cloud-column {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.55rem !important;
+  }
+
+  .dgs-cloud-group {
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  .dgs-cloud-group,
+  .dgs-cloud-column--left .dgs-cloud-group,
+  .dgs-cloud-column--right .dgs-cloud-group {
+    width: 100% !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  .dgs-marquee-track {
+    gap: 1.25rem !important;
+  }
+
+  /* Keep mobile clean and compact: 2 rows per group (4 rows total) */
+  .dgs-cloud-column .dgs-cloud-group:nth-child(n+3) {
+    display: none !important;
+  }
+
+  .dgs-cloud-tag {
+    font-size: 0.88rem !important;
+    padding: 0.38rem 0.85rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* The chips fly outward on scroll (JS disperse). Clip the section
+     horizontally (clip, not hidden, so it can't break sticky/overflow-y) so
+     the outbound transforms vanish off the screen edge instead of widening
+     the page and shifting the mobile navbar. */
+  .dgs-challenges-section {
+    overflow-x: clip;
+  }
+
+  .dgs-accord-header {
+    padding: 1rem 1rem !important;
+    gap: 0.75rem !important;
+  }
+
+  .dgs-accord-title {
+    font-size: 1.1rem !important;
+  }
+
+  .dgs-accord-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #dgs-framework .dgs-framework-grid,
+  #dgs-why-us .dgs-bento-grid,
+  #dgs-client-success .dgs-case-studies-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  #dgs-final-cta {
+    min-height: auto !important;
+    padding: 4rem 1.25rem !important;
+  }
+
+  #dgs-final-cta h2 {
+    font-size: 1.45rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dgs-hero-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+  }
+
+  .dgs-hero-actions .dgs-btn-saas {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  #dgs-featured-solutions .dgs-services-grid,
+  #dgs-industries-picker .dgs-industries-grid,
+  #dgs-growth-hub .dgs-resources-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dgs-hero-stats-panel {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* ============================================================
+   CASE STUDIES PRODUCT UI DIAGRAMS (Framework-Free SaaS Visual System - White + Grid Mist)
+   ============================================================ */
+
+.dgs-cs-diagram-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  background-color: #F0F4F8;
+  background-image: 
+    radial-gradient(circle at 25% 20%, rgba(0, 179, 159, 0.06) 0%, transparent 60%),
+    radial-gradient(circle at 75% 30%, rgba(99, 102, 241, 0.05) 0%, transparent 65%),
+    radial-gradient(circle at 40% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
+  background-size: 100% 100%;
+  border-radius: 22px;
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  box-shadow: 0 16px 40px rgba(10, 31, 51, 0.05);
+  overflow: hidden;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  color: #0f172a;
+  display: flex;
+  flex-direction: column;
+}
+
+.dgs-cs-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dgs-cs-svg-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --- CASE STUDY 1: PROPOSAL WORKFLOW --- */
+.dgs-cs-proposal-canvas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.dgs-cs-workflow-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.dgs-cs-wf-card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 16px rgba(10, 31, 51, 0.03);
+  border-radius: 14px;
+  padding: 0.55rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.dgs-cs-diagram-container.is-animated .dgs-cs-wf-card[data-step="1"] { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-wf-card[data-step="2"] { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-wf-card[data-step="3"] { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-wf-card[data-step="4"] { opacity: 1; transform: translateY(0); transition-delay: 0.7s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-wf-card[data-step="5"] { opacity: 1; transform: translateY(0); transition-delay: 1.5s; }
+
+.dgs-cs-wf-icon-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #475569;
+}
+.dgs-cs-wf-icon-box svg { width: 15px; height: 15px; }
+
+.dgs-cs-wf-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+}
+.dgs-cs-wf-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dgs-cs-wf-sub {
+  font-size: 0.68rem;
+  color: #64748b;
+  line-height: 1.2;
+}
+
+.dgs-cs-wf-pill {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.18rem 0.5rem;
+  border-radius: 12px;
+  background: #f1f5f9;
+  color: #64748b;
+  flex-shrink: 0;
+}
+.dgs-cs-pill-check { background: #dcfce7; color: #166534; }
+
+/* Bottleneck Card Before -> After Morph */
+.dgs-cs-bottleneck-card {
+  position: relative;
+  overflow: hidden;
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+.dgs-cs-wf-state-before, .dgs-cs-wf-state-after {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  width: 100%;
+}
+.dgs-cs-icon-warn { background: #fee2e2; color: #dc2626; }
+.dgs-cs-warn-text { color: #dc2626; font-weight: 600; }
+.dgs-cs-pill-alert { background: #fee2e2; color: #b91c1c; font-weight: 700; }
+
+.dgs-cs-wf-state-before {
+  opacity: 1;
+  transition: opacity 0.4s ease 1.1s;
+}
+.dgs-cs-wf-state-after {
+  position: absolute;
+  inset: 0;
+  padding: 0.55rem 0.85rem;
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease 1.2s;
+  background: #eef2ff;
+}
+.dgs-cs-icon-ai { background: #e0e7ff; color: #4338ca; }
+.dgs-cs-pill-ai { background: #e0e7ff; color: #3730a3; font-weight: 700; }
+
+.dgs-cs-diagram-container.is-animated .dgs-cs-bottleneck-card {
+  border-color: #a5b4fc;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.15);
+  transition: border-color 0.5s ease 1.2s, background 0.5s ease 1.2s, box-shadow 0.5s ease 1.2s;
+}
+.dgs-cs-diagram-container.is-animated .dgs-cs-wf-state-before {
+  opacity: 0;
+}
+.dgs-cs-diagram-container.is-animated .dgs-cs-wf-state-after {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Final Success Card */
+.dgs-cs-final-card {
+  border-color: rgba(15, 23, 42, 0.08);
+}
+.dgs-cs-diagram-container.is-animated .dgs-cs-final-card {
+  border-color: #34d399;
+  background: #ecfdf5;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+  transition-delay: 1.5s;
+}
+.dgs-cs-icon-success { background: #d1fae5; color: #059669; }
+.dgs-cs-pill-success { background: #d1fae5; color: #047857; font-weight: 700; }
+
+/* SVG Connector Path Animation */
+.dgs-cs-path-main {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  transition: stroke-dashoffset 1.4s ease-in-out 0.2s;
+}
+.dgs-cs-diagram-container.is-animated .dgs-cs-path-main {
+  stroke-dashoffset: 0;
+}
+
+/* Horizontal Metrics Row at Canvas Bottom */
+.dgs-cs-proposal-horizontal-metrics {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  width: 100%;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease 1.7s, transform 0.5s ease 1.7s;
+}
+.dgs-cs-diagram-container.is-animated .dgs-cs-proposal-horizontal-metrics {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dgs-cs-horiz-metric-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.dgs-cs-metric-time {
+  background: #0f172a;
+  border: 1px solid rgba(0, 210, 180, 0.4);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+}
+.dgs-cs-time-tag-old {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+.dgs-cs-arrow-right {
+  width: 14px;
+  height: 14px;
+  color: #00d2b4;
+  flex-shrink: 0;
+}
+.dgs-cs-time-tag-new {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #00d2b4;
+}
+
+.dgs-cs-metric-removal {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+.dgs-cs-removal-badge {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #4f46e5;
+  background: #eef2ff;
+  padding: 0.15rem 0.45rem;
+  border-radius: 8px;
+}
+.dgs-cs-removal-text {
+  font-size: 0.72rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .dgs-cs-proposal-horizontal-metrics {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+
+/* --- CASE STUDY 2: RECRUITMENT AGENCY --- */
+.dgs-cs-recruitment-canvas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-top: 0.25rem;
+}
+
+.dgs-cs-app-icons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+  width: 100%;
+  z-index: 2;
+}
+
+.dgs-cs-app-icon {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+  border-radius: 10px;
+  padding: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.3s ease;
+}
+.dgs-cs-app-icon svg { width: 14px; height: 14px; color: #2563eb; }
+.dgs-cs-app-icon span { font-size: 0.6rem; color: #334155; font-weight: 500; }
+
+.dgs-cs-diagram-container.is-animated .dgs-cs-app-icon[data-app="1"] { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-app-icon[data-app="2"] { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-app-icon[data-app="3"] { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-app-icon[data-app="4"] { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-app-icon[data-app="5"] { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-app-icon[data-app="6"] { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-app-icon[data-app="7"] { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-app-icon[data-app="8"] { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+
+.dgs-cs-line-ray {
+  stroke-dasharray: 250;
+  stroke-dashoffset: 250;
+  transition: stroke-dashoffset 0.8s ease 0.5s;
+}
+.dgs-cs-diagram-container.is-animated .dgs-cs-line-ray { stroke-dashoffset: 0; }
+
+/* Center Candidate Card */
+.dgs-cs-candidate-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 210, 180, 0.4);
+  box-shadow: 0 12px 32px rgba(0, 210, 180, 0.12);
+  border-radius: 16px;
+  padding: 0.65rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 3;
+  width: 80%;
+  margin: 0.5rem 0;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.5s ease 0.8s, transform 0.5s ease 0.8s, border-color 0.5s ease 0.8s, box-shadow 0.5s ease 0.8s;
+}
+.dgs-cs-diagram-container.is-animated .dgs-cs-candidate-card {
+  opacity: 1;
+  transform: scale(1);
+  border-color: #00d2b4;
+  box-shadow: 0 8px 24px rgba(0, 210, 180, 0.2);
+}
+.dgs-cs-cand-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e6fffa;
+  border: 1px solid #00d2b4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0d9488;
+  flex-shrink: 0;
+}
+.dgs-cs-cand-avatar svg { width: 18px; height: 18px; }
+.dgs-cs-cand-info { display: flex; flex-direction: column; flex-grow: 1; }
+.dgs-cs-cand-title { font-size: 0.85rem; font-weight: 700; color: #0f172a; }
+.dgs-cs-cand-match { font-size: 0.68rem; color: #0d9488; font-weight: 600; }
+.dgs-cs-cand-badge {
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  flex-shrink: 0;
+}
+
+/* Pipeline Steps */
+.dgs-cs-pipeline-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 2;
+  margin-top: 0.2rem;
+}
+.dgs-cs-pipe-step {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+  border-radius: 12px;
+  padding: 0.3rem 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  color: #475569;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+.dgs-cs-pipe-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #cbd5e1;
+}
+.dgs-cs-pipe-arrow { font-size: 0.75rem; color: #94a3b8; }
+
+.dgs-cs-diagram-container.is-animated .dgs-cs-pipe-step[data-pipe="1"] { opacity: 1; transform: translateY(0); transition-delay: 1.1s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-pipe-step[data-pipe="2"] { opacity: 1; transform: translateY(0); transition-delay: 1.3s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-pipe-step[data-pipe="3"] {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.5s;
+  border-color: #00d2b4;
+  color: #0f172a;
+  background: #f0fdf4;
+}
+.dgs-cs-diagram-container.is-animated .dgs-cs-pipe-step[data-pipe="3"] .dgs-cs-pipe-dot {
+  background: #00d2b4;
+  box-shadow: 0 0 6px #00d2b4;
+}
+
+/* Metric Chips */
+.dgs-cs-rec-metrics {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  z-index: 2;
+}
+.dgs-cs-chip {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  border-radius: 12px;
+  padding: 0.4rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease 1.6s, transform 0.5s ease 1.6s;
+}
+.dgs-cs-diagram-container.is-animated .dgs-cs-chip {
+  opacity: 1;
+  transform: translateY(0);
+}
+.dgs-cs-chip-val { font-size: 0.85rem; font-weight: 800; color: #2563eb; }
+.dgs-cs-chip-lbl { font-size: 0.65rem; color: #475569; }
+.dgs-cs-chip-teal { border-color: #99f6e4; background: #f0fdf4; }
+.dgs-cs-chip-teal .dgs-cs-chip-val { color: #0d9488; }
+
+
+/* --- CASE STUDY 3: HEALTHCARE CLINIC --- */
+.dgs-cs-healthcare-canvas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 32px rgba(10, 31, 51, 0.05);
+  padding: 1rem;
+  color: #0f172a;
+}
+
+.dgs-cs-hc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+.dgs-cs-hc-dots { display: flex; gap: 4px; }
+.dgs-cs-hc-dots span { width: 8px; height: 8px; border-radius: 50%; background: #e2e8f0; }
+.dgs-cs-hc-dots span:nth-child(1) { background: #fca5a5; }
+.dgs-cs-hc-dots span:nth-child(2) { background: #fde047; }
+.dgs-cs-hc-dots span:nth-child(3) { background: #86efac; }
+.dgs-cs-hc-title { font-size: 0.75rem; font-weight: 600; color: #64748b; }
+
+.dgs-cs-hc-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 0.6rem 0;
+}
+
+.dgs-cs-patients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.dgs-cs-patient-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.45rem 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.dgs-cs-diagram-container.is-animated .dgs-cs-patient-card[data-patient="1"] { opacity: 1; transform: translateX(0); transition-delay: 0.2s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-patient-card[data-patient="2"] { opacity: 1; transform: translateX(0); transition-delay: 0.4s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-patient-card[data-patient="3"] { opacity: 1; transform: translateX(0); transition-delay: 0.6s; }
+
+.dgs-cs-pt-head { display: flex; flex-direction: column; }
+.dgs-cs-pt-name { font-size: 0.75rem; font-weight: 700; color: #0f172a; }
+.dgs-cs-pt-type { font-size: 0.62rem; color: #64748b; }
+
+.dgs-cs-pt-pill {
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.dgs-cs-pill-confirmed { background: #dcfce7; color: #166534; }
+.dgs-cs-pill-paid { background: #e0f2fe; color: #0369a1; }
+.dgs-cs-pill-sent { background: #f3e8ff; color: #6b21a8; }
+
+/* AI Assistant Bubble */
+.dgs-cs-ai-bubble-wrap { display: flex; align-items: center; }
+.dgs-cs-ai-assistant-card {
+  width: 100%;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-radius: 14px;
+  padding: 0.65rem;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease 0.7s, transform 0.5s ease 0.7s;
+}
+.dgs-cs-diagram-container.is-animated .dgs-cs-ai-assistant-card { opacity: 1; transform: translateY(0); }
+
+.dgs-cs-ai-head { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem; }
+.dgs-cs-ai-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: rgba(0, 210, 180, 0.2);
+  color: #00d2b4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dgs-cs-ai-icon svg { width: 12px; height: 12px; }
+.dgs-cs-ai-name { font-size: 0.75rem; font-weight: 700; flex-grow: 1; }
+.dgs-cs-ai-live { font-size: 0.58rem; background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 0.1rem 0.35rem; border-radius: 8px; }
+
+.dgs-cs-ai-feed { display: flex; flex-direction: column; gap: 0.3rem; }
+.dgs-cs-feed-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.65rem;
+  color: #cbd5e1;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.dgs-cs-feed-item svg { width: 10px; height: 10px; color: #00d2b4; flex-shrink: 0; }
+
+.dgs-cs-diagram-container.is-animated .dgs-cs-feed-item[data-feed="1"] { opacity: 1; transform: translateX(0); transition-delay: 0.9s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-feed-item[data-feed="2"] { opacity: 1; transform: translateX(0); transition-delay: 1.1s; }
+.dgs-cs-diagram-container.is-animated .dgs-cs-feed-item[data-feed="3"] { opacity: 1; transform: translateX(0); transition-delay: 1.3s; }
+
+/* Healthcare Analytics Card Below */
+.dgs-cs-analytics-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease 1.4s, transform 0.5s ease 1.4s;
+}
+.dgs-cs-diagram-container.is-animated .dgs-cs-analytics-card { opacity: 1; transform: translateY(0); }
+
+.dgs-cs-stat-block { display: flex; flex-direction: column; align-items: center; }
+.dgs-cs-stat-lbl { font-size: 0.62rem; color: #64748b; font-weight: 500; }
+.dgs-cs-stat-val-wrap { display: flex; align-items: center; gap: 0.25rem; }
+.dgs-cs-stat-val { font-size: 0.95rem; font-weight: 800; color: #0f172a; }
+.dgs-cs-no-show-val { color: #16a34a; }
+.dgs-cs-stat-dir { font-size: 0.85rem; font-weight: 800; color: #16a34a; }
+.dgs-cs-stat-cycle { font-size: 0.82rem; font-weight: 700; color: #2563eb; }
+.dgs-cs-stat-divider { width: 1px; height: 24px; background: #e2e8f0; }
+
+/* Responsive adjustments for diagram containers on narrow mobile devices */
+@media (max-width: 600px) {
+  .dgs-success-panel-media-wrapper {
+    height: 480px !important;
+    min-height: 480px !important;
+  }
+  .dgs-cs-diagram-container {
+    min-height: 480px !important;
+    padding: 0.85rem;
+  }
+  .dgs-cs-workflow-stack {
+    width: 100%;
+  }
+  .dgs-cs-floating-metrics {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+  }
+  .dgs-cs-candidate-card {
+    width: 100%;
+  }
+  .dgs-cs-hc-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   ENTERPRISE SAAS OVERLAY UI COMPOSITIONS (WHITE EDGE OVERLAYS)
+   ============================================================ */
+.dgs-timeline-overlay-container {
+  position: relative !important;
+  width: 100% !important;
+  aspect-ratio: 1.5 / 1 !important;
+  min-height: 440px !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(10, 31, 51, 0.1) !important;
+  box-shadow: 0 20px 45px rgba(10, 31, 51, 0.09), 0 2px 6px rgba(10, 31, 51, 0.03) !important;
+  background: #f8fafc !important;
+  user-select: none;
+}
+
+.dgs-timeline-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.dgs-timeline-row:hover .dgs-timeline-photo {
+  transform: scale(1.025);
+}
+
+.dgs-overlay-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Base Panel & Badge Styles (Crisp White SaaS Overlay) */
+.dgs-overlay-panel,
+.dgs-overlay-badge {
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: #0A1F33;
+  border-radius: 14px;
+  padding: 0.85rem 1.1rem;
+  box-shadow: 0 12px 32px rgba(10, 31, 51, 0.12), 0 2px 6px rgba(10, 31, 51, 0.04);
+  position: absolute;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s ease, 
+              border-color 0.3s ease;
+}
+
+.dgs-overlay-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 30px;
+}
+
+/* IntersectionObserver Triggered Animation */
+.dgs-timeline-row.is-animated .dgs-overlay-panel,
+.dgs-timeline-row.is-animated .dgs-overlay-badge,
+.dgs-overlay-layer.is-animated .dgs-overlay-panel,
+.dgs-overlay-layer.is-animated .dgs-overlay-badge {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger entrance delays (120ms stagger) */
+.dgs-overlay-panel[data-stagger="1"], .dgs-overlay-badge[data-stagger="1"] { transition-delay: 0.12s; }
+.dgs-overlay-panel[data-stagger="2"], .dgs-overlay-badge[data-stagger="2"] { transition-delay: 0.24s; }
+.dgs-overlay-panel[data-stagger="3"], .dgs-overlay-badge[data-stagger="3"] { transition-delay: 0.36s; }
+
+/* Hover Effects (Edge badges move upward 2–4px, shadow increases) */
+.dgs-timeline-row:hover .dgs-overlay-panel,
+.dgs-timeline-row:hover .dgs-overlay-badge {
+  transform: translateY(-3px) scale(1) !important;
+  border-color: #00B39F;
+  box-shadow: 0 16px 40px rgba(10, 31, 51, 0.16), 0 4px 12px rgba(0, 179, 159, 0.12);
+}
+
+.dgs-timeline-row:hover .dgs-panel-icon,
+.dgs-timeline-row:hover .dgs-tag-icon {
+  color: #00897B;
+  filter: drop-shadow(0 0 3px rgba(0, 179, 159, 0.3));
+}
+
+/* Panel Header Component */
+.dgs-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.dgs-panel-icon {
+  color: #00897B;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease, filter 0.3s ease;
+}
+.dgs-panel-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-panel-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0A1F33;
+  letter-spacing: -0.01em;
+}
+
+/* Card 1: Operations Audit Checklist & Workflow */
+.dgs-panel-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.dgs-check-row {
+  font-size: 0.75rem;
+  color: #334155;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dgs-check-mark {
+  color: #00897B;
+  font-weight: 800;
+  font-size: 0.78rem;
+}
+
+.dgs-badge-dot-amber {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f59e0b;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+}
+
+.dgs-badge-dot-green {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+}
+
+.dgs-badge-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0A1F33;
+}
+
+.dgs-workflow-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.dgs-wf-step {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #64748B;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  background: #f1f5f9;
+}
+
+.dgs-wf-step.active {
+  color: #0A1F33;
+  background: #e2e8f0;
+  font-weight: 700;
+}
+
+.dgs-wf-step.highlight {
+  color: #ffffff;
+  font-weight: 700;
+  background: #0A1F33;
+}
+
+.dgs-wf-arrow {
+  width: 14px;
+  height: 14px;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+/* Card 2: Roadmap Timeline & KPI */
+.dgs-roadmap-timeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+}
+
+.dgs-rm-step {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.dgs-rm-step.done {
+  color: #94a3b8;
+}
+
+.dgs-rm-step.active {
+  color: #00897B;
+  font-weight: 700;
+}
+
+.dgs-rm-line {
+  flex: 1;
+  height: 2px;
+  background: #e2e8f0;
+  border-radius: 2px;
+}
+
+.dgs-panel-kpi-score {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.65rem 1rem;
+}
+
+.dgs-kpi-lbl {
+  font-size: 0.65rem;
+  color: #64748B;
+  font-weight: 500;
+}
+
+.dgs-kpi-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #00897B;
+}
+
+.dgs-tag-icon {
+  width: 14px;
+  height: 14px;
+  color: #00897B;
+}
+
+/* Card 3: Connected Automation Nodes */
+.dgs-status-pill {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.18rem 0.5rem;
+  border-radius: 12px;
+  margin-left: auto;
+}
+
+.dgs-status-pill.pill-green {
+  background: #DCFCE7;
+  color: #15803D;
+  border: 1px solid #BBF7D0;
+}
+
+.dgs-status-pill.pill-cyan {
+  background: #E6FFFA;
+  color: #00897B;
+  border: 1px solid #B2DFDB;
+}
+
+.dgs-auto-simple-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.dgs-auto-item {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.35rem 0.6rem;
+}
+
+.dgs-item-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dgs-item-dot.dot-green { background: #22c55e; box-shadow: 0 0 5px rgba(34, 197, 94, 0.5); }
+.dgs-item-dot.dot-teal { background: #00897B; box-shadow: 0 0 5px rgba(0, 137, 123, 0.5); }
+
+/* Card 4: KPI Widgets Bar & Sparkline */
+.dgs-panel-kpis {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 1.1rem;
+}
+
+.dgs-kpi-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.dgs-kpi-val {
+  font-family: 'Sora', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.dgs-kpi-val.val-green { color: #15803D; }
+.dgs-kpi-val.val-cyan { color: #00897B; }
+
+.dgs-kpi-divider {
+  width: 1px;
+  height: 24px;
+  background: #e2e8f0;
+}
+
+.dgs-spark-wrap {
+  width: 100%;
+  height: 36px;
+  margin-top: 0.3rem;
+  overflow: hidden;
+}
+
+.dgs-spark-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive Overlays for Mobile */
+@media (max-width: 640px) {
+  .dgs-timeline-overlay-container {
+    aspect-ratio: 1.2 / 1 !important;
+    min-height: 340px !important;
+  }
+  .dgs-overlay-panel {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.8em;
+  }
+  .dgs-panel-audit { width: 180px !important; }
+  .dgs-panel-roadmap { width: 210px !important; }
+  .dgs-panel-auto-engine { width: 210px !important; }
+  .dgs-panel-trend { width: 190px !important; }
+  .dgs-panel-kpis { gap: 0.5rem; }
+  .dgs-kpi-val { font-size: 0.85rem; }
+
+  .dgs-workflow-strip {
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+    gap: 0.3rem;
+  }
+  .dgs-wf-step {
+    font-size: 0.62rem;
+    padding: 0.2rem 0.45rem;
+  }
+  .dgs-wf-arrow {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-fc1acb5626 {
+  color: var(--action-teal) !important;
+  -webkit-text-fill-color: var(--action-teal) !important;
+}
+
+.dgs-il-78c360413a {
+  color: var(--action-teal) !important;
+}
+
+.dgs-il-cbc788d266 {
+  padding-top: var(--space-xl) !important;
+  padding-bottom: var(--space-2xl) !important;
+  background-color: #0A1F33 !important;
+}
+
+.dgs-il-ca5dea0f97 {
+  max-width: 900px !important;
+}
+
+.dgs-il-648149cea2 {
+  margin-bottom: 0 !important;
+}
+
+.dgs-il-f85982a648 {
+  padding-bottom: var(--space-2xl) !important;
+}
+
+.dgs-il-0d07d6253e {
+  color: var(--dgs-blue) !important;
+}
+
+.dgs-il-2dc6a749f4 {
+  color: var(--dgs-amber) !important;
+}
+
+.dgs-il-7d262de3e5 {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 3rem !important;
+  width: 100% !important;
+}
+
+.dgs-il-2e2094e9d6 {
+  padding-top: 6rem !important;
+  padding-bottom: 6rem !important;
+  background-color: #0A1F33 !important;
+}
+
+.dgs-il-d8a4ccedef {
+  max-width: 900px !important;
+  margin: 0 auto 4rem auto !important;
+  text-align: center !important;
+}
+
+.dgs-il-886cd84182 {
+  color: var(--action-teal) !important;
+  display: inline-block !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.dgs-il-b8b343d1c3 {
+  font-size: clamp(1.6rem, 5vw, 3.2rem) !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.dgs-il-c4b0586076 {
+  color: var(--text-secondary) !important;
+  font-size: 1.08rem !important;
+  line-height: 1.65 !important;
+  max-width: 65ch !important;
+  margin: 0 auto !important;
+}
+
+.dgs-il-713d7feed8 {
+  padding-top: var(--space-2xl) !important;
+  padding-bottom: var(--space-2xl) !important;
+  background: var(--bg-white, #ffffff) !important;
+  overflow: hidden !important;
+}
+
+.dgs-il-8af4a3c93a {
+  max-width: 1000px !important;
+  margin: 0 auto 5rem auto !important;
+  text-align: center !important;
+}
+
+.dgs-il-b1ad660b53 {
+  color: var(--bg-deep-navy, #0A1F33) !important;
+  line-height: 1.25 !important;
+  margin-bottom: var(--space-sm) !important;
+}
+
+.dgs-il-e037c2ba35 {
+  color: var(--text-dark-muted, #334155) !important;
+  font-size: 1.08rem !important;
+  line-height: 1.65 !important;
+  margin: 0 auto !important;
+  max-width: 85ch !important;
+}
+
+.dgs-il-39ae76d1e8 {
+  --csr-accent: var(--dgs-teal) !important;
+}
+
+.dgs-il-11b22c5850 {
+  --csr-accent: var(--dgs-blue) !important;
+}
+
+.dgs-il-4c6e201c20 {
+  padding-top: var(--space-2xl) !important;
+  padding-bottom: var(--space-2xl) !important;
+  background: var(--bg-deep-navy) !important;
+}
+
+.dgs-il-8bcf387afd {
+  max-width: 100% !important;
+  margin-bottom: 5rem !important;
+}
+
+.dgs-il-3b9a6cb983 {
+  color: #ffffff !important;
+  line-height: 1.25 !important;
+  margin-bottom: var(--space-sm) !important;
+}
+
+.dgs-il-7b73f4a4bf {
+  color: var(--text-light-muted) !important;
+  font-size: 1.08rem !important;
+  line-height: 1.65 !important;
+  max-width: 90ch !important;
+}
+
+.dgs-il-8ee34defe8 {
+  padding-top: var(--space-2xl) !important;
+  padding-bottom: var(--space-2xl) !important;
+  background: var(--bg-white, #ffffff) !important;
+  color: var(--bg-deep-navy) !important;
+  overflow: hidden !important;
+}
+
+.dgs-il-50666a574d {
+  position: relative !important;
+}
+
+.dgs-il-54a678f0ea {
+  color: var(--bg-deep-navy) !important;
+  font-size: clamp(2rem, 3.2vw, 2.8rem) !important;
+  line-height: 1.25 !important;
+  margin: 0.5rem 0 0 0 !important;
+  font-weight: 700 !important;
+}
+
+.dgs-il-5f4f8400d1 {
+  width:16px !important;
+  height:16px !important;
+  color: var(--action-teal) !important;
+  display:inline-block !important;
+  margin-right: 6px !important;
+  vertical-align:middle !important;
+}
+
+.dgs-il-d4f7536fd4 {
+  margin-top: 1.5rem !important;
+}
+
+.dgs-il-d0c1c86a19 {
+  padding-top: var(--space-2xl) !important;
+  padding-bottom: var(--space-2xl) !important;
+  background: var(--bg-deep-navy) !important;
+  overflow: hidden !important;
+}
+
+.dgs-il-23fcde8942 {
+  margin-bottom: 4rem !important;
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+.dgs-il-05d67e7b31 {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.dgs-il-8aaeee1823 {
+  color: #ffffff !important;
+  font-size: clamp(2rem, 3.2vw, 2.8rem) !important;
+  line-height: 1.25 !important;
+  margin: 0 0 1.25rem 0 !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+}
+
+.dgs-il-93c6e1d4bb {
+  white-space: nowrap !important;
+}
+
+.dgs-il-08b603df45 {
+  align-self: center !important;
+}
+
+.dgs-il-32a5fbbcb0 {
+  background-image: linear-gradient(to bottom, rgba(10, 31, 51, 0.4), rgba(10, 31, 51, 0.95)), url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83d03499074f5ef636e0d8.png') !important;
+}
+
+.dgs-il-9953930350 {
+  background-image: linear-gradient(to bottom, rgba(10, 31, 51, 0.4), rgba(10, 31, 51, 0.95)), url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83bbadfe4291bd1056fa66.png') !important;
+}
+
+.dgs-il-256057d338 {
+  background-image: linear-gradient(to bottom, rgba(10, 31, 51, 0.4), rgba(10, 31, 51, 0.95)), url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83bbad9437a276210f33b9.png') !important;
+}
+
+.dgs-il-75e655a1a7 {
+  background-image: linear-gradient(to bottom, rgba(10, 31, 51, 0.4), rgba(10, 31, 51, 0.95)), url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a7d8800255b571c8ee058f0.webp') !important;
+}
+
+.dgs-il-80f56ee2c9 {
+  position: relative !important;
+  overflow: hidden !important;
+  padding: var(--space-2xl) 0 !important;
+  background: var(--bg-navy-darkest) !important;
+  min-height: 60vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.dgs-il-6770b49527 {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a857bcca3ca3046969bedef.png') !important;
+}
+
+.dgs-il-055261c8e0 {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  width: 70vw !important;
+  height: 50vh !important;
+  border-radius: 50% !important;
+  filter: blur(80px) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.dgs-il-8e74b3ae80 {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+.dgs-il-b783b57af6 {
+  position: relative !important;
+  z-index: 2 !important;
+  max-width: 900px !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 2rem !important;
+  box-sizing: border-box !important;
+}
+
+.dgs-il-a24c96df24 {
+  margin: 0 !important;
+  font-size: clamp(3rem, 6.8vw, 5.5rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.dgs-il-71e255c773 {
+  margin: 0 auto !important;
+  max-width: 640px !important;
+  font-size: clamp(1rem, 1.8vw, 1.15rem) !important;
+  line-height: 1.6 !important;
+  color: var(--text-secondary) !important;
+}
+
+.dgs-il-d46ee4853e {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 1.25rem !important;
+  margin-top: 1.5rem !important;
+  width: 100% !important;
+}
+
+.dgs-il-5bc6667d8b {
+  padding-top: 8rem !important;
+  padding-bottom: 8rem !important;
+}
+
+.dgs-il-40aef0b69f {
+  color: var(--action-teal) !important;
+  margin-bottom: 0.75rem !important;
+  display: inline-block !important;
+}
+
+.dgs-il-555b20047d {
+  color: var(--bg-deep-navy) !important;
+  font-size: clamp(2.2rem, 4vw, 3.2rem) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 1.25rem !important;
+  letter-spacing: -0.02em !important;
+}
+
+.dgs-il-30e4c778ba {
+  color: var(--text-dark-muted) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.7 !important;
+  margin: 0 !important;
+}
+
+.dgs-il-2cfbdbb9ba {
+  width: 60px !important;
+  height: 3px !important;
+  background: var(--accent-yellow) !important;
+  margin-top: 2rem !important;
+}
+
+.dgs-il-d5ab445043 {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+

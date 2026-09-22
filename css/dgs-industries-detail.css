@@ -1,0 +1,1447 @@
+/* ============================================================
+   DIGITAL GROWTHSCALE — STANDALONE INDUSTRY DETAIL PAGE STYLES
+   Custom made for the 12 sector sub-pages under /industries/
+   ============================================================ */
+
+/* ─── 1. HERO (Centered text + duotone background photo, matches solutions detail) ─── */
+
+.dgs-service-hero {
+  padding: 8rem 0 5rem;
+  background-color: #0A1F33 !important;
+  color: var(--text-white, #ffffff);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  isolation: isolate;
+}
+
+@media (min-width: 1024px) {
+  .dgs-service-hero {
+    padding: 10.5rem 0 6.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dgs-service-hero {
+    padding: 8.5rem 0 4.5rem;
+  }
+}
+
+/* Remove table grid mesh overlay per request */
+.dgs-hero-mesh-overlay,
+.dgs-service-hero .dgs-hero-mesh-overlay {
+  display: none !important;
+}
+
+/* Duotone background photo styling (renders the Unsplash image linked in HTML) */
+.dgs-hero-duotone {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  mask-image: radial-gradient(ellipse 95% 100% at 50% 0%, black 50%, transparent 92%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 100% at 50% 0%, black 50%, transparent 92%);
+}
+
+.dgs-hero-duotone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--dgs-duotone-img);
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(0.85) contrast(1.2) brightness(0.85);
+  opacity: 0.55;
+}
+
+.dgs-hero-duotone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0A1F33 0%, #0d5f70 55%, #00B39F 100%);
+  mix-blend-mode: color;
+  opacity: 0.85;
+}
+
+.dgs-hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(10, 31, 51, 0.25) 0%, rgba(10, 31, 51, 0.5) 60%, #0A1F33 100%);
+}
+
+.dgs-service-hero .dgs-hero-spotlight {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 80vw;
+  height: 60vh;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 179, 159, 0.18) 0%, rgba(45, 127, 249, 0.08) 50%, transparent 80%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 2;
+  transform: translate(-50%, -20%);
+}
+
+.dgs-service-hero > .dgs-container {
+  position: relative;
+  z-index: 5;
+}
+
+/* Centered hero content column */
+.dgs-svc-hero-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.dgs-service-hero .dgs-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1140px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 3.5rem;
+}
+
+.dgs-service-hero h1 {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0 auto 1.5rem;
+  max-width: 1140px;
+  text-align: center;
+}
+
+.dgs-service-hero h1 .dgs-hero-title-main {
+  background: linear-gradient(to bottom, #ffffff 55%, #cfd8e3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.dgs-service-hero .dgs-hero-sub {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 720px;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dgs-service-hero .dgs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+/* Breadcrumb (centered, on dark) */
+.dgs-svc-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 5;
+}
+
+.dgs-svc-breadcrumb a {
+  color: rgba(255, 255, 255, 0.88);
+  transition: color var(--duration-base, 0.3s) var(--ease-out, ease-out);
+  text-decoration: none;
+}
+
+.dgs-svc-breadcrumb a:hover {
+  color: var(--action-teal, #00b39f);
+}
+
+.dgs-svc-breadcrumb span[aria-hidden] {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.dgs-svc-breadcrumb .dgs-svc-current {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Smooth padding transition to problems section */
+#dgs-ind-problems {
+  padding-top: 5rem !important;
+}
+
+@media (min-width: 1024px) {
+  #dgs-ind-problems {
+    padding-top: 6.5rem !important;
+  }
+}
+
+/* ─── SOLUTION HERO BADGE ─── */
+.dgs-service-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1affeb; /* brighter teal for dark mode contrast, matches .dgs-pill--teal */
+  background: rgba(0, 179, 159, 0.15);
+  border: 1px solid rgba(0, 179, 159, 0.4);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ─── BREADCRUMB ─── */
+.dgs-svc-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 5;
+}
+
+.dgs-svc-breadcrumb a {
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.dgs-svc-breadcrumb a:hover {
+  color: var(--action-teal);
+}
+
+.dgs-svc-breadcrumb span[aria-hidden] {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.dgs-svc-breadcrumb .dgs-svc-current {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ─── CHALLENGES (PROBLEMS) SECTION ─── */
+.dgs-challenge-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  max-width: 60rem;
+  margin: 3.5rem auto 0;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .dgs-challenge-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 4rem;
+  }
+}
+
+.dgs-challenge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 0 !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transition: transform 0.3s var(--ease-out, ease-out);
+}
+
+.dgs-challenge-card:hover {
+  transform: translateY(-3px);
+  background: none !important;
+  border: none !important;
+}
+
+.dgs-challenge-card-icon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(150deg, rgba(0, 179, 159, 0.16) 0%, rgba(45, 127, 249, 0.1) 100%);
+  border: 1px solid rgba(0, 179, 159, 0.22);
+  color: var(--action-teal, #00b39f);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dgs-challenge-card-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.dgs-challenge-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.dgs-challenge-card h3,
+.dgs-challenge-card div > p:first-child,
+.dgs-challenge-card p {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0A1F33 !important;
+  margin: 0;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.dgs-challenge-card div > p:nth-child(2) {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text-dark-muted, #5a6e85) !important;
+  margin-top: 0.4rem;
+  line-height: 1.6;
+}
+
+/* Light card override reset */
+.dgs-challenge-card--light {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.dgs-challenge-card--light p:first-child {
+  color: #0A1F33 !important;
+}
+
+.dgs-challenge-card--light p:nth-child(2) {
+  color: #5a6e85 !important;
+}
+
+/* ─── RECOMMENDED STACK (CHECKLIST) ─── */
+.dgs-check-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  margin-top: 3.5rem;
+}
+
+.dgs-check-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.dgs-check-item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 179, 159, 0.1);
+  color: var(--action-teal);
+  flex-shrink: 0;
+}
+
+.dgs-check-item-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-check-item p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* On light sections the checklist text goes dark for contrast */
+.dgs-section--light .dgs-check-item p {
+  color: #334155;
+}
+
+/* Two-column checklist for wider recommended/results sections */
+@media (min-width: 768px) {
+  .dgs-check-grid--2col {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem 3rem;
+  }
+}
+
+/* ─── AEO BLOCK ─── */
+.dgs-aeo-snippet-block {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  transition: all 0.35s;
+}
+.dgs-aeo-snippet-block:hover {
+  border-color: rgba(0, 179, 159, 0.2) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* ─── AEO on a LIGHT section: one soft "mist" card holding the whole block.
+   Heading spans the top; photo + answer copy sit side by side beneath it. ─── */
+#dgs-ind-aeo .dgs-aeo-mist {
+  background: #F8FAFC;
+  border: 1px solid var(--surface-border-neutral);
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 4vw, 3.5rem);
+}
+
+#dgs-ind-aeo .dgs-aeo-q {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--text-dark-primary);
+  margin: 0 0 2rem;
+}
+
+#dgs-ind-aeo .dgs-aeo-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  #dgs-ind-aeo .dgs-aeo-body {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+#dgs-ind-aeo .dgs-aeo-a {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--text-dark-muted);
+  margin: 0;
+}
+
+/* Photo panel inside the mist card: soft framing, no heavy dark drop shadow */
+#dgs-ind-aeo .dgs-aeo-photo-panel {
+  position: relative;
+  box-shadow: 0 24px 50px rgba(10, 31, 51, 0.1);
+  border: 1px solid var(--surface-border-neutral);
+}
+
+/* ─── SECTION WITH PHOTO STRIPE ─── */
+.dgs-section-with-photo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+@media (min-width: 960px) {
+  .dgs-section-with-photo {
+    grid-template-columns: 1fr 480px;
+    min-height: 560px;
+  }
+  .dgs-section-with-photo.dgs-photo-left {
+    grid-template-columns: 480px 1fr;
+  }
+}
+
+.dgs-section-with-photo-content {
+  padding: 5.5rem 4.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (max-width: 959px) {
+  .dgs-section-with-photo-content {
+    padding: 4rem 1.5rem;
+  }
+}
+
+.dgs-section-photo-panel {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  min-height: 380px;
+}
+.dgs-section-photo-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(8, 22, 42, 0.45) 0%, rgba(8, 22, 42, 0.05) 60%);
+  pointer-events: none;
+}
+.dgs-section-with-photo.dgs-photo-left .dgs-section-photo-panel::after {
+  background: linear-gradient(to left, rgba(8, 22, 42, 0.45) 0%, rgba(8, 22, 42, 0.05) 60%);
+}
+
+/* On light bg sections, the overlay should be lighter */
+.dgs-section-photo-panel--light::after {
+  background: linear-gradient(to right, rgba(244,246,249,0.5) 0%, rgba(244,246,249,0.05) 60%);
+}
+.dgs-photo-left .dgs-section-photo-panel--light::after {
+  background: linear-gradient(to left, rgba(244,246,249,0.5) 0%, rgba(244,246,249,0.05) 60%);
+}
+
+/* ─── AEO SECTION WITH PHOTO ─── */
+.dgs-aeo-with-photo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .dgs-aeo-with-photo {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+}
+
+.dgs-aeo-photo-panel {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+}
+.dgs-aeo-photo-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(0, 179, 159, 0.16) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ─── FINAL CTA — cinematic (matches the individual solution pages) ───
+   Ported from `.dgs-sol-final-cta` in dgs-service-detail.css so the industry
+   pages share the exact same final-CTA treatment (giant SCALE watermark +
+   faded photo + breathing aurora + white-gradient heading with teal accent). */
+.dgs-sol-final-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  text-align: center;
+  padding: calc(var(--space-2xl, 6rem) * 1.05) 3.5rem;
+  background: var(--bg-navy-darkest, #0A1F33) !important;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+/* faded photo background */
+.dgs-sol-final-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black, transparent 72%);
+  pointer-events: none;
+}
+
+/* SCALE watermark removed from industry detail pages */
+.dgs-sol-final-cta::before {
+  content: none;
+}
+
+/* breathing teal/blue aurora */
+.dgs-sol-final-cta::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70vw;
+  height: 50vh;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(0, 179, 159, 0.12) 0%,
+    rgba(45, 127, 249, 0.12) 40%,
+    transparent 70%);
+  animation: dgs-sol-cta-breathe 8s ease-in-out infinite alternate;
+}
+
+@keyframes dgs-sol-cta-breathe {
+  0%   { transform: translate(-50%, -50%) scale(1);    opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; }
+}
+
+/* lift real content above the decorative layers */
+.dgs-sol-final-cta > *:not(.dgs-sol-final-bg) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Heading: two clean lines + white gradient text-glow.
+   The !important beats the global `.dgs-page h2` !important size in common. */
+.dgs-sol-final-cta h2 {
+  max-width: 66rem;
+  margin: 0 auto var(--space-md, 1.25rem);
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem) !important;
+  line-height: 1.22;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.12));
+}
+
+/* keep the teal accent line solid (don't let the gradient clip swallow it) */
+.dgs-sol-final-cta h2 .dgs-text-accent {
+  -webkit-text-fill-color: var(--action-teal);
+  filter: none;
+}
+
+.dgs-sol-final-cta p {
+  max-width: 40rem;
+  margin: 0 auto 2rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.dgs-sol-final-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+/* ─── CASE STUDIES (representative outcome cards) ─── */
+.dgs-case-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+@media (min-width: 768px) {
+  .dgs-case-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.dgs-case-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.4rem;
+  transition: transform 0.4s var(--ease-out, ease-out), border-color 0.4s var(--ease-out, ease-out);
+}
+.dgs-case-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 179, 159, 0.28);
+}
+
+.dgs-case-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.22;
+  z-index: 0;
+  transition: opacity 0.5s var(--ease-out, ease-out), transform 0.6s var(--ease-out, ease-out);
+}
+.dgs-case-card:hover .dgs-case-card-bg {
+  opacity: 0.3;
+  transform: scale(1.05);
+}
+.dgs-case-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(to top, rgba(10, 31, 51, 0.96) 12%, rgba(10, 31, 51, 0.55) 55%, rgba(10, 31, 51, 0.3) 100%);
+  pointer-events: none;
+}
+.dgs-case-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dgs-case-tag {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--action-teal);
+  margin-bottom: 0.9rem;
+}
+
+.dgs-case-metric {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 0.75rem;
+}
+
+.dgs-case-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+}
+
+.dgs-case-note {
+  margin: 3.25rem auto 0 !important;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--text-tertiary, rgba(255, 255, 255, 0.5));
+  text-align: center;
+}
+
+/* On the light case-studies section the note needs dark text */
+.dgs-section--light .dgs-case-note {
+  color: #5a6e85;
+}
+
+/* ============================================================
+   SPLIT-WITH-MEDIA (Recommended / Expected Results sections)
+   Content column + framed photo, so every section carries imagery.
+   ============================================================ */
+.dgs-ind-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .dgs-ind-split {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 5rem;
+  }
+  /* Reversed variant puts the photo on the left */
+  .dgs-ind-split--reverse .dgs-ind-split-media {
+    order: -1;
+  }
+}
+
+.dgs-ind-split-content .dgs-section-head {
+  margin-bottom: 2.5rem;
+}
+
+.dgs-ind-split-content .dgs-check-grid {
+  margin-top: 0;
+}
+
+.dgs-ind-split-media {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+  aspect-ratio: 4 / 3;
+  background-color: #0A1F33;
+  background-size: cover;
+  background-position: center;
+}
+
+.dgs-ind-split-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(0, 179, 159, 0.16) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* Softer framing when the split sits on a light section */
+.dgs-section--light .dgs-ind-split-media {
+  border-color: rgba(10, 31, 51, 0.1);
+  box-shadow: 0 30px 70px rgba(10, 31, 51, 0.14);
+}
+
+/* ─── DUAL COMPARISON CARD MATRIX (ON LIGHT SECTION BACKGROUND) ─── */
+.dgs-ind-compare-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+@media (min-width: 960px) {
+  .dgs-ind-compare-wrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* LEFT PANEL (RECOMMENDED SOLUTIONS) - LIGHT MIST BACKGROUND CARD */
+.dgs-ind-compare-left {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: var(--radius-xl, 24px);
+  padding: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(10, 31, 51, 0.04);
+}
+
+.dgs-ind-compare-left .dgs-eyebrow {
+  color: var(--action-teal, #00B39F) !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.dgs-ind-compare-left h2 {
+  color: #0A1F33 !important; /* DARK NAVY HEADING ON MIST CARD */
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  font-weight: 700;
+  margin: 0.5rem 0 2rem;
+  letter-spacing: -0.02em;
+}
+
+/* LIST CONTAINER */
+.dgs-ind-compare-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+/* LEFT ITEM ROW - PURE WHITE CHIP ON MIST CARD */
+.dgs-ind-compare-left .dgs-ind-compare-item {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 1.35rem;
+  background: #ffffff !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: var(--radius-md, 14px);
+  box-shadow: 0 2px 8px rgba(10, 31, 51, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-ind-compare-left .dgs-ind-compare-item:hover {
+  background: #ffffff !important;
+  border-color: rgba(0, 179, 159, 0.4) !important;
+  transform: translateX(4px);
+  box-shadow: 0 6px 16px rgba(0, 179, 159, 0.1);
+}
+
+.dgs-ind-compare-left .dgs-ind-item-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 179, 159, 0.1);
+  border: 1px solid rgba(0, 179, 159, 0.25);
+  color: var(--action-teal, #00B39F);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dgs-ind-compare-left .dgs-ind-item-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-ind-compare-left .dgs-ind-item-title {
+  color: #0A1F33 !important; /* DARK NAVY TEXT FOR CRISP CONTRAST ON WHITE CHIP */
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* RIGHT ELEVATED PANEL (EXPECTED RESULTS) - DEEP NAVY CARD, GLOW REMOVED */
+.dgs-ind-compare-right {
+  background: #0A1F33 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: var(--radius-xl, 24px);
+  padding: clamp(2rem, 4vw, 3rem);
+  box-shadow: 0 20px 45px rgba(10, 31, 51, 0.22);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* REMOVED GLOW BLOB ::before */
+
+.dgs-ind-badge-glow {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--action-teal, #00B39F);
+  padding: 0.4rem 0.9rem;
+  border-radius: 100px;
+  box-shadow: none;
+}
+
+.dgs-ind-compare-right h2 {
+  color: #ffffff !important;
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  font-weight: 700;
+  margin: 0.85rem 0 2rem;
+  letter-spacing: -0.02em;
+}
+
+/* HIGHLIGHTED RESULT ITEM CARDS IN RIGHT CARD */
+.dgs-ind-compare-item--highlight {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 1.35rem;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: var(--radius-md, 14px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-ind-compare-item--highlight:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(0, 179, 159, 0.4) !important;
+  transform: translateX(4px);
+}
+
+.dgs-ind-item-icon--teal {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--action-teal, #00B39F);
+  border: none;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dgs-ind-item-icon--teal svg {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-ind-compare-right .dgs-ind-item-title {
+  color: #ffffff !important;
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ─── AEO BANNER (GRID LAYOUT WITH HORIZONTAL MARQUEE STACK) ─── */
+.dgs-aeo-navy-banner,
+#dgs-ind-aeo .dgs-aeo-navy-banner,
+.dgs-section--light #dgs-ind-aeo .dgs-aeo-navy-banner {
+  background: #0A1F33 !important;
+  border-radius: var(--radius-xl, 24px);
+  padding: clamp(2.25rem, 4vw, 3.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 24px 50px rgba(10, 31, 51, 0.35) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.dgs-aeo-navy-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 450px;
+  height: 100%;
+  background: radial-gradient(circle at 100% 50%, rgba(0, 179, 159, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.dgs-aeo-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  position: relative;
+  z-index: 1;
+}
+
+.dgs-aeo-text-side {
+  flex: 1 1 52%;
+  min-width: 0;
+}
+
+.dgs-aeo-navy-banner .dgs-aeo-q,
+#dgs-ind-aeo .dgs-aeo-q,
+.dgs-section--light #dgs-ind-aeo .dgs-aeo-q {
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff !important;
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.dgs-aeo-navy-banner .dgs-text-teal {
+  color: var(--action-teal, #00B39F) !important;
+}
+
+.dgs-aeo-navy-banner .dgs-aeo-a,
+#dgs-ind-aeo .dgs-aeo-a,
+.dgs-section--light #dgs-ind-aeo .dgs-aeo-a {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #ffffff !important;
+  opacity: 0.95;
+  margin: 0;
+}
+
+/* ─── AEO ECOSYSTEM STACK (HORIZONTAL MARQUEE ABOVE HERO BADGE) ─── */
+.dgs-aeo-ecosystem-stack {
+  flex: 0 0 420px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0;
+}
+
+.dgs-aeo-hmarquee-container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+  display: flex;
+  padding: 0.35rem 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+.dgs-aeo-hmarquee-track {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: max-content;
+  animation: dgs-aeo-hmarquee-scroll 24s linear infinite;
+}
+
+.dgs-aeo-hmarquee-container:hover .dgs-aeo-hmarquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes dgs-aeo-hmarquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Individual Tool Chip (Crisp, High-End Card) */
+.dgs-ind-tool-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 52px;
+  padding: 0.65rem;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28), 0 2px 5px rgba(0, 0, 0, 0.1);
+  user-select: none;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.dgs-ind-tool-chip:hover {
+  transform: translateY(-3px) scale(1.06);
+  border-color: rgba(0, 179, 159, 0.6);
+  box-shadow: 0 12px 28px rgba(0, 179, 159, 0.35);
+}
+
+.dgs-ind-tool-chip svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Center Highlighted Hero Chip: Intelligent Automation */
+.dgs-ind-tool-chip--hero,
+.dgs-section--light .dgs-ind-tool-chip--hero {
+  width: auto;
+  height: 52px;
+  background: linear-gradient(135deg, #092c48 0%, #051829 100%) !important;
+  color: #ffffff !important;
+  border: 1.5px solid #00B39F !important;
+  box-shadow: 0 8px 24px rgba(0, 179, 159, 0.4), 0 0 16px rgba(0, 179, 159, 0.2) !important;
+  padding: 0 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  border-radius: 15px;
+  white-space: nowrap;
+}
+
+.dgs-ind-tool-chip--hero span,
+.dgs-section--light .dgs-ind-tool-chip--hero span {
+  color: #ffffff !important;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dgs-ind-tool-chip--hero:hover {
+  transform: translateY(-3px) scale(1.05);
+  border-color: #00e6cc !important;
+  box-shadow: 0 12px 30px rgba(0, 179, 159, 0.55), 0 0 20px rgba(0, 179, 159, 0.35) !important;
+}
+
+.dgs-ind-tool-chip--hero svg {
+  width: 22px;
+  height: 22px;
+  stroke: #00B39F;
+  color: #00B39F;
+}
+
+@media (max-width: 1024px) {
+  .dgs-aeo-banner-inner {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 2.25rem;
+  }
+  .dgs-aeo-text-side {
+    width: 100%;
+    max-width: 720px;
+    text-align: center;
+  }
+  .dgs-aeo-navy-banner .dgs-aeo-q {
+    margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+  .dgs-aeo-navy-banner .dgs-aeo-a {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  .dgs-aeo-ecosystem-stack {
+    /* Desktop's `flex: 0 0 420px` sets a 420px WIDTH in the row layout
+       above. .dgs-aeo-banner-inner just switched to flex-direction:column,
+       where flex-basis governs HEIGHT instead — without this reset the
+       stack was forced to a 420px-tall box no matter how little content
+       (a row of chips + one badge) it actually held, leaving a huge dead
+       gap of empty navy card below them on tablet/mobile. */
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 480px;
+  }
+  .dgs-aeo-hmarquee-container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .dgs-aeo-navy-banner,
+  #dgs-ind-aeo .dgs-aeo-navy-banner,
+  .dgs-section--light #dgs-ind-aeo .dgs-aeo-navy-banner {
+    padding: 2.25rem 1.25rem !important;
+    border-radius: 20px !important;
+  }
+  .dgs-aeo-banner-inner {
+    gap: 1.75rem;
+  }
+  .dgs-aeo-text-side {
+    text-align: center;
+  }
+  .dgs-aeo-navy-banner .dgs-aeo-q {
+    font-size: 1.35rem !important;
+    line-height: 1.3;
+    margin-bottom: 0.85rem;
+  }
+  .dgs-aeo-navy-banner .dgs-aeo-a {
+    font-size: 0.95rem !important;
+    line-height: 1.6;
+  }
+  .dgs-aeo-ecosystem-stack {
+    width: 100%;
+    gap: 1.15rem;
+  }
+  .dgs-aeo-hmarquee-container {
+    width: 100%;
+    padding: 0.25rem 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+  .dgs-ind-tool-chip {
+    width: 52px;
+    height: 46px;
+    padding: 0.5rem;
+    border-radius: 12px;
+  }
+  .dgs-ind-tool-chip svg {
+    width: 24px;
+    height: 24px;
+  }
+  .dgs-ind-tool-chip--hero,
+  .dgs-section--light .dgs-ind-tool-chip--hero {
+    height: 46px;
+    padding: 0 1.25rem;
+    font-size: 0.875rem;
+    border-radius: 12px;
+    gap: 0.55rem;
+  }
+  .dgs-ind-tool-chip--hero svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ============================================================
+   CASE STUDIES: stat cards (rebuilt, replaces the old photo-pillar
+   layout). Two-column grid on a dark section: big stat number,
+   category tag, description, "Scope" pill.
+   ============================================================ */
+/* Wider measure just for this heading so the larger font-size below
+   doesn't force it onto two lines (sitewide .dgs-section-head caps at
+   56.25rem, too narrow at this size). */
+#dgs-ind-cases .dgs-section-head {
+  max-width: 76rem;
+}
+
+#dgs-ind-cases h2 {
+  font-size: clamp(2.6rem, 5.2vw, 3.9rem) !important;
+}
+
+.dgs-cs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin: 3rem auto 2.25rem;
+  max-width: 84rem;
+}
+
+@media (min-width: 760px) {
+  .dgs-cs-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.dgs-cs-rule {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.14);
+  margin-bottom: 2rem;
+}
+
+.dgs-cs-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+}
+
+.dgs-cs-num {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(3.25rem, 6vw, 4.5rem);
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.dgs-cs-unit {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.3vw, 1.75rem);
+  color: var(--action-teal);
+}
+
+.dgs-cs-tag {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--action-teal);
+  margin-bottom: 0.9rem;
+}
+
+.dgs-cs-desc {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 2.5rem !important;
+  max-width: 42ch;
+}
+
+.dgs-cs-scope {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(0, 179, 159, 0.35);
+  border-radius: var(--radius-full, 999px);
+  padding: 0.4rem 1.05rem 0.4rem 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.dgs-cs-scope-label {
+  background: var(--action-teal);
+  color: #0A1F33;
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.32rem 0.7rem;
+  border-radius: var(--radius-full, 999px);
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-eae56abd02 {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b25ba6a03cda06d724be.png') !important;
+}
+
+.dgs-il-842252d1fb {
+  justify-content:center !important;
+}
+
+.dgs-il-ab397ef252 {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b25ca6a03cda06d72df2.png') !important;
+}
+
+.dgs-il-7018de4779 {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b1be8143df7d49d03ffc.png') !important;
+}
+
+.dgs-il-8406dd665d {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b1c0cf50f900f27f65b2.png') !important;
+}
+
+.dgs-il-e35428037a {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b207b9de9ff193f2efaf.png') !important;
+}
+
+.dgs-il-ef2f1bf4e2 {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a853e5fe8effa27ad2c05d0.png') !important;
+}
+
+.dgs-il-774bc0ef0c {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b1958143df7d49ceff59.png') !important;
+}
+
+.dgs-il-704f03d214 {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b19acf50f900f27e6bad.png') !important;
+}
+
+.dgs-il-569d6631f1 {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b149255b571c8e198dc1.png') !important;
+}
+
+.dgs-il-5c7b60c7c4 {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b14c1082d648776d4192.png') !important;
+}
+
+.dgs-il-efdf220e48 {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b100f1e423633fc2efda.png') !important;
+}
+
+.dgs-il-4ec98d7aa0 {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b0fe99074f5ef6bb4ad1.png') !important;
+}
+
+.dgs-il-9c0355a838 {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b0421082d648776c5481.png') !important;
+}
+
+.dgs-il-50b388cbd9 {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a853e12b8d260ce2a2bbc21.png') !important;
+}
+
+.dgs-il-a611154c63 {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83aece270e1f5457b1f84a.png') !important;
+}
+
+.dgs-il-fe6ecea1fb {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83aecffe4291bd10229e15.png') !important;
+}
+
+.dgs-il-b67b633b50 {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83af6ef1e423633fc07b16.png') !important;
+}
+
+.dgs-il-906b20e5b9 {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83af6dfe4291bd10236015.png') !important;
+}
+
+.dgs-il-7d6d251e82 {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83af9dcf50f900f27d3742.png') !important;
+}
+
+.dgs-il-aa89683798 {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83af9fcf50f900f27d375c.png') !important;
+}
+
+.dgs-il-4a812fcfee {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83af3bb9de9ff193f14137.png') !important;
+}
+
+.dgs-il-6f1f5671f0 {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83af458143df7d49ccae08.png') !important;
+}
+
+.dgs-il-f670fb045a {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83af0c8143df7d49cc7363.png') !important;
+}
+
+.dgs-il-f3b93603ca {
+  background-image:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83af0a255b571c8e18d923.png') !important;
+}
+
