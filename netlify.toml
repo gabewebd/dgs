@@ -1,0 +1,161 @@
+# Netlify configuration for Digital GrowthScale
+# Beginner note: you do not need to edit this file for the site
+# to work. It just tells Netlify where the dashboard's serverless
+# function lives.
+
+[build]
+  functions = "netlify/functions"
+  # Expand the shared navbar/footer (includes/*.html) into every page so the
+  # published HTML always matches the single source of truth. See scripts/build-includes.js.
+  command = "npm run build:includes"
+  publish = "."
+
+# Clean URLs for industry pages, e.g. /industries/outsourcing -> industries/outsourcing.html
+[[redirects]]
+  from = "/industries/:slug"
+  to = "/industries/:slug.html"
+  status = 200
+
+# Clean URLs for solution pages, e.g. /solutions/growth-systems-audit -> solutions/growth-systems-audit.html
+[[redirects]]
+  from = "/solutions/:slug"
+  to = "/solutions/:slug.html"
+  status = 200
+
+# Resources page renamed to Growth Hub - send old links/bookmarks to the new page
+[[redirects]]
+  from = "/resources"
+  to = "/growth-hub"
+  status = 301
+
+# Services page renamed to Solutions - send old links/bookmarks to the new page
+[[redirects]]
+  from = "/services"
+  to = "/solutions"
+  status = 301
+
+# GHL Careers iFrame Source clean URLs
+[[redirects]]
+  from = "/careers-source"
+  to = "/careers-source.html"
+  status = 200
+
+[[redirects]]
+  from = "/careers-embed"
+  to = "/careers-source.html"
+  status = 200
+
+# Social Hub clean URLs: /social-hub & /social-hub/ -> /hub.html
+[[redirects]]
+  from = "/social-hub"
+  to = "/hub.html"
+  status = 200
+
+[[redirects]]
+  from = "/social-hub/"
+  to = "/hub.html"
+  status = 200
+
+# Growth Hub articles: flat public URLs (matches sitemap.xml) rewrite to the
+# pillar subfolder where the file actually lives (learn/implement/connect).
+[[redirects]]
+  from = "/growth-hub/ai-ceo-five-questions"
+  to = "/growth-hub/learn/ai-ceo-five-questions.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/ai-readiness-test"
+  to = "/growth-hub/learn/ai-readiness-test.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/business-operating-system-20-person-company"
+  to = "/growth-hub/learn/business-operating-system-20-person-company.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/founder-delegation-mistakes"
+  to = "/growth-hub/learn/founder-delegation-mistakes.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/founder-dependency-test"
+  to = "/growth-hub/learn/founder-dependency-test.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/hidden-cost-of-manual-handoffs"
+  to = "/growth-hub/learn/hidden-cost-of-manual-handoffs.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/hybrid-human-ai-team"
+  to = "/growth-hub/learn/hybrid-human-ai-team.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/leading-team-scared-of-ai"
+  to = "/growth-hub/learn/leading-team-scared-of-ai.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/remote-team-that-performs"
+  to = "/growth-hub/learn/remote-team-that-performs.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/responsible-ai-smes-guide"
+  to = "/growth-hub/learn/responsible-ai-smes-guide.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/sops-not-being-followed"
+  to = "/growth-hub/learn/sops-not-being-followed.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/which-workflows-to-automate-first"
+  to = "/growth-hub/learn/which-workflows-to-automate-first.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/why-ai-why-now"
+  to = "/growth-hub/learn/why-ai-why-now.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/why-growth-stalls-1m-5m"
+  to = "/growth-hub/learn/why-growth-stalls-1m-5m.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/ai-readiness-checklist"
+  to = "/growth-hub/implement/ai-readiness-checklist.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/compliance-calendar-template"
+  to = "/growth-hub/implement/compliance-calendar-template.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/remote-onboarding-checklist"
+  to = "/growth-hub/implement/remote-onboarding-checklist.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/sop-template-pack"
+  to = "/growth-hub/implement/sop-template-pack.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/speed-to-lead-playbook"
+  to = "/growth-hub/implement/speed-to-lead-playbook.html"
+  status = 200
+
+[[redirects]]
+  from = "/growth-hub/from-operator-to-orchestrator-batch-2"
+  to = "/growth-hub/connect/from-operator-to-orchestrator-batch-2.html"
+  status = 200
+
+

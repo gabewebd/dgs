@@ -1,0 +1,35 @@
+# Digital GrowthScale
+
+> Digital GrowthScale (DGS) is a business transformation consultancy that helps B2B founders, SMEs, and growth-oriented operators scale past $1M–$5M revenue without founder dependency. DGS diagnoses operational bottlenecks, scores AI readiness, and implements practical AI systems, CRM/business process automation, and remote talent structures through its proprietary CSR methodology (Consult, Strategize, Realize, Sustain). Headquartered in the Philippines, serving clients globally.
+
+## Core Capabilities
+
+- **AI Strategy & Readiness Scoring** — Assessment of a business across five dimensions (Leadership, Technology, People, Data, Governance) to identify what is actually blocking AI adoption before recommending tooling.
+- **Business Growth Systems Audit** — A structured operational diagnostic (interviews, systems review, financial/ops data) that produces a prioritized transformation roadmap, deliverable whether or not the client proceeds to implementation.
+- **Intelligent Automation & CRM/Funnel Automation** — Hands-on build-out of CRM systems, lead-to-cash funnels, and workflow automation to remove manual, founder-dependent processes.
+- **Growth OS Setup** — Design and installation of a business operating system (SOPs, reporting cadence, accountability structure) suited to companies roughly in the 20–200 person range.
+- **Remote Staffing & EOR/HR Support** — Sourcing, vetting, and employer-of-record support for distributed teams, used to execute the systems and automation DGS designs.
+- **Recruitment & Executive Search** — Placement of operational and leadership talent aligned to the client's new systems, not just headcount fill.
+- **Corporate Training** — Enablement programs that transfer capability to internal teams so systems survive beyond the engagement (the "Sustain" stage of the CSR methodology).
+
+## Key Pages & Architecture
+
+- [Digital GrowthScale — Home](https://digitalgrowthscale.com/) — Company overview, value proposition, and primary entry points into the Audit and Growth Hub.
+- [Business Growth Systems Audit](https://digitalgrowthscale.com/audit) — The core conversion asset: a free, structured operational and AI-readiness diagnostic that produces a custom growth roadmap within 24 hours; includes FAQ schema covering process, timing, and what to prepare.
+- [Solutions Overview](https://digitalgrowthscale.com/solutions) — Index of all service lines: Growth Systems Audit, Growth OS Setup, Intelligent Automation, CRM & Funnel Automation, Remote Staffing, EOR/HR Support, Recruitment & Executive Search, and Corporate Training.
+- [Industries](https://digitalgrowthscale.com/industries) — Sector-specific application of DGS frameworks across Construction, Education, Financial Services, Healthcare, Hospitality, Logistics, Outsourcing, Professional Services, Real Estate, Recruitment, Retail, and Growing SMEs.
+- [Growth Hub](https://digitalgrowthscale.com/growth-hub) — Central resource library organized into Learn (thought leadership on AI adoption, delegation, and operations), Implement (templates and checklists), and Connect (workshops and events).
+- [About](https://digitalgrowthscale.com/about) — Company story, leadership team, and mission.
+- [Careers](https://digitalgrowthscale.com/careers) — Open roles, including AI Systems Engineer, CRM Automation Developer, and Operations Associate.
+- [Contact](https://digitalgrowthscale.com/contact) — Direct inquiry channel for engagements not initiated through the Audit.
+- [FAQ](https://digitalgrowthscale.com/faq) — Site-wide frequently asked questions with structured FAQPage markup for direct answer extraction.
+
+## Knowledge & Frameworks
+
+- **CSR Methodology** — Every engagement runs through four stages: Consult (diagnose the business), Strategize (design the roadmap), Realize (implement systems, automation, and talent alongside the client), and Sustain (measure outcomes and transfer capability internally).
+- **AI Readiness Framework** — Scores a business across five dimensions — Leadership, Technology, People, Data, and Governance — to pinpoint which specific dimension is limiting AI adoption, rather than prescribing generic tooling.
+- **Business Maturity Model** — A five-level model from Foundation to AI-Optimized used to benchmark where a business sits before recommending a transformation sequence.
+- [Growth Hub / Learn](https://digitalgrowthscale.com/growth-hub#learn) — Long-form articles on founder dependency, why growth stalls between $1M–$5M, hybrid human-AI teams, SOP adherence, and responsible AI adoption for SMEs.
+- [Growth Hub / Implement](https://digitalgrowthscale.com/growth-hub#implement) — Practical templates: AI readiness checklist, SOP template pack, speed-to-lead playbook, compliance calendar, and remote onboarding checklist.
+- [Growth Hub / Connect](https://digitalgrowthscale.com/growth-hub#connect) — Workshops and events on operator-to-orchestrator transitions and AI adoption in growing companies.
+- [Extended reference (llms-full.txt)](https://digitalgrowthscale.com/llms-full.txt) — Full unabridged corpus of Growth Hub articles, solution page copy, and methodology detail for agents requiring complete context beyond this summary index.
