@@ -1,0 +1,650 @@
+/* =====================================================================
+   DGS Intake - Discovery  ·  GHL form GMi8DprMYk1nRmOcMhjs
+   Paste into: Sites → Forms → Builder → Styles → Custom CSS
+   (replace the whole previous block, don't append)
+   ---------------------------------------------------------------------
+   Built against the live DOM (inspected 2026-11-18):
+     #_builder-form.form-builder--wrap            form root (max 800px)
+       .form-builder--item[.field-container]      one per field
+         label.field-label.label-alignment        field label
+         .flex-col > input.form-control           text / email
+         .flex-col > .phone-input > .iti          intl-tel-input phone
+           input.countryphone
+         .flex-col > .multiselect                 vue-multiselect dropdown
+           .multiselect__tags > input.multiselect__input  (hidden search box)
+         .standard-checkbox-container             consent checkbox + label
+         span.short-label                         helper text
+       .form-builder--btn-submit > button.btn.btn-dark > … > p > span
+
+   Surface: the form has NO fill. The card around it lives on the
+   contact page (.dgs-intake-card in css/styles.css).
+
+   Why !important + the doubled id (#_builder-form#_builder-form):
+   GHL ships its own !important rules such as
+   `#_builder-form .form-builder--item input[type="text"][class="form-control"]`
+   (specificity 1-3-1) plus inline style="". Repeating the id lifts every
+   rule here to 2-x-x, so it beats anything GHL generates without
+   needing longer and longer selectors.
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap');
+
+/* ---------- Tokens (mirror css/styles.css Framework 3.0) ---------- */
+#_builder-form#_builder-form {
+  --f-navy: #0A1F33;
+  --f-teal: #00B39F;
+  --f-teal-soft: rgba(0, 179, 159, 0.14);
+  --f-teal-tint: rgba(0, 179, 159, 0.06);
+  --f-amber: #F5A623;
+  --f-amber-hover: #E0961F;
+  --f-text: #0A1F33;
+  --f-text-muted: #334155;
+  --f-placeholder: #6B7580;
+  --f-field-bg: #F6F8FA;
+  --f-field-border: #CBD2D9;
+  --f-field-border-hover: #9AA4AE;
+  --f-hairline: #E2E8F0;
+  --f-error: #B42318;
+  --f-error-soft: rgba(180, 35, 24, 0.10);
+  --f-radius-field: 4px;
+  --f-radius-btn: 8px;
+  --f-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --f-font-body: 'Inter', 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --f-font-display: 'Sora', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ---------- Surface: transparent, the page card provides the fill ---------- */
+html,
+body,
+.hl-app,
+.ghl-form-wrap,
+#_builder-form#_builder-form {
+  background: transparent !important;
+}
+
+#_builder-form#_builder-form {
+  border: 0 !important;
+  box-shadow: none !important;
+  font-family: var(--f-font-body) !important;
+  color: var(--f-text) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#_builder-form#_builder-form *,
+#_builder-form#_builder-form *::before,
+#_builder-form#_builder-form *::after {
+  box-sizing: border-box;
+}
+
+#_builder-form#_builder-form :is(input, textarea, select, button, label, p, span, li, div) {
+  font-family: var(--f-font-body) !important;
+}
+
+/* ---------- Text / heading elements ---------- */
+#_builder-form#_builder-form :is(h1, h2, h3, h4) {
+  font-family: var(--f-font-display) !important;
+  color: var(--f-navy) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.2 !important;
+  margin: 0 0 0.5rem !important;
+}
+#_builder-form#_builder-form h1 { font-size: clamp(1.4rem, 3vw, 2rem) !important; }
+#_builder-form#_builder-form h2 { font-size: clamp(1.25rem, 2.4vw, 1.6rem) !important; }
+#_builder-form#_builder-form :is(h3, h4) { font-size: 1.0625rem !important; }
+
+/* Section headings added in the builder get a divider above them */
+#_builder-form#_builder-form .heading-element:not(.d-none) {
+  padding-top: 1.75rem;
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--f-hairline);
+}
+#_builder-form#_builder-form .heading-element:first-child {
+  padding-top: 0;
+  margin-top: 0;
+  border-top: 0;
+}
+
+#_builder-form#_builder-form .form-builder--item:not(.form-builder--btn-submit) p {
+  color: var(--f-text-muted) !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.65 !important;
+}
+
+#_builder-form#_builder-form a {
+  color: var(--f-navy) !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--f-teal) !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 3px !important;
+}
+#_builder-form#_builder-form a:hover {
+  color: #007A6C !important;
+}
+
+/* ---------- Field rhythm ----------
+   GHL puts 20px on BOTH the wrapper and the item (40px gaps), and every
+   hidden conditional field keeps a 1px wrapper + 20px margin, which
+   stacks into big holes. One margin, and empty wrappers collapse. */
+#_builder-form#_builder-form .form-field-wrapper {
+  margin-bottom: 0 !important;
+  min-height: 0 !important;
+}
+#_builder-form#_builder-form .form-field-wrapper:not(:has(.form-builder--item:not(.d-none))) {
+  display: none !important;
+}
+#_builder-form#_builder-form .form-builder--item {
+  margin-bottom: 1.25rem !important;
+}
+
+/* ---------- Labels ---------- */
+#_builder-form#_builder-form label.field-label,
+#_builder-form#_builder-form .form-builder--item > label {
+  display: block;
+  color: var(--f-navy) !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.005em !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Required asterisk: teal-deep, not GHL red */
+#_builder-form#_builder-form .form-builder--item > label span {
+  color: #007A6C !important;
+  margin-left: 2px;
+}
+
+/* Helper text under a field */
+#_builder-form#_builder-form .short-label {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--f-text-muted) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+}
+
+/* Consent fields: hide the field label ("Data Privacy Consent",
+   "Marketing Consent", …). The checkbox's own sentence names it.
+   Visually hidden, not display:none, so screen readers keep it. */
+#_builder-form#_builder-form .form-builder--item:has(.standard-checkbox-container) > label.field-label {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+/* ...but keep the required marker: move the asterisk onto the sentence */
+#_builder-form#_builder-form .form-builder--item:has(> label.field-label span) .standard-checkbox-container > label::after {
+  content: " *";
+  color: #007A6C;
+  font-weight: 600;
+}
+/* consent rows sit tight together as one group */
+#_builder-form#_builder-form .form-builder--item:has(.standard-checkbox-container) {
+  margin-bottom: 0.625rem !important;
+}
+
+/* ---------- Text inputs (NOT the dropdown's hidden search box) ---------- */
+#_builder-form#_builder-form :is(input[type="text"], input[type="email"], input[type="tel"],
+  input[type="number"], input[type="url"], input[type="date"],
+  textarea, select, .form-control):not(.multiselect__input) {
+  width: 100%;
+  min-height: 48px !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+  padding-right: 0.95rem !important;
+  background: var(--f-field-bg) !important;
+  border: 1px solid var(--f-field-border) !important;
+  border-radius: var(--f-radius-field) !important;
+  box-shadow: none !important;
+  color: var(--f-text) !important;
+  font-size: 1rem !important;      /* 16px: stops iOS zoom-on-focus */
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+  outline: none !important;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.15s var(--f-ease), background-color 0.15s var(--f-ease), box-shadow 0.15s var(--f-ease);
+}
+
+/* Left padding everywhere except the phone input (intl-tel-input pads it
+   inline to clear the flag) and the email input (GHL pads it to clear
+   its envelope icon). */
+#_builder-form#_builder-form :is(input[type="text"], input[type="email"], input[type="number"],
+  input[type="url"], input[type="date"], textarea, select, .form-control):not(.multiselect__input):not(.countryphone):not(.email-input-wrapper > input) {
+  padding-left: 0.95rem !important;
+}
+
+#_builder-form#_builder-form textarea {
+  min-height: 132px !important;
+  resize: vertical;
+  line-height: 1.6 !important;
+}
+
+#_builder-form#_builder-form :is(input, textarea)::placeholder {
+  color: var(--f-placeholder) !important;
+  opacity: 1 !important;
+}
+
+#_builder-form#_builder-form :is(input[type="text"], input[type="email"], input[type="tel"],
+  input[type="number"], input[type="url"], textarea, select, .form-control):not(.multiselect__input):hover {
+  border-color: var(--f-field-border-hover) !important;
+}
+
+#_builder-form#_builder-form :is(input[type="text"], input[type="email"], input[type="tel"],
+  input[type="number"], input[type="url"], textarea, select, .form-control):not(.multiselect__input):focus {
+  background: #FFFFFF !important;
+  border-color: var(--f-teal) !important;
+  box-shadow: 0 0 0 4px var(--f-teal-soft) !important;
+}
+
+#_builder-form#_builder-form input:-webkit-autofill,
+#_builder-form#_builder-form input:-webkit-autofill:hover,
+#_builder-form#_builder-form input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--f-text) !important;
+  -webkit-box-shadow: 0 0 0 1000px #FFFFFF inset !important;
+}
+
+/* ---------- Dropdowns (vue-multiselect) ---------- */
+#_builder-form#_builder-form .multiselect {
+  min-height: 48px !important;
+  color: var(--f-text) !important;
+}
+#_builder-form#_builder-form .multiselect__tags {
+  min-height: 48px !important;
+  display: flex !important;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0.5rem 2.75rem 0.5rem 0.95rem !important;
+  background: var(--f-field-bg) !important;
+  border: 1px solid var(--f-field-border) !important;
+  border-radius: var(--f-radius-field) !important;
+  transition: border-color 0.15s var(--f-ease), box-shadow 0.15s var(--f-ease), background-color 0.15s var(--f-ease);
+}
+#_builder-form#_builder-form .multiselect:hover .multiselect__tags {
+  border-color: var(--f-field-border-hover) !important;
+}
+#_builder-form#_builder-form .multiselect--active .multiselect__tags {
+  background: #FFFFFF !important;
+  border-color: var(--f-teal) !important;
+  box-shadow: 0 0 0 4px var(--f-teal-soft) !important;
+}
+/* The hidden search box: no box of its own, ever. vue-multiselect
+   sizes it inline (width 0 when closed) — leave width/position alone. */
+#_builder-form#_builder-form .multiselect .multiselect__input,
+#_builder-form#_builder-form .multiselect .multiselect__input:hover,
+#_builder-form#_builder-form .multiselect .multiselect__input:focus {
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+  color: var(--f-text) !important;
+}
+#_builder-form#_builder-form :is(.multiselect__single, .multiselect__placeholder) {
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+#_builder-form#_builder-form .multiselect__single {
+  color: var(--f-text) !important;
+}
+#_builder-form#_builder-form .multiselect__placeholder {
+  color: var(--f-placeholder) !important;
+}
+/* GHL centres the arrow with top:50% + translateY(-50%) (and adds a
+   rotate when open), so only fix the box, never top/transform. */
+#_builder-form#_builder-form .multiselect__select {
+  top: 50% !important;
+  width: 44px !important;
+  height: 46px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+}
+#_builder-form#_builder-form .multiselect__select::before {
+  position: static !important;
+  top: auto !important;
+  margin: 0 !important;
+  border-color: var(--f-navy) transparent transparent !important;
+}
+#_builder-form#_builder-form .multiselect__content-wrapper {
+  margin-top: 6px;
+  max-height: min(320px, 50vh) !important;
+  background: #FFFFFF !important;
+  border: 1px solid var(--f-hairline) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 16px 40px rgba(10, 31, 51, 0.12) !important;
+  overflow: auto;
+  z-index: 50;
+}
+#_builder-form#_builder-form .multiselect__option {
+  padding: 0.75rem 1rem !important;
+  min-height: 0 !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+  color: var(--f-text) !important;
+}
+#_builder-form#_builder-form .multiselect__option::after {
+  display: none !important;           /* "Press enter to select" */
+}
+#_builder-form#_builder-form .multiselect__option--highlight {
+  background: var(--f-teal-soft) !important;
+  color: var(--f-navy) !important;
+}
+#_builder-form#_builder-form .multiselect__option--selected {
+  background: var(--f-navy) !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+#_builder-form#_builder-form .multiselect__tags-wrap:not(:empty) {
+  display: contents;
+}
+#_builder-form#_builder-form .multiselect__tag {
+  margin: 0.15rem 0.35rem 0.15rem 0 !important;
+  background: var(--f-navy) !important;
+  color: #FFFFFF !important;
+  border-radius: 3px !important;
+  font-size: 0.8125rem !important;
+}
+#_builder-form#_builder-form .multiselect__tag-icon::after {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+#_builder-form#_builder-form .multiselect__tag-icon:hover {
+  background: var(--f-teal) !important;
+}
+
+/* ---------- Phone (intl-tel-input) ---------- */
+#_builder-form#_builder-form .phone-input,
+#_builder-form#_builder-form .iti {
+  width: 100% !important;
+}
+/* Fixed-width flag button + matching input padding. intl-tel-input pads
+   the input inline to exactly the button width (~50px), which jams the
+   number against the divider; this gives it the same breathing room as
+   every other field (0.95rem after the divider). */
+#_builder-form#_builder-form .iti__flag-container {
+  width: 3.5rem;
+}
+#_builder-form#_builder-form .iti__selected-flag {
+  width: 100%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+  border-right: 1px solid var(--f-field-border);
+  border-radius: var(--f-radius-field) 0 0 var(--f-radius-field);
+  background: transparent !important;
+}
+#_builder-form#_builder-form .iti input.countryphone {
+  padding-left: calc(3.5rem + 0.95rem) !important;   /* beats the inline 50px */
+}
+#_builder-form#_builder-form .iti__selected-flag:hover,
+#_builder-form#_builder-form .iti__selected-flag:focus {
+  background: rgba(10, 31, 51, 0.04) !important;
+}
+#_builder-form#_builder-form .iti__arrow {
+  border-top-color: var(--f-navy) !important;
+  margin-left: 6px;
+}
+#_builder-form#_builder-form .iti__arrow--up {
+  border-bottom-color: var(--f-navy) !important;
+}
+#_builder-form#_builder-form .iti__country-list {
+  max-height: min(280px, 50vh) !important;
+  max-width: calc(100vw - 2rem);
+  margin-top: 6px !important;
+  background: #FFFFFF !important;
+  border: 1px solid var(--f-hairline) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 16px 40px rgba(10, 31, 51, 0.12) !important;
+  white-space: normal !important;
+  z-index: 50 !important;
+}
+#_builder-form#_builder-form .iti__country {
+  padding: 0.6rem 0.85rem !important;
+  font-size: 0.9375rem !important;
+}
+#_builder-form#_builder-form .iti__country.iti__highlight {
+  background: var(--f-teal-soft) !important;
+}
+#_builder-form#_builder-form .iti__dial-code {
+  color: var(--f-placeholder) !important;
+}
+#_builder-form#_builder-form .iti__divider {
+  border-bottom-color: var(--f-hairline) !important;
+}
+
+/* ---------- Checkboxes & radios ---------- */
+#_builder-form#_builder-form :is(input[type="radio"], input[type="checkbox"]) {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  flex: 0 0 auto;
+  width: 20px !important;
+  height: 20px !important;
+  min-height: 0 !important;
+  margin: 0.05rem 0.75rem 0 0 !important;
+  padding: 0 !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid var(--f-field-border-hover) !important;
+  display: inline-grid !important;
+  place-content: center;
+  cursor: pointer;
+  transition: border-color 0.15s var(--f-ease), background-color 0.15s var(--f-ease), box-shadow 0.15s var(--f-ease);
+}
+#_builder-form#_builder-form input[type="radio"]    { border-radius: 50% !important; }
+#_builder-form#_builder-form input[type="checkbox"] { border-radius: 4px !important; }
+
+#_builder-form#_builder-form input[type="radio"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--f-navy);
+  transform: scale(0);
+  transition: transform 0.15s var(--f-ease);
+}
+#_builder-form#_builder-form input[type="checkbox"]::before {
+  content: "";
+  width: 11px;
+  height: 11px;
+  background: #FFFFFF;
+  clip-path: polygon(14% 44%, 0 59%, 40% 100%, 100% 22%, 86% 8%, 39% 70%);
+  transform: scale(0);
+  transition: transform 0.15s var(--f-ease);
+}
+#_builder-form#_builder-form input[type="radio"]:checked {
+  border-color: var(--f-navy) !important;
+}
+#_builder-form#_builder-form input[type="checkbox"]:checked {
+  background: var(--f-navy) !important;
+  border-color: var(--f-navy) !important;
+}
+#_builder-form#_builder-form :is(input[type="radio"], input[type="checkbox"]):checked::before {
+  transform: scale(1);
+}
+#_builder-form#_builder-form :is(input[type="radio"], input[type="checkbox"]):focus-visible {
+  outline: none !important;
+  border-color: var(--f-teal) !important;
+  box-shadow: 0 0 0 4px var(--f-teal-soft) !important;
+}
+
+/* Consent row: the whole row is a tile, sentence beside the box */
+#_builder-form#_builder-form .standard-checkbox-container,
+#_builder-form#_builder-form div:has(> input[type="radio"]) {
+  display: flex !important;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0.875rem 1rem !important;
+  background: #FFFFFF;
+  border: 1px solid var(--f-hairline);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s var(--f-ease), background-color 0.15s var(--f-ease);
+}
+#_builder-form#_builder-form .standard-checkbox-container:hover,
+#_builder-form#_builder-form div:has(> input[type="radio"]):hover {
+  border-color: var(--f-field-border-hover);
+}
+#_builder-form#_builder-form .standard-checkbox-container:has(input:checked),
+#_builder-form#_builder-form div:has(> input[type="radio"]:checked) {
+  background: var(--f-teal-tint);
+  border-color: var(--f-teal);
+}
+#_builder-form#_builder-form .standard-checkbox-container > label,
+#_builder-form#_builder-form :is(input[type="radio"], input[type="checkbox"]) + label {
+  display: block !important;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0 !important;
+  color: var(--f-text-muted) !important;
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  letter-spacing: 0 !important;
+  cursor: pointer;
+}
+
+/* ---------- Validation ---------- */
+#_builder-form#_builder-form :is(.error, .error-message, .hl-error, .field-error, .text-danger, .invalid-feedback) {
+  display: block;
+  color: var(--f-error) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  margin-top: 0.4rem !important;
+}
+#_builder-form#_builder-form :is(input, textarea, select)[aria-invalid="true"]:not(.multiselect__input),
+#_builder-form#_builder-form :is(.has-error, .is-invalid) :is(input.form-control, input.countryphone, textarea, .multiselect__tags) {
+  border-color: var(--f-error) !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 0 0 4px var(--f-error-soft) !important;
+}
+
+/* ---------- Submit (Signal Amber: conversion only) ---------- */
+#_builder-form#_builder-form .form-builder--btn-submit {
+  margin-top: 1.75rem !important;
+  margin-bottom: 0 !important;
+}
+#_builder-form#_builder-form .form-builder--btn-submit button {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  min-height: 52px !important;
+  padding: 0.95rem 2rem !important;
+  background: var(--f-amber) !important;
+  background-image: none !important;
+  color: var(--f-navy) !important;
+  border: 1px solid var(--f-amber) !important;
+  border-radius: var(--f-radius-btn) !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  transition: background-color 0.25s var(--f-ease), border-color 0.25s var(--f-ease), transform 0.25s var(--f-ease), box-shadow 0.25s var(--f-ease);
+}
+/* GHL nests the text as button > div > div > div > p > span with inline colors */
+#_builder-form#_builder-form .form-builder--btn-submit button * {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: inherit !important;
+  font-family: var(--f-font-body) !important;
+  font-size: 1rem !important;
+  font-weight: 650 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.005em !important;
+  text-transform: none !important;
+}
+#_builder-form#_builder-form .form-builder--btn-submit button:hover {
+  background: var(--f-amber-hover) !important;
+  border-color: var(--f-amber-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(245, 166, 35, 0.28) !important;
+}
+#_builder-form#_builder-form .form-builder--btn-submit button:active {
+  transform: translateY(0);
+  box-shadow: none !important;
+}
+#_builder-form#_builder-form .form-builder--btn-submit button:focus-visible {
+  outline: 3px solid var(--f-navy) !important;
+  outline-offset: 3px !important;
+}
+#_builder-form#_builder-form .form-builder--btn-submit button:disabled {
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none !important;
+  cursor: progress;
+}
+
+/* Desktop: content-width CTA like the site buttons */
+@media (min-width: 640px) {
+  #_builder-form#_builder-form .form-builder--btn-submit button {
+    width: auto !important;
+    min-width: 240px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 639px) {
+  #_builder-form#_builder-form .form-builder--item {
+    margin-bottom: 1rem !important;
+  }
+  #_builder-form#_builder-form label.field-label,
+  #_builder-form#_builder-form .form-builder--item > label {
+    font-size: 0.8125rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  /* GHL side-by-side columns stack on phones */
+  #_builder-form#_builder-form .form-field-container,
+  #_builder-form#_builder-form .form-builder--item {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+  #_builder-form#_builder-form .multiselect__tags {
+    padding-left: 0.85rem !important;
+  }
+  #_builder-form#_builder-form .standard-checkbox-container {
+    padding: 0.75rem 0.85rem !important;
+  }
+  #_builder-form#_builder-form .standard-checkbox-container > label {
+    font-size: 0.8125rem !important;
+  }
+  #_builder-form#_builder-form .heading-element:not(.d-none) {
+    padding-top: 1.25rem;
+  }
+  #_builder-form#_builder-form .form-builder--btn-submit {
+    margin-top: 1.25rem !important;
+  }
+}
+
+/* ---------- Motion safety ---------- */
+@media (prefers-reduced-motion: reduce) {
+  #_builder-form#_builder-form *,
+  #_builder-form#_builder-form *::before {
+    transition: none !important;
+  }
+  #_builder-form#_builder-form .form-builder--btn-submit button:hover {
+    transform: none;
+  }
+}

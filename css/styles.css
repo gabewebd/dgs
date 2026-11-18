@@ -2133,6 +2133,40 @@ html.dgs-js .dgs-reveal[data-reveal="scale"] { transform: scale(0.965); }
   }
 }
 
+/* HERO ENTRANCE (first <section> of <main>, every page).
+   Above-the-fold content must never wait for main.js: on GHL it loads at the
+   very end of the page, so gating the hero on html.dgs-js made the headline
+   paint, vanish, then replay. Instead the hero's .dgs-reveal elements play a
+   pure-CSS staggered entrance from the first paint, and are exempt from the
+   JS scroll-reveal hide state (main.js also skips them). */
+@keyframes dgsEnterUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+main > section:first-of-type .dgs-reveal {
+  animation: dgsEnterUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(0.05s + var(--dgs-enter-i, 0) * 0.1s);
+}
+main > section:first-of-type .dgs-reveal:nth-child(2) { --dgs-enter-i: 1; }
+main > section:first-of-type .dgs-reveal:nth-child(3) { --dgs-enter-i: 2; }
+main > section:first-of-type .dgs-reveal:nth-child(4) { --dgs-enter-i: 3; }
+main > section:first-of-type .dgs-reveal:nth-child(5) { --dgs-enter-i: 4; }
+main > section:first-of-type .dgs-reveal:nth-child(n+6) { --dgs-enter-i: 5; }
+/* Nested groups (e.g. stat items inside a stats panel) follow the headline. */
+main > section:first-of-type .dgs-reveal .dgs-reveal {
+  animation-delay: calc(0.35s + var(--dgs-enter-i, 0) * 0.08s);
+}
+html.dgs-js main > section:first-of-type .dgs-reveal {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition: none;
+  will-change: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  main > section:first-of-type .dgs-reveal { animation: none; }
+}
+
 /* ============================================================
    INTERACTION POLISH — consistent, GPU-friendly micro-motion.
    Additive only: unifies focus + form-focus timing across the
@@ -22666,6 +22700,157 @@ h1.dgs-hub-hero-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
   width:100% !important;
   border:none !important;
   border-radius:8px !important;
+}
+
+/* --- INTAKE FORM CARD (2026-11-18) ---------------------------------
+   The GHL form (GMi8DprMYk1nRmOcMhjs) now renders with no fill; its
+   custom CSS lives in docs/ghl-forms/dgs-intake-discovery.css. This card
+   is the surface: Deep Navy header band, white body.
+   (.dgs-il-31fb13f854 above is the previous card, kept only because the
+   already-pasted GHL contact page still uses it.) */
+.dgs-intake-card:where(.dgs-css-contact,.dgs-css-contact *) {
+  max-width: 860px;
+  margin: 0 auto;
+  background: var(--bg-white);
+  border: 1px solid var(--surface-border-neutral);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    0 1px 2px rgba(10, 31, 51, 0.04),
+    0 24px 48px -24px rgba(10, 31, 51, 0.18);
+  overflow: hidden;
+}
+
+.dgs-intake-head:where(.dgs-css-contact,.dgs-css-contact *) {
+  position: relative;
+  padding: 2.5rem 3rem 2.25rem;
+  background: var(--dgs-navy-900);
+  color: var(--text-light-primary);
+}
+
+/* Teal-to-blue rule along the bottom edge of the band */
+.dgs-intake-head:where(.dgs-css-contact,.dgs-css-contact *)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--dgs-teal) 0%, var(--dgs-blue) 100%);
+}
+
+/* (0,2,0) selectors on purpose: .dgs-section--light forces navy text on
+   p/h2/span/li at (0,1,1), which would vanish on the navy band. */
+.dgs-intake-head .dgs-intake-eyebrow:where(.dgs-css-contact,.dgs-css-contact *) {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--dgs-teal);
+}
+
+/* !important: `.dgs-page h2` sets font-size/line-height with !important
+   sitewide; this card title is deliberately smaller than a section h2. */
+.dgs-intake-head .dgs-intake-title:where(.dgs-css-contact,.dgs-css-contact *) {
+  margin: 0 0 0.6rem !important;
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2rem) !important;
+  font-weight: 700 !important;
+  line-height: var(--line-heading) !important;
+  letter-spacing: var(--tracking-tight) !important;
+  color: var(--text-light-primary);
+}
+
+.dgs-intake-head .dgs-intake-sub:where(.dgs-css-contact,.dgs-css-contact *) {
+  max-width: 56ch;
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  line-height: var(--line-body);
+  color: var(--text-light-muted);
+}
+
+.dgs-intake-head .dgs-intake-meta:where(.dgs-css-contact,.dgs-css-contact *) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.75rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dgs-intake-head .dgs-intake-meta li:where(.dgs-css-contact,.dgs-css-contact *) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  line-height: var(--line-normal);
+  color: var(--text-secondary);
+}
+
+.dgs-intake-head .dgs-intake-meta svg:where(.dgs-css-contact,.dgs-css-contact *) {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--dgs-teal);
+}
+
+.dgs-intake-body:where(.dgs-css-contact,.dgs-css-contact *) {
+  padding: 2.25rem 3rem 2.75rem;
+}
+
+/* The form's own max width is 800px; let the iframe fill the body */
+.dgs-intake-body iframe:where(.dgs-css-contact,.dgs-css-contact *) {
+  display: block;
+  border-radius: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .dgs-intake-head:where(.dgs-css-contact,.dgs-css-contact *) {
+    padding: 2rem 1.75rem 1.75rem;
+  }
+
+  .dgs-intake-body:where(.dgs-css-contact,.dgs-css-contact *) {
+    padding: 1.75rem 1.75rem 2.25rem;
+  }
+}
+
+/* Phones: the card goes full-bleed so the form gets the whole screen
+   width (a bordered card inside the container's gutter left ~300px for
+   inputs). Square corners, no side borders; the navy band reads as the
+   top of the section. */
+@media (max-width: 639px) {
+  .dgs-il-3a2164d3de:where(.dgs-css-contact,.dgs-css-contact *) {
+    padding: 2.5rem 0 4rem 0 !important;
+  }
+
+  /* -1rem = .dgs-container's side padding at this width. Not
+     calc(50% - 50vw): 100vw includes the scrollbar on desktop
+     browsers and causes a sideways scroll. */
+  .dgs-intake-card:where(.dgs-css-contact,.dgs-css-contact *) {
+    margin-inline: -1rem;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    box-shadow: none;
+  }
+
+  .dgs-intake-head:where(.dgs-css-contact,.dgs-css-contact *) {
+    padding: 1.75rem 1.25rem 1.5rem;
+  }
+
+  .dgs-intake-head .dgs-intake-meta:where(.dgs-css-contact,.dgs-css-contact *) {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .dgs-intake-body:where(.dgs-css-contact,.dgs-css-contact *) {
+    padding: 1.5rem 1.25rem 2rem;
+  }
 }
 
 .dgs-il-ca6e82709e:where(.dgs-css-contact,.dgs-css-contact *) {

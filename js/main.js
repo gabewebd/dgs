@@ -19,6 +19,20 @@
   // is exactly the failure mode this exists to prevent. If a page (e.g. a
   // GHL blog template) never loads this script at all, the class is simply
   // never added and everything stays at its visible default.
+  //
+  // On GHL this script loads LAST, so the visitor may already be looking at
+  // the page. Anything on screen right now must not be hidden and replayed by
+  // the reveal / image-fade gate: mark it as already shown BEFORE html.dgs-js
+  // is set, so it never has a hidden frame. (The hero has its own CSS-only
+  // entrance; see "HERO ENTRANCE" in styles.css.)
+  try {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    document.querySelectorAll('.dgs-reveal, .dgs-page section [data-animate], .dgs-page section .dgs-animate, img').forEach(function (el) {
+      const r = el.getBoundingClientRect();
+      if (r.bottom <= 0 || r.top >= vh || (!r.width && !r.height)) return;
+      el.classList.add(el.tagName === 'IMG' ? 'dgs-no-fade' : 'is-visible');
+    });
+  } catch (e) { /* never block the gate below */ }
   document.documentElement.classList.add('dgs-js');
 
   // Detect touch capability and add class to html
@@ -626,6 +640,9 @@
   const wireRevealTarget = function (el) {
     if (!el || el.dataset.dgsRevealWired) return;
     el.dataset.dgsRevealWired = '1';
+    // Hero content animates in with CSS on first paint (styles.css "HERO
+    // ENTRANCE"); adding .is-visible mid-animation would snap it.
+    if (el.matches('main > section:first-of-type .dgs-reveal')) return;
     if (revealObserver) {
       revealObserver.observe(el);
     } else {
