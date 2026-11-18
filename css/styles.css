@@ -17299,412 +17299,8 @@ h2.dgs-pb-hiw-title:where(.dgs-css-playbook-detail,.dgs-css-playbook-detail *) {
 
 /* ============================================================
    C16. SOCIAL-HUB  (scope: .dgs-css-social-hub)
-   Formerly css/dgs-social-hub.css. Used by:
-     hub.html
+   Moved to the end of this file: "C99. SOCIAL-HUB (LEGACY BASE)".
    ============================================================ */
-
-/* ============================================================
-   DIGITAL GROWTHSCALE — SOCIAL / QR HUB  (hub.html)
-   ------------------------------------------------------------
-   Standalone destination for QR codes on printed materials,
-   decks, events and business cards. Loads AFTER dgs-common.css
-   and reuses its Framework 3.0 tokens, header/footer, buttons,
-   .dgs-eyebrow / .dgs-section-head and the .dgs-reveal system.
-
-   Design language: Deep Navy #0A1F33 surfaces, Growth Teal
-   accents, Signal Amber reserved for primary conversion CTAs,
-   1px hairline borders, token radii (max --radius-xl / 8px),
-   subtle motion only. No glassmorphism, no oversized gradients.
-   ============================================================ */
-
-/* This page is dark end-to-end, so paint the document navy to
-   avoid any white flash above/below sections. */
-.dgs-hub:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  background: #050d1a;
-}
-
-/* Shared local tokens for this page */
-.dgs-hub:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  --hub-card: #0d2439;                    /* raised navy card surface */
-  --hub-card-2: #0b1f31;                  /* recessed card surface   */
-  --hub-line: rgba(255, 255, 255, 0.08);  /* hairline border         */
-  --hub-line-strong: rgba(255, 255, 255, 0.14);
-  --hub-teal-soft: rgba(0, 179, 159, 0.12);
-}
-
-/* ============================================================
-   1. HERO
-   ============================================================ */
-.dgs-hub-hero:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(120% 90% at 82% 8%, rgba(0, 179, 159, 0.10) 0%, transparent 55%),
-    radial-gradient(90% 70% at 10% 0%, rgba(45, 127, 249, 0.08) 0%, transparent 50%),
-    linear-gradient(180deg, #071324 0%, #0A1F33 60%, #081525 100%);
-  padding: clamp(4rem, 8vw, 6rem) 0 clamp(3.5rem, 7vw, 5rem);
-}
-
-/* Balanced duotone grade: brand navy & teal tint while keeping image details visible */
-.dgs-hub .dgs-hero-duotone:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  mask-image: radial-gradient(ellipse 100% 100% at 50% 25%, black 60%, transparent 98%) !important;
-  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 25%, black 60%, transparent 98%) !important;
-}
-
-.dgs-hub .dgs-hero-duotone:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
-  filter: grayscale(0.65) contrast(1.12) brightness(0.78) !important;
-  opacity: 0.65 !important;
-}
-
-.dgs-hub .dgs-hero-duotone:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
-  opacity: 0.7 !important;
-}
-
-.dgs-hub .dgs-hero-scrim:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  background: linear-gradient(to bottom, rgba(7, 19, 36, 0.55) 0%, rgba(10, 31, 51, 0.65) 50%, rgba(8, 21, 37, 0.9) 100%) !important;
-}
-
-/* Dotted texture removed from hero */
-.dgs-hub-hero:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
-  content: none !important;
-}
-
-.dgs-hub-hero > .dgs-container:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  position: relative;
-  z-index: 2;
-}
-
-.dgs-hub-hero-grid:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(2.5rem, 5vw, 4.5rem);
-  align-items: center;
-}
-@media (min-width: 960px) {
-  .dgs-hub-hero-grid:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-    grid-template-columns: 1.4fr 0.6fr;
-  }
-}
-
-.dgs-hub-hero-logo:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: inline-block;
-  margin-bottom: 1.25rem;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-.dgs-hub-hero-logo:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  opacity: 0.95;
-  transform: translateY(-1px);
-}
-.dgs-hub-logo-img:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  height: clamp(42px, 5vw, 60px);
-  width: auto;
-  object-fit: contain;
-  display: block;
-}
-
-/* Dedicated eyebrow for this hero, decoupled from the sitewide
-   .dgs-eyebrow so it can be aligned/sized independently. */
-.dgs-hub-hero-eyebrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: flex;
-  justify-content: flex-start;
-  text-align: left;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--action-teal);
-  margin: 0;
-}
-
-.dgs-page.dgs-hub .dgs-hub-hero-title:where(.dgs-css-social-hub,.dgs-css-social-hub *),
-h1.dgs-hub-hero-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(1.35rem, 2.1vw, 1.9rem) !important;
-  line-height: 1.3 !important;
-  letter-spacing: -0.015em;
-  color: #ffffff;
-  margin: 0.6rem 0 0;
-}
-@media (min-width: 960px) {
-  .dgs-page.dgs-hub .dgs-hub-hero-title:where(.dgs-css-social-hub,.dgs-css-social-hub *),
-  h1.dgs-hub-hero-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-    white-space: nowrap;
-  }
-}
-
-.dgs-hub-hero-title .dgs-hub-accent:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  color: var(--action-teal);
-}
-
-.dgs-hub-hero-copy p.dgs-hub-hero-lead:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  font-family: var(--font-body);
-  font-size: clamp(1.02rem, 1.4vw, 1.15rem);
-  line-height: 1.7;
-  text-align: left;
-  color: var(--text-light-muted);
-  margin: 1.75rem 0 0;
-  max-width: 46ch;
-}
-
-/* ── Reach-us channels: SMS / Call / WhatsApp / Viber, "Let's Talk" label inline ── */
-.dgs-hub-hero-channels:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 2.25rem;
-}
-
-.dgs-hub-hero-talk-label:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: #ffffff;
-  margin-right: 0.25rem;
-}
-
-.dgs-hub-hero-channel:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.1rem;
-  border-radius: var(--radius-full);
-  background: var(--hub-card-2);
-  border: 1px solid var(--hub-line);
-  color: #ffffff;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: transform var(--duration-base) var(--ease-out),
-              border-color var(--duration-base) var(--ease-out),
-              background var(--duration-base) var(--ease-out);
-}
-.dgs-hub-hero-channel svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) { width: 17px; height: 17px; color: var(--action-teal); }
-.dgs-hub-hero-channel:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  transform: translateY(-2px);
-  border-color: rgba(0, 179, 159, 0.4);
-  background: #0d2439;
-}
-
-.dgs-hub-hero-phone-number:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: inline-block;
-  margin-top: 0.85rem;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: #ffffff;
-  transition: color var(--duration-base) var(--ease-out);
-}
-.dgs-hub-hero-phone-number:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) { color: var(--action-teal); }
-
-/* ── Hero contact cards: careers / business growth ── */
-.dgs-hub-hero-contacts:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--hub-line);
-}
-@media (min-width: 560px) {
-  .dgs-hub-hero-contacts:where(.dgs-css-social-hub,.dgs-css-social-hub *) { grid-template-columns: repeat(2, 1fr); }
-}
-
-.dgs-hub-hero-contact:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.9rem;
-  text-decoration: none;
-  padding: 1.1rem;
-  border-radius: var(--radius-lg);
-  background: var(--hub-card-2);
-  border: 1px solid var(--hub-line);
-  transition: border-color var(--duration-base) var(--ease-out),
-              transform var(--duration-base) var(--ease-out),
-              background var(--duration-base) var(--ease-out);
-}
-.dgs-hub-hero-contact:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  border-color: rgba(0, 179, 159, 0.45);
-  transform: translateY(-3px);
-  background: var(--hub-card);
-}
-.dgs-hub-hero-contact-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  flex-shrink: 0;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(150deg, rgba(0, 179, 159, 0.18) 0%, rgba(45, 127, 249, 0.12) 100%);
-  border: 1px solid rgba(0, 179, 159, 0.25);
-  color: var(--action-teal);
-}
-.dgs-hub-hero-contact-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) { width: 20px; height: 20px; }
-.dgs-hub-hero-contact-body:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  min-width: 0;
-}
-.dgs-hub-hero-contact-body .k:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--action-teal);
-}
-.dgs-hub-hero-contact-body .d:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--text-secondary);
-}
-.dgs-hub-hero-contact-body .v:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 0.92rem;
-  color: #ffffff;
-  word-break: break-word;
-}
-
-/* ── Right column: highlighted follow panel (orb now lives as a section-level background layer) ── */
-.dgs-hub-hero-visual:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: flex;
-  justify-content: center;
-}
-
-/* Left alignment helpers for hero copy & eyebrow */
-.dgs-hub-hero-copy:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  text-align: left !important;
-}
-
-.dgs-hub-hero-copy .dgs-eyebrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: inline-flex !important;
-  align-items: center !important;
-  text-align: left !important;
-  margin-left: 0 !important;
-  margin-right: auto !important;
-}
-
-/* ── Individual Large Social Buttons ── */
-.dgs-hub-hero-social-buttons:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  max-width: 440px;
-}
-
-.dgs-hub-social-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  --btn-brand: var(--action-teal);
-  --btn-brand-bg: rgba(0, 179, 159, 0.12);
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-  padding: 1.15rem 1.4rem;
-  border-radius: var(--radius-xl);
-  background: #0d2439;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  font-family: var(--font-heading);
-  font-size: 1.02rem;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 12px 30px -15px rgba(0, 0, 0, 0.6);
-  transition: transform 0.25s var(--ease-out),
-              border-color 0.25s var(--ease-out),
-              background 0.25s var(--ease-out),
-              box-shadow 0.25s var(--ease-out);
-}
-
-.dgs-hub-social-btn--fb:where(.dgs-css-social-hub,.dgs-css-social-hub *),
-.dgs-hub-social-btn--in:where(.dgs-css-social-hub,.dgs-css-social-hub *),
-.dgs-hub-social-btn--ig:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  --btn-brand: var(--action-teal);
-  --btn-brand-bg: rgba(0, 179, 159, 0.15);
-}
-
-.dgs-hub-social-btn .icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  border-radius: 12px;
-  background: var(--btn-brand);
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-  transition: transform 0.25s ease;
-}
-
-.dgs-hub-social-btn .icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  width: 22px;
-  height: 22px;
-}
-
-.dgs-hub-social-btn .text:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  flex: 1;
-}
-
-.dgs-hub-social-btn .arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--btn-brand-bg);
-  color: var(--btn-brand);
-  transition: transform 0.25s ease, background 0.25s ease;
-}
-
-.dgs-hub-social-btn .arrow svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  width: 16px;
-  height: 16px;
-}
-
-.dgs-hub-social-btn:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--btn-brand) 60%, transparent);
-  background: #0e2942;
-  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7);
-}
-
-.dgs-hub-social-btn:hover .arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  transform: translateX(3px);
-  background: var(--btn-brand);
-  color: #ffffff;
-}
-
-/* ── Hero globe: now an ambient, supporting background layer ── */
-
-/* floating platform chips over the globe */
-
-@keyframes dgs-hub-float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-12px); }
-}
-
-@keyframes dgs-hub-spin {
-  to { transform: rotate(360deg); }
-}
-
-/* ============================================================
-   MOTION PREFERENCES
-   ============================================================ */
-
-/* ============================================================
-   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
-   ============================================================ */
-.dgs-il-47bb04fc03:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
-  --dgs-duotone-img:url('../images/opt/6a7301f6ffc85279f4022784.webp') !important;
-}
-
 
 /* ============================================================
    C17. SOLUTION-DETAIL  (scope: .dgs-css-solution-detail)
@@ -28485,4 +28081,4809 @@ html.dgs-is-touch .dgs-fsol-reveal:where(.dgs-css-index,.dgs-css-index *) {
 .dgs-page :where(a, button, [role="tab"], [tabindex]):focus-visible {
   outline: 2px solid var(--dgs-teal);
   outline-offset: 2px;
+}
+
+/* ============================================================
+   C99. SOCIAL-HUB (LEGACY BASE)  (scope: .dgs-css-social-hub)
+   The hub page (hub.html) is styled exactly like the live legacy
+   dgs-assets build: css/dgs-common.css + css/dgs-social-hub.css from
+   the cdn-version branch, scoped to .dgs-css-social-hub so nothing
+   leaks to other pages. Keyframes are prefixed dgs-legacyhub-.
+   Kept LAST in the file so it wins over the newer global rules.
+   ============================================================ */
+/* ---- from legacy css/dgs-common.css (dgs-assets, cdn-version) ---- */
+/* ============================================================
+   DIGITAL GROWTHSCALE — COMMON / SITE-WIDE STYLES (tokens, reset, header, footer, buttons, shared components)
+   Split from dgs-styles.css for per-page editing in GHL.
+   Load order: dgs-common.css FIRST, then this file.
+   ============================================================ */
+
+:root:has(> body.dgs-css-social-hub) {
+  /* ═══ DIGITAL GROWTHSCALE FRAMEWORK 3.0 - STRUCTURAL TOKENS ═══
+     Palette architecture (60 / 15 / 10, remainder = neutrals):
+       60%  Deep Navy     #0A1F33  structural backgrounds and surfaces
+       15%  Growth Teal   #00B39F  brand accent, hovers, secondary emphasis
+       10%  Electric Blue #2D7FF9  interactive and informational accents
+       CTA  Signal Amber  #F5A623  reserved for primary conversion CTAs only.
+            Never decorative, never a general accent. */
+
+  /* Primitives */
+  --dgs-navy: #0A1F33;
+  --dgs-teal: #00B39F;
+  --dgs-blue: #2D7FF9;
+  --dgs-amber: #F5A623;
+  --dgs-steel: #5B6670;
+
+  /* Deep Navy structural ramp (60% layer) */
+  --dgs-navy-950: color-mix(in srgb, var(--dgs-navy) 78%, black 22%);
+  --dgs-navy-900: var(--dgs-navy);
+  --dgs-navy-800: color-mix(in srgb, var(--dgs-navy) 92%, white 8%);
+  --dgs-navy-700: color-mix(in srgb, var(--dgs-navy) 84%, white 16%);
+
+  /* Growth Teal accent ramp (15% layer) */
+  --dgs-teal-hover: color-mix(in srgb, var(--dgs-teal) 82%, white 18%);
+  --dgs-teal-deep: color-mix(in srgb, var(--dgs-teal) 78%, black 22%);
+  --dgs-teal-soft: color-mix(in srgb, var(--dgs-teal) 14%, transparent);
+
+  /* Electric Blue interactive ramp (10% layer) */
+  --dgs-blue-hover: color-mix(in srgb, var(--dgs-blue) 82%, white 18%);
+  --dgs-blue-soft: color-mix(in srgb, var(--dgs-blue) 14%, transparent);
+
+  /* Signal Amber conversion ramp (primary conversion CTAs ONLY) */
+  --dgs-amber-hover: color-mix(in srgb, var(--dgs-amber) 86%, black 14%);
+
+  /* Readability measure: running copy is capped between 60ch and 68ch */
+  --measure-min: 60ch;
+  --measure-max: 68ch;
+
+  /* Navigation glass: scrolled header blur strength */
+  --nav-blur: 12px;
+
+  /* ── Legacy aliases (kept so existing page sheets keep resolving) ── */
+  --bg-white: #FFFFFF;
+  --bg-deep-navy: var(--dgs-navy-900);
+  --gradient-dark-section: var(--bg-deep-navy);
+  --bg-dark-navy: var(--dgs-navy-900);
+  --bg-teal: var(--dgs-teal);
+
+  /* Card / darker surfaces = Deep Navy shaded, never a different blue hue */
+  --surface-navy-card: var(--dgs-navy-800);
+  --bg-navy-darkest: var(--dgs-navy-950);
+  --action-teal: var(--dgs-teal);
+
+  /* Hover state = same Growth Teal, simply lightened */
+  --action-mint-hover: var(--dgs-teal-hover);
+
+  /* Legacy name, now Signal Amber. Apply to primary conversion CTAs only. */
+  --accent-yellow: var(--dgs-amber);
+
+  --text-dark-primary: var(--dgs-navy-900);
+  --text-dark-muted: #334155;
+  --text-muted: #334155;
+  --text-light-primary: #FFFFFF;
+  --text-light-muted: #E2E8F0;
+  --text-white: #FFFFFF;
+  --text-light: #FFFFFF;
+
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --surface-border-light: rgba(255, 255, 255, 0.12);
+  --surface-glass: color-mix(in srgb, var(--dgs-navy-900) 86%, transparent);
+  --surface-hover: rgba(255, 255, 255, 0.04);
+
+  /* Secondary/tertiary text on dark = Steel Gray lightened, no blue cast */
+  --text-secondary: color-mix(in srgb, var(--dgs-steel) 30%, white 70%);
+  --text-tertiary: color-mix(in srgb, var(--dgs-steel) 65%, white 35%);
+  /* Neutral light border/surface = Steel Gray tinted into white, used on light sections */
+  --surface-border-neutral: color-mix(in srgb, var(--dgs-steel) 12%, white 88%);
+
+  --font-display: 'Sora', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Sora', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.75rem;
+  --space-lg: 3rem;
+  --space-xl: 6.5rem;
+  --space-2xl: 9.5rem;
+
+  /* ═══ SHAPE SCALE (one documented radius system) ═══
+     Every border-radius on the site resolves to one of these steps.
+     Two documented exceptions, both deliberate and not scale steps:
+       - 50%  reserved for true circles (avatars, icon bubbles)
+       - asymmetric one-sided radii (e.g. 0 12px 12px 0) for
+         directional shapes such as tabs and left-edge markers */
+  --radius-xs: 2px;     /* hairline chips, progress fills */
+  --radius-sm: 3px;     /* small controls, tags */
+  --radius-md: 4px;     /* inputs, small cards */
+  --radius-lg: 6px;     /* buttons, standard cards */
+  --radius-xl: 8px;     /* large cards, panels */
+  --radius-full: 999px; /* pills, fully rounded */
+
+  --max-width: 97.5rem;
+  --max-width-narrow: 64rem;
+
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 0.15s;
+  --duration-base: 0.25s;
+  --duration-slow: 0.4s;
+
+  /* ═══ TYPOGRAPHY SYSTEM 3.1 ═══════════════════════════════════
+     One fluid modular scale (~1.2 ratio) shared by every page.
+     Sizes are tuned to the existing design so nothing jumps; they
+     only give the previously un-sized elements (h3–h6, captions,
+     labels) a single consistent source of truth. Components that
+     already tune a value keep winning via source order / specificity. */
+
+  /* Fluid type scale (min, preferred, max) */
+  --fs-display: clamp(2.8rem, 6vw, 4.8rem);
+  --fs-h1:      clamp(2.8rem, 6vw, 4.8rem);
+  --fs-h2:      clamp(2.2rem, 4.5vw, 3.2rem);
+  --fs-h3:      clamp(1.5rem, 2.4vw, 1.85rem);
+  --fs-h4:      clamp(1.2rem, 1.7vw, 1.4rem);
+  --fs-h5:      clamp(1.05rem, 1.3vw, 1.15rem);
+  --fs-h6:      1rem;
+  --fs-lead:    clamp(1.1rem, 1.5vw, 1.25rem); /* intro / subhead copy */
+  --fs-body-lg: 1.1rem;
+  --fs-body:    1.05rem;   /* default running copy */
+  --fs-body-sm: 0.95rem;
+  --fs-small:   0.875rem;
+  --fs-caption: 0.8125rem;
+  --fs-label:   0.78rem;   /* uppercase eyebrows / meta labels */
+
+  /* Line-height set (unitless, so they scale with font-size) */
+  --line-tight:   1.05;  /* display headings */
+  --line-heading: 1.2;   /* h2–h6 */
+  --line-snug:    1.35;  /* short subheads, card titles that wrap */
+  --line-normal:  1.5;   /* dense UI text, lists */
+  --line-body:    1.65;  /* running paragraphs */
+  --line-relaxed: 1.75;  /* airy lead copy */
+
+  /* Letter-spacing set */
+  --tracking-tighter: -0.03em; /* large display */
+  --tracking-tight:   -0.02em; /* headings */
+  --tracking-heading: -0.01em; /* smaller headings */
+  --tracking-normal:  0em;     /* body */
+  --tracking-wide:    0.02em;  /* buttons / small caps */
+  --tracking-label:   0.08em;  /* uppercase eyebrows / labels */
+
+  /* Vertical rhythm — paragraph & stack spacing */
+  --flow-tight: 0.5rem;
+  --flow:       0.85rem;
+  --flow-loose: 1.25rem;
+
+  /* Icon sizing (keeps glyphs aligned to the type scale) */
+  --icon-xs: 1rem;
+  --icon-sm: 1.25rem;
+  --icon-md: 1.5rem;
+  --icon-lg: 2rem;
+
+  /* Depth, glass, gradients (visual layer only) */
+  --gradient-teal: linear-gradient(135deg, #00C3AD 0%, #00B39F 55%, #008F7F 100%);
+  --gradient-teal-soft: linear-gradient(135deg, rgba(0, 179, 159, 0.16) 0%, rgba(0, 179, 159, 0.05) 100%);
+  --gradient-mesh-dark: transparent;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-teal-glow: none;
+  --glass-blur: blur(var(--nav-blur));
+}
+
+.dgs-page:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page *:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page *:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before,
+.dgs-page *:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  box-sizing: border-box;
+}
+
+html:has(> body.dgs-css-social-hub) {
+  scroll-behavior: initial !important;
+  scroll-padding-top: 100px;
+  background-color: #0A1F33 !important;
+  min-height: 100%;
+  height: auto;
+}
+
+html.lenis:has(> body.dgs-css-social-hub),
+html.lenis body:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  height: auto;
+}
+
+.lenis.lenis-smooth:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent]:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  overflow: hidden;
+}
+
+.dgs-page:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--text-light);
+  background: var(--bg-deep-navy) !important;
+  background-color: #0A1F33 !important;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background-color: #0A1F33 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* --- MOBILE ONLY TEXT HELPERS --- */
+.dgs-mobile-only:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: none !important;
+}
+
+.dgs-desktop-only:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline !important;
+}
+
+@media (max-width: 768px) {
+  .dgs-mobile-only:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    display: inline !important;
+  }
+
+  .dgs-desktop-only:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    display: none !important;
+  }
+}
+
+.dgs-page img:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  max-width: 100%;
+  display: block;
+}
+
+.dgs-page a:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dgs-page ul:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page ol:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dgs-page button:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.dgs-page h1:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-display);
+  font-weight: 800;
+  margin: 0;
+  font-size: var(--fs-h1);
+  line-height: var(--line-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+.dgs-page h2:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  margin: 0;
+  font-size: var(--fs-h2);
+  line-height: var(--line-heading);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+/* h3/h4 gain a scale size they previously lacked; any component that
+   sizes its own headings via a descendant selector still wins (equal
+   specificity, defined later in source order). */
+.dgs-page h3:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  margin: 0;
+  font-size: var(--fs-h3);
+  line-height: var(--line-heading);
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+
+.dgs-page h4:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  margin: 0;
+  font-size: var(--fs-h4);
+  line-height: var(--line-snug);
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+
+.dgs-page h5:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin: 0;
+  font-size: var(--fs-h5);
+  line-height: var(--line-snug);
+  letter-spacing: var(--tracking-heading);
+}
+
+.dgs-page h6:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin: 0;
+  font-size: var(--fs-h6);
+  line-height: var(--line-normal);
+  letter-spacing: var(--tracking-normal);
+}
+
+.dgs-page h1:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page h2:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page h3:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page h4:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.dgs-page p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  margin: 0;
+  line-height: var(--line-body);
+}
+
+/* Consistent paragraph rhythm: stacked *prose* paragraphs get one rhythm
+   unit of separation. Scoped to unclassed <p> so component-styled
+   paragraphs (stats, labels, meta) keep their own tight spacing. */
+.dgs-page p:not([class]) + p:not([class]):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  margin-top: var(--flow);
+}
+
+/* Emphasis + inline meta text kept on-scale */
+.dgs-page strong:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page b:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-weight: 700;
+}
+
+.dgs-page small:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: var(--fs-small);
+  line-height: var(--line-normal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(> body.dgs-css-social-hub) {
+    scroll-behavior: auto;
+  }
+
+  .dgs-page *:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.dgs-page a:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page button:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page input:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page textarea:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page select:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  outline: 3px solid var(--accent-yellow);
+  outline-offset: 2px;
+}
+
+/* Global grid: the navbar (.dgs-nav) is the master horizontal alignment
+   reference for the whole site. These gutters and breakpoints are copied
+   exactly from .dgs-nav's own padding steps (1rem / 2rem / 3.5rem), and the
+   cap is intentionally removed to match .dgs-nav's own max-width: 100% —
+   every section's content edges land on the same vertical lines as the
+   logo/nav links at every viewport width. */
+.dgs-container:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .dgs-container:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-container:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    padding: 0 3.5rem;
+  }
+}
+
+.dgs-container--narrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  max-width: var(--max-width-narrow);
+}
+
+.dgs-section:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0;
+}
+
+.dgs-section--lg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding: clamp(5rem, 11vw, 9.5rem) 0;
+}
+
+.dgs-hero:not(.dgs-service-hero):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding-top: clamp(9.5rem, 13vw, 12rem) !important;
+}
+
+/* ─── DUOTONE HERO BACKDROP ─── */
+.dgs-hero-duotone:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  mask-image: radial-gradient(ellipse 90% 100% at 50% 0%, black 70%, transparent 98%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 100% at 50% 0%, black 70%, transparent 98%);
+}
+
+.dgs-hero-duotone:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before,
+.dgs-hero-duotone:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.dgs-hero-duotone:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  background-image: var(--dgs-duotone-img);
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(1) contrast(1.15) brightness(0.72);
+  opacity: 0.5;
+}
+
+.dgs-hero-duotone:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  background: linear-gradient(135deg, #0A1F33 0%, #0d5f70 55%, #00B39F 100%);
+  mix-blend-mode: color;
+}
+
+.dgs-hero-scrim:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(10, 31, 51, 0.72) 0%, rgba(10, 31, 51, 0.55) 45%, rgba(10, 31, 51, 0.92) 100%);
+}
+
+/* ─── SERVICE HERO BADGE ─── */
+.dgs-service-hero-badge:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display, var(--font-heading));
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1affeb; /* brighter teal for dark mode contrast, matches .dgs-pill--teal */
+  background: rgba(0, 179, 159, 0.15);
+  border: 1px solid rgba(0, 179, 159, 0.4);
+  border-radius: var(--radius-full, 9999px);
+  padding: 0.45rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.dgs-section--dark:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-section--darker:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: #0A1F33 !important; /* Solid Deep Navy */
+  color: var(--text-light-primary);
+  position: relative;
+  overflow: clip; /* clips decorative overflow without creating a scroll container, so position: sticky descendants (e.g. .dgs-csr-sticky) still work */
+}
+
+.dgs-section--dark:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after,
+.dgs-section--darker:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(circle at 50% 100%, rgba(0, 179, 159, 0.08) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+.dgs-section--dark > .dgs-container:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-section--darker > .dgs-container:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  z-index: 2;
+}
+
+.dgs-section--teal:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: var(--bg-teal);
+  color: var(--text-light-primary);
+}
+
+.dgs-section--light:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: var(--bg-white);
+  color: var(--text-dark-primary);
+}
+
+.dgs-section--light p:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-section--light h2:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-section--light h3:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-section--light h4:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-section--light span:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-section--light li:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-dark-primary);
+}
+
+.dgs-text-center:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  text-align: center;
+}
+
+.dgs-eyebrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: var(--line-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--action-teal);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: var(--space-xs);
+}
+
+/* Eyebrow icon/marker sits on the text baseline-center at a fixed size */
+.dgs-eyebrow svg:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-eyebrow img:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-eyebrow i:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  flex-shrink: 0;
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+.dgs-section-head:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  max-width: 56.25rem;
+  margin-bottom: var(--space-lg);
+}
+
+.dgs-section-head--center:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dgs-section-head h2:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: clamp(1.85rem, 4vw, 2.8rem);
+  line-height: var(--line-heading);
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-sm);
+  color: var(--text-light-primary);
+}
+
+.dgs-section--light .dgs-section-head h2:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-dark-primary);
+}
+
+.dgs-section--teal .dgs-section-head h2:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-light-primary);
+}
+
+.dgs-section-head h2 .dgs-text-accent:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal);
+}
+
+.dgs-section-head p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-light-muted);
+  font-size: var(--fs-body);
+  line-height: var(--line-relaxed);
+}
+
+.dgs-section--light .dgs-section-head p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-dark-muted);
+}
+
+.dgs-section--teal .dgs-section-head p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-light-muted);
+}
+
+.dgs-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius-lg);
+  text-transform: none;
+  letter-spacing: normal;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  margin: 0.5rem 0;
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    background var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dgs-btn:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: translateY(-2px);
+}
+
+.dgs-btn--primary:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: var(--accent-yellow);
+  color: var(--text-dark-primary) !important;
+  box-shadow: none;
+  border: none !important;
+  overflow: hidden;
+}
+
+.dgs-btn--primary:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: color-mix(in srgb, var(--accent-yellow) 85%, black 15%) !important;
+  color: var(--text-dark-primary) !important;
+  box-shadow: none;
+}
+
+.dgs-btn--primary-accent:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: var(--accent-yellow);
+  color: var(--text-dark-primary) !important;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  padding: 0.7rem 1.6rem;
+  box-shadow: none;
+  border: none !important;
+  overflow: hidden;
+}
+
+.dgs-btn--primary-accent span:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-dark-primary) !important;
+  background: transparent !important;
+}
+
+.dgs-btn--primary-accent:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: color-mix(in srgb, var(--accent-yellow) 85%, black 15%) !important;
+  color: var(--text-dark-primary) !important;
+  box-shadow: none;
+}
+
+.dgs-btn--primary-accent:hover span:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-dark-primary) !important;
+  background: transparent !important;
+}
+
+.dgs-btn--secondary:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: transparent;
+  color: var(--text-white) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+}
+
+.dgs-btn--secondary:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-color: var(--action-teal) !important;
+  color: var(--action-teal) !important;
+  background: rgba(0, 179, 159, 0.08);
+}
+
+.dgs-btn--outline-dark:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: transparent;
+  border-color: var(--bg-deep-navy);
+  color: var(--bg-deep-navy);
+}
+
+.dgs-btn--outline-dark:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: var(--bg-deep-navy);
+  color: var(--bg-white);
+}
+
+.dgs-btn--block:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 100%;
+}
+
+.dgs-btn--lg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding: 0.8rem 1.9rem;
+  font-size: 1rem;
+  border-radius: var(--radius-lg);
+}
+
+.dgs-btn--lg.dgs-btn--primary-accent:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding: 0.8rem 1.9rem;
+}
+
+.dgs-btn-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent !important;
+  color: currentColor !important;
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.dgs-nav-cta-group .dgs-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  margin: 0 !important;
+}
+
+.dgs-btn--primary-accent .dgs-btn-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: transparent !important;
+  color: var(--text-dark-primary) !important;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+}
+
+.dgs-btn-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+@keyframes dgs-legacyhub-dgs-btn-bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(-3px);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+
+  70% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes dgs-legacyhub-dgs-btn-icon-bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(-3px);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+
+  70% {
+    transform: translateY(0);
+  }
+}
+
+.dgs-btn:hover>*:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  animation: dgs-legacyhub-dgs-btn-bounce 0.45s ease-in-out;
+}
+
+.dgs-btn:hover .dgs-btn-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  animation: dgs-legacyhub-dgs-btn-icon-bounce 0.45s ease-in-out;
+}
+
+@media (max-width: 640px) {
+  .dgs-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.3rem;
+  }
+
+  .dgs-btn--lg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.94rem;
+  }
+
+  .dgs-btn--lg.dgs-btn--primary-accent:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-btn--primary-accent:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    padding: 0.6rem 1.5rem;
+  }
+
+  .dgs-btn-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    width: auto;
+    height: auto;
+  }
+
+  .dgs-btn-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.dgs-header:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--duration-slow) var(--ease-out);
+  /* Entrance on page load, same on mobile and desktop. Animates
+     opacity + margin-top (not transform) deliberately — the scroll
+     hide/reveal behavior further down (.dgs-header--hidden) already owns
+     `transform`, and a forwards-filling animation on that same property
+     would keep overriding it after this animation finishes. */
+  animation: dgs-legacyhub-dgsHeaderIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes dgs-legacyhub-dgsHeaderIn {
+  from {
+    opacity: 0;
+    margin-top: -18px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-header:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    animation: none;
+  }
+}
+
+.dgs-header:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(circle at 0% 0%, rgba(0, 179, 159, 0.10) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.dgs-nav:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  gap: var(--space-sm);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0;
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+  transition: all 0.4s var(--ease-out);
+}
+
+@media (min-width: 768px) {
+  .dgs-nav:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    padding: 1rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-nav:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    padding: 1.15rem 3.5rem;
+  }
+}
+
+.dgs-header:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-header.is-scrolled:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background-color: #0A1F33 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* ─── Premium Dropdown Megamenu (Linear App Style) ─── */
+.dgs-nav-item:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  display: inline-block;
+}
+
+.dgs-dropdown-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.dgs-dropdown-arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 10px;
+  height: 10px;
+  stroke-width: 3px;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.dgs-dropdown-trigger:hover .dgs-dropdown-arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: rotate(180deg);
+}
+
+.dgs-dropdown-megamenu:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px);
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 1.25rem !important;
+  display: grid;
+  grid-template-columns: repeat(3, max-content) !important;
+  gap: 1.5rem !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12) !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out), visibility 0.2s;
+  z-index: 1000;
+  width: max-content !important; /* Hug its content! */
+}
+
+/* 2 column variant layout */
+.dgs-dropdown-megamenu.dgs-dropdown-2-col:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  grid-template-columns: repeat(2, max-content) !important;
+}
+
+.dgs-dropdown-trigger:hover .dgs-dropdown-megamenu:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(6px);
+}
+
+.dgs-dropdown-column:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+}
+
+.dgs-dropdown-column:not(:last-child):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  padding-right: 1.5rem;
+}
+
+.dgs-dropdown-col-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(5, 17, 36, 0.45) !important; /* Muted gray for white background */
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2rem;
+}
+
+.dgs-dropdown-item:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  padding: 0.6rem 0.75rem !important;
+  border-radius: var(--radius-lg) !important;
+  transition: background 0.2s var(--ease-out);
+  border: none !important;
+  text-decoration: none !important;
+}
+
+.dgs-dropdown-item:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  display: none !important;
+}
+
+.dgs-dropdown-item:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: rgba(0, 0, 0, 0.02) !important;
+}
+
+.item-text-wrap:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.dgs-dropdown-item .item-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500 !important; /* Muted boldness */
+  color: #0A1F33 !important; /* Deep navy text */
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+/* Icon Container Box: default muted teal, hover solid navy */
+.item-icon-box:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 36px; /* Matched to height of nav links title + desc */
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 179, 159, 0.08) !important; /* Muted teal background by default */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.dgs-dropdown-item:hover .item-icon-box:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: #0A1F33 !important; /* Navy background on hover */
+}
+
+.item-icon-box svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 16px !important;
+  height: 16px !important;
+  stroke: #00B39F !important; /* Growth Teal icon color by default */
+  stroke-width: 2px !important;
+  fill: none !important;
+  flex-shrink: 0;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.dgs-dropdown-item:hover .item-icon-box svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  stroke: #00B39F !important; /* Remains Teal icon color on hover */
+}
+
+.dgs-dropdown-item:hover .item-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: #00B39F !important; /* Growth Teal hover */
+}
+
+.dgs-dropdown-item .item-desc:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(5, 17, 36, 0.6) !important;
+  line-height: 1.25;
+  padding-left: 0 !important; /* Sits naturally inside text wrapper */
+}
+
+.dgs-logo:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  order: 1;
+}
+
+.dgs-nav-links:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  order: 2;
+}
+
+.dgs-nav-cta-group:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  order: 3;
+}
+
+.dgs-nav-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  order: 4;
+  display: none; /* hidden by default — shown only below 1024px via media query */
+}
+
+.dgs-logo:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-white) !important;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* Replace text logo with DGS LOGO.png in header and mobile menu */
+.dgs-header .dgs-logo:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-menu-head .dgs-logo:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  gap: 0;
+  width: 10rem;
+  height: 2.75rem;
+  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5f1fbc9c9b37b5fd51bdd5.png') no-repeat left center / contain;
+  color: transparent !important;
+  font-size: 0;
+  overflow: hidden;
+}
+
+.dgs-header .dgs-logo .dgs-logo-mark:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-menu-head .dgs-logo .dgs-logo-mark:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: none;
+}
+
+.dgs-logo-mark:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gradient-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--text-white);
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(0, 179, 159, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.dgs-nav-links:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: none;
+  gap: 2.25rem;
+  align-items: center;
+}
+
+.dgs-nav-links a:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-dropdown-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-dropdown-item:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-links a:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body) !important;
+  color: var(--text-white);
+  font-size: 0.95rem; /* Slightly larger navigations */
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+  position: relative;
+  padding: 0.55rem 0;
+  border: 2px solid transparent;
+}
+
+.dgs-nav-links a:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--action-teal);
+  border-radius: var(--radius-xs);
+  transition: width 0.3s var(--ease-out);
+}
+
+.dgs-nav-links a:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after,
+.dgs-nav-links a.is-active:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  width: 100%;
+}
+
+.dgs-nav-links a:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-nav-links a.is-active:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal);
+}
+
+.dgs-nav-cta:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: none;
+}
+
+.dgs-nav-cta-group:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .dgs-nav-cta-group:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-shrink: 0;
+  }
+}
+
+.dgs-btn--nav:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn--secondary.dgs-btn--nav:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding: 0.55rem 1.25rem;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.dgs-nav-cta.dgs-btn--nav:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding: 0.35rem 1rem;
+}
+
+.dgs-nav-cta-group .dgs-btn--nav.dgs-btn--secondary:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-white) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.dgs-nav-cta-group .dgs-btn--nav.dgs-btn--secondary:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal) !important;
+  border-color: var(--action-teal) !important;
+}
+
+.dgs-btn--nav .dgs-btn-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: auto;
+  height: auto;
+}
+
+.dgs-btn--nav .dgs-btn-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 14px;
+  height: 14px;
+}
+
+.dgs-nav-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: none;
+  border: none;
+  color: var(--text-white);
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 201;
+}
+
+/* ─── ANIMATED HAMBURGER ↔ X ICON ─── */
+.dgs-nav-toggle-bars:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  width: 22px;
+  height: 15px;
+  display: inline-block;
+}
+
+.dgs-nav-toggle-bars span:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: var(--radius-xs);
+  background: currentColor;
+  transition: transform var(--duration-base) var(--ease-out),
+    opacity var(--duration-base) var(--ease-out),
+    top var(--duration-base) var(--ease-out);
+}
+
+.dgs-nav-toggle-bars span:nth-child(1):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  top: 0;
+}
+
+.dgs-nav-toggle-bars span:nth-child(2):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  top: 6.5px;
+}
+
+.dgs-nav-toggle-bars span:nth-child(3):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  top: 13px;
+}
+
+.dgs-nav-toggle[aria-expanded="true"] .dgs-nav-toggle-bars span:nth-child(1):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  top: 6.5px;
+  transform: rotate(45deg);
+}
+
+.dgs-nav-toggle[aria-expanded="true"] .dgs-nav-toggle-bars span:nth-child(2):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.dgs-nav-toggle[aria-expanded="true"] .dgs-nav-toggle-bars span:nth-child(3):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  top: 6.5px;
+  transform: rotate(-45deg);
+}
+
+/* ─── OFF-CANVAS BACKDROP ─── */
+.dgs-mobile-backdrop:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 8, 20, 0.62);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-slow) var(--ease-out), visibility var(--duration-slow) var(--ease-out);
+  z-index: 150;
+}
+
+.dgs-mobile-backdrop.is-open:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ─── PREMIUM OFF-CANVAS MOBILE DRAWER ─── */
+.dgs-mobile-menu:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh; /* fallback for browsers without dvh support */
+  height: 100dvh;
+  width: 100%;
+  touch-action: pan-y;
+  background: linear-gradient(180deg, #0d1630 0%, #080e21 100%);
+  /* Wipe reveal: the panel stays put and its visible region expands
+     top-down (clip-path), rather than the whole panel sliding into
+     place — a curtain dropping, not a slide. */
+  clip-path: inset(0 0 100% 0);
+  visibility: hidden;
+  pointer-events: none;
+  /* Slow-start, settle-at-the-end curve (easeInOutQuint-ish) instead of a
+     fast-out-slow-in ease — the wipe holds back for a beat before it
+     commits, rather than shooting down immediately. */
+  transition: clip-path 0.55s cubic-bezier(0.83, 0, 0.17, 1), visibility 0.55s cubic-bezier(0.83, 0, 0.17, 1);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+.dgs-mobile-menu.is-open:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  clip-path: inset(0 0 0 0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Nav items animate in one by one, not all at once — hidden by default,
+   only staggered (via transition-delay, set below) once the drawer opens.
+   Closing skips the delay entirely (base rule has none) so it doesn't
+   linger on the way out. */
+.dgs-mobile-links > a:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-links > button.dgs-mobile-link-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-links > .dgs-mobile-nav-buttons:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+}
+
+.dgs-mobile-menu.is-open .dgs-mobile-links > a:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-menu.is-open .dgs-mobile-links > button.dgs-mobile-link-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-menu.is-open .dgs-mobile-links > .dgs-mobile-nav-buttons:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger by fixed DOM position: Home, About, [submenu], Solutions,
+   [submenu], Industries, [submenu], Growth Hub, [submenu], Contact,
+   CTA button — same structure on every page (includes/navbar.html). */
+.dgs-mobile-menu.is-open .dgs-mobile-links > :nth-child(1):where(.dgs-css-social-hub,.dgs-css-social-hub *)  { transition-delay: 0.08s; }
+.dgs-mobile-menu.is-open .dgs-mobile-links > :nth-child(2):where(.dgs-css-social-hub,.dgs-css-social-hub *)  { transition-delay: 0.14s; }
+.dgs-mobile-menu.is-open .dgs-mobile-links > :nth-child(4):where(.dgs-css-social-hub,.dgs-css-social-hub *)  { transition-delay: 0.20s; }
+.dgs-mobile-menu.is-open .dgs-mobile-links > :nth-child(6):where(.dgs-css-social-hub,.dgs-css-social-hub *)  { transition-delay: 0.26s; }
+.dgs-mobile-menu.is-open .dgs-mobile-links > :nth-child(8):where(.dgs-css-social-hub,.dgs-css-social-hub *)  { transition-delay: 0.32s; }
+.dgs-mobile-menu.is-open .dgs-mobile-links > :nth-child(10):where(.dgs-css-social-hub,.dgs-css-social-hub *) { transition-delay: 0.38s; }
+.dgs-mobile-menu.is-open .dgs-mobile-links > :nth-child(11):where(.dgs-css-social-hub,.dgs-css-social-hub *) { transition-delay: 0.44s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-mobile-menu:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-mobile-links > a:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-mobile-links > button.dgs-mobile-link-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-mobile-links > .dgs-mobile-nav-buttons:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+}
+
+.dgs-mobile-menu-head:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: calc(1.5rem + env(safe-area-inset-top, 0px)) 1.5rem 1.25rem;
+  border-bottom: 1px solid var(--surface-border);
+  flex-shrink: 0;
+  background: #0d1630;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.dgs-mobile-menu-head .dgs-logo:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  order: 1 !important;
+}
+
+.dgs-mobile-close:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  order: 2 !important;
+  background: transparent;
+  border: none;
+  color: var(--text-white);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-mobile-close:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal);
+  transform: rotate(90deg);
+}
+
+.dgs-mobile-close svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 20px;
+  height: 20px;
+}
+
+.dgs-mobile-links:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0.5rem 1.5rem 1rem;
+}
+
+.dgs-mobile-links>a:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-links>button.dgs-mobile-link-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  color: var(--text-light);
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.8rem 0.15rem;
+  border-bottom: 1px solid var(--surface-border);
+  text-decoration: none;
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--duration-base) var(--ease-out), padding-left var(--duration-base) var(--ease-out);
+}
+
+.dgs-mobile-links>a:last-of-type:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-bottom: none;
+}
+
+.dgs-mobile-link-arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 16px;
+  height: 16px;
+  color: var(--action-teal);
+  opacity: 0;
+  transform: translateX(-6px);
+  flex-shrink: 0;
+  transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-mobile-links>a:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-links>a.is-active:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-links>button.dgs-mobile-link-toggle:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-links>button.dgs-mobile-link-toggle.is-active:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal);
+  padding-left: 0.5rem;
+}
+
+.dgs-mobile-links>a:focus-visible .dgs-mobile-link-arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-links>a.is-active .dgs-mobile-link-arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* :hover only for pointers that can actually hover (mouse/trackpad).
+   On touch devices, :hover has no "unhover" moment — a tapped link stays
+   painted in this same teal until something else is tapped, which reads
+   as if the tap had marked it the current page. Real current-page state
+   is .is-active (set by updateActiveNavLinks in main.js), untouched by
+   this query. */
+@media (hover: hover) {
+  .dgs-mobile-links>a:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-mobile-links>button.dgs-mobile-link-toggle:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    color: var(--action-teal);
+    padding-left: 0.5rem;
+  }
+
+  .dgs-mobile-links>a:hover .dgs-mobile-link-arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ─── Mobile nav accordion (About / Solutions / Industries / Growth Hub) ─── */
+.dgs-mobile-links>button.dgs-mobile-link-toggle .dgs-dropdown-arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 14px;
+  height: 14px;
+  color: var(--action-teal);
+  flex-shrink: 0;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.dgs-mobile-links>button.dgs-mobile-link-toggle[aria-expanded="true"] .dgs-dropdown-arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: rotate(180deg);
+}
+
+.dgs-mobile-submenu:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows var(--duration-base) var(--ease-out);
+}
+
+.dgs-mobile-submenu.is-open:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  grid-template-rows: 1fr;
+}
+
+.dgs-mobile-submenu>div:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.dgs-mobile-submenu a:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: block;
+  color: var(--text-light-muted);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.6rem 0.15rem 0.6rem 1rem;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.dgs-mobile-submenu a:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-submenu a.is-active:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal);
+}
+
+@media (hover: hover) {
+  .dgs-mobile-submenu a:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    color: var(--action-teal);
+  }
+}
+
+/* Category label inside a mobile submenu (e.g. Transform / Enable /
+   Elevate under Solutions) — same role as .dgs-dropdown-col-title in
+   the desktop megamenu, restyled for the dark drawer background. */
+.dgs-mobile-submenu-label:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--action-teal);
+  opacity: 0.8;
+  padding-left: 1rem;
+  margin: 0.85rem 0 0.3rem;
+}
+
+.dgs-mobile-nav-buttons:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.dgs-mobile-nav-buttons .dgs-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 100% !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 0.85rem 1.5rem !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-lg) !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+}
+
+.dgs-mobile-nav-buttons .dgs-btn-saas:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 100% !important;
+  padding: 0.65rem 1.5rem !important;
+  font-weight: 700 !important;
+}
+
+.dgs-mobile-nav-buttons .dgs-btn--secondary:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  background: transparent !important;
+  color: var(--text-white) !important;
+}
+
+.dgs-mobile-nav-buttons .dgs-btn--secondary:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-color: var(--action-teal) !important;
+  background: rgba(0, 179, 159, 0.08) !important;
+}
+
+html.dgs-menu-open:has(> body.dgs-css-social-hub),
+body.dgs-menu-open:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  overflow: hidden;
+}
+
+/* Safety net for the fixed-inside-transformed-header bug (see
+   openMobileMenu/updateHeaderScroll in main.js): even if the hide
+   transform ever lands on .dgs-header while the drawer is open, it's
+   neutralized here so the "fixed" .dgs-mobile-menu can't be dragged
+   off the viewport with it. */
+html.dgs-menu-open .dgs-header.dgs-header--hidden:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: none !important;
+}
+
+@media (max-width: 1023px) {
+  .dgs-nav-links:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-nav-cta-group:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    display: none !important;
+  }
+
+  .dgs-nav-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+    z-index: 205 !important;
+    cursor: pointer !important;
+  }
+
+  .dgs-nav-toggle-bars span:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    background-color: #ffffff !important;
+  }
+
+  .dgs-mobile-menu:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 100vh !important; /* fallback for browsers without dvh support */
+    height: 100dvh !important;
+    width: 100% !important;
+    z-index: 9999 !important;
+  }
+
+  .dgs-mobile-backdrop:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    z-index: 9998 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-nav-links:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    display: flex !important;
+  }
+
+  .dgs-nav-cta-group:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    display: flex !important;
+  }
+
+  .dgs-nav-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    display: none !important;
+  }
+
+  /* Do NOT set display:none on .dgs-mobile-menu — it uses
+     clip-path+visibility for its open/close animation. Setting
+     display:none would break .is-open and lock the drawer shut.
+     The drawer is visually absent because clip-path: inset(0 0 100% 0)
+     clips it to nothing on all viewports; only .is-open reveals it. */
+  .dgs-mobile-backdrop:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    display: none !important;
+  }
+}
+
+.dgs-hero:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: var(--bg-white);
+  color: var(--bg-deep-navy);
+  padding: 6rem 0 7rem;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid var(--surface-border-neutral);
+}
+
+@media (min-width: 768px) {
+  .dgs-hero:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    padding: 10rem 0 13rem;
+  }
+}
+
+.dgs-hero:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  display: none;
+}
+
+.dgs-hero-content:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  z-index: 2;
+}
+
+.dgs-hero h1:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  margin-bottom: var(--space-sm);
+  max-width: 62.5rem;
+  color: var(--bg-deep-navy);
+}
+
+.dgs-hero-gradient-text:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: linear-gradient(135deg, #0A1F33 0%, #00B39F 35%, #2D7FF9 48%, #2D7FF9 52%, #00B39F 65%, #0A1F33 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: dgs-legacyhub-dgs-gradient-rotation 8s linear infinite;
+  display: inline-block;
+  padding-bottom: 0.15em;
+  margin-bottom: -0.15em;
+}
+
+@keyframes dgs-legacyhub-dgs-gradient-rotation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.dgs-hero-sub:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 1.08rem;
+  color: var(--text-dark-muted);
+  max-width: 45rem;
+  margin-bottom: var(--space-md);
+  line-height: 1.7;
+}
+
+.dgs-hero-note:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.dgs-pill--sm:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 0.72rem;
+  padding: 0.3rem 0.65rem;
+  font-weight: 500;
+}
+
+.dgs-form-tabs:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.dgs-form-tab:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.85rem 1.5rem;
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-lg);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  opacity: 0.55;
+  min-width: 180px;
+}
+
+.dgs-form-tab:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-color: var(--action-teal);
+  background: rgba(0, 179, 159, 0.06);
+  opacity: 1;
+}
+
+.dgs-form-tab.is-active:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-color: var(--action-teal);
+  background: rgba(0, 179, 159, 0.08);
+  opacity: 1;
+}
+
+.dgs-form-tab-label:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--bg-deep-navy);
+}
+
+.dgs-form-tab-desc:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+.dgs-icon-cards:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-icon-cards:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .dgs-icon-cards:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-cards-4:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-cards-4:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-cards-4:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-year-timeline:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  padding-bottom: var(--space-sm);
+  position: relative;
+}
+
+.dgs-year-timeline:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(0, 179, 159, 0.2);
+}
+
+.dgs-year-step:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  text-align: center;
+  flex: 0 0 auto;
+  min-width: 8rem;
+  position: relative;
+}
+
+.dgs-year-dot:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--action-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-xs);
+  position: relative;
+  z-index: 2;
+}
+
+.dgs-year-dot svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 14px;
+  height: 14px;
+  color: var(--text-white);
+}
+
+.dgs-year-label:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--action-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.dgs-year-step h4:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  color: var(--text-white);
+}
+
+.dgs-year-step p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.dgs-value-card:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding: var(--space-md);
+}
+
+.dgs-value-card-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 179, 159, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+  color: var(--action-teal);
+}
+
+.dgs-value-card-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 24px;
+  height: 24px;
+}
+
+.dgs-value-card h3:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-white);
+}
+
+.dgs-value-card p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.dgs-pullquote:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-left: 3px solid var(--action-teal);
+  padding-left: var(--space-sm);
+  font-size: 1.02rem;
+  font-style: italic;
+  color: var(--text-light);
+  margin: var(--space-md) 0;
+}
+
+@media (min-width: 860px) {
+  .dgs-split--wide-left:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: 1.3fr 0.7fr;
+  }
+
+  .dgs-split--wide-right:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+}
+
+.dgs-testimonial-cards:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .dgs-testimonial-cards:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-testimonial-cards:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dgs-testimonial-card:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: var(--surface-navy-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.dgs-testimonial-card-quote:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-sm);
+}
+
+.dgs-testimonial-card-author:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* --- PREMIUM FAQ LAYOUT (sticky left rail) --- */
+.dgs-premium-faq-layout:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .dgs-premium-faq-layout:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4.5rem;
+  }
+
+  .dgs-faq-sticky:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    position: sticky;
+    top: 8.75rem;
+  }
+}
+
+/* --- FAQ ACCORDION --- */
+.dgs-faq-list:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 100%;
+}
+
+.dgs-faq-item:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.dgs-section--light .dgs-faq-item:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-bottom-color: #E4E8EA;
+}
+
+.dgs-faq-question:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1.35rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  font-family: var(--font-heading);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--text-white);
+  transition: color var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+}
+
+.dgs-faq-question:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-mint-hover);
+}
+
+.dgs-section--light .dgs-faq-question:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-faq-question-text:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  flex-grow: 1;
+}
+
+.dgs-faq-number:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #4a5568;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+
+.dgs-section--darker .dgs-faq-number:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-color: rgba(255,255,255,0.12);
+  color: var(--action-teal);
+}
+
+.dgs-faq-item.is-open .dgs-faq-number:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: #f5a623 !important;
+  border-color: #f5a623 !important;
+  color: #ffffff !important;
+}
+
+.dgs-faq-item.is-open .dgs-faq-question:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-mint-hover);
+}
+
+.dgs-section--light .dgs-faq-item.is-open .dgs-faq-question:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-faq-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  color: #4a5568;
+  font-size: 1.3rem;
+  margin-left: auto;
+  transition: transform var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
+  flex-shrink: 0;
+}
+
+.dgs-section--darker .dgs-faq-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal);
+}
+
+.dgs-faq-item.is-open .dgs-faq-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: rotate(45deg);
+  color: #000000 !important;
+}
+
+.dgs-section--darker .dgs-faq-item.is-open .dgs-faq-toggle:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal) !important;
+}
+
+.dgs-faq-answer:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  max-height: 0;
+  overflow: hidden;
+  padding-left: 2.95rem;
+  transition: max-height var(--duration-base) var(--ease-out);
+}
+
+.dgs-faq-answer p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding-bottom: var(--space-sm);
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.dgs-section--light .dgs-faq-answer p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-dark-muted) !important;
+}
+
+.dgs-cta-banner:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  text-align: center;
+  padding: calc(var(--space-2xl) * 0.85) 3.5rem;
+  background:
+    radial-gradient(circle at 8% 30%, rgba(0, 179, 159, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 92% 70%, rgba(245, 166, 35, 0.12) 0%, transparent 45%),
+    var(--bg-deep-navy) !important;
+  background-color: var(--bg-deep-navy) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.dgs-cta-banner:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  display: none;
+}
+
+.dgs-cta-banner h2:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  margin-bottom: var(--space-md);
+  color: var(--text-white);
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dgs-cta-banner h2 .dgs-text-accent:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal);
+}
+
+.dgs-cta-banner p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-secondary);
+  max-width: 35rem;
+  margin: 0 auto var(--space-md);
+  font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+  .dgs-cta-banner:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+.dgs-cta-note:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: var(--space-xs);
+}
+
+.dgs-footer:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background:
+    radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
+    #0A1F33;
+  color: var(--text-tertiary);
+  padding: 5rem 0 3rem;
+  font-size: 0.88rem;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid var(--surface-border);
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.dgs-footer:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 90%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 179, 159, 0.55) 50%, transparent 100%);
+}
+
+.dgs-footer:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  aspect-ratio: 1 / 0.5;
+  background: radial-gradient(ellipse at center, rgba(245, 166, 35, 0.10) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dgs-footer>.dgs-container:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  z-index: 2;
+}
+
+.dgs-page main:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  background: var(--bg-deep-navy);
+  margin-bottom: 0 !important;
+}
+
+.dgs-footer-top:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+
+.dgs-footer-brand-col:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  flex: 1.2;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dgs-footer-tagline:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.35;
+  margin: 1.5rem 0 0 0;
+  max-width: 440px;
+}
+
+.dgs-footer-newsletter:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  flex: 1.5;
+  min-width: 280px;
+  max-width: 540px;
+  align-self: flex-start;
+}
+
+.dgs-footer-newsletter-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.dgs-footer-newsletter-sub:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin: 0 0 1.25rem 0;
+  font-family: var(--font-body);
+}
+
+.dgs-footer-newsletter-iframe:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  display: block;
+}
+
+.dgs-footer-grid:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: grid;
+  gap: var(--space-lg) var(--space-md);
+  margin-bottom: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.dgs-footer-col a.dgs-footer-link--sm:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding: 0.15rem 0;
+  font-size: 0.82rem;
+}
+
+.dgs-footer-legal-copy:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+  display: inline-block;
+}
+
+.dgs-footer-brand:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 0.85rem;
+  width: 10.5rem;
+  height: 2.75rem;
+  background: url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5f1fbc9c9b37b5fd51bdd5.png') no-repeat left center / contain;
+  overflow: hidden;
+}
+
+.dgs-footer-brand .dgs-logo-mark:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: none;
+}
+
+.dgs-footer-brand span:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: none;
+}
+
+.dgs-footer-desc:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  max-width: 18.75rem;
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.dgs-footer-col h4:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.dgs-footer-col a:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: block;
+  padding: 0.3rem 0;
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+  transition: color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+  position: relative;
+  width: fit-content;
+}
+
+.dgs-footer-col a:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.1rem;
+  width: 0;
+  height: 1px;
+  background: var(--action-teal);
+  transition: width var(--duration-base) var(--ease-out);
+}
+
+.dgs-footer-col a:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-white);
+  transform: translateX(2px);
+}
+
+.dgs-footer-col a:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  width: 100%;
+}
+
+.dgs-footer-social:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: var(--space-sm);
+}
+
+.dgs-footer-social a:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--surface-border);
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  transition: all var(--duration-base) var(--ease-out);
+  padding: 0;
+}
+
+.dgs-footer-social a:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-color: var(--action-teal);
+  color: var(--action-teal);
+  background: rgba(0, 179, 159, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 179, 159, 0.22);
+  transform: translateY(-2px);
+}
+
+.dgs-footer-social svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-footer-bottom:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-top: 1px solid var(--surface-border);
+  padding-top: var(--space-md);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+}
+
+.dgs-footer-bottom a:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-tertiary);
+  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+}
+
+.dgs-footer-bottom a:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-white);
+}
+
+.dgs-footer-bottom:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+
+.dgs-footer-legal:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.dgs-footer-watermark:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: absolute;
+  bottom: -2.5rem;
+  left: 0;
+  right: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.2rem, 13.5vw, 13.5rem);
+  line-height: 1;
+  text-align: center;
+  letter-spacing: -0.03em;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-transform: none;
+  z-index: 1;
+  max-width: 100%;
+  -webkit-text-stroke: 1px rgba(245, 166, 35, 0.035);
+  background: linear-gradient(180deg, rgba(245, 166, 35, 0.06) 0%, transparent 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-composite: intersect;
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+@media (max-width: 768px) {
+  .dgs-footer-watermark:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    display: none !important;
+  }
+}
+
+/* thank-you.html only: the hero runs straight into the footer on that
+   page (no section in between), so the sitewide top hairline just reads
+   as a stray line between two navy blocks, drop it there only. Kept as
+   a scoped exception here rather than in dgs-thank-you.css, so every
+   rule touching the shared footer lives in this one global sheet. */
+.dgs-thankyou-page .dgs-footer:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-top: none;
+}
+
+/* .dgs-reveal is visible by default (no rule here sets opacity/visibility).
+   The hidden-until-scrolled-into-view treatment is a progressive enhancement
+   that only activates once html.dgs-js confirms main.js actually ran (set as
+   the very first line of its IIFE) — so on a page where main.js never loads
+   or executes (a GHL blog template that doesn't include it, a blocked
+   script, a render race), Growth Hub cards/images marked .dgs-reveal are
+   never silently stuck invisible waiting on a JS class that isn't coming. */
+html.dgs-js .dgs-reveal:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  opacity: 0;
+  transform: translateY(28px);
+  visibility: hidden;
+  will-change: transform, opacity;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Auto-stagger: main.js sets --dgs-reveal-i on grouped siblings so a grid or
+     list cascades in sequence instead of appearing all at once. */
+  transition-delay: calc(var(--dgs-reveal-i, 0) * 0.08s);
+}
+
+html.dgs-js .dgs-reveal.is-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+  /* Drop the compositor hint once settled so long pages don't keep hundreds of
+     promoted layers alive (keeps scrolling smooth). */
+  will-change: auto;
+}
+
+/* Reusable reveal directions — opt in with data-reveal="fade|left|right|scale".
+   Defaults (no attribute) keep the existing rise-up motion. Prefixed with
+   html.dgs-js to match the base rule's specificity (html type + 2 classes) —
+   without it these attribute-selector overrides would be LOWER specificity
+   than "html.dgs-js .dgs-reveal" above and silently stop overriding it. */
+html.dgs-js .dgs-reveal[data-reveal="fade"]:where(.dgs-css-social-hub,.dgs-css-social-hub *)  { transform: none; }
+html.dgs-js .dgs-reveal[data-reveal="left"]:where(.dgs-css-social-hub,.dgs-css-social-hub *)  { transform: translateX(-28px); }
+html.dgs-js .dgs-reveal[data-reveal="right"]:where(.dgs-css-social-hub,.dgs-css-social-hub *) { transform: translateX(28px); }
+html.dgs-js .dgs-reveal[data-reveal="scale"]:where(.dgs-css-social-hub,.dgs-css-social-hub *) { transform: scale(0.965); }
+
+/* Respect users who ask for less motion: show everything, no slide/blur. */
+@media (prefers-reduced-motion: reduce) {
+  html.dgs-js .dgs-reveal:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  html.dgs-js .dgs-reveal.is-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    visibility: visible !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   INTERACTION POLISH — consistent, GPU-friendly micro-motion.
+   Additive only: unifies focus + form-focus timing across the
+   site without changing any component's resting appearance.
+   ============================================================ */
+
+/* Unified, accessible focus ring for keyboard users (mouse clicks are
+   unaffected thanks to :focus-visible). */
+a:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+button:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+input:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+textarea:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+select:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+[tabindex]:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  outline: 2px solid var(--action-teal);
+  outline-offset: 2px;
+}
+
+/* Smooth form-field focus feedback — only paints/composites (border, shadow,
+   background), never properties that force layout. */
+input:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+textarea:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+select:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  input:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  textarea:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  select:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    transition: none;
+  }
+}
+
+.dgs-cta-card:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: radial-gradient(circle at 90% 10%, rgba(0, 179, 159, 0.16) 0%, var(--surface-navy-card) 60%);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+}
+
+.dgs-cta-card:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-color: rgba(0, 179, 159, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 179, 159, 0.08);
+}
+
+html.lenis:has(> body.dgs-css-social-hub),
+html.lenis body:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  height: auto;
+}
+
+.lenis.lenis-smooth:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent]:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  pointer-events: none;
+}
+
+/* NOTE: this block appears to be legacy/duplicate of the token-driven
+   .dgs-page h1/h2 rules near the top of this file (pre-dates the
+   --fs-h1/--fs-h2 type-scale system; same computed font-size, different
+   weight/line-height/letter-spacing, and its own !important). Left as-is —
+   untangling it is a sitewide typography question, out of scope here. */
+.dgs-page h1:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-size: clamp(2.8rem, 6vw, 4.8rem) !important;
+}
+
+.dgs-page h2:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem) !important;
+}
+
+.dgs-card-visual-zone:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 100%;
+  height: 13.75rem;
+  background: radial-gradient(circle at center, rgba(10, 31, 51, 0.4) 0%, var(--bg-navy-darkest) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--surface-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.dgs-visual-placeholder:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 80%;
+  height: 70%;
+  border: 1px dashed rgba(0, 179, 159, 0.2);
+  border-radius: var(--radius-lg);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dgs-visual-placeholder:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  content: 'GRAPHIC ASSET';
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dark-muted);
+}
+
+.dgs-visual-placeholder:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-xl);
+}
+
+.dgs-carousel-container:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  width: 100%;
+}
+
+.dgs-carousel-track:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 1rem 0.25rem;
+}
+
+.dgs-carousel-track:where(.dgs-css-social-hub,.dgs-css-social-hub *)::-webkit-scrollbar {
+  display: none;
+}
+
+.dgs-carousel-card:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  flex: 0 0 calc(33.333% - 1rem);
+  scroll-snap-align: start;
+  background: #FFFFFF;
+  border: 1px solid var(--surface-border-neutral);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 24px rgba(10, 31, 51, 0.03);
+  transition: transform var(--duration-fast) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+}
+
+.dgs-carousel-card:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: translateY(-4px);
+  border-color: rgba(0, 179, 159, 0.25);
+  box-shadow: 0 12px 32px rgba(10, 31, 51, 0.08);
+}
+
+@media (max-width: 1024px) {
+  .dgs-carousel-card:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    flex: 0 0 calc(50% - 0.75rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .dgs-carousel-card:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    flex: 0 0 85%;
+  }
+}
+
+.dgs-carousel-visual:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 100%;
+  height: 13.75rem;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid var(--surface-border-neutral);
+  position: relative;
+}
+
+.dgs-carousel-badge:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--action-teal);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: var(--font-display);
+}
+
+.dgs-carousel-content:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding: 1.75rem 1.5rem;
+}
+
+.dgs-carousel-content h3:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--bg-deep-navy);
+  line-height: 1.3;
+}
+
+.dgs-carousel-content p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dark-muted);
+  line-height: 1.5;
+}
+
+.dgs-carousel-controls:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.dgs-carousel-arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--surface-border-neutral);
+  color: var(--bg-deep-navy);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.dgs-carousel-arrow:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: var(--action-teal);
+  border-color: var(--action-teal);
+  color: var(--text-light-primary);
+}
+
+/* ─── MODULAR GRID PATTERN OVERLAYS ─── */
+.dgs-hero-pattern:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-cta-pattern:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dgs-hero-pattern span:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-cta-pattern span:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  flex: 1;
+  height: 100%;
+  border-right: 1px solid rgba(255, 255, 255, 0.035);
+}
+
+.dgs-hero-pattern span:last-child:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-cta-pattern span:last-child:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-right: none;
+}
+
+/* ─── SERVICES: PREMIUM ANIMATED CLICKABLE ROW LIST (Shared Component) ─── */
+.dgs-services-list:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  border-top: none;
+}
+
+@media (min-width: 768px) {
+  .dgs-services-list:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-services-list:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dgs-service-row:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 2.25rem 2rem;
+  border: 1px solid var(--surface-border-neutral);
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg-white);
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-row:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: translateY(-5px);
+  border-color: var(--bg-deep-navy);
+  box-shadow: 0 16px 36px rgba(11, 19, 62, 0.08);
+}
+
+/* Sweep background on hover */
+.dgs-service-row:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-deep-navy);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s var(--ease-out);
+  z-index: 0;
+}
+
+.dgs-service-row:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before,
+.dgs-service-row:focus-visible:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  transform: scaleY(1);
+}
+
+.dgs-service-row-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 3.25rem;
+  display: flex;
+  align-items: center;
+  color: var(--action-teal);
+  transition: color var(--duration-base) var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.dgs-service-row-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  stroke: var(--action-teal);
+  transition: stroke var(--duration-base) var(--ease-out);
+  width: 28px;
+  height: 28px;
+}
+
+.dgs-service-row:hover .dgs-service-row-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-service-row:focus-visible .dgs-service-row-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-mint-hover);
+  transform: scale(1.08);
+}
+
+.dgs-service-row:hover .dgs-service-row-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-service-row:focus-visible .dgs-service-row-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  stroke: var(--action-mint-hover);
+}
+
+.dgs-service-row-content:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dgs-service-row-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.3;
+  color: var(--bg-deep-navy);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-row:hover .dgs-service-row-title:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-service-row:focus-visible .dgs-service-row-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-white);
+}
+
+.dgs-service-row-benefit:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 0.9rem;
+  color: var(--text-dark-muted);
+  line-height: 1.45;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.dgs-service-row:hover .dgs-service-row-benefit:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-service-row:focus-visible .dgs-service-row-benefit:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.dgs-service-row-arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--surface-border-neutral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--action-teal);
+  margin-top: 0.5rem;
+  transition: all 0.4s var(--ease-out);
+}
+
+.dgs-service-row-arrow svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-service-row:hover .dgs-service-row-arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-service-row:focus-visible .dgs-service-row-arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text-white);
+  transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+  .dgs-service-row:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .dgs-hero-actions:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .dgs-hero-actions .dgs-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    width: auto !important;
+    text-align: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+  }
+}
+
+/* Timeline step content card (audit.html CSR timeline ONLY) — teal
+   outline at every breakpoint; the connector line (mobile: vertical,
+   desktop: horizontal) is drawn on .dgs-timeline-step itself and sits
+   behind this box (z-index 1 vs 2). Scoped to .dgs-timeline-step (its
+   actual parent on audit.html) rather than the bare class name: index.html's
+   CSR Framework section reuses the SAME class name (.dgs-timeline-content)
+   for a visually different, border-free card, and the unscoped version of
+   this rule was leaking its teal border onto that section too. */
+.dgs-timeline-step .dgs-timeline-content:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(0, 179, 159, 0.45);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+}
+
+@media (max-width: 767px) {
+  .dgs-timeline:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem !important;
+  }
+
+  .dgs-timeline-step:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    position: relative;
+    text-align: center;
+  }
+
+  .dgs-timeline-step:not(:last-child):where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+    content: '' !important;
+    position: absolute !important;
+    top: calc(var(--space-lg) + 22px) !important;
+    bottom: calc(-3.5rem - var(--space-lg) - 22px) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    background: rgba(0, 179, 159, 0.4) !important;
+    z-index: 1 !important;
+    border: none !important;
+  }
+}
+
+/* Center-aligned subtle breathing gradients for narrative flow sections */
+#dgs-pain-and-vision:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+#dgs-process:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+#dgs-audit-why:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 179, 159, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(245, 166, 35, 0.05) 0%, transparent 40%),
+    var(--bg-navy-darkest) !important;
+}
+
+/* ─────────────────────────────────────────────
+   THREE ENGINES SECTION (shared across pages)
+   ───────────────────────────────────────────── */
+.dgs-engines-section:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: var(--bg-white);
+  padding: var(--space-xl) 0;
+}
+
+.dgs-engines-grid:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .dgs-engines-grid:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
+}
+
+.dgs-engines-heading h2:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: clamp(1.9rem, 3.8vw, 2.55rem);
+  color: var(--bg-deep-navy);
+  margin-bottom: var(--space-sm);
+  line-height: 1.15;
+}
+
+.dgs-engines-heading h2 .dgs-text-accent:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal);
+}
+
+.dgs-engines-rule:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 3.25rem;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: var(--accent-yellow);
+  margin-bottom: var(--space-md);
+}
+
+.dgs-engines-explore:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bg-deep-navy);
+}
+
+.dgs-engines-explore svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 15px;
+  height: 15px;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.dgs-engines-explore:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal);
+}
+
+.dgs-engines-explore:hover svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: translateX(3px);
+}
+
+.dgs-engine-card:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.1rem;
+  position: relative;
+}
+
+.dgs-engine-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--action-teal);
+}
+
+.dgs-engine-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 100%;
+  height: 100%;
+}
+
+.dgs-engine-card h3:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--bg-deep-navy);
+}
+
+.dgs-engine-card p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--text-dark-muted);
+}
+
+/* Dividers between engine cards (desktop) */
+.dgs-engines-grid .dgs-engine-card:nth-of-type(2):where(.dgs-css-social-hub,.dgs-css-social-hub *)::after,
+.dgs-engines-grid .dgs-engine-card:nth-of-type(3):where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  bottom: 0.25rem;
+  right: -1.5rem;
+  width: 1px;
+  background: rgba(10, 31, 51, 0.18);
+}
+
+@media (max-width: 1024px) {
+  .dgs-engines-grid .dgs-engine-card:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+    display: none;
+  }
+}
+
+/* ─── TEXT LINK WITH UNDERLINE (secondary CTA style) ─── */
+.dgs-launch-link:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.dgs-launch-link span.dgs-underline:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--action-teal);
+  transition: background var(--duration-base) var(--ease-out);
+}
+
+.dgs-launch-link:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal);
+}
+
+.dgs-launch-link:hover span.dgs-underline:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: var(--action-teal);
+}
+
+/* --- MOBILE MENU SOCIALS --- */
+.dgs-mobile-socials:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  gap: 1rem;
+  /* env(safe-area-inset-bottom) keeps this last-in-scroll row clear of the
+     iOS home-indicator strip; falls back to 0px on devices without one. */
+  padding: 1.25rem 1.5rem calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--surface-border);
+  margin-top: 1.25rem;
+}
+
+.dgs-mobile-socials a:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--surface-border);
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.dgs-mobile-socials a:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-color: var(--action-teal);
+  color: var(--action-teal);
+  background: rgba(0, 179, 159, 0.1);
+}
+
+.dgs-mobile-socials svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================================
+   FRAMEWORK 3.0 - NAVIGATION GLASS STATE + READABILITY MEASURE
+   Appended layer: these rules intentionally resolve last.
+   ============================================================ */
+
+/* Scrolled navigation state (toggled by js/modules/nav.js at 50px):
+   at rest the header is solid Deep Navy (heroes are white, so the bar
+   must always carry its own contrast); once scrolled it becomes a
+   translucent navy glass with a 12px backdrop blur. Only paint-level
+   properties transition (background-color, border-color, box-shadow),
+   and the header is promoted to its own compositor layer, so the
+   effect runs at 60fps with zero layout shift. */
+.dgs-header:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background-color: transparent;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transform: translateY(0);
+  transition: background-color 0.3s var(--ease-out), transform 0.4s var(--ease-out);
+  will-change: transform;
+}
+
+/* Scroll-direction reveal: slide the header up out of view */
+.dgs-header--hidden:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: translateY(-100%) !important;
+}
+
+.dgs-header:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-header.is-scrolled:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background-color: #0A1F33 !important; /* Solid Navy Dark */
+  border-bottom: none !important; /* Remove the white line/border */
+  box-shadow: none !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.dgs-header--scrolled:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.dgs-header:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before,
+.dgs-header:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dgs-header:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-header:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before,
+  .dgs-header:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+    transition: none;
+  }
+}
+
+/* Readability measure: running copy capped at 60-68ch (tokens in :root) */
+.dgs-page :where(p):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  max-inline-size: var(--measure-max);
+}
+
+/* Centered compositions keep their axis when the cap applies */
+.dgs-page :where(.dgs-text-center, .dgs-section-head--center, .dgs-cta-banner, .dgs-year-step, .dgs-timeline-step, [class*="--center"], [style*="text-align: center"], [style*="text-align:center"]) p:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-page :where(.dgs-cta-banner)>p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  margin-inline: auto;
+}
+
+.dgs-measure:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  max-inline-size: var(--measure-max) !important;
+}
+
+.dgs-measure--tight:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  max-inline-size: var(--measure-min) !important;
+}
+
+/* ── Framework 3.0 button system: accent text link (reference: "Explore Solutions →") ── */
+.dgs-launch-link:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--dgs-amber);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.dgs-launch-link span.dgs-underline:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: none;
+}
+
+.dgs-launch-link:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  content: '\2192';
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.dgs-launch-link:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--dgs-amber-hover);
+}
+
+.dgs-launch-link:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  transform: translateX(3px);
+}
+
+/* On light (white hero) sections amber text fails contrast: navy label, amber arrow */
+.dgs-hero .dgs-launch-link:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-dark-primary);
+}
+
+
+/* ============================================================
+   SAAS CTA BUTTON (canonical) — moved here from dgs-index.css so
+   every page (solutions, etc.) shares the exact homepage button.
+   Reference: index.html hero + nav + final CTA.
+   ============================================================ */
+.dgs-btn-saas:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-xl);
+  font-family: var(--font-body);
+  font-weight: 650;
+  font-size: 0.95rem;
+  letter-spacing: 0.005em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+  box-sizing: border-box;
+}
+
+/* Larger size for hero / final CTA */
+.dgs-btn-saas.dgs-btn-saas--lg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding: 1rem 2rem;
+  font-size: 1.02rem;
+  border-radius: var(--radius-lg);
+}
+
+/* Stopwatch / slot-machine label flip on hover */
+.dgs-btn-flip:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  overflow: hidden;
+  height: 1.4em;
+  line-height: var(--line-tight);
+}
+
+/* Global reset to remove drop-shadow / filter / heavy box shadows on photos and images */
+img:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+[role="img"]:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-hero-visual-frame:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-exec-media:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-partner-photo:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-founder-portrait:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-sol-split-media:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-csr-media:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-sol-figure:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+/* ─── IMAGE LOAD FADE-IN (site-wide) ───
+   Images are visible by default (opacity:1). The fade-from-hidden treatment
+   is a progressive enhancement that only activates once html.dgs-js confirms
+   main.js actually ran (that class is set as the very first line of its
+   IIFE) — so on any page where main.js never loads/executes (a GHL blog
+   template that doesn't include it, a blocked/slow script, a render race),
+   images are never silently stuck invisible waiting on JS that isn't coming.
+   Opt out per-image with .dgs-no-fade. */
+img:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  opacity: 1;
+}
+
+html.dgs-js img:not(.dgs-img-loaded):not(.dgs-no-fade):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dgs-img-loaded:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-no-fade:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
+
+.dgs-btn-flip-track:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.42s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.dgs-btn-flip-line:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 1.4em;
+  white-space: nowrap;
+}
+
+.dgs-btn-saas:hover .dgs-btn-flip-track:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn-saas:focus-visible .dgs-btn-flip-track:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: translateY(-50%);
+}
+
+.dgs-btn-saas:hover .dgs-btn-flip-line .dgs-btn-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dgs-btn-flip-track:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    transition: none;
+  }
+  .dgs-btn-saas:hover .dgs-btn-flip-track:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-btn-saas:focus-visible .dgs-btn-flip-track:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    transform: none;
+  }
+}
+
+.dgs-btn-saas--primary:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background-color: var(--dgs-amber) !important;
+  color: #0A1F33 !important;
+  border: 1px solid var(--dgs-amber) !important;
+}
+
+.dgs-btn-saas--primary:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background-color: #e0961f !important;
+  border-color: #e0961f !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(245, 166, 35, 0.28);
+}
+
+.dgs-btn-saas--secondary:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+.dgs-btn-saas--secondary:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================================
+   GLOBAL BRAND PROMISE LINK STYLE (.dgs-promise-link)
+   Teal underline text link component with animated arrow icon
+   ============================================================ */
+.dgs-promise-link:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--action-teal) !important;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+  align-self: flex-start;
+  transition: color var(--duration-base, 0.2s) var(--ease-out, ease);
+}
+
+.dgs-promise-link:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--action-teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base, 0.2s) var(--ease-out, ease);
+}
+
+.dgs-promise-link:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  transform: scaleX(1);
+}
+
+.dgs-promise-link .dgs-btn-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+  transition: transform var(--duration-base, 0.2s) var(--ease-out, ease);
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
+.dgs-promise-link .dgs-btn-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5px;
+}
+
+.dgs-promise-link:hover .dgs-btn-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   GLOBAL WHY DIGITAL GROWTHSCALE CARD SYSTEM (.dgs-why-card)
+   Balanced line-height and tight spacing to eliminate awkward wraps
+   ============================================================ */
+.dgs-why-grid:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem 2rem;
+}
+
+@media (min-width: 600px) {
+  .dgs-why-grid:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dgs-why-grid:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem 2rem;
+  }
+}
+
+.dgs-why-card:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  transition: transform 0.4s var(--ease-out, ease);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dgs-why-card:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: translateY(-5px);
+}
+
+.dgs-why-icon-box:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(150deg, rgba(0, 179, 159, 0.16) 0%, rgba(45, 127, 249, 0.1) 100%);
+  border: 1px solid rgba(0, 179, 159, 0.22);
+  color: var(--action-teal, #00B39F);
+  margin-bottom: 1.15rem;
+  transition: all 0.35s ease;
+}
+
+.dgs-why-icon-box svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 26px;
+  height: 26px;
+  transition: transform 0.35s ease;
+}
+
+.dgs-why-card:hover .dgs-why-icon-box:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-color: rgba(0, 179, 159, 0.5);
+  box-shadow: 0 0 18px rgba(0, 179, 159, 0.22);
+}
+
+.dgs-why-card:hover .dgs-why-icon-box svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: scale(1.08);
+}
+
+.dgs-why-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-white, #ffffff);
+  margin: 0 0 0.65rem 0;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.dgs-why-desc:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--text-light-muted, rgba(255, 255, 255, 0.68));
+  margin: 0;
+}
+
+.dgs-case-note:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  margin-top: 3.25rem !important;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--text-tertiary, rgba(255, 255, 255, 0.5));
+  text-align: center;
+}
+
+/* ─────────────────────────────────────────
+   GLOBAL: Modernized reduced border-radius & zero drop-shadows sitewide
+   ───────────────────────────────────────── */
+
+/* 1. All cards, panels, containers, and modules: sharp modern radius (8-10px max) */
+.dgs-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-panel:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-challenge-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-challenge-stage:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-outcome-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-case-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-stat-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-metric-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-resource-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-service-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-industry-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-hub-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-feature-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-step-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-next-step-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-process-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-pillar-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-diff-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-tag-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-waiver-banner:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-ghl-placeholder-box:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-fsol-card:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-hero-stats-panel:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-contact-form-single:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-ghl-placeholder-box:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+[class*="-card"]:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+[class*="-panel"]:not(nav):not(.dgs-ghl-panel):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-radius: var(--radius-xl) !important;
+  box-shadow: none !important;
+}
+
+/* 2. All images, photo frames, and media containers */
+img:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-hero-visual-frame:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-panel-media:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-panel-media img:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-case-img:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-case-img img:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-outcome-img:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-outcome-img img:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-photo-frame:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-img-wrap:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-fsol-card-bg img:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-radius: var(--radius-lg) !important;
+  box-shadow: none !important;
+}
+
+/* 3. Sitewide shadow removal for all components, hover states, and overlays */
+*:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+*:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before,
+*:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  box-shadow: none !important;
+}
+
+/* ============================================================
+   DESIGN SYSTEM 3.1 — ICON ALIGNMENT, RHYTHM & RESPONSIVE POLISH
+   Appended last so it resolves after component sheets, but kept
+   low-specificity and additive (`:where()` = 0 specificity) so
+   every tuned component keeps its identity. Covers the genuinely
+   global concerns: inline-icon alignment, opt-in text roles, and
+   responsive rhythm step-downs.
+   ============================================================ */
+
+/* ── Inline icon alignment ──────────────────────────────────
+   An inline SVG that accompanies text now sits optically centered
+   on that text instead of dropping to the baseline. Ignored inside
+   flex rows (where components already center their icons), so this
+   only corrects stray inline glyphs in prose, links, and pills. */
+.dgs-page :where(p, span, a, li, h1, h2, h3, h4, h5, h6) > svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  vertical-align: -0.125em;
+}
+
+/* Icons inside buttons / links never shrink away from their label. */
+.dgs-page :where(a, button) svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  flex-shrink: 0;
+}
+
+/* ── Opt-in text-role utilities ─────────────────────────────
+   New markup can adopt the system without inventing new sizes;
+   existing markup is unaffected (these classes aren't in use yet). */
+.dgs-lead:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: var(--fs-lead);
+  line-height: var(--line-relaxed);
+  font-weight: 400;
+}
+
+.dgs-caption:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: var(--fs-caption);
+  line-height: var(--line-normal);
+  color: var(--text-tertiary);
+}
+
+.dgs-label:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--line-normal);
+}
+
+/* ── Responsive rhythm step-downs ───────────────────────────
+   Keep vertical rhythm proportional as the viewport narrows:
+   tighten section-head spacing and scale the eyebrow down. */
+@media (max-width: 768px) {
+  .dgs-section-head:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    margin-bottom: var(--space-md);
+  }
+
+  .dgs-eyebrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    font-size: 0.95rem;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dgs-eyebrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================================
+   GLOBAL SERVICE HERO LAYOUT
+   ============================================================ */
+
+.dgs-service-hero > .dgs-container:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  z-index: 5;
+}
+
+.dgs-svc-hero-grid:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.dgs-service-hero .dgs-hero-content:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1140px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dgs-service-hero h1:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0 auto 1.5rem;
+  max-width: 1140px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .dgs-service-hero h1:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-hero--premium-split h1:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    font-size: clamp(1.8rem, 7.5vw, 2.25rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+  }
+}
+
+.dgs-service-hero .dgs-hero-sub:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 720px;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dgs-service-hero .dgs-hero-actions:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+/* ============================================================
+   GLOBAL HERO TYPOGRAPHY & PILLS
+   ============================================================ */
+
+.dgs-hero-title-main:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: linear-gradient(to bottom, #ffffff 55%, #cfd8e3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.dgs-hero-teal-text:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal, #00b39f) !important;
+  -webkit-text-fill-color: var(--action-teal, #00b39f) !important;
+  background: none !important;
+  display: inline;
+}
+
+.dgs-hero-dot:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal, #00b39f) !important;
+  -webkit-text-fill-color: var(--action-teal, #00b39f) !important;
+  display: inline;
+}
+
+.dgs-value-pills:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 0.6rem; 
+  margin-top: 1.5rem; 
+  margin-bottom: 0.5rem;
+}
+
+.dgs-pill:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dgs-pill.dgs-pill--teal:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: rgba(0, 179, 159, 0.15);
+  border: 1px solid rgba(0, 179, 159, 0.4);
+  color: #1affeb; /* brighter teal for dark mode contrast */
+}
+
+/* Global removal of background grids across hero sections and CTA sections */
+.dgs-hero-mesh-overlay:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-service-hero .dgs-hero-mesh-overlay:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.final-cta-bg-grid:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: none !important;
+  background-image: none !important;
+}
+
+/* ============================================================
+   GLOBAL FINAL CTA BLOCK (.dgs-sol-final-cta)
+   ============================================================ */
+.dgs-sol-final-cta:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg-navy-darkest, #0A1F33) !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  padding: clamp(5rem, 11vw, 9.5rem) 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dgs-sol-final-bg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.38;
+  mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black 75%, transparent 98%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 100% at 50% 0%, black 75%, transparent 98%);
+  pointer-events: none;
+}
+
+.dgs-sol-final-cta:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  content: none;
+}
+
+.final-cta-giant-bg-text:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-size: 22vw;
+  line-height: 0.85;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245, 166, 35, 0.035);
+  background: linear-gradient(180deg, rgba(245, 166, 35, 0.05) 0%, transparent 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  position: absolute !important;
+  top: 78%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  display: none;
+}
+
+/* Only show on index — JS adds .dgs-scale-enabled on homepage sections */
+.dgs-scale-enabled .final-cta-giant-bg-text:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: block;
+}
+
+.dgs-sol-final-cta.has-dom-giant-text:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before,
+.cinematic-cta-wrapper.has-dom-giant-text:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  display: none !important;
+}
+
+.dgs-sol-final-cta:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70vw;
+  height: 50vh;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(0, 179, 159, 0.12) 0%,
+    rgba(45, 127, 249, 0.12) 40%,
+    transparent 70%);
+  animation: dgs-legacyhub-dgs-sol-cta-breathe 8s ease-in-out infinite alternate;
+}
+
+@keyframes dgs-legacyhub-dgs-sol-cta-breathe {
+  0%   { transform: translate(-50%, -50%) scale(1);    opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; }
+}
+
+.dgs-sol-final-cta > *:not(.dgs-sol-final-bg):where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  z-index: 2;
+}
+
+.dgs-sol-final-cta h2:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  max-width: 66rem;
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem) !important;
+  line-height: 1.22;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.12));
+  margin: 0 auto 1.5rem auto;
+}
+
+.dgs-sol-final-cta h2 .dgs-text-accent:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  -webkit-text-fill-color: var(--action-teal);
+  filter: none;
+}
+
+.dgs-sol-final-cta p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  max-width: 42rem;
+  margin: 0 auto 3rem auto;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.dgs-sol-final-ctas:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .dgs-sol-final-cta:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    padding: 3.5rem 1.25rem !important;
+  }
+
+  .dgs-sol-final-cta h2:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    font-size: clamp(1.4rem, 5vw, 1.85rem) !important;
+    line-height: 1.3 !important;
+    word-break: break-word !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .dgs-sol-final-cta p:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    font-size: 0.98rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 2rem !important;
+    padding: 0 0.5rem !important;
+  }
+
+  .dgs-sol-final-cta:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+    font-size: 35vw !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dgs-sol-final-ctas:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-hero-actions:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-cta-actions:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-mobile-nav-buttons:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+  }
+
+  .dgs-sol-final-ctas > a:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-sol-final-ctas > .dgs-btn-saas:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-sol-final-ctas > .dgs-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-hero-actions > a:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-hero-actions > .dgs-btn-saas:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-hero-actions > .dgs-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-cta-actions > a:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-cta-actions > .dgs-btn-saas:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-cta-actions > .dgs-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   UNIFIED BUTTON CORNER ROUNDING (Matches solutions.html)
+   Enforces consistent 8px corner rounding (var(--radius-lg))
+   across all button variants, navbar CTAs, forms, and footer.
+   ════════════════════════════════════════════════════════════ */
+.dgs-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn-saas:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn-saas--primary:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn-saas--secondary:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn-saas--lg:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn--primary:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn--secondary:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn--primary-accent:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn--outline:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn--outline-teal:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn--outline-dark:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn--nav:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-btn--lg:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+#dgs-nav-cta:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-newsletter-form button:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-nav-buttons .dgs-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-mobile-nav-buttons .dgs-btn-saas:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+button.dgs-btn-saas:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+a.dgs-btn-saas:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+a.dgs-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-header .dgs-btn-saas:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-footer .dgs-btn-saas:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-radius: var(--radius-lg, 6px) !important;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE NAVBAR COMPACT PADDING
+   Reduces left/right inset space on mobile viewports.
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .dgs-header .dgs-nav:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-container.dgs-nav:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  header .dgs-nav:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   CLIENT SUCCESS — "What this looks like in practice."
+   Side-by-side text-based metric showcase with clean top rules,
+   bold stat figures, teal units, and editorial description copy.
+   Shared across all solution and industry detail pages.
+   ════════════════════════════════════════════════════════════ */
+/* Sizes/margins matched to the industries-page Client Success grid
+   (.dgs-cs-* in dgs-industries-detail.css) so both templates read the
+   same scale. */
+.dgs-case-carousel:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  width: 100%;
+  max-width: 84rem;
+  margin: 3rem auto 2.25rem;
+}
+
+.dgs-case-carousel-card:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .dgs-case-carousel-card:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+}
+
+.dgs-case-carousel-slide:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex !important;
+  flex-direction: column;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding-top: 2rem;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.dgs-section--light .dgs-case-carousel-slide:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-top-color: rgba(10, 31, 51, 0.15);
+}
+
+.dgs-case-carousel-stat:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  min-width: 0;
+  padding: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.dgs-case-carousel-figure:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(3.25rem, 6vw, 4.5rem);
+  line-height: 1;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.85rem;
+}
+
+.dgs-section--light .dgs-case-carousel-figure:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--bg-deep-navy);
+}
+
+.dgs-case-carousel-figure small:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-block;
+  /* Independent size (matches .dgs-cs-unit on industries pages), not a
+     relative em off the big number — keeps the label the same visual
+     weight regardless of how long/short the figure itself is. */
+  font-size: clamp(1.3rem, 2.3vw, 1.75rem);
+  font-weight: 700;
+  color: var(--action-teal, #00B39F);
+  letter-spacing: -0.01em;
+}
+
+.dgs-case-carousel-figure--text:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  line-height: 1.15;
+}
+
+.dgs-case-carousel-caption:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--action-teal, #00B39F);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.dgs-case-carousel-progress:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: none !important;
+}
+
+.dgs-case-carousel-quote:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  min-width: 0;
+  padding: 0;
+  border: none;
+}
+
+.dgs-case-carousel-mark:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: none !important;
+}
+
+.dgs-case-carousel-text:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 2.5rem !important;
+  max-width: 42ch;
+}
+
+.dgs-section--light .dgs-case-carousel-text:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-dark-muted);
+}
+
+/* Dedicated Scope Pill Tag */
+.dgs-case-scope:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.05rem 0.4rem 0.4rem;
+  border: 1px solid rgba(0, 179, 159, 0.35);
+  border-radius: 999px;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.dgs-case-scope-label:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-block;
+  background: var(--action-teal, #00B39F);
+  color: #0A1F33;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.dgs-case-scope-val:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.01em;
+}
+
+.dgs-section--light .dgs-case-scope:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-color: rgba(0, 179, 159, 0.35);
+}
+
+.dgs-section--light .dgs-case-scope-val:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--text-dark-primary);
+}
+
+.dgs-case-carousel-nav:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: none !important;
+}
+
+/* ============================================================
+   CAREER DETAIL HERO GLOW
+   Same soft radial teal/blue glow used on the legal and growth
+   article hero sections. Apply `.dgs-career-hero` alongside the
+   existing inline navy hero on /careers/*.html detail pages.
+   ============================================================ */
+.dgs-career-hero:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.dgs-career-hero:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -18%;
+  width: 56vw;
+  height: 22rem;
+  min-width: 26rem;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(0, 179, 159, 0.18) 0%, rgba(45, 127, 249, 0.08) 45%, transparent 75%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dgs-career-hero > .dgs-container:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  z-index: 1;
+}
+
+/* NAV TYPOGRAPHY: Inter, not Sora (2026-08-24 user request) — every
+   element inside the header/nav (desktop links, dropdown megamenu,
+   mobile drawer, buttons) reads in the body font, not the display font. */
+.dgs-header:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-header *:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body) !important;
+}
+
+/* ---- from legacy css/dgs-social-hub.css (dgs-assets, cdn-version) ---- */
+/* ============================================================
+   DIGITAL GROWTHSCALE — SOCIAL / QR HUB  (hub.html)
+   ------------------------------------------------------------
+   Standalone destination for QR codes on printed materials,
+   decks, events and business cards. Loads AFTER dgs-common.css
+   and reuses its Framework 3.0 tokens, header/footer, buttons,
+   .dgs-eyebrow / .dgs-section-head and the .dgs-reveal system.
+
+   Design language: Deep Navy #0A1F33 surfaces, Growth Teal
+   accents, Signal Amber reserved for primary conversion CTAs,
+   1px hairline borders, token radii (max --radius-xl / 8px),
+   subtle motion only. No glassmorphism, no oversized gradients.
+   ============================================================ */
+
+/* This page is dark end-to-end, so paint the document navy to
+   avoid any white flash above/below sections. */
+.dgs-hub:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: #050d1a;
+}
+
+/* Shared local tokens for this page */
+.dgs-hub:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  --hub-card: #0d2439;                    /* raised navy card surface */
+  --hub-card-2: #0b1f31;                  /* recessed card surface   */
+  --hub-line: rgba(255, 255, 255, 0.08);  /* hairline border         */
+  --hub-line-strong: rgba(255, 255, 255, 0.14);
+  --hub-teal-soft: rgba(0, 179, 159, 0.12);
+}
+
+/* ============================================================
+   1. HERO
+   ============================================================ */
+.dgs-hub-hero:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 82% 8%, rgba(0, 179, 159, 0.10) 0%, transparent 55%),
+    radial-gradient(90% 70% at 10% 0%, rgba(45, 127, 249, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #071324 0%, #0A1F33 60%, #081525 100%);
+  padding: clamp(4rem, 8vw, 6rem) 0 clamp(3.5rem, 7vw, 5rem);
+}
+
+/* Balanced duotone grade: brand navy & teal tint while keeping image details visible */
+.dgs-hub .dgs-hero-duotone:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 25%, black 60%, transparent 98%) !important;
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 25%, black 60%, transparent 98%) !important;
+}
+
+.dgs-hub .dgs-hero-duotone:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  filter: grayscale(0.65) contrast(1.12) brightness(0.78) !important;
+  opacity: 0.65 !important;
+}
+
+.dgs-hub .dgs-hero-duotone:where(.dgs-css-social-hub,.dgs-css-social-hub *)::after {
+  opacity: 0.7 !important;
+}
+
+.dgs-hub .dgs-hero-scrim:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  background: linear-gradient(to bottom, rgba(7, 19, 36, 0.55) 0%, rgba(10, 31, 51, 0.65) 50%, rgba(8, 21, 37, 0.9) 100%) !important;
+}
+
+/* Dotted texture removed from hero */
+.dgs-hub-hero:where(.dgs-css-social-hub,.dgs-css-social-hub *)::before {
+  content: none !important;
+}
+
+.dgs-hub-hero > .dgs-container:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: relative;
+  z-index: 2;
+}
+
+.dgs-hub-hero-grid:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .dgs-hub-hero-grid:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    grid-template-columns: 1.4fr 0.6fr;
+  }
+}
+
+.dgs-hub-hero-logo:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.dgs-hub-hero-logo:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+.dgs-hub-logo-img:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  height: clamp(42px, 5vw, 60px);
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Dedicated eyebrow for this hero, decoupled from the sitewide
+   .dgs-eyebrow so it can be aligned/sized independently. */
+.dgs-hub-hero-eyebrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--action-teal);
+  margin: 0;
+}
+
+.dgs-page.dgs-hub .dgs-hub-hero-title:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+h1.dgs-hub-hero-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 2.1vw, 1.9rem) !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  margin: 0.6rem 0 0;
+}
+@media (min-width: 960px) {
+  .dgs-page.dgs-hub .dgs-hub-hero-title:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  h1.dgs-hub-hero-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    white-space: nowrap;
+  }
+}
+
+.dgs-hub-hero-title .dgs-hub-accent:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  color: var(--action-teal);
+}
+
+.dgs-hub-hero-copy p.dgs-hub-hero-lead:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+  line-height: 1.7;
+  text-align: left;
+  color: var(--text-light-muted);
+  margin: 1.75rem 0 0;
+  max-width: 46ch;
+}
+
+/* ── Reach-us channels: SMS / Call / WhatsApp / Viber, "Let's Talk" label inline ── */
+.dgs-hub-hero-channels:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.dgs-hub-hero-talk-label:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #ffffff;
+  margin-right: 0.25rem;
+}
+
+.dgs-hub-hero-channel:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-full);
+  background: var(--hub-card-2);
+  border: 1px solid var(--hub-line);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: transform var(--duration-base) var(--ease-out),
+              border-color var(--duration-base) var(--ease-out),
+              background var(--duration-base) var(--ease-out);
+}
+.dgs-hub-hero-channel svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) { width: 17px; height: 17px; color: var(--action-teal); }
+.dgs-hub-hero-channel:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: translateY(-2px);
+  border-color: rgba(0, 179, 159, 0.4);
+  background: #0d2439;
+}
+
+.dgs-hub-hero-phone-number:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #ffffff;
+  transition: color var(--duration-base) var(--ease-out);
+}
+.dgs-hub-hero-phone-number:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) { color: var(--action-teal); }
+
+/* ── Hero contact cards: careers / business growth ── */
+.dgs-hub-hero-contacts:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--hub-line);
+}
+@media (min-width: 560px) {
+  .dgs-hub-hero-contacts:where(.dgs-css-social-hub,.dgs-css-social-hub *) { grid-template-columns: repeat(2, 1fr); }
+}
+
+.dgs-hub-hero-contact:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  text-decoration: none;
+  padding: 1.1rem;
+  border-radius: var(--radius-lg);
+  background: var(--hub-card-2);
+  border: 1px solid var(--hub-line);
+  transition: border-color var(--duration-base) var(--ease-out),
+              transform var(--duration-base) var(--ease-out),
+              background var(--duration-base) var(--ease-out);
+}
+.dgs-hub-hero-contact:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  border-color: rgba(0, 179, 159, 0.45);
+  transform: translateY(-3px);
+  background: var(--hub-card);
+}
+.dgs-hub-hero-contact-icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(150deg, rgba(0, 179, 159, 0.18) 0%, rgba(45, 127, 249, 0.12) 100%);
+  border: 1px solid rgba(0, 179, 159, 0.25);
+  color: var(--action-teal);
+}
+.dgs-hub-hero-contact-icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) { width: 20px; height: 20px; }
+.dgs-hub-hero-contact-body:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+.dgs-hub-hero-contact-body .k:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--action-teal);
+}
+.dgs-hub-hero-contact-body .d:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.dgs-hub-hero-contact-body .v:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #ffffff;
+  word-break: break-word;
+}
+
+/* ── Right column: highlighted follow panel (orb now lives as a section-level background layer) ── */
+.dgs-hub-hero-visual:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  justify-content: center;
+}
+
+/* Left alignment helpers for hero copy & eyebrow */
+.dgs-hub-hero-copy:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  text-align: left !important;
+}
+
+.dgs-hub-hero-copy .dgs-eyebrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex !important;
+  align-items: center !important;
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* ── Individual Large Social Buttons ── */
+.dgs-hub-hero-social-buttons:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 440px;
+}
+
+.dgs-hub-social-btn:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  --btn-brand: var(--action-teal);
+  --btn-brand-bg: rgba(0, 179, 159, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.15rem 1.4rem;
+  border-radius: var(--radius-xl);
+  background: #0d2439;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 1.02rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 12px 30px -15px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s var(--ease-out),
+              border-color 0.25s var(--ease-out),
+              background 0.25s var(--ease-out),
+              box-shadow 0.25s var(--ease-out);
+}
+
+.dgs-hub-social-btn--fb:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-hub-social-btn--in:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+.dgs-hub-social-btn--ig:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  --btn-brand: var(--action-teal);
+  --btn-brand-bg: rgba(0, 179, 159, 0.15);
+}
+
+.dgs-hub-social-btn .icon:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--btn-brand);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease;
+}
+
+.dgs-hub-social-btn .icon svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 22px;
+  height: 22px;
+}
+
+.dgs-hub-social-btn .text:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  flex: 1;
+}
+
+.dgs-hub-social-btn .arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--btn-brand-bg);
+  color: var(--btn-brand);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.dgs-hub-social-btn .arrow svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 16px;
+  height: 16px;
+}
+
+.dgs-hub-social-btn:hover:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--btn-brand) 60%, transparent);
+  background: #0e2942;
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7);
+}
+
+.dgs-hub-social-btn:hover .arrow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  transform: translateX(3px);
+  background: var(--btn-brand);
+  color: #ffffff;
+}
+
+/* ── Hero globe: now an ambient, supporting background layer ── */
+.dgs-hub-orb:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: absolute;
+  top: 50%;
+  right: -6%;
+  width: min(65vw, 780px);
+  aspect-ratio: 1 / 1;
+  transform: translateY(-50%);
+  opacity: 0.4;
+  z-index: 1;
+  pointer-events: none;
+}
+@media (max-width: 960px) {
+  .dgs-hub-orb:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+    right: 50%;
+    transform: translate(50%, -50%);
+    opacity: 0.28;
+  }
+}
+
+.dgs-hub-orb-svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  animation: dgs-legacyhub-dgs-hub-spin 60s linear infinite;
+}
+
+.dgs-hub-orb-glow:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, rgba(0, 179, 159, 0.22) 0%, transparent 62%);
+  filter: blur(14px);
+  z-index: 0;
+}
+
+/* floating platform chips over the globe */
+.dgs-hub-orb-chip:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-xl);
+  background: var(--hub-card);
+  border: 1px solid var(--hub-line-strong);
+  color: var(--action-teal);
+  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.9);
+  z-index: 3;
+  opacity: 0.85;
+  animation: dgs-legacyhub-dgs-hub-float 7s ease-in-out infinite;
+}
+
+.dgs-hub-orb-chip svg:where(.dgs-css-social-hub,.dgs-css-social-hub *) { width: 26px; height: 26px; }
+.dgs-hub-orb-chip--fb:where(.dgs-css-social-hub,.dgs-css-social-hub *)  { top: 8%;  left: 60%; }
+.dgs-hub-orb-chip--in:where(.dgs-css-social-hub,.dgs-css-social-hub *)  { top: 34%; left: 6%;  animation-delay: -1.4s; }
+.dgs-hub-orb-chip--ig:where(.dgs-css-social-hub,.dgs-css-social-hub *)  { top: 62%; left: 74%; animation-delay: -2.8s; }
+.dgs-hub-orb-chip--yt:where(.dgs-css-social-hub,.dgs-css-social-hub *)  { top: 84%; left: 30%; animation-delay: -4.2s; }
+
+@keyframes dgs-legacyhub-dgs-hub-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+@keyframes dgs-legacyhub-dgs-hub-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   MOTION PREFERENCES
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .dgs-hub-orb-svg:where(.dgs-css-social-hub,.dgs-css-social-hub *),
+  .dgs-hub-orb-chip:where(.dgs-css-social-hub,.dgs-css-social-hub *) { animation: none !important; }
+}
+
+/* ============================================================
+   INLINE STYLES EXTRACTED FROM HTML (migrated from style="" attrs)
+   ============================================================ */
+.dgs-il-47bb04fc03:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a7301f6ffc85279f4022784.png') !important;
 }
