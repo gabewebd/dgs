@@ -121,9 +121,9 @@ In this repo both are local relative paths (`css/styles.css`, `../js/main.js`, .
 1. Import the repository into your Vercel dashboard.
 2. Build Settings:
    - **Framework Preset**: Other
-   - **Build Command**: `npm run build`
+   - **Build Command**: none (`vercel.json` overrides it with a no-op)
    - **Output Directory**: `.` (Root)
-3. Deploy. Clean URL routing and rewrites are handled by `vercel.json` (`cleanUrls: true` plus redirects/rewrites for `/resources`, `/services`, `/social-hub`, `/careers-embed`).
+3. Deploy. Vercel serves **static assets only** (`css/`, `js/`, `assets/`, `images/`, `favicon_io/`). `.vercelignore` is an allowlist, so no `.html` page is deployed or reachable on the vercel.app URL. Page sources live in the repo root, with a snapshot copy in `html-templates/`; they are pasted into GHL, not served from Vercel.
 
 ### Deploying on Netlify
 1. Connect the repository or drag and drop into Netlify.
@@ -136,6 +136,13 @@ Page-only CSS lives in Part C of `styles.css`, one section per former page sheet
 
 ### Publishing to GHL
 The old per-page files (`dgs-*.css`, `dgs-*.js`) have been removed, so every GHL page and GHL-side template must load `styles.css` + `main.js` from `dgs-omega.vercel.app`. Growth Hub article/playbook templates also need `data-dgs-js="growth-article"` on `<main>`, and careers templates `data-dgs-js="careers"`, so the matching part of `main.js` runs.
+
+### Keeping pages fast
+- **Body-class script:** every page has `<script>document.body.classList.add(...)</script>` right after `<body>`. GHL drops `<body>` classes, and page CSS is scoped to them, so keep this script when pasting (above the content); without it the page only styles itself once `main.js` loads and visibly jumps. Pass each class as its own argument: one space-separated string throws.
+- **Images:** upload to GHL as usual, reference the `assets.cdn.filesafe.space` URL, then run `python scripts/optimize-images.py`. It saves a WebP copy in `images/opt/` (served by Vercel) and rewrites the references. GHL serves uploads as-is, and our 1536x1024 PNG photos were ~2 MB each (~100 KB as WebP).
+- **Background video:** use `data-dgs-defer-src` + class `dgs-defer-video` instead of `autoplay` + `<source>`; `main.js` starts it after the page has loaded and fades it in.
+- **Below-the-fold images/iframes:** add `loading="lazy"` (the footer newsletter form iframe already has it).
+- **GSAP:** `main.js` lazy-loads GSAP 3.13; do not add GSAP `<script>` tags in GHL custom code (it downloads twice).
 
 ### GHL (GoHighLevel) pages
 Pages are designed to be pasted directly into GHL's Custom HTML / page builder. Because GHL owns `<body>` on paste, `styles.css` (Part A) carries a dedicated "GHL-SAFE ISOLATION LAYER" block (scoped to `.dgs-header` / `.dgs-main-content` / `.dgs-footer`, guarded with `:not([class])`) so base typography/spacing still applies without the usual `.dgs-page` wrapper.

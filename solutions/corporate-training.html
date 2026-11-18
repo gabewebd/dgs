@@ -133,6 +133,9 @@
 </head>
 
 <body class="dgs-page dgs-css-solution-detail dgs-css-premium-viz">
+  <!-- GHL drops <body> classes, and this page's CSS is scoped to them. KEEP THIS when pasting into GHL,
+       above the page content, so the page is styled from the first paint (not when main.js loads). -->
+  <script>document.body.classList.add('dgs-page', 'dgs-css-solution-detail', 'dgs-css-premium-viz');</script>
   <!-- dgs:include:navbar:start | AUTO-GENERATED from includes/navbar.html — edit that file, then run: npm run build:includes -->
 <header class="dgs-header" id="navbar">
   <div class="dgs-container dgs-nav">
@@ -1054,7 +1057,7 @@
           </div>
           <!-- What is Included: Interactive Floating Graphic in DGS Deep Navy Stage -->
           <div class="dgs-included-cards-stage dgs-reveal">
-            <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a9a9e0fa1f3f48f4bd049f1.png" alt="Corporate Training Included Package" class="dgs-included-img" loading="lazy" width="1438" height="1422">
+            <img src="https://dgs-omega.vercel.app/images/opt/6a9a9e0fa1f3f48f4bd049f1.webp" alt="Corporate Training Included Package" class="dgs-included-img" loading="lazy" width="1438" height="1422">
             <div class="dgs-inc-cursor" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="#0A1F33" stroke="#ffffff" stroke-width="1.5">
                 <path d="M4 3l14 8-6 2-3 7L4 3z"/>
@@ -1521,6 +1524,7 @@
           <iframe
             src="https://api.faithph.ai/widget/form/PmMM1hyZSNDruttSitUa"
             class="dgs-footer-newsletter-iframe"
+            loading="lazy"
             id="inline-PmMM1hyZSNDruttSitUa"
             data-layout="{'id':'INLINE'}"
             data-trigger-type="alwaysShow"

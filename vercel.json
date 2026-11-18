@@ -1,13 +1,19 @@
 {
+  "buildCommand": "echo 'Static asset CDN (css/js/assets/images): no build step'",
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
-    { "source": "/resources", "destination": "/growth-hub", "permanent": true },
-    { "source": "/services", "destination": "/solutions", "permanent": true }
-  ],
-  "rewrites": [
-    { "source": "/social-hub", "destination": "/hub.html" },
-    { "source": "/social-hub/", "destination": "/hub.html" },
-    { "source": "/careers-embed", "destination": "/careers-source.html" }
+  "headers": [
+    {
+      "source": "/(css|js)/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=600, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/(images|assets|favicon_io)/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=604800" }
+      ]
+    }
   ]
 }

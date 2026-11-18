@@ -36,6 +36,9 @@
 </head>
 
 <body class="dgs-page dgs-css-solution-detail dgs-css-contact">
+  <!-- GHL drops <body> classes, and this page's CSS is scoped to them. KEEP THIS when pasting into GHL,
+       above the page content, so the page is styled from the first paint (not when main.js loads). -->
+  <script>document.body.classList.add('dgs-page', 'dgs-css-solution-detail', 'dgs-css-contact');</script>
   <!--============================================================
       HEADER / NAVIGATION (Index matching megamenu header)
       ============================================================-->
@@ -781,6 +784,7 @@
           <iframe
             src="https://api.faithph.ai/widget/form/PmMM1hyZSNDruttSitUa"
             class="dgs-footer-newsletter-iframe"
+            loading="lazy"
             id="inline-PmMM1hyZSNDruttSitUa"
             data-layout="{'id':'INLINE'}"
             data-trigger-type="alwaysShow"

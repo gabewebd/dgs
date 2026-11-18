@@ -38,6 +38,9 @@
 </head>
 
 <body class="dgs-page dgs-hub dgs-css-social-hub">
+  <!-- GHL drops <body> classes, and this page's CSS is scoped to them. KEEP THIS when pasting into GHL,
+       above the page content, so the page is styled from the first paint (not when main.js loads). -->
+  <script>document.body.classList.add('dgs-page', 'dgs-hub', 'dgs-css-social-hub');</script>
 
   <main data-dgs-css="dgs-css-social-hub">
     <!--============================================================
@@ -57,7 +60,7 @@
           <!-- Left: copy -->
           <div class="dgs-hub-hero-copy dgs-reveal">
             <a href="/" class="dgs-hub-hero-logo" aria-label="Digital GrowthScale Home">
-              <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5f1fbc9c9b37b5fd51bdd5.png" alt="Digital GrowthScale" class="dgs-hub-logo-img">
+              <img src="https://dgs-omega.vercel.app/images/opt/6a5f1fbc9c9b37b5fd51bdd5.webp" alt="Digital GrowthScale" class="dgs-hub-logo-img">
             </a>
             <span class="dgs-hub-hero-eyebrow">Ready to grow smarter?</span>
             <h1 class="dgs-hub-hero-title">Human Talent. Intelligent Automation. <span class="dgs-hub-accent">Scalable Growth.</span></h1>

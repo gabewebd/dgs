@@ -39,6 +39,9 @@
 </head>
 
 <body class="dgs-page dgs-css-about dgs-css-events-gallery">
+  <!-- GHL drops <body> classes, and this page's CSS is scoped to them. KEEP THIS when pasting into GHL,
+       above the page content, so the page is styled from the first paint (not when main.js loads). -->
+  <script>document.body.classList.add('dgs-page', 'dgs-css-about', 'dgs-css-events-gallery');</script>
 
   <!--============================================================
       HEADER / NAVIGATION
@@ -717,7 +720,7 @@
                 <!-- Card 0: Faith Natividad -->
                 <div class="dgs-portrait-card" data-card="0">
                   <div class="dgs-portrait-img-wrap">
-                    <img
+                    <img loading="lazy" decoding="async"
                       src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a577da7524a3ec4c6c5a530.webp"
                       alt="Faith Natividad">
                     <div class="dgs-portrait-overlay"></div>
@@ -727,7 +730,7 @@
                 <!-- Card 1: Earl Palanca -->
                 <div class="dgs-portrait-card" data-card="1">
                   <div class="dgs-portrait-img-wrap">
-                    <img
+                    <img loading="lazy" decoding="async"
                       src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a39c9b37b5fda71097.webp"
                       alt="Earl Palanca">
                     <div class="dgs-portrait-overlay"></div>
@@ -737,7 +740,7 @@
                 <!-- Card 2: Engr. Jhon Bin Arat -->
                 <div class="dgs-portrait-card" data-card="2">
                   <div class="dgs-portrait-img-wrap">
-                    <img
+                    <img loading="lazy" decoding="async"
                       src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a4baf5f6da402d7df6.webp"
                       alt="Engr. Jhon Bin Arat">
                     <div class="dgs-portrait-overlay"></div>
@@ -747,7 +750,7 @@
                 <!-- Card 3: Arch. Joanna Natividad -->
                 <div class="dgs-portrait-card" data-card="3">
                   <div class="dgs-portrait-img-wrap">
-                    <img
+                    <img loading="lazy" decoding="async"
                       src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a5730a29c9b37b5fda70fc9.webp"
                       alt="Arch. Joanna Natividad">
                     <div class="dgs-portrait-overlay"></div>
@@ -762,7 +765,7 @@
 
               <!-- Mobile only: kept in sync with the active leader by
                    switchLeader()/syncMobilePhoto() below. -->
-              <img class="dgs-leader-mobile-photo" id="leaderMobilePhoto"
+              <img loading="lazy" decoding="async" class="dgs-leader-mobile-photo" id="leaderMobilePhoto"
                 src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a577da7524a3ec4c6c5a530.webp"
                 alt="Faith Natividad">
 
@@ -979,7 +982,7 @@
 
         <div class="dgs-diff-header-grid dgs-reveal">
           <div class="dgs-diff-header-media">
-            <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83dac91082d6487705e88a.png" alt="Digital GrowthScale team celebrating a client win"
+            <img src="https://dgs-omega.vercel.app/images/opt/6a83dac91082d6487705e88a.webp" alt="Digital GrowthScale team celebrating a client win"
               loading="lazy" />
 
             <!-- Badges removed -->
@@ -1354,10 +1357,10 @@
                 <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83ee90255b571c8ef28e4a.png" alt="APBC Member" loading="lazy">
               </div>
               <div class="dgs-marquee-logo-item">
-                <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83ee901082d648772e0229.png" alt="IBPAP Philippines" loading="lazy">
+                <img src="https://dgs-omega.vercel.app/images/opt/6a83ee901082d648772e0229.webp" alt="IBPAP Philippines" loading="lazy">
               </div>
               <div class="dgs-marquee-logo-item">
-                <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83ee9099074f5ef67a4c2f.jpg" alt="AMCHAM Member" loading="lazy">
+                <img src="https://dgs-omega.vercel.app/images/opt/6a83ee9099074f5ef67a4c2f.webp" alt="AMCHAM Member" loading="lazy">
               </div>
               <div class="dgs-marquee-logo-item">
                 <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83ef64255b571c8ef3b25a.jpg" alt="Data Privacy Compliant" loading="lazy">
@@ -1373,10 +1376,10 @@
                 <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83ee90255b571c8ef28e4a.png" alt="" loading="lazy">
               </div>
               <div class="dgs-marquee-logo-item">
-                <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83ee901082d648772e0229.png" alt="" loading="lazy">
+                <img src="https://dgs-omega.vercel.app/images/opt/6a83ee901082d648772e0229.webp" alt="" loading="lazy">
               </div>
               <div class="dgs-marquee-logo-item">
-                <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83ee9099074f5ef67a4c2f.jpg" alt="" loading="lazy">
+                <img src="https://dgs-omega.vercel.app/images/opt/6a83ee9099074f5ef67a4c2f.webp" alt="" loading="lazy">
               </div>
               <div class="dgs-marquee-logo-item">
                 <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83ef64255b571c8ef3b25a.jpg" alt="" loading="lazy">
@@ -1498,6 +1501,7 @@
           <iframe
             src="https://api.faithph.ai/widget/form/PmMM1hyZSNDruttSitUa"
             class="dgs-footer-newsletter-iframe"
+            loading="lazy"
             id="inline-PmMM1hyZSNDruttSitUa"
             data-layout="{'id':'INLINE'}"
             data-trigger-type="alwaysShow"

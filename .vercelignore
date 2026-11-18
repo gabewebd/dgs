@@ -1,0 +1,16 @@
+# Vercel is used only as an asset CDN for the GHL-hosted site.
+# Deploy ONLY the folders below; everything else (all .html pages,
+# html-templates/, includes/, scripts/, docs, package.json, ...) is
+# left out of the deployment, so no HTML page is reachable on the
+# vercel.app URL.
+/*
+!/css
+!/js
+!/assets
+!/images
+!/favicon_io
+!/vercel.json
+
+# Belt and braces: never ship HTML, even inside the folders above.
+*.html
+*.htm

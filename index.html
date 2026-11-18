@@ -40,6 +40,11 @@
 </head>
 
 <body class="dgs-page dgs-css-index">
+  <!-- GHL drops these <body> classes, and all homepage CSS is scoped to them. KEEP THIS
+       when pasting into GHL, above the hero: it must run before the hero renders,
+       otherwise the page only styles itself once main.js loads (hero/video jump).
+       Pass each class as its own argument: 'dgs-page dgs-css-index' as ONE string throws. -->
+  <script>document.body.classList.add('dgs-page', 'dgs-css-index');</script>
   <!-- dgs:include:navbar:start | AUTO-GENERATED from includes/navbar.html — edit that file, then run: npm run build:includes -->
 <header class="dgs-header" id="navbar">
   <div class="dgs-container dgs-nav">
@@ -574,9 +579,10 @@
       HERO SECTION (Preserved Split Layout + Premium Elements)
       ============================================================-->
     <section class="dgs-hero dgs-hero--premium-split" id="dgs-hero">
-      <video class="dgs-hero-bg-video" autoplay muted loop playsinline aria-hidden="true">
-        <source src="https://dgs-assets.vercel.app/assets/globe-background.mp4" type="video/mp4">
-      </video>
+      <!-- Background video is loaded by main.js only AFTER the page has loaded (data-dgs-defer-src),
+           so its ~2.6 MB never competes with the CSS, fonts and hero; it fades in once playing. -->
+      <video class="dgs-hero-bg-video dgs-defer-video" muted loop playsinline preload="none" aria-hidden="true"
+        data-dgs-defer-src="https://dgs-omega.vercel.app/assets/globe-background.mp4"></video>
       <div class="dgs-hero-video-tint" aria-hidden="true"></div>
       <div class="dgs-hero-scrim" aria-hidden="true"></div>
       <!-- Background Elements -->
@@ -1178,14 +1184,14 @@
 
           <div class="dgs-promise-visual">
             <div class="dgs-promise-visual-frame">
-              <img class="dgs-promise-visual-img is-active" data-promise-image
-                src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83e23e1082d648771b1567.png" alt=""
+              <img loading="lazy" decoding="async" class="dgs-promise-visual-img is-active" data-promise-image
+                src="https://dgs-omega.vercel.app/images/opt/6a83e23e1082d648771b1567.webp" alt=""
                 aria-hidden="true">
-              <img class="dgs-promise-visual-img" data-promise-image
-                src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83e23b1082d648771b1547.png" alt=""
+              <img loading="lazy" decoding="async" class="dgs-promise-visual-img" data-promise-image
+                src="https://dgs-omega.vercel.app/images/opt/6a83e23b1082d648771b1547.webp" alt=""
                 aria-hidden="true">
-              <img class="dgs-promise-visual-img" data-promise-image
-                src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83e2421082d648771b2568.png" alt=""
+              <img loading="lazy" decoding="async" class="dgs-promise-visual-img" data-promise-image
+                src="https://dgs-omega.vercel.app/images/opt/6a83e2421082d648771b2568.webp" alt=""
                 aria-hidden="true">
               <div class="dgs-promise-visual-overlay" aria-hidden="true"></div>
               <div class="dgs-promise-visual-index" aria-hidden="true">
@@ -1358,7 +1364,7 @@
             <!-- Card 1: TRANSFORM -->
             <div class="dgs-fsol-card dgs-reveal" data-accent="teal">
               <div class="dgs-fsol-card-bg">
-                <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a9a77cb4f0181579a508162.png" alt="Transform Business Transformation"
+                <img src="https://dgs-omega.vercel.app/images/opt/6a9a77cb4f0181579a508162.webp" alt="Transform Business Transformation"
                   loading="lazy">
                 <div class="dgs-fsol-duotone" aria-hidden="true"></div>
               </div>
@@ -1413,7 +1419,7 @@
             <!-- Card 2: ENABLE -->
             <div class="dgs-fsol-card dgs-reveal" data-accent="blue">
               <div class="dgs-fsol-card-bg">
-                <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a9a77cbc78647f3139c72c3.png" alt="Enable Business Execution"
+                <img src="https://dgs-omega.vercel.app/images/opt/6a9a77cbc78647f3139c72c3.webp" alt="Enable Business Execution"
                   loading="lazy">
                 <div class="dgs-fsol-duotone" aria-hidden="true"></div>
               </div>
@@ -1462,7 +1468,7 @@
             <!-- Card 3: ELEVATE -->
             <div class="dgs-fsol-card dgs-reveal" data-accent="amber">
               <div class="dgs-fsol-card-bg">
-                <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a9a77cb4f0181579a50816b.png" alt="Elevate Capability Development"
+                <img src="https://dgs-omega.vercel.app/images/opt/6a9a77cb4f0181579a50816b.webp" alt="Elevate Capability Development"
                   loading="lazy">
                 <div class="dgs-fsol-duotone" aria-hidden="true"></div>
               </div>
@@ -1780,7 +1786,7 @@
                   <path d="M203.42,410.71a26.55,26.55,0,1,1,26.88-26.89A26.39,26.39,0,0,1,203.42,410.71Z" />
                 </svg>
               </div>
-              <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83dfc31082d648771746f4.png"
+              <img src="https://dgs-omega.vercel.app/images/opt/6a83dfc31082d648771746f4.webp"
                 alt="Consult Stage Operations Audit" loading="lazy" class="dgs-timeline-photo">
             </div>
             <div class="dgs-timeline-dot-container">
@@ -1820,7 +1826,7 @@
                     d="M327.92,406.76c-27.84,1-51.56-22-52.52-50.91-1-29.91,21.37-54.31,50.49-55.1,27.95-.76,52.49,23,53.54,51.73C380.44,380.49,356.49,405.74,327.92,406.76Z" />
                 </svg>
               </div>
-              <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83dfc899074f5ef6639fdd.png"
+              <img src="https://dgs-omega.vercel.app/images/opt/6a83dfc899074f5ef6639fdd.webp"
                 alt="Strategize Custom Strategy Roadmap" loading="lazy" class="dgs-timeline-photo">
             </div>
           </div>
@@ -1848,7 +1854,7 @@
                     d="M397.87,185.32c0-4.16.08-8.32,0-12.47-.11-3.93,1.5-5.86,5.6-5.8,8.15.11,16.31.06,24.47,0,3.7,0,5.46,1.59,5.41,5.44-.11,8.48-.05,17,0,25.45,0,3.94-1.91,5.86-5.75,5.88-8.16,0-16.32-.07-24.48,0-3.55,0-5.23-1.54-5.2-5.08,0-4.49,0-9,0-13.47Z" />
                 </svg>
               </div>
-              <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83dfc61082d64877174730.png"
+              <img src="https://dgs-omega.vercel.app/images/opt/6a83dfc61082d64877174730.webp"
                 alt="Realize implementation phase" loading="lazy" class="dgs-timeline-photo">
             </div>
             <div class="dgs-timeline-dot-container">
@@ -1888,7 +1894,7 @@
                     d="M66.69,354.06c0-9.14,0-18.29,0-27.43C66.73,318.25,71,314,79.24,314c16.81,0,33.63-.08,50.44-.07,9,0,13.23,4.11,13.24,13q0,27.19,0,54.38C142.9,390,139,394,130.06,394q-26,.12-51.93,0c-7.09,0-11.25-4-11.37-11-.17-9.64,0-19.28,0-28.93Z" />
                 </svg>
               </div>
-              <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83dfccfe4291bd10b77dee.png"
+              <img src="https://dgs-omega.vercel.app/images/opt/6a83dfccfe4291bd10b77dee.webp"
                 alt="Sustain optimization and transfer" loading="lazy" class="dgs-timeline-photo">
             </div>
           </div>
@@ -2914,6 +2920,7 @@
           <iframe
             src="https://api.faithph.ai/widget/form/PmMM1hyZSNDruttSitUa"
             class="dgs-footer-newsletter-iframe"
+            loading="lazy"
             id="inline-PmMM1hyZSNDruttSitUa"
             data-layout="{'id':'INLINE'}"
             data-trigger-type="alwaysShow"

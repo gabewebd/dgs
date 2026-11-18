@@ -36,6 +36,9 @@
 </head>
 
 <body class="dgs-page dgs-css-solution-detail dgs-css-careers">
+  <!-- GHL drops <body> classes, and this page's CSS is scoped to them. KEEP THIS when pasting into GHL,
+       above the page content, so the page is styled from the first paint (not when main.js loads). -->
+  <script>document.body.classList.add('dgs-page', 'dgs-css-solution-detail', 'dgs-css-careers');</script>
   <!--============================================================
       HEADER / NAVIGATION (Exact Global Standard)
       ============================================================-->
@@ -845,19 +848,19 @@
                 alt="" loading="lazy">
             </span>
             <span class="dgs-talent-ring-icon dgs-talent-ring-icon--2">
-              <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b578f1e423633fd2a997.jpg"
+              <img src="https://dgs-omega.vercel.app/images/opt/6a83b578f1e423633fd2a997.webp"
                 alt="" loading="lazy">
             </span>
             <span class="dgs-talent-ring-icon dgs-talent-ring-icon--3">
-              <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b574270e1f5457c80fe6.jpg"
+              <img src="https://dgs-omega.vercel.app/images/opt/6a83b574270e1f5457c80fe6.webp"
                 alt="" loading="lazy">
             </span>
             <span class="dgs-talent-ring-icon dgs-talent-ring-icon--4">
-              <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b57acf50f900f28d0a93.png"
+              <img src="https://dgs-omega.vercel.app/images/opt/6a83b57acf50f900f28d0a93.webp"
                 alt="" loading="lazy">
             </span>
             <span class="dgs-talent-ring-icon dgs-talent-ring-icon--5">
-              <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83b57ca6a03cda06e1d25a.jpg"
+              <img src="https://dgs-omega.vercel.app/images/opt/6a83b57ca6a03cda06e1d25a.webp"
                 alt="" loading="lazy">
             </span>
           </div>
@@ -927,6 +930,7 @@
           <iframe
             src="https://api.faithph.ai/widget/form/PmMM1hyZSNDruttSitUa"
             class="dgs-footer-newsletter-iframe"
+            loading="lazy"
             id="inline-PmMM1hyZSNDruttSitUa"
             data-layout="{'id':'INLINE'}"
             data-trigger-type="alwaysShow"

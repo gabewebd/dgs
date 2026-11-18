@@ -14,7 +14,7 @@
     content="An 11-section checklist covering before Day One through the first 30 days, remote work setup, access &amp; security, and a manager checklist. Digital &amp; print-ready.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.digitalgrowthscale.com/growth-hub/remote-onboarding-checklist">
-  <meta property="og:image" content="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6aa210a866840b0458dddb5c.png">
+  <meta property="og:image" content="https://dgs-omega.vercel.app/images/opt/6aa210a866840b0458dddb5c.webp">
 
   <script type="application/ld+json">
 {
@@ -40,7 +40,7 @@
       "description": "An 11-section checklist covering before Day One through the first 30 days, remote work setup, access & security, and a manager checklist.",
       "author": { "@id": "https://www.digitalgrowthscale.com/#organization" },
       "publisher": { "@id": "https://www.digitalgrowthscale.com/#organization" },
-      "image": "https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6aa210a866840b0458dddb5c.png"
+      "image": "https://dgs-omega.vercel.app/images/opt/6aa210a866840b0458dddb5c.webp"
     },
     {
       "@type": "BreadcrumbList",
@@ -71,6 +71,9 @@
 </head>
 
 <body class="dgs-page dgs-css-playbook-detail">
+  <!-- GHL drops <body> classes, and this page's CSS is scoped to them. KEEP THIS when pasting into GHL,
+       above the page content, so the page is styled from the first paint (not when main.js loads). -->
+  <script>document.body.classList.add('dgs-page', 'dgs-css-playbook-detail');</script>
 <!-- dgs:include:navbar:start | AUTO-GENERATED from includes/navbar.html — edit that file, then run: npm run build:includes -->
 <header class="dgs-header" id="navbar">
   <div class="dgs-container dgs-nav">
@@ -642,7 +645,7 @@
 
     <!-- COVER IMAGE -->
     <div class="dgs-ga-cover">
-      <img src="https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6aa210a866840b0458dddb5c.png"
+      <img src="https://dgs-omega.vercel.app/images/opt/6aa210a866840b0458dddb5c.webp"
         alt="Remote Onboarding Checklist cover" loading="lazy">
     </div>
 
@@ -1004,6 +1007,7 @@
           <iframe
             src="https://api.faithph.ai/widget/form/PmMM1hyZSNDruttSitUa"
             class="dgs-footer-newsletter-iframe"
+            loading="lazy"
             id="inline-PmMM1hyZSNDruttSitUa"
             data-layout="{'id':'INLINE'}"
             data-trigger-type="alwaysShow"

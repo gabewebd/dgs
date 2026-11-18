@@ -99,6 +99,37 @@
     try { fn(); } catch (err) { if (window.console) console.error('[DGS] module "' + name + '" failed', err); }
   }
 
+  /* ─── DEFERRED BACKGROUND VIDEO ───
+     <video data-dgs-defer-src="..."> only starts downloading once the page has
+     finished loading (and the browser is idle), so a multi-MB background clip
+     never competes with the stylesheet, fonts and above-the-fold images. It
+     fades in once it is actually playing (styles.css: video.dgs-defer-video).
+     Skipped on Save-Data / 2G connections and for reduced motion: the hero's
+     own background shows instead. */
+  dgsModule('deferred-video', {}, function () {
+    const vids = document.querySelectorAll('video[data-dgs-defer-src]');
+    if (!vids.length) return;
+    const conn = navigator.connection || {};
+    if (prefersReducedMotion || conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '')) return;
+    function start() {
+      vids.forEach(function (v) {
+        if (v.getAttribute('src')) return;
+        v.addEventListener('playing', function () { v.classList.add('is-playing'); }, { once: true });
+        v.muted = true;
+        v.autoplay = true;
+        v.src = v.getAttribute('data-dgs-defer-src');
+        const p = v.play();
+        if (p && p.catch) p.catch(function () {});
+      });
+    }
+    function afterLoad() {
+      if ('requestIdleCallback' in window) window.requestIdleCallback(start, { timeout: 2000 });
+      else setTimeout(start, 300);
+    }
+    if (document.readyState === 'complete') afterLoad();
+    else window.addEventListener('load', afterLoad, { once: true });
+  });
+
 
   function startLenis() {
     if (window.dgsLenis || typeof Lenis === 'undefined') return;
@@ -1576,13 +1607,13 @@
           year: 2026
         },
         {
-          id: 'https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a97c9e5c7069f4fc7b07d9d.png', w: 1000, h: 750,
+          id: 'https://dgs-omega.vercel.app/images/opt/6a97c9e5c7069f4fc7b07d9d.webp', w: 1000, h: 750,
           alt: 'Business Show Asia in Singapore',
           title: 'Business Show Asia, Singapore',
           year: 2026
         },
         {
-          id: 'https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a97cc65c7069f4fc7b0be24.jpg', w: 1000, h: 750,
+          id: 'https://dgs-omega.vercel.app/images/opt/6a97cc65c7069f4fc7b0be24.webp', w: 1000, h: 750,
           alt: 'Collaborative learning session in Singapore',
           title: 'Collaborative Learning Session, Singapore',
           year: 2026
@@ -1618,31 +1649,31 @@
           year: 2026
         },
         {
-          id: 'https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83dac91082d6487705e899.jpg', w: 1000, h: 750,
+          id: 'https://dgs-omega.vercel.app/images/opt/6a83dac91082d6487705e899.webp', w: 1000, h: 750,
           alt: 'HLA - 2nd Anniversary celebration and gathering',
           title: 'HLA - 2nd Anniversary',
           year: 2026
         },
         {
-          id: 'https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83dac999074f5ef6527271.png', w: 1000, h: 750,
+          id: 'https://dgs-omega.vercel.app/images/opt/6a83dac999074f5ef6527271.webp', w: 1000, h: 750,
           alt: 'GoHighLevel Manila Day 1 presentation and summit',
           title: 'GoHighLevel Manila - Day 1',
           year: 2026
         },
         {
-          id: 'https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83dac91082d6487705e894.png', w: 750, h: 1000,
+          id: 'https://dgs-omega.vercel.app/images/opt/6a83dac91082d6487705e894.webp', w: 750, h: 1000,
           alt: 'GoHighLevel Manila Day 2 networking and connection',
           title: 'GoHighLevel Manila - Day 2',
           year: 2026
         },
         {
-          id: 'https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83dac9fe4291bd10b0c6c0.png', w: 1000, h: 750,
+          id: 'https://dgs-omega.vercel.app/images/opt/6a83dac9fe4291bd10b0c6c0.webp', w: 1000, h: 750,
           alt: 'House Creatives Shoot creative production team session',
           title: 'House Creatives Shoot',
           year: 2026
         },
         {
-          id: 'https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a83dac91082d6487705e88f.png', w: 750, h: 1000,
+          id: 'https://dgs-omega.vercel.app/images/opt/6a83dac91082d6487705e88f.webp', w: 750, h: 1000,
           alt: 'Doc Auntie K. community spotlight presentation',
           title: 'Doc Auntie K.',
           year: 2026
