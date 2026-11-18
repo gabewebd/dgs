@@ -32887,3 +32887,24 @@ h1.dgs-hub-hero-title:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
 .dgs-il-47bb04fc03:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
   --dgs-duotone-img:url('https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a7301f6ffc85279f4022784.png') !important;
 }
+
+/* ---- C99 add-on: hub fills the screen on any desktop size (no white band below) ---- */
+/* The page behind the hero (GHL paints body #fff) matches the hero's bottom navy, keyed on
+   the hero itself so it also holds before the body-class script runs. */
+html:has(.dgs-hub-hero),
+html:has(.dgs-hub-hero) body {
+  background-color: #081525 !important;
+}
+
+/* Hero is at least one full viewport tall, with its content centered vertically. */
+.dgs-hub-hero:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  box-sizing: border-box;
+}
+.dgs-hub-hero > .dgs-container:where(.dgs-css-social-hub,.dgs-css-social-hub *) {
+  width: 100%;
+}
