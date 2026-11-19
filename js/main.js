@@ -1624,7 +1624,7 @@
           year: 2026
         },
         {
-          id: 'https://files.leadconnectorhq.com/file/6afe7517898cec9ac74fff8c/negosyante-babae.png', w: 1000, h: 750,
+          id: 'https://files.leadconnectorhq.com/file/6afe7452898cec9ac74fe539/827311644-2103451086940065-7296267610938115637-n.jpg', w: 1000, h: 750,
           alt: 'Negosyante Babae',
           title: 'Negosyante Babae',
           year: 2026
