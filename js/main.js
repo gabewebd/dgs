@@ -1618,27 +1618,9 @@
 
       var DGS_EVENTS = [
         {
-          id: 'https://files.leadconnectorhq.com/file/6ab3c7ad89b8b9422b969f3c/elevate-business-leadership-summit.jpg', w: 1000, h: 750,
-          alt: 'Elevate Business Leadership Summit',
-          title: 'Elevate Business Leadership Summit',
-          year: 2026
-        },
-        {
-          id: 'https://files.leadconnectorhq.com/file/6ab3c7adfef86e60d51e963e/hrex-manila.jpg', w: 1000, h: 750,
-          alt: 'HREX Manila',
-          title: 'HREX Manila',
-          year: 2026
-        },
-        {
-          id: 'https://files.leadconnectorhq.com/file/6ab3c7adf07a3cb6d48c802c/top-100-linkedin.jpg', w: 1000, h: 750,
-          alt: 'Top 100 LinkedIn',
-          title: 'Top 100 LinkedIn',
-          year: 2026
-        },
-        {
-          id: 'https://files.leadconnectorhq.com/file/6ab3c7ad18384d888bb005d8/ai-workshop-in-bgc.jpg', w: 1000, h: 750,
-          alt: 'AI Workshop in BGC',
-          title: 'AI Workshop in BGC',
+          id: 'https://files.leadconnectorhq.com/file/6afe774e8b5100b36aeeaac2/907783546-2907330889636730-8610671553601362742-n.jpg', w: 1000, h: 750,
+          alt: 'Top 40 Filipino Founders on LinkedIn',
+          title: 'Top 40 Filipino Founders on LinkedIn',
           year: 2026
         },
         {
@@ -1723,6 +1705,30 @@
           id: 'https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a97c9cec7069f4fc7b07bd5.jpg', w: 1000, h: 750,
           alt: 'Induction and General Membership Meeting of the Philippine Chamber of Commerce and Industry, Quezon City',
           title: 'PCCI Induction & General Membership Meeting, Quezon City',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6ab3c7ad89b8b9422b969f3c/elevate-business-leadership-summit.jpg', w: 1000, h: 750,
+          alt: 'Elevate Business Leadership Summit',
+          title: 'Elevate Business Leadership Summit',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6ab3c7adfef86e60d51e963e/hrex-manila.jpg', w: 1000, h: 750,
+          alt: 'HREX Manila',
+          title: 'HREX Manila',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6ab3c7adf07a3cb6d48c802c/top-100-linkedin.jpg', w: 1000, h: 750,
+          alt: 'Top 100 LinkedIn',
+          title: 'Top 100 LinkedIn',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6ab3c7ad18384d888bb005d8/ai-workshop-in-bgc.jpg', w: 1000, h: 750,
+          alt: 'AI Workshop in BGC',
+          title: 'AI Workshop in BGC',
           year: 2026
         },
         {
