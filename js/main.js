@@ -1618,6 +1618,108 @@
 
       var DGS_EVENTS = [
         {
+          id: 'https://files.leadconnectorhq.com/file/6ab3c7ad89b8b9422b969f3c/elevate-business-leadership-summit.jpg', w: 1000, h: 750,
+          alt: 'Elevate Business Leadership Summit',
+          title: 'Elevate Business Leadership Summit',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6ab3c7adfef86e60d51e963e/hrex-manila.jpg', w: 1000, h: 750,
+          alt: 'HREX Manila',
+          title: 'HREX Manila',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6ab3c7adf07a3cb6d48c802c/top-100-linkedin.jpg', w: 1000, h: 750,
+          alt: 'Top 100 LinkedIn',
+          title: 'Top 100 LinkedIn',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6ab3c7ad18384d888bb005d8/ai-workshop-in-bgc.jpg', w: 1000, h: 750,
+          alt: 'AI Workshop in BGC',
+          title: 'AI Workshop in BGC',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe7517898cec9ac74fff8c/negosyante-babae.png', w: 1000, h: 750,
+          alt: 'Negosyante Babae',
+          title: 'Negosyante Babae',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe6e138b5100b36aed42f7/dji-20000422010625-0042-d.jpg', w: 1000, h: 750,
+          alt: 'AI LinkedIn B2B Growth Accelerator',
+          title: 'AI LinkedIn B2B Growth Accelerator',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe724f8b5100b36aedec2e/846432526-2119051762046664-382372328201439617-n.jpg', w: 1000, h: 750,
+          alt: 'RK Bistro Workshop',
+          title: 'RK Bistro Workshop',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe7371306ac23751f0cd9a/859155517-2125669784718195-8831804139920544010-n.jpg', w: 1000, h: 750,
+          alt: 'Corporate Training Workshop',
+          title: 'Corporate Training Workshop',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe7396d50d9db796e415ee/791274699-2081722472446260-7453920498332791100-n.jpg', w: 1000, h: 750,
+          alt: 'CSR Activity',
+          title: 'CSR Activity',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe6e88639028582b1e54eb/dji-20000528012435-0414-d.jpg', w: 1000, h: 750,
+          alt: 'Angeles City Library',
+          title: 'Angeles City Library',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe6cb1639028582b1e1482/img-5096.png', w: 1000, h: 750,
+          alt: 'CHRC | Leadership in Times of Global Uncertainty',
+          title: 'CHRC | Leadership in Times of Global Uncertainty',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe70f4306ac23751f060cd/835359660-2112466092705231-6279581201383432550-n.jpg', w: 1000, h: 750,
+          alt: 'MACCI',
+          title: 'MACCI',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe7215306ac23751f08d1d/screenshot-2026-11-19-115026.png', w: 1000, h: 750,
+          alt: 'NVIDIA',
+          title: 'NVIDIA',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe71e8898cec9ac74f7581/screenshot-2026-11-19-114941.png', w: 1000, h: 750,
+          alt: 'UNLEASH',
+          title: 'UNLEASH',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe736dd50d9db796e40cc5/862229894-2136619283623245-3005200146199097419-n.jpg', w: 1000, h: 750,
+          alt: 'Costume Party',
+          title: 'Costume Party',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe7118306ac23751f06683/840643336-2113983235886850-3639730628837456678-n.jpg', w: 1000, h: 750,
+          alt: 'Asian Institute of Management',
+          title: 'Asian Institute of Management',
+          year: 2026
+        },
+        {
+          id: 'https://files.leadconnectorhq.com/file/6afe6dc8639028582b1e3859/839389520-2111545829463924-1739407911606806130-n.jpg', w: 1000, h: 750,
+          alt: 'AI Business Summit Cebu',
+          title: 'AI Business Summit Cebu',
+          year: 2026
+        },
+        {
           id: 'https://assets.cdn.filesafe.space/UAA13luwQZmtw8ObS1Su/media/6a97c9cec7069f4fc7b07bd5.jpg', w: 1000, h: 750,
           alt: 'Induction and General Membership Meeting of the Philippine Chamber of Commerce and Industry, Quezon City',
           title: 'PCCI Induction & General Membership Meeting, Quezon City',
