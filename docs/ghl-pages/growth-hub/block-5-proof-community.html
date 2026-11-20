@@ -1,0 +1,95 @@
+      </div>
+    </section>
+
+    <!-- 6.3 INSPIRE, Proof -->
+    <section class="dgs-hub-section dgs-section--light" id="inspire">
+      <div class="dgs-container">
+        <div class="dgs-hub-head dgs-reveal">
+          <h2>Proof</h2>
+          <p>Real challenges, real solutions, verified outcomes. Cross-published with our Client Success library.</p>
+        </div>
+
+        <!-- NOTE: outcome figures below are illustrative placeholders.
+             Replace with verified client-approved data before launch. -->
+        <div class="dgs-insp-grid dgs-reveal">
+          <!-- Featured story -->
+          <article class="dgs-insp-card dgs-insp-card--featured">
+            <div class="dgs-insp-body">
+              <span class="dgs-insp-meta">Professional Services, 40 staff</span>
+              <h3 class="dgs-insp-headline">Proposals took six days and every one needed the founder.</h3>
+              <p class="dgs-insp-val">We rebuilt the operating system around a proposal database and moved approval
+                authority down to the team who writes them.</p>
+            </div>
+            <div class="dgs-insp-metrics">
+              <div class="dgs-insp-metric">
+                <span class="dgs-insp-figure">24<span class="dgs-insp-unit">hrs</span></span>
+                <span class="dgs-insp-caption">Proposal turnaround, down from six days</span>
+              </div>
+              <div class="dgs-insp-metric">
+                <span class="dgs-insp-figure">80<span class="dgs-insp-unit">%</span></span>
+                <span class="dgs-insp-caption">Of approvals no longer reach the founder</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 2 -->
+          <article class="dgs-insp-card">
+            <div class="dgs-insp-body">
+              <span class="dgs-insp-meta">Recruitment, 35 staff</span>
+              <h3 class="dgs-insp-headline">Candidates were ghosting before anyone called them back.</h3>
+              <p class="dgs-insp-val">Speed-to-lead pipelines plus remote sourcing agents, so first contact happens
+                while the candidate is still interested.</p>
+            </div>
+            <div class="dgs-insp-metrics">
+              <div class="dgs-insp-metric">
+                <span class="dgs-insp-figure">45<span class="dgs-insp-unit">%</span></span>
+                <span class="dgs-insp-caption">More placements over four months</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 3 -->
+          <article class="dgs-insp-card">
+            <div class="dgs-insp-body">
+              <span class="dgs-insp-meta">Healthcare, 14 clinics</span>
+              <h3 class="dgs-insp-headline">No-shows and a billing backlog were compounding each other.</h3>
+              <p class="dgs-insp-val">Automated reminders on the front end, placed remote billing staff on the back
+                end, so neither queue feeds the other.</p>
+            </div>
+            <div class="dgs-insp-metrics">
+              <div class="dgs-insp-metric">
+                <span class="dgs-insp-figure">7<span class="dgs-insp-unit">days</span></span>
+                <span class="dgs-insp-caption">Billing cycle, down from twenty-one</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6.4 CONNECT, Community: same events gallery as About (photos live in
+         dgs-omega main.js). In GHL, delete the native Blog widget in this row. -->
+    <section class="dgs-hub-section dgs-section--light dgs-css-events-gallery" id="connect">
+      <div class="dgs-container">
+        <div class="dgs-hub-head dgs-reveal">
+          <h2>Community</h2>
+          <p>Live events, workshops, webinars, and speaking engagements for modern operators.</p>
+        </div>
+
+        <div class="dgs-events-gallery-wrap" id="dgsEventsGalleryCompact"></div>
+      </div>
+    </section>
+    <script>
+      (function () {
+        var tries = 0;
+        (function render() {
+          var root = document.getElementById('dgsEventsGalleryCompact');
+          if (root && root.children.length) return;
+          if (root && window.dgsRenderEventGallery) {
+            window.dgsRenderEventGallery('dgsEventsGalleryCompact', 'full', 'Recent Digital GrowthScale events');
+          } else if (tries++ < 100) {
+            setTimeout(render, 100);
+          }
+        })();
+      })();
+    </script>

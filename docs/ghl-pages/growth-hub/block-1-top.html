@@ -1,0 +1,57 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://dgs-omega.vercel.app/css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.25/dist/lenis.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "FAQPage",
+        "@id": "https://digitalgrowthscale.ph/growth-hub#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much do Digital GrowthScale services cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Engagements are scoped after a Systems Audit or consultation because pricing depends on business size and roadmap. The audit itself is fixed-fee, you'll know the investment before you commit, and the roadmap is yours regardless."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you work with businesses outside the Philippines?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We serve clients globally, with talent placed across six continents and delivery systems built for remote collaboration."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is our data safe with AI automation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every implementation includes data governance guardrails: access controls, tool vetting, and responsible-use policies. We configure automation around your privacy obligations, not despite them."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+<script>
+  // styles.css scopes this page's sections to these classes. <html> gets the
+  // scope classes right away (it always exists); <body> gets them once ready.
+  (function (scope) {
+    var html = document.documentElement;
+    scope.forEach(function (c) { html.classList.add(c); });
+    function tagBody() { document.body.classList.add.apply(document.body.classList, ['dgs-page'].concat(scope)); }
+    if (document.body) tagBody(); else document.addEventListener('DOMContentLoaded', tagBody);
+  })(['dgs-css-growth-hub', 'dgs-css-growth-insights', 'dgs-css-growth-article', 'dgs-css-events-gallery']);
+</script>
+<main data-dgs-css="dgs-css-growth-hub dgs-css-growth-insights dgs-css-growth-article dgs-css-events-gallery" hidden></main>
