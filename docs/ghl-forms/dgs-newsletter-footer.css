@@ -56,6 +56,55 @@ body::-webkit-scrollbar {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ---------- Strip GHL's wrapper spacing ----------
+   From GHL's stylesheet (ghl-forms-css), checked 2026-11-23:
+     .hl_form-builder--main      padding 40px 20px  (20px sides = the inset)
+     .ghl-form-wrap              margin 0 auto 60px, inline max-width 600px
+     .form-side                  min-height 200px + centred vertically
+     #_builder-form .fields-container  padding 30px 0 !important, and an
+                                 empty second container after the button
+   Together they put ~50px above the first field and ~120px under the
+   button. The footer card already gives the form its spacing. */
+html,
+body,
+#__nuxt,
+#app,
+.hl_wrapper--inner.form-builder,
+#hl_form_builder_main {
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.hl_form-builder--main,
+.hl_form-builder--main--custom-margin {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.ghl-form-wrap {
+  max-width: none !important;
+  margin: 0 !important;
+}
+.form-side {
+  min-height: 0 !important;
+  justify-content: flex-start !important;
+}
+#_builder-form#_builder-form .fields-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#_builder-form#_builder-form .fields-container:empty {
+  display: none !important;
+}
+#_builder-form#_builder-form .col-12 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+/* last row (the button) adds nothing under itself */
+#_builder-form#_builder-form .form-field-wrapper:last-child .form-builder--item {
+  margin-bottom: 0 !important;
+}
+
 #_builder-form#_builder-form *,
 #_builder-form#_builder-form *::before,
 #_builder-form#_builder-form *::after {
