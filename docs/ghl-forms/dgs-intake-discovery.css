@@ -465,23 +465,23 @@ body,
   transform: scale(0);
   transition: transform 0.15s var(--f-ease);
 }
-#_builder-form#_builder-form input[type="checkbox"]::before {
-  content: "";
-  width: 11px;
-  height: 11px;
-  background: #FFFFFF;
-  clip-path: polygon(14% 44%, 0 59%, 40% 100%, 100% 22%, 86% 8%, 39% 70%);
-  transform: scale(0);
-  transition: transform 0.15s var(--f-ease);
+/* Checkbox tick: ONE centred SVG on the box itself. GHL draws its own tick
+   (rotated border on ::after); with any pseudo tick of ours on top you get
+   two offset ticks, so both pseudos are switched off. */
+#_builder-form#_builder-form input[type="checkbox"]::before,
+#_builder-form#_builder-form input[type="checkbox"]::after,
+#_builder-form#_builder-form input[type="radio"]::after {
+  content: none !important;
+  display: none !important;
 }
 #_builder-form#_builder-form input[type="radio"]:checked {
   border-color: var(--f-navy) !important;
 }
 #_builder-form#_builder-form input[type="checkbox"]:checked {
-  background: var(--f-navy) !important;
+  background: var(--f-navy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 14px 14px no-repeat !important;
   border-color: var(--f-navy) !important;
 }
-#_builder-form#_builder-form :is(input[type="radio"], input[type="checkbox"]):checked::before {
+#_builder-form#_builder-form input[type="radio"]:checked::before {
   transform: scale(1);
 }
 #_builder-form#_builder-form :is(input[type="radio"], input[type="checkbox"]):focus-visible {

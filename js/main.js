@@ -1618,6 +1618,12 @@
 
       var DGS_EVENTS = [
         {
+          id: 'https://files.leadconnectorhq.com/file/6b03a02fd40dd20617aff762/pcti.jpg', w: 1000, h: 750,
+          alt: 'PCTI',
+          title: 'PCTI',
+          year: 2026
+        },
+        {
           id: 'https://files.leadconnectorhq.com/file/6afe774e8b5100b36aeeaac2/907783546-2907330889636730-8610671553601362742-n.jpg', w: 1000, h: 750,
           alt: 'Top 40 Filipino Founders on LinkedIn',
           title: 'Top 40 Filipino Founders on LinkedIn',
