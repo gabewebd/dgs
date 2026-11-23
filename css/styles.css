@@ -8948,7 +8948,7 @@ body.dgs-lightbox-lock:where(.dgs-css-events-gallery,.dgs-css-events-gallery *) 
 #connect .blog-card h3:where(.dgs-css-growth-hub,.dgs-css-growth-hub *),
 #learn [class*="title"]:not(.dgs-ghi-featured-title):where(.dgs-css-growth-hub,.dgs-css-growth-hub *),
 #implement [class*="title"]:where(.dgs-css-growth-hub,.dgs-css-growth-hub *),
-#connect [class*="title"]:not(.dgs-conn-title):where(.dgs-css-growth-hub,.dgs-css-growth-hub *),
+#connect [class*="title"]:not(.dgs-conn-title):not(.dgs-event-caption-title):where(.dgs-css-growth-hub,.dgs-css-growth-hub *),
 #learn [class*="heading"]:where(.dgs-css-growth-hub,.dgs-css-growth-hub *),
 #implement [class*="heading"]:where(.dgs-css-growth-hub,.dgs-css-growth-hub *),
 #connect [class*="heading"]:where(.dgs-css-growth-hub,.dgs-css-growth-hub *),
