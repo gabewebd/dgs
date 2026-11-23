@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  body, .frame { width: 1600px; height: 580px; }
+  .bar { position: absolute; left: 80px; top: 196px; width: 1440px; height: 8px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .ticks { position: absolute; left: 80px; top: 216px; width: 1440px; display: grid; grid-template-columns: repeat(9, 1fr); }
+  .ticks span { font-size: 16px; font-weight: 600; color: #94A3B8; text-align: center; }
+  .cols { position: absolute; left: 80px; top: 300px; width: 1440px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 64px; }
+  .range { font-family: Sora, sans-serif; font-size: 34px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+  .state { font-size: 18px; font-weight: 600; margin-top: 4px; }
+  .cols p { font-size: 18px; color: var(--body); line-height: 1.55; margin-top: 12px; max-width: 420px; }
+</style></head>
+<body>
+<div class="frame light">
+  <div class="title">How many of the 8 signs did you count?</div>
+
+  <div class="bar">
+    <div style="background:#00B39F"></div>
+    <div style="background:#2D7FF9"></div>
+    <div style="background:#F5A623"></div>
+  </div>
+  <div class="ticks"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+
+  <div class="cols">
+    <div>
+      <div class="range">0–2</div>
+      <div class="state" style="color:var(--teal-ink)">Protected</div>
+      <p>Your handoffs are defined. Write them down so they survive the next round of hiring.</p>
+    </div>
+    <div>
+      <div class="range">3–5</div>
+      <div class="state" style="color:var(--blue-ink)">Fix deliberately</div>
+      <p>Normal for a growing business. One or two transitions need a named owner and a real trigger.</p>
+    </div>
+    <div>
+      <div class="range">6–8</div>
+      <div class="state" style="color:var(--amber-ink)">Leaking revenue</div>
+      <p>Paid demand is escaping before it converts. Fix the handoffs before buying more leads.</p>
+    </div>
+  </div>
+</div>
+</body></html>

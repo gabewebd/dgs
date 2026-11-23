@@ -9763,15 +9763,29 @@ html.dgs-js .dgs-ghi-reveal.is-visible:where(.dgs-css-growth-insights,.dgs-css-g
   display: none;
 }
 
+/* display/gap/list-style are !important on purpose: on a native GHL post
+   this list sits inside .blog-html-container-single, and GHL's own
+   BlogSingle stylesheet ships `.blog-html-container-single ul
+   { display: block; list-style-type: disc; padding-left: 40px }`
+   (0,1,1), which outranks this (0,1,0) rule. Confirmed live 2026-11-23:
+   it turned the flex column into a plain block, so `gap` never applied
+   and the items sat flush. Spacing matches the legal-page TOC
+   (.dgs-legal-toc-list, e.g. /cookie-policy). */
 .dgs-ga-toc-list:where(.dgs-css-growth-article,.dgs-css-growth-article *) {
-  list-style: none;
+  list-style: none !important;
   margin: 0.9rem 0 0 !important;
   padding: 0.25rem 0 0 1.4rem !important;
   border-left: 2px solid var(--ga-hairline);
-  display: flex;
+  display: flex !important;
   flex-direction: column;
-  gap: 1.15rem;
+  gap: 0.65rem !important;
   max-width: 100%;
+}
+
+.dgs-ga-toc-list li:where(.dgs-css-growth-article,.dgs-css-growth-article *) {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.45;
 }
 
 .dgs-ga-toc-list a:where(.dgs-css-growth-article,.dgs-css-growth-article *) {
@@ -9789,7 +9803,7 @@ html.dgs-js .dgs-ghi-reveal.is-visible:where(.dgs-css-growth-insights,.dgs-css-g
 .dgs-ga-toc-list a:hover:where(.dgs-css-growth-article,.dgs-css-growth-article *),
 .dgs-ga-toc-list a.is-active:where(.dgs-css-growth-article,.dgs-css-growth-article *) {
   color: var(--ga-navy);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* ─── Article body typography ─── */
@@ -10395,29 +10409,118 @@ body:where(.dgs-css-growth-article,.dgs-css-growth-article *) {
    fully-loaded cover image all exist. Scoped to this one slot only;
    the navbar/hero chrome around it is untouched.
 --------------------------------------------------------- */
+/* Skeleton loader (2026-11-23). The old version hid the slot with
+   opacity/visibility and reserved 100vh of EMPTY space, which on the
+   live GHL post read as a blank navy screen for several seconds. On the
+   live page the slot is also not the widget's parent: GHL renders the
+   Blog Content widget in its own custom-code block right AFTER the
+   slot's block, so the reserved space pushed the real post below the
+   fold until revealArticle() fired. Now the not-ready slot draws a
+   wireframe of the post (hero band + TOC/body lines) in that same
+   space, the real post is held hidden behind it, and both swap in one
+   step when js/main.js revealArticle() adds .is-ready (or its 6s
+   failsafe fires). Pure CSS so it paints with the stylesheet, before
+   any script runs. Works for both structures: widget inside the slot
+   (html-templates/ghl-blog.html local preview, hidden via `> *`) and
+   widget after the slot (live GHL, hidden via the :has() rule). */
 .dgs-ghl-native-blog-slot:where(.dgs-css-growth-article,.dgs-css-growth-article *) {
   display: block;
-  opacity: 0;
-  visibility: hidden;
+  position: relative;
 }
 
 .dgs-ghl-native-blog-slot:not(.is-ready):where(.dgs-css-growth-article,.dgs-css-growth-article *) {
-  /* Approximates "at least one screen of the real post" (hero +
-     opening paragraphs) rather than guessing a tall arbitrary number
-     — real posts are always longer than this once revealed, so it
-     never leaves a visible gap. */
   min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  /* Navy hero band lives on the slot (not the pulsing pseudo) so the
+     pulse only fades the bars, never the band itself. */
+  background: linear-gradient(#0A1F33 0 720px, #ffffff 720px);
 }
 
-.dgs-ghl-native-blog-slot.is-ready:where(.dgs-css-growth-article,.dgs-css-growth-article *) {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.25s ease;
+.dgs-ghl-native-blog-slot:not(.is-ready) > *:where(.dgs-css-growth-article,.dgs-css-growth-article *) {
+  visibility: hidden;
+}
+
+/* Live GHL: the widget lives outside the slot, so hold it back by
+   page state instead. */
+:where(html:has(.dgs-ghl-native-blog-slot:not(.is-ready))) .blog-html-container-single:where(.dgs-css-growth-article,.dgs-css-growth-article *) {
+  visibility: hidden;
+}
+
+/* Hero band: back link, category, three title lines, date, two dek
+   lines, cover image. Text column is an SVG with no viewBox, so its
+   rects are in px / % of the drawn column and never stretch. */
+.dgs-ghl-native-blog-slot:not(.is-ready):where(.dgs-css-growth-article,.dgs-css-growth-article *)::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 720px;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' rx='10' fill='%23ffffff' fill-opacity='.07'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cg fill='%23ffffff' fill-opacity='.09'%3E%3Crect x='0' y='0' width='150' height='14' rx='7'/%3E%3Crect x='0' y='106' width='88%25' height='50' rx='10'/%3E%3Crect x='0' y='172' width='96%25' height='50' rx='10'/%3E%3Crect x='0' y='238' width='70%25' height='50' rx='10'/%3E%3Crect x='0' y='420' width='120' height='12' rx='6'/%3E%3Crect x='0' y='462' width='90%25' height='14' rx='7'/%3E%3Crect x='0' y='488' width='64%25' height='14' rx='7'/%3E%3C/g%3E%3Crect x='0' y='56' width='56' height='10' rx='5' fill='%2300B39F' fill-opacity='.45'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 3.5rem top 120px, 3.5rem 140px;
+  background-size: 41.5% 400px, calc(50% - 3.5rem) 520px;
+  animation: dgs-ga-skeleton-pulse 1.3s ease-in-out infinite alternate;
+}
+
+/* Body: "On this page" rail + paragraph lines. */
+.dgs-ghl-native-blog-slot:not(.is-ready):where(.dgs-css-growth-article,.dgs-css-growth-article *)::after {
+  content: "";
+  position: absolute;
+  inset: 720px 0 0 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cg fill='%230A1F33' fill-opacity='.08'%3E%3Crect x='0' y='0' width='96' height='10' rx='5'/%3E%3Crect x='0' y='34' width='2' height='150'/%3E%3Crect x='22' y='40' width='190' height='12' rx='6'/%3E%3Crect x='22' y='68' width='150' height='12' rx='6'/%3E%3Crect x='22' y='96' width='175' height='12' rx='6'/%3E%3Crect x='22' y='124' width='130' height='12' rx='6'/%3E%3Crect x='22' y='152' width='160' height='12' rx='6'/%3E%3Crect x='308' y='20' width='62%25' height='18' rx='9'/%3E%3Crect x='308' y='50' width='44%25' height='18' rx='9'/%3E%3Crect x='308' y='104' width='66%25' height='14' rx='7'/%3E%3Crect x='308' y='132' width='64%25' height='14' rx='7'/%3E%3Crect x='308' y='160' width='67%25' height='14' rx='7'/%3E%3Crect x='308' y='188' width='40%25' height='14' rx='7'/%3E%3Crect x='308' y='240' width='65%25' height='14' rx='7'/%3E%3Crect x='308' y='268' width='66%25' height='14' rx='7'/%3E%3Crect x='308' y='296' width='52%25' height='14' rx='7'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center top 80px;
+  background-size: min(1170px, calc(100% - 2rem)) 340px;
+  animation: dgs-ga-skeleton-pulse 1.3s ease-in-out infinite alternate;
+}
+
+@media (max-width: 959px) {
+  .dgs-ghl-native-blog-slot:not(.is-ready):where(.dgs-css-growth-article,.dgs-css-growth-article *) {
+    background: linear-gradient(#0A1F33 0 880px, #ffffff 880px);
+  }
+
+  .dgs-ghl-native-blog-slot:not(.is-ready):where(.dgs-css-growth-article,.dgs-css-growth-article *)::before {
+    height: 880px;
+    background-position: 1rem 588px, 1rem 108px;
+    background-size: calc(100% - 2rem) 240px, calc(100% - 2rem) 420px;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' rx='10' fill='%23ffffff' fill-opacity='.07'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cg fill='%23ffffff' fill-opacity='.09'%3E%3Crect x='0' y='0' width='150' height='12' rx='6'/%3E%3Crect x='0' y='84' width='92%25' height='34' rx='8'/%3E%3Crect x='0' y='128' width='100%25' height='34' rx='8'/%3E%3Crect x='0' y='172' width='74%25' height='34' rx='8'/%3E%3Crect x='0' y='290' width='120' height='12' rx='6'/%3E%3Crect x='0' y='330' width='100%25' height='14' rx='7'/%3E%3Crect x='0' y='358' width='94%25' height='14' rx='7'/%3E%3Crect x='0' y='386' width='60%25' height='14' rx='7'/%3E%3C/g%3E%3Crect x='0' y='46' width='56' height='10' rx='5' fill='%2300B39F' fill-opacity='.45'/%3E%3C/svg%3E");
+  }
+
+  .dgs-ghl-native-blog-slot:not(.is-ready):where(.dgs-css-growth-article,.dgs-css-growth-article *)::after {
+    inset: 880px 0 0 0;
+    background-position: 1rem 72px;
+    background-size: calc(100% - 2rem) 260px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cg fill='%230A1F33' fill-opacity='.08'%3E%3Crect x='0' y='0' width='96' height='10' rx='5'/%3E%3Crect x='0' y='34' width='2' height='94'/%3E%3Crect x='22' y='40' width='70%25' height='12' rx='6'/%3E%3Crect x='22' y='68' width='55%25' height='12' rx='6'/%3E%3Crect x='22' y='96' width='62%25' height='12' rx='6'/%3E%3Crect x='0' y='172' width='100%25' height='14' rx='7'/%3E%3Crect x='0' y='200' width='96%25' height='14' rx='7'/%3E%3Crect x='0' y='228' width='70%25' height='14' rx='7'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+@keyframes dgs-ga-skeleton-pulse {
+  from { opacity: 1; }
+  to { opacity: 0.55; }
+}
+
+/* Swap-in: fade the real post up once, at the moment the skeleton goes
+   away (the animation only starts when this selector begins to match). */
+.dgs-ghl-native-blog-slot.is-ready > *:where(.dgs-css-growth-article,.dgs-css-growth-article *),
+:where(html:has(.dgs-ghl-native-blog-slot.is-ready)) .blog-html-container-single:where(.dgs-css-growth-article,.dgs-css-growth-article *) {
+  animation: dgs-ga-reveal 0.3s ease both;
+}
+
+@keyframes dgs-ga-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dgs-ghl-native-blog-slot.is-ready:where(.dgs-css-growth-article,.dgs-css-growth-article *) {
-    transition: none;
+  .dgs-ghl-native-blog-slot:not(.is-ready):where(.dgs-css-growth-article,.dgs-css-growth-article *)::before,
+  .dgs-ghl-native-blog-slot:not(.is-ready):where(.dgs-css-growth-article,.dgs-css-growth-article *)::after,
+  .dgs-ghl-native-blog-slot.is-ready > *:where(.dgs-css-growth-article,.dgs-css-growth-article *),
+  :where(html:has(.dgs-ghl-native-blog-slot.is-ready)) .blog-html-container-single:where(.dgs-css-growth-article,.dgs-css-growth-article *) {
+    animation: none;
   }
 }
 

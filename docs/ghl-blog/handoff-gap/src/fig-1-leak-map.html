@@ -1,0 +1,56 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  body, .frame { width: 1600px; height: 620px; }
+  svg { position: absolute; left: 0; top: 0; }
+  .stage { position: absolute; top: 232px; width: 240px; margin-left: -120px; text-align: center; }
+  .stage .name { font-family: Sora, sans-serif; font-size: 24px; font-weight: 600; letter-spacing: -0.01em; }
+  .stage .sub { font-size: 16px; color: var(--slate); margin-top: 4px; }
+  .leak { position: absolute; top: 396px; width: 400px; padding-left: 22px; border-left: 2px solid var(--amber); }
+  .leak .h { font-size: 18px; font-weight: 600; color: var(--ink); }
+  .leak .l { font-size: 17px; color: var(--body); line-height: 1.75; margin-top: 6px; }
+</style></head>
+<body>
+<div class="frame light">
+  <div class="title">Revenue leaks between teams, not inside them.</div>
+
+  <!-- nodes 160 / 587 / 1013 / 1440 ; gaps 374 / 800 / 1227 ; line y 330 -->
+  <svg width="1600" height="620" viewBox="0 0 1600 620">
+    <g stroke="#0A1F33" stroke-width="3" stroke-linecap="round">
+      <line x1="160" y1="330" x2="354" y2="330"/><line x1="394" y1="330" x2="587" y2="330"/>
+      <line x1="587" y1="330" x2="780" y2="330"/><line x1="820" y1="330" x2="1013" y2="330"/>
+      <line x1="1013" y1="330" x2="1207" y2="330"/><line x1="1247" y1="330" x2="1440" y2="330"/>
+    </g>
+    <g fill="#0A1F33">
+      <circle cx="160" cy="330" r="8"/><circle cx="587" cy="330" r="8"/>
+      <circle cx="1013" cy="330" r="8"/><circle cx="1440" cy="330" r="8"/>
+    </g>
+    <g stroke="#F5A623" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round">
+      <line x1="374" y1="342" x2="374" y2="396"/>
+      <line x1="800" y1="342" x2="800" y2="396"/>
+      <line x1="1227" y1="342" x2="1227" y2="396"/>
+    </g>
+    <g fill="#F5A623">
+      <circle cx="374" cy="330" r="5"/><circle cx="800" cy="330" r="5"/><circle cx="1227" cy="330" r="5"/>
+    </g>
+  </svg>
+
+  <div class="stage" style="left:160px"><div class="name">Marketing</div><div class="sub">generates demand</div></div>
+  <div class="stage" style="left:587px"><div class="name">Sales</div><div class="sub">converts it</div></div>
+  <div class="stage" style="left:1013px"><div class="name">Delivery</div><div class="sub">does the work</div></div>
+  <div class="stage" style="left:1440px"><div class="name">Account</div><div class="sub">keeps the client</div></div>
+
+  <div class="leak" style="left:373px">
+    <div class="h">Lost between marketing and sales</div>
+    <div class="l">Response speed<br>Form and chat answers<br>Lead source and intent</div>
+  </div>
+  <div class="leak" style="left:799px">
+    <div class="h">Lost between sales and delivery</div>
+    <div class="l">Promises made in the sale<br>The client's stated goals<br>Scope exceptions</div>
+  </div>
+  <div class="leak" style="left:1226px; width:300px">
+    <div class="h">Lost after delivery starts</div>
+    <div class="l">Client health signals<br>Renewal timing<br>Expansion openings</div>
+  </div>
+</div>
+</body></html>

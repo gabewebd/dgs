@@ -1,0 +1,108 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  body { width: 1200px; height: 630px; }
+  .frame { width: 1200px; height: 630px; }
+  .lbl { font-family: Inter, sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 0.18em; fill: #8FA3B8; }
+</style></head>
+<body>
+<div class="frame dark">
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#123250"/>
+      <stop offset="60%" stop-color="#0A1F33"/>
+      <stop offset="100%" stop-color="#071726"/>
+    </radialGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#1E3A55"/>
+    </pattern>
+    <filter id="glow" filterUnits="userSpaceOnUse" x="0" y="0" width="1600" height="1000">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00B39F" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#00B39F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5CE0CC" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#00B39F" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#dots)" opacity="0.7"/>
+
+  <!-- halos -->
+  <circle cx="240" cy="300" r="150" fill="url(#halo)"/>
+  <circle cx="600" cy="300" r="150" fill="url(#halo)"/>
+  <circle cx="960" cy="300" r="150" fill="url(#halo)"/>
+
+  <!-- ghost line across the gaps -->
+  <line x1="240" y1="300" x2="960" y2="300" stroke="#2A4A68" stroke-width="2" stroke-dasharray="4 10"/>
+
+  <!-- live connector segments with breaks -->
+  <g stroke="#00B39F" stroke-width="5" stroke-linecap="round" filter="url(#glow)">
+    <line x1="312" y1="300" x2="392" y2="300"/>
+    <line x1="448" y1="300" x2="528" y2="300"/>
+    <line x1="672" y1="300" x2="752" y2="300"/>
+    <line x1="808" y1="300" x2="888" y2="300"/>
+  </g>
+  <!-- broken ends -->
+  <g fill="#5CE0CC">
+    <circle cx="392" cy="300" r="5"/><circle cx="448" cy="300" r="5"/>
+    <circle cx="752" cy="300" r="5"/><circle cx="808" cy="300" r="5"/>
+  </g>
+
+  <!-- leaking fragments, gap 1 -->
+  <g fill="#5CE0CC">
+    <rect x="410" y="318" width="9" height="9" rx="2" opacity="0.95" transform="rotate(18 414 322)"/>
+    <rect x="428" y="336" width="7" height="7" rx="2" opacity="0.8" transform="rotate(-22 431 339)"/>
+    <circle cx="418" cy="360" r="4.5" opacity="0.7"/>
+    <rect x="404" y="382" width="8" height="8" rx="2" opacity="0.55" transform="rotate(35 408 386)"/>
+    <circle cx="433" cy="398" r="3.5" opacity="0.45"/>
+    <rect x="414" y="424" width="6" height="6" rx="1.5" opacity="0.32" transform="rotate(-12 417 427)"/>
+    <circle cx="425" cy="452" r="3" opacity="0.22"/>
+    <circle cx="410" cy="478" r="2.5" opacity="0.14"/>
+    <circle cx="430" cy="505" r="2" opacity="0.08"/>
+  </g>
+  <!-- leaking fragments, gap 2 -->
+  <g fill="#5CE0CC">
+    <rect x="772" y="320" width="9" height="9" rx="2" opacity="0.95" transform="rotate(-15 776 324)"/>
+    <circle cx="790" cy="344" r="4.5" opacity="0.82"/>
+    <rect x="768" y="362" width="7" height="7" rx="2" opacity="0.66" transform="rotate(28 771 365)"/>
+    <rect x="786" y="388" width="8" height="8" rx="2" opacity="0.5" transform="rotate(-30 790 392)"/>
+    <circle cx="774" cy="414" r="3.5" opacity="0.38"/>
+    <rect x="790" y="438" width="6" height="6" rx="1.5" opacity="0.26" transform="rotate(20 793 441)"/>
+    <circle cx="778" cy="466" r="3" opacity="0.17"/>
+    <circle cx="794" cy="492" r="2.5" opacity="0.1"/>
+    <circle cx="782" cy="520" r="2" opacity="0.06"/>
+  </g>
+
+  <!-- nodes -->
+  <g>
+    <circle cx="240" cy="300" r="70" fill="#0F2A44" stroke="#00B39F" stroke-width="2.5"/>
+    <circle cx="240" cy="300" r="56" fill="none" stroke="#1E3A55" stroke-width="1.5"/>
+    <!-- funnel -->
+    <path d="M214 280 H266 L248 302 V322 L232 314 V302 Z" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round"/>
+
+    <circle cx="600" cy="300" r="70" fill="#0F2A44" stroke="#00B39F" stroke-width="2.5"/>
+    <circle cx="600" cy="300" r="56" fill="none" stroke="#1E3A55" stroke-width="1.5"/>
+    <!-- target -->
+    <circle cx="600" cy="300" r="24" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+    <circle cx="600" cy="300" r="9" fill="#00B39F"/>
+
+    <circle cx="960" cy="300" r="70" fill="#0F2A44" stroke="#00B39F" stroke-width="2.5"/>
+    <circle cx="960" cy="300" r="56" fill="none" stroke="#1E3A55" stroke-width="1.5"/>
+    <!-- delivered box -->
+    <rect x="936" y="276" width="48" height="48" rx="10" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+    <path d="M948 301 L957 310 L973 292" fill="none" stroke="#00B39F" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <text class="lbl" x="240" y="410" text-anchor="middle">MARKETING</text>
+  <text class="lbl" x="600" y="410" text-anchor="middle">SALES</text>
+  <text class="lbl" x="960" y="410" text-anchor="middle">DELIVERY</text>
+</svg>
+</div>
+</body></html>

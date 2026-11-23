@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  body, .frame { width: 1600px; height: 700px; }
+  .sub { position: absolute; left: 80px; top: 136px; font-size: 18px; color: var(--body); }
+  table { position: absolute; left: 80px; top: 214px; width: 1440px; border-collapse: collapse; }
+  th { text-align: left; font-size: 16px; font-weight: 600; color: var(--slate); padding: 0 24px 14px 0; border-bottom: 2px solid var(--navy); }
+  td { padding: 24px 24px 24px 0; font-size: 18px; line-height: 1.5; color: var(--body); vertical-align: top; border-bottom: 1px solid var(--rule); }
+  td.h { font-family: Sora, sans-serif; font-weight: 600; color: var(--ink); font-size: 19px; white-space: nowrap; }
+  td.o { color: var(--ink); font-weight: 600; }
+</style></head>
+<body>
+<div class="frame light">
+  <div class="title">One row per handoff. Every cell filled in.</div>
+  <div class="sub">An example from a services business. Your owners, fields and standards will differ.</div>
+
+  <table>
+    <colgroup><col style="width:260px"><col style="width:220px"><col style="width:420px"><col style="width:270px"><col style="width:270px"></colgroup>
+    <thead><tr><th>Handoff</th><th>Owner</th><th>Must travel with it</th><th>Trigger</th><th>Standard</th></tr></thead>
+    <tbody>
+      <tr><td class="h">Marketing → Sales</td><td class="o">Sales lead</td><td>Lead source, form answers, budget, timeline</td><td>Lead marked qualified</td><td>First reply the same business day</td></tr>
+      <tr><td class="h">Sales → Delivery</td><td class="o">Account owner</td><td>Signed scope, promises made, client goals, key contacts</td><td>Contract signed</td><td>Kickoff booked within 2 business days</td></tr>
+      <tr><td class="h">Delivery → Account</td><td class="o">Account manager</td><td>Results so far, open risks, health score</td><td>Milestone completed</td><td>Health check every 30 days</td></tr>
+      <tr><td class="h">Account → Renewal</td><td class="o">Account manager</td><td>Renewal date, outcomes delivered, expansion ideas</td><td>90 days before renewal</td><td>Renewal plan agreed 60 days out</td></tr>
+    </tbody>
+  </table>
+</div>
+</body></html>

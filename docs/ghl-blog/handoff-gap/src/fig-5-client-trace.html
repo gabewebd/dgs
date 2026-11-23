@@ -1,0 +1,57 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  body, .frame { width: 1600px; height: 700px; }
+  svg.line { position: absolute; left: 0; top: 0; }
+  .step { position: absolute; top: 470px; width: 200px; margin-left: -100px; text-align: center; }
+  .step .n { font-size: 13px; font-weight: 800; letter-spacing: 0.16em; color: var(--slate); }
+  .step .t { font-family: Sora, sans-serif; font-size: 21px; font-weight: 700; margin-top: 6px; color: var(--ink); }
+  .flag { position: absolute; width: 230px; margin-left: -115px; top: 214px; text-align: center; }
+  .tag { display: inline-block; border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .flag p { font-size: 16px; color: var(--body); line-height: 1.4; margin-top: 10px; }
+  .t-retyped { background: #FFF4E0; color: #9A6206; }
+  .t-reasked { background: #E8F0FE; color: #1A57B5; }
+  .t-delayed { background: #FDE8E8; color: #A93636; }
+  .verdict { position: absolute; left: 80px; top: 590px; width: 1440px; padding-top: 22px; border-top: 1px solid #CBD5E1; font-size: 19px; color: var(--body); line-height: 1.5; }
+  .verdict b { color: var(--ink); font-weight: 600; }
+</style></head>
+<body>
+<div class="frame light">
+  <div class="title">Follow one real client from form fill to first invoice.</div>
+
+  <!-- steps at x: 180, 428, 676, 924, 1172, 1420 -->
+  <svg class="line" width="1600" height="700" viewBox="0 0 1600 700">
+    <line x1="180" y1="430" x2="1420" y2="430" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+    <line x1="180" y1="430" x2="1420" y2="430" stroke="#00B39F" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 0"/>
+    <g stroke-width="2" stroke-dasharray="3 6">
+      <line x1="428" y1="338" x2="428" y2="410" stroke="#2D7FF9"/>
+      <line x1="924" y1="338" x2="924" y2="410" stroke="#E05252"/>
+      <line x1="1172" y1="338" x2="1172" y2="410" stroke="#2D7FF9"/>
+      <line x1="1420" y1="338" x2="1420" y2="410" stroke="#F5A623"/>
+    </g>
+    <g>
+      <circle cx="180" cy="430" r="14" fill="#fff" stroke="#00B39F" stroke-width="4"/>
+      <circle cx="428" cy="430" r="14" fill="#fff" stroke="#2D7FF9" stroke-width="4"/>
+      <circle cx="676" cy="430" r="14" fill="#fff" stroke="#00B39F" stroke-width="4"/>
+      <circle cx="924" cy="430" r="14" fill="#fff" stroke="#E05252" stroke-width="4"/>
+      <circle cx="1172" cy="430" r="14" fill="#fff" stroke="#2D7FF9" stroke-width="4"/>
+      <circle cx="1420" cy="430" r="14" fill="#fff" stroke="#F5A623" stroke-width="4"/>
+    </g>
+  </svg>
+
+  <div class="flag" style="left:428px"><span class="tag t-reasked">Re-asked</span><p>Budget and timeline asked again on the call</p></div>
+  <div class="flag" style="left:924px"><span class="tag t-delayed">Delayed</span><p>Signed contract sat in an inbox for 4 days</p></div>
+  <div class="flag" style="left:1172px"><span class="tag t-reasked">Re-asked</span><p>Client re-explained their goals to the new team</p></div>
+  <div class="flag" style="left:1420px"><span class="tag t-retyped">Retyped</span><p>Billing details copied by hand from the CRM</p></div>
+
+  <div class="step" style="left:180px"><div class="n">STEP 1</div><div class="t">Form fill</div></div>
+  <div class="step" style="left:428px"><div class="n">STEP 2</div><div class="t">Discovery call</div></div>
+  <div class="step" style="left:676px"><div class="n">STEP 3</div><div class="t">Proposal</div></div>
+  <div class="step" style="left:924px"><div class="n">STEP 4</div><div class="t">Contract</div></div>
+  <div class="step" style="left:1172px"><div class="n">STEP 5</div><div class="t">Kickoff</div></div>
+  <div class="step" style="left:1420px"><div class="n">STEP 6</div><div class="t">First invoice</div></div>
+
+  <div class="verdict"><b>An example trace.</b> Four friction points in six steps, and none of them showed up on a dashboard. Each one sits on a handoff without an owner, a required field, or a trigger.</div>
+
+</div>
+</body></html>

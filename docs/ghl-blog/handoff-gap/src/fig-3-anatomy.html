@@ -1,0 +1,45 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  body, .frame { width: 1600px; height: 540px; }
+  svg { position: absolute; left: 0; top: 0; }
+  .end { position: absolute; top: 196px; font-size: 17px; font-weight: 600; color: var(--muted-dark); }
+  .cols { position: absolute; left: 200px; top: 290px; width: 1320px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; }
+  .cols .h { font-family: Sora, sans-serif; font-size: 24px; font-weight: 600; letter-spacing: -0.01em; color: #fff; }
+  .cols p { font-size: 18px; color: var(--muted-dark); line-height: 1.55; margin-top: 10px; max-width: 360px; }
+</style></head>
+<body>
+<div class="frame dark">
+  <div class="title">Three things every handoff needs.</div>
+
+  <div class="end" style="left:80px">Sales</div>
+  <div class="end" style="right:80px">Delivery</div>
+
+  <!-- columns start at 200 / 666.7 / 1133.3 -->
+  <svg width="1600" height="540" viewBox="0 0 1600 540">
+    <line x1="80" y1="240" x2="1512" y2="240" stroke="#3B5874" stroke-width="2"/>
+    <path d="M1504 233 L1514 240 L1504 247" fill="none" stroke="#3B5874" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#00B39F">
+      <circle cx="201" cy="240" r="7"/><circle cx="667" cy="240" r="7"/><circle cx="1134" cy="240" r="7"/>
+    </g>
+    <g stroke="#00B39F" stroke-width="2">
+      <line x1="201" y1="247" x2="201" y2="276"/><line x1="667" y1="247" x2="667" y2="276"/><line x1="1134" y1="247" x2="1134" y2="276"/>
+    </g>
+  </svg>
+
+  <div class="cols">
+    <div>
+      <div class="h">A named owner</div>
+      <p>One person accountable for the transition. Not a team, not a shared inbox, not whoever sees it first.</p>
+    </div>
+    <div>
+      <div class="h">Required information</div>
+      <p>The fields that must travel with the lead or client, enforced in the CRM so the stage can't move without them.</p>
+    </div>
+    <div>
+      <div class="h">An automatic trigger</div>
+      <p>The next step fires from the system: a task, an alert, a booked kickoff. Not from someone's memory.</p>
+    </div>
+  </div>
+</div>
+</body></html>
