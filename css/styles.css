@@ -6294,12 +6294,25 @@ img.dgs-leader-mobile-photo:where(.dgs-css-about,.dgs-css-about *) {
     transparent teal text link with no top divider/hairline and no
     hover state — not the earlier full-width "card footer with a
     border-top" treatment this used to have. */
+  /* 2026-11-23: white full-width band, not transparent. The container
+     sits OUTSIDE .blog-html (whose white background ends with the job
+     body), directly on .blog-html-container-single's navy, so a
+     transparent box left "Back to Top" floating in a navy strip
+     between the article and the footer (reported once the career
+     template moved to styles.css). Same white band + bottom spacing
+     the legacy dgs-careers-detail.css had; the plain centred teal
+     link (no divider) is kept. */
   .blog-html-container-single > .hl-blog-content-back-to-top-container:where(.dgs-css-careers-detail,.dgs-css-careers-detail *) {
-    max-width: 860px;
-    margin: 0 auto 3rem !important;
-    padding: 0 1rem !important;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    margin: 0 !important;
+    padding: 0.5rem 1rem 5rem !important;
     text-align: center;
-    background: transparent !important;
+    background: #ffffff !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
   }
 
   .blog-html-container-single > .hl-blog-content-back-to-top-container .back-to-top:where(.dgs-css-careers-detail,.dgs-css-careers-detail *) {
