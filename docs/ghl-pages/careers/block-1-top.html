@@ -1,0 +1,18 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://dgs-omega.vercel.app/css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.25/dist/lenis.css">
+
+<script>
+  // styles.css scopes this page's sections to these classes. <html> gets the
+  // scope classes right away (it always exists); <body> gets them once ready.
+  (function (scope) {
+    var html = document.documentElement;
+    scope.forEach(function (c) { html.classList.add(c); });
+    function tagBody() { document.body.classList.add.apply(document.body.classList, ['dgs-page'].concat(scope)); }
+    if (document.body) tagBody(); else document.addEventListener('DOMContentLoaded', tagBody);
+  })(['dgs-css-solution-detail', 'dgs-css-careers']);
+</script>
