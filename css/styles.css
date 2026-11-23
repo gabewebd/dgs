@@ -1883,6 +1883,75 @@ html.dgs-menu-open .dgs-header.dgs-header--hidden {
   display: block;
 }
 
+/* --- Newsletter card (2026-11-23) ------------------------------------
+   The signup block is its own surface on the navy footer. The GHL form
+   (PmMM1hyZSNDruttSitUa) renders transparent with dark fields; its custom
+   CSS lives in docs/ghl-forms/dgs-newsletter-footer.css.
+   (0,2,0) selectors on purpose: `.dgs-page h4` (0,1,1) sizes the title
+   otherwise, and the social-hub :where() copies above sit at (0,1,0). */
+.dgs-footer .dgs-footer-newsletter {
+  position: relative;
+  box-sizing: border-box;
+  padding: 2rem 2rem 0.75rem;
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(0, 179, 159, 0.10) 0%, transparent 55%),
+    rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 24px 48px -28px rgba(0, 0, 0, 0.6);
+}
+
+.dgs-footer .dgs-footer-newsletter::before {
+  content: "Newsletter";
+  display: block;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dgs-teal);
+}
+
+.dgs-footer .dgs-footer-newsletter-title {
+  max-width: 28ch;
+  margin: 0 0 0.5rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1.6vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-wrap: balance;
+}
+
+.dgs-footer .dgs-footer-newsletter-sub {
+  margin: 0 0 1.25rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* The form pads itself 6px on the sides (room for the focus ring);
+   pull the iframe out by the same amount so fields line up with the
+   title. Transparent so the card shows through. */
+.dgs-footer .dgs-footer-newsletter-iframe {
+  width: calc(100% + 12px);
+  margin: 0 -6px;
+  background: transparent;
+  border-radius: 0;
+  color-scheme: normal;
+}
+
+@media (max-width: 640px) {
+  .dgs-footer .dgs-footer-newsletter {
+    padding: 1.5rem 1.25rem 0.5rem;
+    border-radius: 12px;
+  }
+}
+
 .dgs-footer-grid {
   display: grid;
   gap: var(--space-lg) var(--space-md);

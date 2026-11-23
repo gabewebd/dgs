@@ -35,8 +35,7 @@
   --f-teal: #00B39F;
   --f-teal-soft: rgba(0, 179, 159, 0.14);
   --f-teal-tint: rgba(0, 179, 159, 0.06);
-  --f-amber: #F5A623;
-  --f-amber-hover: #E0961F;
+  --f-teal-hover: #008C7C; /* = styles.css --dgs-teal-deep (teal + 22% black) */
   --f-text: #0A1F33;
   --f-text-muted: #334155;
   --f-placeholder: #6B7580;
@@ -62,7 +61,26 @@ body,
   background: transparent !important;
 }
 
+/* No scrollbar inside the iframe. form_embed.js already sizes the iframe
+   to the form's height, so the inner page never needs to scroll; without
+   this a few px of overflow (focus ring, button lift) shows a scrollbar
+   down the right edge. */
+html,
+body {
+  overflow: hidden !important;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 #_builder-form#_builder-form {
+  box-sizing: border-box !important;
+  /* Room for the 4px focus ring on the sides (the fields run edge to edge
+     of the iframe, so the ring was clipped left and right) and for the
+     submit button's hover lift + shadow at the bottom. */
+  padding: 4px 6px 24px !important;
   border: 0 !important;
   box-shadow: none !important;
   font-family: var(--f-font-body) !important;
@@ -542,7 +560,7 @@ body,
   box-shadow: 0 0 0 4px var(--f-error-soft) !important;
 }
 
-/* ---------- Submit (Signal Amber: conversion only) ---------- */
+/* ---------- Submit (teal, white text; hover goes deeper teal) ---------- */
 #_builder-form#_builder-form .form-builder--btn-submit {
   margin-top: 1.75rem !important;
   margin-bottom: 0 !important;
@@ -554,10 +572,10 @@ body,
   width: 100% !important;
   min-height: 52px !important;
   padding: 0.95rem 2rem !important;
-  background: var(--f-amber) !important;
+  background: var(--f-teal) !important;
   background-image: none !important;
-  color: var(--f-navy) !important;
-  border: 1px solid var(--f-amber) !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--f-teal) !important;
   border-radius: var(--f-radius-btn) !important;
   box-shadow: none !important;
   cursor: pointer;
@@ -576,10 +594,10 @@ body,
   text-transform: none !important;
 }
 #_builder-form#_builder-form .form-builder--btn-submit button:hover {
-  background: var(--f-amber-hover) !important;
-  border-color: var(--f-amber-hover) !important;
+  background: var(--f-teal-hover) !important;
+  border-color: var(--f-teal-hover) !important;
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(245, 166, 35, 0.28) !important;
+  box-shadow: 0 8px 18px rgba(0, 179, 159, 0.28) !important;
 }
 #_builder-form#_builder-form .form-builder--btn-submit button:active {
   transform: translateY(0);

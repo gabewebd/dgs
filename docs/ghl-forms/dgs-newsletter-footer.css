@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ---------- Tokens ---------- */
+#_builder-form#_builder-form {
+  --n-teal: #00B39F;
+  --n-teal-hover: #008C7C;          /* styles.css --dgs-teal-deep */
+  --n-teal-ring: rgba(0, 179, 159, 0.28);
+  --n-text: #FFFFFF;
+  --n-text-muted: rgba(255, 255, 255, 0.72);
+  --n-placeholder: rgba(255, 255, 255, 0.5);
+  --n-icon: rgba(255, 255, 255, 0.55);
+  --n-field-bg: rgba(255, 255, 255, 0.06);
+  --n-field-bg-focus: rgba(255, 255, 255, 0.1);
+  --n-field-border: rgba(255, 255, 255, 0.16);
+  --n-field-border-hover: rgba(255, 255, 255, 0.32);
+  --n-autofill-bg: #13293F;         /* navy lifted to match the field fill */
+  --n-error: #FDA29B;
+  --n-radius: 8px;
+  --n-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --n-font: 'Inter', 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ---------- Surface: transparent, no scrollbar ---------- */
+html,
+body,
+.hl-app,
+.ghl-form-wrap,
+#_builder-form#_builder-form {
+  background: transparent !important;
+}
+
+/* form_embed.js sizes the iframe to the form, so the inner page never
+   needs to scroll; a few px of overflow would otherwise show a bar. */
+html,
+body {
+  overflow: hidden !important;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#_builder-form#_builder-form {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  /* Room for the focus ring on the sides and the button's hover lift.
+     The footer card pulls the iframe out by the same 6px so the fields
+     still line up with the heading above them. */
+  padding: 4px 6px 20px !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  font-family: var(--n-font) !important;
+  color: var(--n-text) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#_builder-form#_builder-form *,
+#_builder-form#_builder-form *::before,
+#_builder-form#_builder-form *::after {
+  box-sizing: border-box;
+}
+
+#_builder-form#_builder-form :is(input, button, label, p, span, div) {
+  font-family: var(--n-font) !important;
+}
+
+/* ---------- Field rhythm ----------
+   GHL puts 20px on both the wrapper and the item; one tight gap here. */
+#_builder-form#_builder-form .form-field-wrapper {
+  margin-bottom: 0 !important;
+  min-height: 0 !important;
+}
+#_builder-form#_builder-form
+  .form-field-wrapper:not(:has(.form-builder--item:not(.d-none))) {
+  display: none !important;
+}
+#_builder-form#_builder-form .form-builder--item {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Labels, if any are switched on in the builder */
+#_builder-form#_builder-form label.field-label,
+#_builder-form#_builder-form .form-builder--item > label {
+  display: block;
+  color: var(--n-text) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  margin-bottom: 0.4rem !important;
+}
+#_builder-form#_builder-form .form-builder--item > label span {
+  color: var(--n-teal) !important;
+}
+
+/* ---------- Text inputs ---------- */
+#_builder-form#_builder-form
+  :is(input[type="text"], input[type="email"], input[type="tel"], .form-control) {
+  width: 100%;
+  min-height: 48px !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+  padding-right: 0.95rem !important;
+  background: var(--n-field-bg) !important;
+  border: 1px solid var(--n-field-border) !important;
+  border-radius: var(--n-radius) !important;
+  box-shadow: none !important;
+  color: var(--n-text) !important;
+  font-size: 1rem !important; /* 16px: stops iOS zoom-on-focus */
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+  outline: none !important;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.15s var(--n-ease),
+    background-color 0.15s var(--n-ease), box-shadow 0.15s var(--n-ease);
+}
+
+/* Left padding everywhere except the email input: GHL pads that one
+   to clear its envelope icon. */
+#_builder-form#_builder-form
+  :is(input[type="text"], input[type="tel"], .form-control):not(.email-input-wrapper > input) {
+  padding-left: 0.95rem !important;
+}
+
+#_builder-form#_builder-form input::placeholder {
+  color: var(--n-placeholder) !important;
+  opacity: 1 !important;
+}
+
+#_builder-form#_builder-form
+  :is(input[type="text"], input[type="email"], input[type="tel"], .form-control):hover {
+  border-color: var(--n-field-border-hover) !important;
+}
+
+#_builder-form#_builder-form
+  :is(input[type="text"], input[type="email"], input[type="tel"], .form-control):focus {
+  background: var(--n-field-bg-focus) !important;
+  border-color: var(--n-teal) !important;
+  box-shadow: 0 0 0 4px var(--n-teal-ring) !important;
+}
+
+/* Envelope icon in the email field */
+#_builder-form#_builder-form .email-input-wrapper svg {
+  color: var(--n-icon) !important;
+}
+#_builder-form#_builder-form .email-input-wrapper svg :is(path, rect, polyline, line) {
+  stroke: currentColor !important;
+}
+
+/* Browser autofill paints a pale yellow/blue box; keep it navy */
+#_builder-form#_builder-form input:-webkit-autofill,
+#_builder-form#_builder-form input:-webkit-autofill:hover,
+#_builder-form#_builder-form input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--n-text) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--n-autofill-bg) inset !important;
+  caret-color: var(--n-text);
+}
+
+/* ---------- Validation ---------- */
+#_builder-form#_builder-form
+  :is(.error, .error-message, .hl-error, .field-error, .text-danger, .invalid-feedback) {
+  display: block;
+  color: var(--n-error) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  margin-top: 0.35rem !important;
+}
+#_builder-form#_builder-form input[aria-invalid="true"],
+#_builder-form#_builder-form :is(.has-error, .is-invalid) input {
+  border-color: var(--n-error) !important;
+  box-shadow: 0 0 0 4px rgba(253, 162, 155, 0.18) !important;
+}
+
+/* Helper / consent text, if added later */
+#_builder-form#_builder-form :is(.short-label, .form-builder--item p) {
+  color: var(--n-text-muted) !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+}
+#_builder-form#_builder-form a {
+  color: var(--n-text) !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--n-teal) !important;
+  text-underline-offset: 3px !important;
+}
+
+/* ---------- Submit: teal, white text ---------- */
+#_builder-form#_builder-form .form-builder--btn-submit {
+  margin-top: 0.25rem !important;
+  margin-bottom: 0 !important;
+}
+#_builder-form#_builder-form .form-builder--btn-submit button {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  min-height: 48px !important;
+  padding: 0.8rem 1.5rem !important;
+  background: var(--n-teal) !important;
+  background-image: none !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--n-teal) !important;
+  border-radius: var(--n-radius) !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  transition: background-color 0.25s var(--n-ease),
+    border-color 0.25s var(--n-ease), transform 0.25s var(--n-ease),
+    box-shadow 0.25s var(--n-ease);
+}
+/* GHL nests the text as button > div > div > div > p > span with inline colors */
+#_builder-form#_builder-form .form-builder--btn-submit button * {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: inherit !important;
+  font-size: 0.9375rem !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+}
+#_builder-form#_builder-form .form-builder--btn-submit button:hover {
+  background: var(--n-teal-hover) !important;
+  border-color: var(--n-teal-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35) !important;
+}
+#_builder-form#_builder-form .form-builder--btn-submit button:active {
+  transform: translateY(0);
+  box-shadow: none !important;
+}
+#_builder-form#_builder-form .form-builder--btn-submit button:focus-visible {
+  outline: 2px solid #FFFFFF !important;
+  outline-offset: 3px !important;
+}
+#_builder-form#_builder-form .form-builder--btn-submit button:disabled {
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none !important;
+  cursor: progress;
+}
+
+/* Success message after submit */
+#_builder-form#_builder-form :is(.thank-you-message, .success-message) {
+  color: var(--n-text) !important;
+}
+
+/* ---------- Motion safety ---------- */
+@media (prefers-reduced-motion: reduce) {
+  #_builder-form#_builder-form * {
+    transition: none !important;
+  }
+  #_builder-form#_builder-form .form-builder--btn-submit button:hover {
+    transform: none;
+  }
+}
