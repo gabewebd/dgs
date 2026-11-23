@@ -5,7 +5,7 @@ set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(cd "$HERE/../../.." && pwd)"
 OUT="$ROOT/images/blog/handoff-gap"
-TMP="$HERE/.png"
+TMP="$(mktemp -d)"   # outside the repo; removed at the end
 CHROME="/c/Program Files/Google/Chrome/Application/chrome.exe"
 mkdir -p "$OUT" "$TMP"
 
@@ -39,3 +39,5 @@ for f in sorted(os.listdir(tmp)):
     im.save(dst, 'WEBP', quality=88, method=6)
     print(f"{os.path.basename(dst)}  {im.width}x{im.height}  {os.path.getsize(dst)//1024} KB")
 PY
+
+rm -rf "$TMP"
