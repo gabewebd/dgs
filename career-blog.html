@@ -29,14 +29,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- CDN (use this line when pasting into GHL): <link rel="stylesheet" href="https://dgs-assets.vercel.app/css/styles.css"> -->
+  <!-- CDN (use this line when pasting into GHL): <link rel="stylesheet" href="https://dgs-omega.vercel.app/css/styles.css"> -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="dgs-page dgs-css-careers-detail">
   <!-- GHL drops <body> classes, and this page's CSS is scoped to them. KEEP THIS when pasting into GHL,
        above the page content, so the page is styled from the first paint (not when main.js loads). -->
-  <script>document.body.classList.add('dgs-page', 'dgs-css-careers-detail');</script>
+  <script>document.documentElement.classList.add('dgs-css-careers-detail');document.body.classList.add('dgs-page', 'dgs-css-careers-detail');</script>
 
 <!-- dgs:include:navbar:start | AUTO-GENERATED from includes/navbar.html — edit that file, then run: npm run build:includes -->
 <header class="dgs-header" id="navbar">
@@ -882,7 +882,7 @@
     <div class="dgs-footer-watermark" aria-hidden="true">Digital GrowthScale</div>
   </footer>
 <!-- dgs:include:footer:end -->
-  <!-- CDN (use this line when pasting into GHL): <script src="https://dgs-assets.vercel.app/js/main.js"></script> -->
+  <!-- CDN (use this line when pasting into GHL): <script src="https://dgs-omega.vercel.app/js/main.js"></script> -->
   <script src="js/main.js"></script>
   <!-- Now part of main.js, no longer loaded separately: <script src="https://dgs-assets.vercel.app/js/dgs-careers.js"></script> -->
 </body>
