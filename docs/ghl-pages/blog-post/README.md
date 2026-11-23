@@ -1,83 +1,41 @@
-# GHL blog post template: move to dgs-omega (one-time re-paste)
+# GHL blog post template: paste blocks (dgs-omega)
 
 Every Growth Hub post (`digitalgrowthscale.com/post/...`) shares one GHL blog post
-template. As of 2026-11-23 that template still loads the retired dgs-assets CDN
-(frozen `cdn-version` branch), so fixes on `main` never reach the posts. These three
-edits switch it to `styles.css` + `main.js` on dgs-omega, like Growth Hub. After this,
-post fixes go live as soon as `main` deploys, with no more GHL pastes.
+template. Until these blocks are pasted, that template loads the retired dgs-assets
+CDN (frozen `cdn-version` branch), so fixes on `main` never reach the posts.
 
-What this switch brings:
+Template layout in GHL, top to bottom:
+
+| GHL element | Paste this file |
+|---|---|
+| Custom code 1 | `block-1-header.html` (fonts, styles.css, scope classes, progress bar, header, opens `<main>`) |
+| Custom code 2 | `block-2-before-widget.html` (opens the post section + slot) |
+| **Blog Content widget** | (GHL native, leave as is) |
+| Custom code 3 | `block-3-after-widget.html` (closes slot/section, Keep Reading, CTA, closes `</main>`, back-to-top) |
+| Custom code 4 | `block-4-footer.html` (footer + main.js) |
+
+Replace each code box's whole content with its file. Compared with the old blocks,
+only these lines changed:
+- **Block 1:** the two dgs-assets `<link>` tags became one dgs-omega `styles.css` link. The
+  class script now also adds `dgs-css-growth-article` to `<html>` and `<body>`, so the page is
+  styled from first paint. `<main>` gained `data-dgs-js="growth-article"` and `data-dgs-css`.
+- **Block 2:** the section gained `data-dgs-js="growth-article"`, a backup in case GHL drops the `<main>`.
+- **Block 3:** comment text only.
+- **Block 4:** the two dgs-assets `<script>` tags became one dgs-omega `main.js`.
+
+What this brings:
 - A skeleton loader (navy hero wireframe, then TOC and paragraph lines) instead of
   the blank navy screen while GHL loads the post.
 - "On this page" spacing that matches /cookie-policy. GHL's own
   `.blog-html-container-single ul { display: block }` was collapsing the list.
 
-Verified 2026-11-23: the live founder-dependency post, rendered with only these swaps,
-looks the same as today's live page on desktop and mobile.
-
-## Edit 1: top custom-code block (the one with the header)
-
-Replace these two lines:
-
-```html
-<link rel="stylesheet" href="https://dgs-assets.vercel.app/css/dgs-common.css">
-<link rel="stylesheet" href="https://dgs-assets.vercel.app/css/dgs-growth-article.css">
-```
-
-with:
-
-```html
-<link rel="stylesheet" href="https://dgs-omega.vercel.app/css/styles.css">
-<script>document.documentElement.classList.add('dgs-css-growth-article');</script>
-```
-
-In the same block, replace:
-
-```html
-<script>
-  document.body.classList.add('dgs-page');
-</script>
-```
-
-with:
-
-```html
-<script>document.body.classList.add('dgs-page', 'dgs-css-growth-article');</script>
-```
-
-## Edit 2: the small block right above the Blog Content widget
-
-Change only the opening tag:
-
-```html
-<section class="dgs-ghl-blog-content">
-```
-
-to:
-
-```html
-<section class="dgs-ghl-blog-content" data-dgs-js="growth-article">
-```
-
-(`main.js` only runs the article code where `data-dgs-js="growth-article"` is present.)
-
-## Edit 3: footer custom-code block (bottom of the page)
-
-Replace:
-
-```html
-<script src="https://dgs-assets.vercel.app/js/main.js"></script>
-<script src="https://dgs-assets.vercel.app/js/dgs-growth-article.js"></script>
-```
-
-with:
-
-```html
-<script src="https://dgs-omega.vercel.app/js/main.js"></script>
-```
+Verified 2026-11-23 on the live founder-dependency post rendered with this swap: the hero,
+body, TOC, Keep Reading, CTA and footer match today's live page. Visible differences:
+the even TOC spacing, the CTA's faint "SCALE" watermark (current site CTA design), and
+the teal back-to-top button after scrolling.
 
 ## Check after publishing
 
 Open any post in a private window. You should see the grey skeleton for a moment,
 then the post fades in, and the "On this page" items should be evenly spaced.
-If the page is unstyled, one of the dgs-assets lines is still there.
+If the page is unstyled, a dgs-assets line is still in one of the blocks.
